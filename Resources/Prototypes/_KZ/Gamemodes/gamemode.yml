@@ -1,0 +1,11 @@
+- type: gamePreset
+  id: HRP #For Admin Use: Runs Greenshift but shows "Secret" in lobby.
+  alias:
+  - RP
+  name: Hard RP
+  showInVote: false #Admin Use
+  description: В раунде действуют повышенные требования на RP отыгрыш, админы усерднее следят за нарушителями.
+  rules:
+  - SpaceTrafficControlFriendlyEventScheduler
+  - BasicRoundstartVariation
+  - CrewTransferScheduler #ADT tweak
