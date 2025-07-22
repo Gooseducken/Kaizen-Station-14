@@ -33,6 +33,31 @@ namespace Content.Client.Lobby.UI
 
             LeaveButton.OnPressed += _ => _consoleHost.ExecuteCommand("disconnect");
             OptionsButton.OnPressed += _ => UserInterfaceManager.GetUIController<OptionsUIController>().ToggleWindow();
+            // ADT-Tweak-Start
+            HideInterface.OnPressed += _ =>
+            {
+                SwitchState(LobbyGuiState.ScreenSaver);
+            };
+            ShowInterface.OnPressed += _ =>
+            {
+                SwitchState(LobbyGuiState.Default);
+            };
+
+            if (_cfg.GetCVar(ADTCCVars.ExtraLobbyPanelEnabled))
+            {
+                LobbyPanelLeftTop.Visible = true;
+                _panelUpdate = true;
+                UpdateButtons();
+            }
+            else
+            {
+                _panelUpdate = false;
+                LobbyPanelLeftTop.Visible = false;
+            }
+            // ADT-Tweak-End
+
+            CollapseButton.OnPressed += _ => TogglePanel(false);
+            ExpandButton.OnPressed += _ => TogglePanel(true);
         }
 
         public void SwitchState(LobbyGuiState state)
@@ -66,6 +91,12 @@ namespace Content.Client.Lobby.UI
         }
 
 
+
+        private void TogglePanel(bool value)
+        {
+            RightSide.Visible = value;
+            ExpandPanel.Visible = !value;
+        }
 
         public enum LobbyGuiState : byte
         {
