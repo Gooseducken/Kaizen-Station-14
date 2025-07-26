@@ -51,3 +51,6 @@ C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.Server\obj\Release\Con
 C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.Server\obj\Release\refint\Content.Server.dll
 C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.Server\obj\Release\Content.Server.pdb
 C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.Server\obj\Release\ref\Content.Server.dll
+C:\Users\goose\Documents\GitHub\Kaizen-Station-14\bin\Content.Server\Content.Server.exe
+C:\Users\goose\Documents\GitHub\Kaizen-Station-14\bin\Content.Server\Content.Server.runtimeconfig.json
+C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.Server\obj\Release\Content.Server.genruntimeconfig.cache

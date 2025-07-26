@@ -35,3 +35,6 @@ C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.Client\obj\Release\Con
 C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.Client\obj\Release\refint\Content.Client.dll
 C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.Client\obj\Release\Content.Client.pdb
 C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.Client\obj\Release\ref\Content.Client.dll
+C:\Users\goose\Documents\GitHub\Kaizen-Station-14\bin\Content.Client\Content.Client.exe
+C:\Users\goose\Documents\GitHub\Kaizen-Station-14\bin\Content.Client\Content.Client.runtimeconfig.json
+C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.Client\obj\Release\Content.Client.genruntimeconfig.cache

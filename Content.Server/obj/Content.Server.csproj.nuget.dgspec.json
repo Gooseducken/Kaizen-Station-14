@@ -676,6 +676,11 @@
               "target": "Package",
               "version": "[9.0.3, )",
               "versionCentrallyManaged": true
+            },
+            "SQLitePCLRaw.bundle_e_sqlite3": {
+              "target": "Package",
+              "version": "[2.1.10, )",
+              "versionCentrallyManaged": true
             }
           },
           "centralPackageVersions": {
@@ -1655,6 +1660,11 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[2024.3.0, )",
+              "versionCentrallyManaged": true
+            },
+            "JetBrains.Profiler.Api": {
+              "target": "Package",
+              "version": "[1.4.8, )",
               "versionCentrallyManaged": true
             },
             "Microsoft.Data.Sqlite.Core": {

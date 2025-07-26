@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Content.Goobstation.UIKit")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("DebugOpt")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3576ea972d546e6b5da0f65737d32a0e29253a36")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4b845da53e442f3529fe9805a97409a988471bdb")]
 [assembly: System.Reflection.AssemblyProductAttribute("Content.Goobstation.UIKit")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Content.Goobstation.UIKit")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
