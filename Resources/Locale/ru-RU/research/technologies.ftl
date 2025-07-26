@@ -34,9 +34,7 @@ research-technology-practice-ammunition = Учебные боеприпасы
 research-technology-concentrated-laser-weaponry = Концентрированное лазерное оружие
 research-technology-wave-particle-harnessing = Применение волновых частиц
 research-technology-advanced-riot-control = Продвинутое противодействие беспорядкам
-##ADT-Tweak start
-research-technology-portable-microfusion-weaponry = Оружейный портативный микросинтез 
-##ADT-Tweak end
+research-technology-portable-microfusion-weaponry = Оруженый портативный микросинтез
 research-technology-experimental-battery-ammo = Экспериментальные батарейные боеприпасы
 research-technology-basic-shuttle-armament = Базовое корабельное вооружение
 research-technology-advanced-shuttle-weapon = Продвинутое корабельное оружие
@@ -47,8 +45,7 @@ research-technology-alternative-research = Альтернативные иссл
 research-technology-magnets-tech = Локализованный магнетизм
 research-technology-advanced-parts = Продвинутые компоненты
 research-technology-anomaly-harnessing = Применение ядер аномалий
-research-technology-bluespace-time-manipulation = Блюспейс манипулирование временем
-research-technology-abnormal-artifact-manipulation = Продвинутая работа с артефактами
+research-technology-abnormal-artifact-manipulation = Переработка артефактов
 research-technology-gravity-manipulation = Манипулирование гравитацией
 research-technology-quantum-leaping = Квантовые скачки
 research-technology-advanced-anomaly-research = Продвинутое изучение аномалий
@@ -70,4 +67,3 @@ research-technology-honk-mech = Мех Х.О.Н.К.
 research-technology-advanced-spray = Продвинутые спреи
 research-technology-quantum-fiber-weaving = Плетение квантового волокна
 research-technology-bluespace-cargo-transport = Блюспейс-транспортировка грузов
-research-technology-experimental-pka = Экспериментальный протокинетический ускоритель

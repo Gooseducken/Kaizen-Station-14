@@ -1,5 +1,84 @@
+// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
+// SPDX-FileCopyrightText: 2021 Javier Guardia Fernández <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Leo <lzimann@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Julian Giebel <j.giebel@netrocks.info>
+// SPDX-FileCopyrightText: 2022 Kevin Zheng <kevinz5000@gmail.com>
+// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Veritius <veritiusgaming@gmail.com>
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Riggle <27156122+RigglePrime@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2024 12rabbits <53499656+12rabbits@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Dimastra <65184747+Dimastra@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Dimastra <dimastra@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
+// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 JIPDawg <51352440+JIPDawg@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 JIPDawg <JIPDawg93@gmail.com>
+// SPDX-FileCopyrightText: 2024 Julian Giebel <juliangiebel@live.de>
+// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
+// SPDX-FileCopyrightText: 2024 Moomoobeef <62638182+Moomoobeef@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers@gmail.com>
+// SPDX-FileCopyrightText: 2024 PopGamer46 <yt1popgamer@gmail.com>
+// SPDX-FileCopyrightText: 2024 PursuitInAshes <pursuitinashes@gmail.com>
+// SPDX-FileCopyrightText: 2024 QueerNB <176353696+QueerNB@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Saphire Lattice <lattice@saphi.re>
+// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Spessmann <156740760+Spessmann@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
+// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 stellar-novas <stellar_novas@riseup.net>
+// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
+// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 DrSmugleaf <drsmugleaf@gmail.com>
+// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+// SPDX-FileCopyrightText: 2025 Ichaie <167008606+Ichaie@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 JORJ949 <159719201+JORJ949@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 MortalBaguette <169563638+MortalBaguette@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Myra <vasilis@pikachu.systems>
+// SPDX-FileCopyrightText: 2025 PJB3005 <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2025 Panela <107573283+AgentePanela@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2025 Poips <Hanakohashbrown@gmail.com>
+// SPDX-FileCopyrightText: 2025 PuroSlavKing <103608145+PuroSlavKing@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
+// SPDX-FileCopyrightText: 2025 Whisper <121047731+QuietlyWhisper@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 blobadoodle <me@bloba.dev>
+// SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2025 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 kamkoi <poiiiple1@gmail.com>
+// SPDX-FileCopyrightText: 2025 shibe <95730644+shibechef@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 tetra <169831122+Foralemes@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Collections.Immutable;
-using System.Data.Common;
 using System.IO;
 using System.Net;
 using System.Text.Json;
@@ -52,10 +131,6 @@ namespace Content.Server.Database
         // Username assignment (for guest accounts, so they persist GUID)
         Task AssignUserIdAsync(string name, NetUserId userId);
         Task<NetUserId?> GetAssignedUserIdAsync(string name);
-        #endregion
-        #region Discord ADT
-        Task<string?> GetDiscordIdAsync(Guid userId);
-        Task<Guid?> GetUserIdByDiscordIdAsync(string discordId);
         #endregion
 
         #region Bans
@@ -196,6 +271,9 @@ namespace Content.Server.Database
             ImmutableTypedHwid? hwId);
         Task<PlayerRecord?> GetPlayerRecordByUserName(string userName, CancellationToken cancel = default);
         Task<PlayerRecord?> GetPlayerRecordByUserId(NetUserId userId, CancellationToken cancel = default);
+        Task<int> GetServerCurrency(NetUserId userId); // Goobstation
+        Task SetServerCurrency(NetUserId userId, int currency); // Goobstation
+        Task<int> ModifyServerCurrency(NetUserId userId, int currencyDelta); // Goobstation
         #endregion
 
         #region Connection Logs
@@ -327,15 +405,6 @@ namespace Content.Server.Database
 
         #endregion
 
-        // ADT-BookPrinter-Start
-        #region BookPrinter
-
-        Task<List<BookPrinterEntry>> GetBookPrinterEntriesAsync();
-        Task UploadBookPrinterEntryAsync(BookPrinterEntry bookEntry);
-
-        #endregion
-        // ADT-BookPrinter-End
-
         #region Job Whitelists
 
         Task AddJobWhitelist(Guid player, ProtoId<JobPrototype> job);
@@ -345,6 +414,30 @@ namespace Content.Server.Database
         Task<bool> IsJobWhitelisted(Guid player, ProtoId<JobPrototype> job);
 
         Task<bool> RemoveJobWhitelist(Guid player, ProtoId<JobPrototype> job);
+
+        #endregion
+
+        #region RMC14
+
+        Task<Guid?> GetLinkingCode(Guid player);
+
+        Task SetLinkingCode(Guid player, Guid code);
+
+        Task<bool> HasLinkedAccount(Guid player, CancellationToken cancel);
+
+        Task<RMCPatron?> GetPatron(Guid player, CancellationToken cancel);
+
+        Task<List<RMCPatron>> GetAllPatrons();
+
+        Task SetGhostColor(Guid player, System.Drawing.Color? color);
+
+        Task SetLobbyMessage(Guid player, string message);
+
+        Task SetNTShoutout(Guid player, string name);
+
+        Task<(string Message, string User)?> GetRandomLobbyMessage();
+
+        Task<string?> GetRandomShoutout();
 
         #endregion
 
@@ -424,7 +517,6 @@ namespace Content.Server.Database
         private ServerDbBase _db = default!;
         private LoggingProvider _msLogProvider = default!;
         private ILoggerFactory _msLoggerFactory = default!;
-        private ISawmill _sawmill = default!;
 
         private bool _synchronous;
         // When running in integration tests, we'll use a single in-memory SQLite database connection.
@@ -440,7 +532,6 @@ namespace Content.Server.Database
             {
                 builder.AddProvider(_msLogProvider);
             });
-            _sawmill = _logMgr.GetSawmill("db.manager");
 
             _synchronous = _cfg.GetCVar(CCVars.DatabaseSynchronous);
 
@@ -516,20 +607,6 @@ namespace Content.Server.Database
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.AssignUserIdAsync(name, userId));
         }
-
-        // ADT-Tweak-start: Discord
-        public Task<string?> GetDiscordIdAsync(Guid userId)
-        {
-            DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.GetDiscordIdAsync(userId));
-        }
-
-        public Task<Guid?> GetUserIdByDiscordIdAsync(string discordId)
-        {
-            DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.GetUserIdByDiscordIdAsync(discordId));
-        }
-        // ADT-Tweak-end
 
         public Task<NetUserId?> GetAssignedUserIdAsync(string name)
         {
@@ -680,6 +757,23 @@ namespace Content.Server.Database
         {
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.GetPlayerRecordByUserId(userId, cancel));
+        }
+
+        public Task<int> GetServerCurrency(NetUserId userId) // Goobstation
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetServerCurrency(userId));
+        }
+        public Task SetServerCurrency(NetUserId userId, int currency) // Goobstation
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetServerCurrency(userId, currency));
+        }
+
+        public Task<int> ModifyServerCurrency(NetUserId userId, int currencyDelta) // Goobstation
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.ModifyServerCurrency(userId, currencyDelta));
         }
 
         public Task<int> AddConnectionLogAsync(
@@ -1069,19 +1163,70 @@ namespace Content.Server.Database
             return RunDbCommand(() => _db.RemoveJobWhitelist(player, job));
         }
 
-        // ADT-BookPrinter-Start
-        public Task<List<BookPrinterEntry>> GetBookPrinterEntriesAsync()
-		{
-			DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.GetBookPrinterEntries());
-		}
+        #region RMC
 
-        public Task UploadBookPrinterEntryAsync(BookPrinterEntry bookEntry)
-		{
-			DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.UploadBookPrinterEntry(bookEntry));
-		}
-        // ADT-BookPrinter-Start
+        public Task<Guid?> GetLinkingCode(Guid player)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetLinkingCode(player));
+        }
+
+        public Task SetLinkingCode(Guid player, Guid code)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetLinkingCode(player, code));
+        }
+
+        public Task<bool> HasLinkedAccount(Guid player, CancellationToken cancel)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.HasLinkedAccount(player, cancel));
+        }
+
+        public Task<RMCPatron?> GetPatron(Guid player, CancellationToken cancel)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetPatron(player, cancel));
+        }
+
+        public Task<List<RMCPatron>> GetAllPatrons()
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetAllPatrons());
+        }
+
+        public Task SetGhostColor(Guid player, System.Drawing.Color? color)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetGhostColor(player, color));
+        }
+
+        public Task SetLobbyMessage(Guid player, string message)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetLobbyMessage(player, message));
+        }
+
+        public Task SetNTShoutout(Guid player, string name)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetNTShoutout(player, name));
+        }
+
+        public Task<(string Message, string User)?> GetRandomLobbyMessage()
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetRandomLobbyMessage());
+        }
+
+        public Task<string?> GetRandomShoutout()
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetRandomShoutout());
+        }
+
+        #endregion
+
         public Task<bool> UpsertIPIntelCache(DateTime time, IPAddress ip, float score)
         {
             DbWriteOpsMetric.Inc();
@@ -1202,7 +1347,7 @@ namespace Content.Server.Database
                 Password = pass
             }.ConnectionString;
 
-            _sawmill.Debug($"Using Postgres \"{host}:{port}/{db}\"");
+            Logger.DebugS("db.manager", $"Using Postgres \"{host}:{port}/{db}\"");
 
             builder.UseNpgsql(connectionString);
             SetupLogging(builder);
@@ -1225,12 +1370,12 @@ namespace Content.Server.Database
             if (!inMemory)
             {
                 var finalPreferencesDbPath = Path.Combine(_res.UserData.RootDir!, configPreferencesDbPath);
-                _sawmill.Debug($"Using SQLite DB \"{finalPreferencesDbPath}\"");
+                Logger.DebugS("db.manager", $"Using SQLite DB \"{finalPreferencesDbPath}\"");
                 getConnection = () => new SqliteConnection($"Data Source={finalPreferencesDbPath}");
             }
             else
             {
-                _sawmill.Debug("Using in-memory SQLite DB");
+                Logger.DebugS("db.manager", "Using in-memory SQLite DB");
                 _sqliteInMemoryConnection = new SqliteConnection("Data Source=:memory:");
                 // When using an in-memory DB we have to open it manually
                 // so EFCore doesn't open, close and wipe it every operation.

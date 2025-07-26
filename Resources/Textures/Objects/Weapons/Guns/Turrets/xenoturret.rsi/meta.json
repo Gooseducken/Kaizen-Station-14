@@ -8,9 +8,6 @@
   },
   "states": [
     {
-      "name": "icon"
-    },
-    {
       "name": "acid_turret",
       "directions": 4,
       "delays": [

@@ -1,4 +1,9 @@
-﻿using Robust.Shared.Audio;
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
+using Robust.Shared.Audio;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Power.Generator;
@@ -42,16 +47,6 @@ public sealed partial class PortableGeneratorComponent : Component
     [DataField("startSoundEmpty")]
     [ViewVariables(VVAccess.ReadWrite)]
     public SoundSpecifier? StartSoundEmpty { get; set; }
-
-    // ADT-Sound-Update-Start
-    [DataField("successSound")]
-    [ViewVariables(VVAccess.ReadWrite)]
-    public SoundSpecifier? SuccessSound { get; set; }
-
-    [DataField("failureSound")]
-    [ViewVariables(VVAccess.ReadWrite)]
-    public SoundSpecifier? FailureSound { get; set; }
-    // ADT-Sound-Update-End
 }
 
 /// <summary>

@@ -1,3 +1,29 @@
+// SPDX-FileCopyrightText: 2022 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Jezithyr <Jezithyr.@gmail.com>
+// SPDX-FileCopyrightText: 2022 Jezithyr <Jezithyr@gmail.com>
+// SPDX-FileCopyrightText: 2022 Jezithyr <jmaster9999@gmail.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <wrexbe@protonmail.com>
+// SPDX-FileCopyrightText: 2023 Justin Trotter <trotter.justin@gmail.com>
+// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Kevin Zheng <kevinz5000@gmail.com>
+// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Errant <35878406+Errant-4@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 SpaceManiac <tad@platymuus.com>
+// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Linq;
 using Content.Client.CharacterInfo;
 using Content.Client.Gameplay;
@@ -135,7 +161,7 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             return;
         }
 
-        var (entity, job, objectives, briefing, entityName, memories) = data; //ADT-Economy
+        var (entity, job, objectives, briefing, entityName) = data;
 
         _window.SpriteView.SetEntity(entity);
 
@@ -145,7 +171,6 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
         _window.SubText.Text = job;
         _window.Objectives.RemoveAllChildren();
         _window.ObjectivesLabel.Visible = objectives.Any();
-        _window.Memories.RemoveAllChildren(); //ADT-Economy
 
         foreach (var (groupId, conditions) in objectives)
         {
@@ -186,26 +211,6 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             _window.Objectives.AddChild(objectiveControl);
         }
 
-        //ADT-Economy-Start
-        foreach (var (memoryName, memoryValue) in memories)
-        {
-            var memoryControl = new BoxContainer()
-            {
-                Orientation = BoxContainer.LayoutOrientation.Vertical,
-                Modulate = Color.Gray
-            };
-            var text = Loc.TryGetString(memoryName, out var t, ("value", memoryValue))
-                ? t
-                : $"{memoryName}: {memoryValue}";
-
-            memoryControl.AddChild(new Label
-            {
-                Text = text,
-            });
-            _window.Memories.AddChild(memoryControl);
-        }
-        //ADT-Economy-End
-
         if (briefing != null)
         {
             var briefingControl = new ObjectiveBriefingControl();
@@ -242,11 +247,18 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
         if (!_ent.TryGetComponent<MindComponent>(container.Mind.Value, out var mind))
             return;
 
-        if (!_prototypeManager.TryIndex(mind.RoleType, out var proto))
-            _sawmill.Error($"Player '{_player.LocalSession}' has invalid Role Type '{mind.RoleType}'. Displaying default instead");
+        var roleText = Loc.GetString("role-type-crew-aligned-name");
+        var color = Color.White;
+        if (_prototypeManager.TryIndex(mind.RoleType, out var proto))
+        {
+            roleText = Loc.GetString(proto.Name);
+            color = proto.Color;
+        }
+        else
+            _sawmill.Error($"{_player.LocalEntity} has invalid Role Type '{mind.RoleType}'. Displaying '{roleText}' instead");
 
-        _window.RoleType.Text = Loc.GetString(proto?.Name ?? "role-type-crew-aligned-name");
-        _window.RoleType.FontColorOverride = proto?.Color ?? Color.White;
+        _window.RoleType.Text = roleText;
+        _window.RoleType.FontColorOverride = color;
     }
 
     private void CharacterDetached(EntityUid uid)

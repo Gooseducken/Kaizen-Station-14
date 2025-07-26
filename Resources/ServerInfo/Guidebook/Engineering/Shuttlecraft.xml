@@ -1,23 +1,35 @@
+<!--
+SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+SPDX-FileCopyrightText: 2023 end <72604018+laok233@users.noreply.github.com>
+SPDX-FileCopyrightText: 2024 Kira Bridgeton <161087999+Verbalase@users.noreply.github.com>
+SPDX-FileCopyrightText: 2024 Terraspark4941 <terraspark4941@gmail.com>
+SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+SPDX-FileCopyrightText: 2025 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
+
+SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+
 <Document>
-  # Shuttle-craft
+# Шаттлостроение
 
 Строительство шаттла — занятие простое и легкое, хотя и довольно хлопотное по ресурсам и времени. Оно отлично подойдёт тем, у кого много свободного времени и кому хочется вызова.
 
-  ## Getting started
-  <Box>Required parts:</Box>
-  <Box>
-  <GuideEntityEmbed Entity="Thruster"/>
-  <GuideEntityEmbed Entity="Gyroscope"/>
-  <GuideEntityEmbed Entity="ComputerShuttle"/>
-  <GuideEntityEmbed Entity="SubstationBasic"/>
-  <GuideEntityEmbed Entity="PortableGeneratorPacman" Caption="P.A.C.M.A.N." />
-  </Box>
-  <Box>
-  <GuideEntityEmbed Entity="CableHVStack"/>
-  <GuideEntityEmbed Entity="CableMVStack"/>
-  <GuideEntityEmbed Entity="CableApcStack"/>
-  <GuideEntityEmbed Entity="APCBasic"/>
-  </Box>
+## С чего начать
+<Box>Без чего никак:</Box>
+<Box>
+<GuideEntityEmbed Entity="Thruster"/>
+<GuideEntityEmbed Entity="Gyroscope"/>
+<GuideEntityEmbed Entity="ComputerShuttle"/>
+<GuideEntityEmbed Entity="SubstationBasic"/>
+<GuideEntityEmbed Entity="PortableGeneratorPacman" Caption="P.A.C.M.A.N." />
+</Box>
+<Box>
+<GuideEntityEmbed Entity="CableHVStack"/>
+<GuideEntityEmbed Entity="CableMVStack"/>
+<GuideEntityEmbed Entity="CableApcStack"/>
+<GuideEntityEmbed Entity="APCBasic"/>
+</Box>
 
 <Box>Опционально:</Box>
 <Box>

@@ -1,9 +1,25 @@
+// SPDX-FileCopyrightText: 2022 Alex Evgrashin <aevgrashin@yandex.ru>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 root <root@DESKTOP-HJPF29C>
+// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+// SPDX-FileCopyrightText: 2025 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Thomas <87614336+Aeshus@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 yavuz <58685802+yahay505@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Numerics;
 using Content.Server.Radiation.Components;
 using Content.Server.Radiation.Events;
 using Content.Shared.Radiation.Components;
 using Content.Shared.Radiation.Systems;
-using Content.Shared.Singularity.Components; // ADT-Tweak
+using Content.Shared.Singularity.Components;
 using Robust.Shared.Collections;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Timing;
@@ -137,15 +153,12 @@ public partial class RadiationSystem
 
         // get direction from rad source to destination and its distance
         var dir = destWorld - source.WorldPosition;
-
-        // ADT-Tweak start
         var dist = Math.Max(dir.Length(),0.5f);
         if (TryComp(source.Entity.Owner, out EventHorizonComponent? horizon)) // if we have a horizon emit radiation from the horizon,
             dist = Math.Max(dist - horizon.Radius, 0.5f);
         var rads = source.Intensity / (dist );
         if (rads < 0.01)
             return null;
-        // ADT-Tweak end
 
         // create a new radiation ray from source to destination
         // at first we assume that it doesn't hit any radiation blockers
@@ -190,15 +203,13 @@ public partial class RadiationSystem
 
         return ray;
     }
-    
-    /// ADT-Tweak start    
-    /// <summary>
-    /// Similar to GridLineEnumerator, but also returns the distance the ray traveled in each cell
-    /// </summary>
-    /// <param name="sourceGridPos">source of the ray, in grid space</param>
-    /// <param name="destGridPos"></param>
-    /// <returns></returns>
-    private static IEnumerable<(Vector2i cell, float distInCell)> AdvancedGridRaycast(Vector2 sourceGridPos, Vector2 destGridPos)
+/// <summary>
+/// Similar to GridLineEnumerator, but also returns the distance the ray traveled in each cell
+/// </summary>
+/// <param name="sourceGridPos">source of the ray, in grid space</param>
+/// <param name="destGridPos"></param>
+/// <returns></returns>
+    private static IEnumerable<(Vector2i cell, float distInCell)> AdvancedGridRaycast(Vector2 sourceGridPos,Vector2 destGridPos)
     {
         var delta = destGridPos - sourceGridPos;
 
@@ -253,8 +264,6 @@ public partial class RadiationSystem
             entry = exit;
         }
     }
-    // ADT-Tweak end
-
     private RadiationRay Gridcast(
         Entity<MapGridComponent, TransformComponent> grid,
         ref RadiationRay ray,
@@ -269,8 +278,6 @@ public partial class RadiationSystem
         if (!_resistanceQuery.TryGetComponent(gridUid, out var resistance))
             return ray;
         var resistanceMap = resistance.ResistancePerTile;
-
-        // ADT-Tweak start
 
         // get coordinate of source and destination in grid coordinates
 
@@ -297,7 +304,7 @@ public partial class RadiationSystem
         {
             if (resistanceMap.TryGetValue(point, out var resData))
             {
-                var passRatioFromRadResistance = (1 / (resData > 1 ? (resData / 2) : 1));
+                var passRatioFromRadResistance = (1 / (resData > 2 ? (resData / 2) : 1));
 
                 var passthroughRatio = MathF.Pow(passRatioFromRadResistance, dist);
                 ray.Rads *= passthroughRatio;
@@ -313,7 +320,6 @@ public partial class RadiationSystem
                     break;
                 }
             }
-        // ADT-Tweak end
         }
 
 
@@ -347,10 +353,8 @@ public partial class RadiationSystem
 
             if (_blockerQuery.TryComp(xform.ParentUid, out var blocker))
             {
-                // ADT-Tweak start
-                var ratio =blocker.RadResistance>2? 1 / (blocker.RadResistance/2):1; 
+                var ratio =blocker.RadResistance>2? 1 / (blocker.RadResistance/2):1;
                 rads *= ratio;
-                // ADT-Tweak end
                 if (rads < 0)
                     return 0;
             }

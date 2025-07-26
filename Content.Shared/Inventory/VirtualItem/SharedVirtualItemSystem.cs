@@ -1,5 +1,15 @@
+// SPDX-FileCopyrightText: 2024 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
+// SPDX-FileCopyrightText: 2025 themias <89101928+themias@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Diagnostics.CodeAnalysis;
-using Content.Shared.ADT.Hands;
 using Content.Shared.Hands;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
@@ -25,8 +35,10 @@ namespace Content.Shared.Inventory.VirtualItem;
 /// and <see cref="InventoryUiController"/>, see the <see cref="VirtualItemComponent"/>
 /// references there for more information
 /// </remarks>
-public abstract partial class SharedVirtualItemSystem : EntitySystem    // ADT Grab tweak - класс теперь partial
+public abstract class SharedVirtualItemSystem : EntitySystem
 {
+    [Dependency] private readonly INetManager _netManager = default!;
+    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
     [Dependency] private readonly SharedItemSystem _itemSystem = default!;
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
@@ -156,6 +168,11 @@ public abstract partial class SharedVirtualItemSystem : EntitySystem    // ADT G
     /// </summary>
     public void DeleteInHandsMatching(EntityUid user, EntityUid matching)
     {
+        // Client can't currently predict deleting networked entities so we use this workaround, another
+        // problem can popup when the hands leave PVS for example and this avoids that too
+        if (_netManager.IsClient)
+            return;
+
         foreach (var hand in _handsSystem.EnumerateHands(user))
         {
             if (TryComp(hand.HeldEntity, out VirtualItemComponent? virt) && virt.BlockingEntity == matching)
@@ -200,6 +217,11 @@ public abstract partial class SharedVirtualItemSystem : EntitySystem    // ADT G
     /// <param name="slotName">Set this param if you have the name of the slot, it avoids unnecessary queries</param>
     public void DeleteInSlotMatching(EntityUid user, EntityUid matching, string? slotName = null)
     {
+        // Client can't currently predict deleting networked entities so we use this workaround, another
+        // problem can popup when the hands leave PVS for example and this avoids that too
+        if (_netManager.IsClient)
+            return;
+
         if (slotName != null)
         {
             if (!_inventorySystem.TryGetSlotEntity(user, slotName, out var slotEnt))
@@ -233,9 +255,15 @@ public abstract partial class SharedVirtualItemSystem : EntitySystem    // ADT G
     /// <param name="virtualItem">The virtual item, if spawned</param>
     public bool TrySpawnVirtualItem(EntityUid blockingEnt, EntityUid user, [NotNullWhen(true)] out EntityUid? virtualItem)
     {
+        if (_netManager.IsClient)
+        {
+            virtualItem = null;
+            return false;
+        }
+
         var pos = Transform(user).Coordinates;
-        virtualItem = PredictedSpawnAttachedTo(VirtualItem, pos);
-        var virtualItemComp = Comp<VirtualItemComponent>(virtualItem.Value);
+        virtualItem = Spawn(VirtualItem, pos);
+        var virtualItemComp = EnsureComp<VirtualItemComponent>(virtualItem.Value); // Goobstation
         virtualItemComp.BlockingEntity = blockingEnt;
         Dirty(virtualItem.Value, virtualItemComp);
         return true;
@@ -246,15 +274,17 @@ public abstract partial class SharedVirtualItemSystem : EntitySystem    // ADT G
     /// </summary>
     public void DeleteVirtualItem(Entity<VirtualItemComponent> item, EntityUid user)
     {
-        var userEv = new VirtualItemDeletedEvent(item.Comp.BlockingEntity, user);
+        var userEv = new VirtualItemDeletedEvent(item.Comp.BlockingEntity, user, item.Owner); // Goobstation
         RaiseLocalEvent(user, userEv);
 
-        var targEv = new VirtualItemDeletedEvent(item.Comp.BlockingEntity, user);
+        var targEv = new VirtualItemDeletedEvent(item.Comp.BlockingEntity, user, item.Owner); // Goobstation
         RaiseLocalEvent(item.Comp.BlockingEntity, targEv);
 
         if (TerminatingOrDeleted(item))
             return;
 
-        PredictedQueueDel(item.Owner);
+        _transformSystem.DetachEntity(item, Transform(item));
+        if (_netManager.IsServer)
+            QueueDel(item);
     }
 }

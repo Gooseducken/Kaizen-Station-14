@@ -1,8 +1,26 @@
+// SPDX-FileCopyrightText: 2024 AJCM <AJCM@tutanota.com>
+// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2024 Rainfall <rainfey0+git@gmail.com>
+// SPDX-FileCopyrightText: 2024 Rainfey <rainfey0+github@gmail.com>
+// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aviu00 <aviu00@protonmail.com>
+// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+// SPDX-FileCopyrightText: 2025 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.Maps;
 using Content.Shared.Random.Helpers;
 using Robust.Shared.Collections;
 using Robust.Shared.Map;
@@ -14,7 +32,7 @@ namespace Content.Server.GameTicking.Rules;
 
 public abstract partial class GameRuleSystem<T> where T: IComponent
 {
-    [Dependency] private readonly StationSystem _station = default!; // ADT
+    [Dependency] private readonly StationSystem _station = default!; // Goobstation
 
     protected EntityQueryEnumerator<ActiveGameRuleComponent, T, GameRuleComponent> QueryActiveRules()
     {
@@ -83,7 +101,8 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
         return false;
     }
 
-    // ADT-Start
+    // Goobstation start
+    // Goobstation - refactored this method. Split into 3 smaller methods and made it so that it picks main station grid.
     protected bool TryFindRandomTileOnStation(Entity<StationDataComponent> station,
         out Vector2i tile,
         out EntityUid targetGrid,
@@ -125,6 +144,11 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
             var randomY = RobustRandom.Next((int) aabb.Bottom, (int) aabb.Top);
 
             tile = new Vector2i(randomX, randomY);
+
+            if (!_map.TryGetTile(grid.Comp, tile, out var selectedTile) || selectedTile.IsEmpty ||
+                selectedTile.IsSpace())
+                continue;
+
             if (_atmosphere.IsTileSpace(grid.Owner, Transform(grid.Owner).MapUid, tile)
                 || _atmosphere.IsTileAirBlocked(grid.Owner, tile, mapGridComp: grid.Comp))
                 continue;
@@ -135,7 +159,7 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
 
         return false;
     }
-    // ADT-End
+    // Goobstation end
 
     protected void ForceEndSelf(EntityUid uid, GameRuleComponent? component = null)
     {

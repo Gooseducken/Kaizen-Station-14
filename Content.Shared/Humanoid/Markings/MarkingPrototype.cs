@@ -1,3 +1,14 @@
+// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Morb <14136326+Morb0@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 csqrb <56765288+CaptainSqrBeard@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -23,11 +34,6 @@ namespace Content.Shared.Humanoid.Markings
         [DataField("sexRestriction")]
         public Sex? SexRestriction { get; private set; }
 
-        // Corvax-Sponsors-Start
-        [DataField("sponsorOnly")]
-        public bool SponsorOnly = false;
-        // Corvax-Sponsors-End
-
         [DataField("followSkinColor")]
         public bool FollowSkinColor { get; private set; } = false;
 
@@ -37,13 +43,6 @@ namespace Content.Shared.Humanoid.Markings
         [DataField("coloring")]
         public MarkingColors Coloring { get; private set; } = new();
 
-        /// <summary>
-        /// Do we need to apply any displacement maps to this marking? Set to false if your marking is incompatible
-        /// with a standard human doll, and is used for some special races with unusual shapes
-        /// </summary>
-        [DataField]
-        public bool CanBeDisplaced { get; private set; } = true;
-
         [DataField("sprites", required: true)]
         public List<SpriteSpecifier> Sprites { get; private set; } = default!;
 
@@ -51,10 +50,5 @@ namespace Content.Shared.Humanoid.Markings
         {
             return new Marking(ID, Sprites.Count);
         }
-
-        //ADT tweak - allow markings to support shaders
-        [DataField("shader")]
-        public string? Shader { get; private set; } = null;
-        //ADT tweak impstation edit
     }
 }

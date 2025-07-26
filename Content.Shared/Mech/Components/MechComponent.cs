@@ -1,10 +1,22 @@
-using Content.Shared.FixedPoint;
+// SPDX-FileCopyrightText: 2022 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 LordEclipse <106132477+LordEclipse@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 brainfood1183 <113240905+brainfood1183@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 NULL882 <gost6865@yandex.ru>
+// SPDX-FileCopyrightText: 2024 ScyronX <166930367+ScyronX@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Whitelist;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Audio;
-using Content.Shared.Damage;
 
 namespace Content.Shared.Mech.Components;
 
@@ -16,6 +28,13 @@ namespace Content.Shared.Mech.Components;
 public sealed partial class MechComponent : Component
 {
     /// <summary>
+    /// Goobstation: Whether or not an emag disables it.
+    /// </summary>
+    [DataField("breakOnEmag")]
+    [AutoNetworkedField]
+    public bool BreakOnEmag = true;
+
+    /// <summary>
     /// How much "health" the mech has left.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
@@ -24,7 +43,7 @@ public sealed partial class MechComponent : Component
     /// <summary>
     /// The maximum amount of damage the mech can take.
     /// </summary>
-    [DataField("maxintegrity"), AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]  // ADT Mech
+    [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
     public FixedPoint2 MaxIntegrity = 250;
 
     /// <summary>
@@ -88,7 +107,7 @@ public sealed partial class MechComponent : Component
     /// <summary>
     /// A whitelist for inserting equipment items.
     /// </summary>
-    [DataField("equipmentWhitelist")]   // ADT Mech
+    [DataField]
     public EntityWhitelist? EquipmentWhitelist;
 
     [DataField]
@@ -101,7 +120,7 @@ public sealed partial class MechComponent : Component
     public Container EquipmentContainer = default!;
 
     [ViewVariables]
-    public readonly string EquipmentContainerId = "mod-modules-container";
+    public readonly string EquipmentContainerId = "mech-equipment-container";
 
     /// <summary>
     /// How long it takes to enter the mech.
@@ -139,84 +158,15 @@ public sealed partial class MechComponent : Component
     [DataField]
     public List<EntProtoId> StartingEquipment = new();
 
-    // ADT Content Start
-    /// <summary>
-    /// sound if access denied
-    /// </summary>
-    [DataField("accessDeniedSound")]
-    public SoundSpecifier AccessDeniedSound = new SoundPathSpecifier("/Audio/Machines/Nuke/angry_beep.ogg");
-    /// <summary>
-    /// sound on equipment destroyed
-    /// </summary>
-    [DataField]
-    public SoundSpecifier EquipmentDestroyedSound = new SoundCollectionSpecifier("MetalBreak");
-    /// <summary>
-    /// sound on entry mech
-    /// </summary>
-    [DataField("mechentrysound")]
-    public SoundSpecifier MechEntrySound = new SoundPathSpecifier("/Audio/ADT/Mecha/nominal.ogg");
-    /// <summary>
-    /// sound on turn lights
-    /// </summary>
-    [DataField("mechlightoffsound")]
-    public SoundSpecifier MechLightsOnSound = new SoundPathSpecifier("/Audio/ADT/Mecha/mechlignton.ogg");
-    [DataField("mechlightonsound")]
-    public SoundSpecifier MechLightsOffSound = new SoundPathSpecifier("/Audio/ADT/Mecha/mechlightoff.ogg");
-    /// <summary>
-    /// sound on destroy equipment
-    /// </summary>
-    [DataField("mechequipmentdestr")]
-    public SoundSpecifier MechEquipmentDestr = new SoundPathSpecifier("/Audio/ADT/Mecha/weapdestr.ogg");
-
-    /// <summary>
-    /// How much "health" the mech need to destroy equipment.
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
-    public FixedPoint2 DamageToDesEqi = 75;
-    /// <summary>
-    /// How much "health" the mech has left.
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
-    public float EMPDamage = 700;
-
-    /// <summary>
-    /// damage modifiers on hit
-    /// </summary>
-    [DataField]
-    public DamageModifierSet? Modifiers;
-
-    /// <summary>
-    /// A multiplier used to calculate how much of the damage done to a mech
-    /// is transfered to the pilot
-    /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public float MechEnergyWaste = 10;
-
-    /// <summary>
-    /// A blacklist for inserting equipment items.
-    /// </summary>
-    [DataField]
-    public EntityWhitelist? BatteryBlacklist;
-
-    /// <summary>
-    /// Is lights currently toggled
-    /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public bool LightsToggle = false;
-    // ADT Content End
-
     #region Action Prototypes
     [DataField]
     public EntProtoId MechCycleAction = "ActionMechCycleEquipment";
     [DataField]
+    public EntProtoId ToggleAction = "ActionToggleLight"; //Goobstation Mech Lights toggle action
+    [DataField]
     public EntProtoId MechUiAction = "ActionMechOpenUI";
     [DataField]
     public EntProtoId MechEjectAction = "ActionMechEject";
-
-    // ADT Content Start
-    public EntProtoId MechTurnLightsAction = "ActionMechTurnLights";
-    public EntProtoId MechInhaleAction = "ActionMechInhale";
-    // ADT Content End
     #endregion
 
     #region Visualizer States
@@ -231,8 +181,5 @@ public sealed partial class MechComponent : Component
     [DataField] public EntityUid? MechCycleActionEntity;
     [DataField] public EntityUid? MechUiActionEntity;
     [DataField] public EntityUid? MechEjectActionEntity;
-    // ADT Content Start
-    [DataField] public EntityUid? MechInhaleActionEntity;
-    [DataField] public EntityUid? MechTurnLightsActionEntity;
-    // ADT Content End
+    [DataField, AutoNetworkedField] public EntityUid? ToggleActionEntity; //Goobstation Mech Lights toggle action
 }

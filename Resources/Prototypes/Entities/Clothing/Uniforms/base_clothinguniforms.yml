@@ -1,3 +1,27 @@
+# SPDX-FileCopyrightText: 2020 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2021 Alex Evgrashin <aevgrashin@yandex.ru>
+# SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@googlemail.com>
+# SPDX-FileCopyrightText: 2021 Peptide90 <78795277+Peptide90@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
+# SPDX-FileCopyrightText: 2021 metalgearsloth <comedian_vs_clown@hotmail.com>
+# SPDX-FileCopyrightText: 2022 ElectroJr <leonsfriedrich@gmail.com>
+# SPDX-FileCopyrightText: 2022 Justin Trotter <trotter.justin@gmail.com>
+# SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
+# SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+# SPDX-FileCopyrightText: 2023 Julian Giebel <juliangiebel@live.de>
+# SPDX-FileCopyrightText: 2023 LankLTE <135308300+LankLTE@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 crazybrain23 <44417085+crazybrain23@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Zachary Yona <58833995+Magicalus@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Zachary Yona <magicalusf@gmail.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   abstract: true
   parent: Clothing
@@ -27,10 +51,7 @@
     tags:
     - ClothMade
     - WhitelistChameleon
-  #ADT-Tweak-Start
-  - type: CoveredSlot
-    slots: [underwearb, underweart]
-  #ADT-Tweak-End
+    - Skirt # Goobstation
 
 - type: entity
   abstract: true
@@ -40,10 +61,6 @@
   - type: Clothing
     slots: [innerclothing]
     femaleMask: UniformTop
-  #ADT-Tweak-Start
-  - type: CoveredSlot # Backmen
-    slots: [underweart]
-  #ADT-Tweak-End
 
 
 - type: entity
@@ -59,10 +76,9 @@
   - type: WirelessNetworkConnection
     range: 1200
   - type: StationLimitedNetwork
-  #ADT-Tweak-Start
-  - type: CoveredSlot
-    slots: [underwearb, underweart]
-  #ADT-Tweak-End
+  - type: PhysicalComposition #Goobstation - Recycle update
+    materialComposition:
+      Cloth: 75
 
 - type: entity
   abstract: true
@@ -72,7 +88,8 @@
   - type: Clothing
     slots: [innerclothing]
     femaleMask: UniformTop
-  #ADT-Tweak-Start
-  - type: CoveredSlot
-    slots: [underweart]
-  #ADT-Tweak-End
+  - type: Tag
+    tags:
+    - Skirt
+    - ClothMade
+    - WhitelistChameleon

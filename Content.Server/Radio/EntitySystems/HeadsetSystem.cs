@@ -1,3 +1,14 @@
+// SPDX-FileCopyrightText: 2023 AJCM <AJCM@tutanota.com>
+// SPDX-FileCopyrightText: 2023 AlexMorgan3817 <46600554+AlexMorgan3817@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Server.Chat.Systems;
 using Content.Server.Emp;
 using Content.Server.Radio.Components;
@@ -7,7 +18,6 @@ using Content.Shared.Radio.Components;
 using Content.Shared.Radio.EntitySystems;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
-using Content.Server.ADT.Language;  // ADT Languages
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -15,7 +25,6 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
 {
     [Dependency] private readonly INetManager _netMan = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
-    [Dependency] private readonly LanguageSystem _language = default!;  // ADT Languages
 
     public override void Initialize()
     {
@@ -102,14 +111,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
     private void OnHeadsetReceive(EntityUid uid, HeadsetComponent component, ref RadioReceiveEvent args)
     {
         if (TryComp(Transform(uid).ParentUid, out ActorComponent? actor))
-        {
-            // ADT Languages start
-            if (_language.CanUnderstand(Transform(uid).ParentUid, args.Language))
-                _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
-            else
-                _netMan.ServerSendMessage(args.UnknownLanguageChatMsg, actor.PlayerSession.Channel);
-            // ADT Languages end
-        }
+            _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
     }
 
     private void OnEmpPulse(EntityUid uid, HeadsetComponent component, ref EmpPulseEvent args)

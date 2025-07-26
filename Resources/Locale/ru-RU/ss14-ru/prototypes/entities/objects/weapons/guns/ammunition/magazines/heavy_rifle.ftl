@@ -1,2 +1,2 @@
-ent-BaseMagazineHeavyRifle = магазин (6.5 мм ТСФ)
+ent-BaseMagazineHeavyRifle = магазин (.20 винтовочные)
     .desc = { ent-BaseItem.desc }

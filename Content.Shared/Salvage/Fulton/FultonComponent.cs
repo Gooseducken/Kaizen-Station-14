@@ -1,3 +1,11 @@
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Kacper Urbańczyk <mikrel071204@gmail.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -40,14 +48,7 @@ public sealed partial class FultonComponent : Component
         Components = new[]
         {
             "Item",
-            "Anchorable",
-            // ADT-Tweak-Start
-            "Machine",
-            "Computer",
-            "VendingMachine",
-            "AtmosDevice",
-            "RadiationReceiver"
-            // ADT-Tweak-End
+            "Anchorable"
         }
     };
 

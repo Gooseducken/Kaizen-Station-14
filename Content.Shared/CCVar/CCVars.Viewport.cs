@@ -1,4 +1,9 @@
-﻿using Robust.Shared.Configuration;
+// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Robust.Shared.Configuration;
 
 namespace Content.Shared.CCVar;
 
@@ -23,10 +28,10 @@ public sealed partial class CCVars
         CVarDef.Create("viewport.minimum_width", 15, CVar.REPLICATED | CVar.SERVER);
 
     public static readonly CVarDef<int> ViewportMaximumWidth =
-        CVarDef.Create("viewport.maximum_width", 29, CVar.REPLICATED | CVar.SERVER); //ADT 16:9
+        CVarDef.Create("viewport.maximum_width", 21, CVar.REPLICATED | CVar.SERVER);
 
     public static readonly CVarDef<int> ViewportWidth =
-        CVarDef.Create("viewport.width", 29, CVar.CLIENTONLY | CVar.ARCHIVE); //ADT 16:9
+        CVarDef.Create("viewport.width", 21, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     public static readonly CVarDef<bool> ViewportVerticalFit =
         CVarDef.Create("viewport.vertical_fit", true, CVar.CLIENTONLY | CVar.ARCHIVE);

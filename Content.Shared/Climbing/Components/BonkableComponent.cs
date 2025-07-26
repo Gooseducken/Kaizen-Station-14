@@ -1,6 +1,15 @@
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Ilya Chvilyov <90278813+Telyonok@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 keronshb <54602815+keronshb@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Damage;
 using Robust.Shared.GameStates;
-using Robust.Shared.Audio;
 
 namespace Content.Shared.Climbing.Components;
 
@@ -17,31 +26,9 @@ public sealed partial class BonkableComponent : Component
     [DataField]
     public TimeSpan BonkTime = TimeSpan.FromSeconds(2);
 
-    // ADT TWEAK START
-
-    /// <summary>
-    ///     Chance of bonk triggering if the user is clumsy.
-    /// </summary>
-
-    [DataField("bonkClumsyChance")]
-    public float BonkClumsyChance = 0.5f;
-
     /// <summary>
     ///     How much damage to apply on bonk.
     /// </summary>
-    /// <seealso cref="Bonk"/>
-    
-    [DataField("bonkSound")]
-    public SoundSpecifier? BonkSound;
-
-    /// <summary>
-    /// How long it takes to bonk.
-    /// </summary>
-
-    [DataField("bonkDelay")]
-    public float BonkDelay = 1.5f;
-    // ADT TWEAK END
-
     [DataField]
     public DamageSpecifier? BonkDamage;
 }

@@ -1,3 +1,11 @@
+# SPDX-FileCopyrightText: 2025 ActiveMammmoth <140334666+ActiveMammmoth@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ActiveMammmoth <kmcsmooth@gmail.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
+# SPDX-FileCopyrightText: 2025 keronshb <54602815+keronshb@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   id: ActionAnimateSpell
   name: Animate
@@ -5,10 +13,11 @@
   components:
   - type: EntityTargetAction
     useDelay: 0
+    charges: 5
     itemIconStyle: BigAction
     whitelist:
       components:
-      - Animateable # Currently on: SeatBase, TableBase, ClosetBase, BaseMachine, ConstructibleMachine, BaseComputer, BaseItem, CrateGeneric, StorageTank, GasCanister
+      - Animateable # Currently on: SeatBase, TableBase, ClosetBase, BaseMachine, ConstructibleMachine, BaseComputer, BaseItem, CrateGeneric, StorageTank, GasCanister, BaseTarget
     blacklist:
       components:
       - MindContainer
@@ -17,7 +26,7 @@
       - AnomalyGenerator
       - TegGenerator
       - TegCirculator
-      - XenoArtifact
+      - Artifact
     canTargetSelf: false
     interactOnMiss: false
     sound: !type:SoundPathSpecifier
@@ -68,9 +77,9 @@
               collection: MetalBreak
       - type: Hands
       - type: CanEscapeInventory
-      - type: MobCollision
       toRemove:
       - RequireProjectileTarget
       - BlockMovement
       - Item
-      - MeleeRequiresWield
+      speech: action-speech-spell-animate
+      doSpeech: false

@@ -1,3 +1,9 @@
+# SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Emisse <99158783+Emisse@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
 - type: species
   id: Dwarf
   name: species-name-dwarf
@@ -7,21 +13,3 @@
   markingLimits: MobHumanMarkingLimits
   dollPrototype: MobDwarfDummy
   skinColoration: HumanToned
-  # ADT start
-  pros:
-  - Не получают вреда от алкоголя.
-  - Лечат механические травмы, пока в организме имеется алкоголь.
-  special:
-  - Имеют нестандартные возрастные рамки (Молодые 20-50, Зрелые 51-100, Старые 101-150)
-  - Имеют врождённый нюх на минералы, позволяющий чувствовать их в радиусе 4 тайлов
-  cons:
-  - Задыхаются в два раза быстрее человека
-  description: "/ServerInfo/ADT/SpeciesDescriptions/Unfinished.xml"
-  defaultLanguages:
-  - GalacticCommon
-  - Dwarf
-  minAge: 20
-  maxAge: 150
-  youngAge: 51
-  oldAge: 101
-  # ADT end

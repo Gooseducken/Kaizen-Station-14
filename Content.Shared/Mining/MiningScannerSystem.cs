@@ -1,5 +1,11 @@
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Theodore Lukin <66275205+pheenty@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Content.Shared._NF.Mining.Components; // Frontier
 using Content.Shared.Inventory;
-using Content.Shared.ADT.Mining.Components;// ADT-Tweak
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Mining.Components;
 using Robust.Shared.Audio.Systems;
@@ -9,7 +15,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared.Mining;
 
-public sealed partial class MiningScannerSystem : EntitySystem
+public sealed partial class MiningScannerSystem : EntitySystem // Frontier: partial
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly INetManager _net = default!;
@@ -23,7 +29,7 @@ public sealed partial class MiningScannerSystem : EntitySystem
         SubscribeLocalEvent<MiningScannerComponent, EntGotInsertedIntoContainerMessage>(OnInserted);
         SubscribeLocalEvent<MiningScannerComponent, EntGotRemovedFromContainerMessage>(OnRemoved);
         SubscribeLocalEvent<MiningScannerComponent, ItemToggledEvent>(OnToggled);
-        ADTInitialize(); // ADT-Tweak
+        NFInitialize(); // Frontier
     }
 
     private void OnInserted(Entity<MiningScannerComponent> ent, ref EntGotInsertedIntoContainerMessage args)
@@ -87,15 +93,17 @@ public sealed partial class MiningScannerSystem : EntitySystem
         {
             if (viewer.QueueRemoval)
             {
+                // Frontier: innate mining scanner
                 if (TryComp<InnateMiningScannerViewerComponent>(uid, out var innateViewer))
                 {
                     SetupInnateMiningViewerComponent((uid, innateViewer));
                 }
                 else
                 {
+                    // End Frontier: innate mining scanner
                     RemCompDeferred(uid, viewer);
                     continue;
-                } 
+                } // Frontier
             }
 
             if (_timing.CurTime < viewer.NextPingTime)

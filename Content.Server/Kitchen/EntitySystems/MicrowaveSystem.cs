@@ -1,3 +1,57 @@
+// SPDX-FileCopyrightText: 2020 ComicIronic <comicironic@gmail.com>
+// SPDX-FileCopyrightText: 2020 FL-OZ <58238103+FL-OZ@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2020 FL-OZ <anotherscuffed@gmail.com>
+// SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2020 chairbender <kwhipke1@gmail.com>
+// SPDX-FileCopyrightText: 2020 zumorica <zddm@outlook.es>
+// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
+// SPDX-FileCopyrightText: 2021 Metal Gear Sloth <metalgearsloth@gmail.com>
+// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Ygg01 <y.laughing.man.y@gmail.com>
+// SPDX-FileCopyrightText: 2022 0x6273 <0x40@keemail.me>
+// SPDX-FileCopyrightText: 2022 Alex Evgrashin <aevgrashin@yandex.ru>
+// SPDX-FileCopyrightText: 2022 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Jezithyr <Jezithyr@gmail.com>
+// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Ben <50087092+benev0@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 BenOwnby <ownbyb@appstate.edu>
+// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 ElectroJr <leonsfriedrich@gmail.com>
+// SPDX-FileCopyrightText: 2023 Emisse <99158783+Emisse@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Jezithyr <jezithyr@gmail.com>
+// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
+// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 J. Brown <DrMelon@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 James Simonson <jamessimo89@gmail.com>
+// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Scribbles0 <91828755+Scribbles0@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 ShadowCommander <shadowjjt@gmail.com>
+// SPDX-FileCopyrightText: 2024 SpeltIncorrectyl <66873282+SpeltIncorrectyl@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 TinManTim <73014819+Tin-Man-Tim@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Verm <32827189+Vermidia@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 blueDev2 <89804215+blueDev2@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 deathride58 <deathride58@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 degradka <degradka@gmail.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
+// SPDX-FileCopyrightText: 2025 crasg <109207982+Scruq445@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Server.Administration.Logs;
 using Content.Server.Body.Systems;
 using Content.Server.Construction;
@@ -18,7 +72,7 @@ using Content.Shared.Construction.EntitySystems;
 using Content.Shared.Database;
 using Content.Shared.DeviceLinking.Events;
 using Content.Shared.Destructible;
-using Content.Shared.FixedPoint;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Robust.Shared.Random;
@@ -42,11 +96,10 @@ using Content.Server.Construction.Components;
 using Content.Shared.Chat;
 using Content.Shared.Damage;
 using Robust.Shared.Utility;
-using Content.Shared.ADT.Kitchem.Components; // ADT-Tweak
 
 namespace Content.Server.Kitchen.EntitySystems
 {
-    public sealed partial class MicrowaveSystem : EntitySystem // ADT-Tweak: add partial
+    public sealed class MicrowaveSystem : EntitySystem
     {
         [Dependency] private readonly BodySystem _bodySystem = default!;
         [Dependency] private readonly DeviceLinkSystem _deviceLink = default!;
@@ -87,11 +140,9 @@ namespace Content.Server.Kitchen.EntitySystems
             SubscribeLocalEvent<MicrowaveComponent, EntInsertedIntoContainerMessage>(OnContentUpdate);
             SubscribeLocalEvent<MicrowaveComponent, EntRemovedFromContainerMessage>(OnContentUpdate);
             SubscribeLocalEvent<MicrowaveComponent, InteractUsingEvent>(OnInteractUsing, after: new[] { typeof(AnchorableSystem) });
-            SubscribeLocalEvent<MicrowaveComponent, ContainerIsInsertingAttemptEvent>(OnInsertAttempt);
             SubscribeLocalEvent<MicrowaveComponent, BreakageEventArgs>(OnBreak);
             SubscribeLocalEvent<MicrowaveComponent, PowerChangedEvent>(OnPowerChanged);
             SubscribeLocalEvent<MicrowaveComponent, AnchorStateChangedEvent>(OnAnchorChanged);
-
             SubscribeLocalEvent<MicrowaveComponent, SuicideByEnvironmentEvent>(OnSuicideByEnvironment);
 
             SubscribeLocalEvent<MicrowaveComponent, SignalReceivedEvent>(OnSignalReceived);
@@ -110,8 +161,6 @@ namespace Content.Server.Kitchen.EntitySystems
             SubscribeLocalEvent<ActivelyMicrowavedComponent, SolutionRelayEvent<ReactionAttemptEvent>>(OnReactionAttempt);
 
             SubscribeLocalEvent<FoodRecipeProviderComponent, GetSecretRecipesEvent>(OnGetSecretRecipes);
-
-            SubscribeLocalEvent<MicrowaveComponent, AssemblerStartCookMessage>(TryStartAssembly); // ADT-Tweak
         }
 
         private void OnCookStart(Entity<ActiveMicrowaveComponent> ent, ref ComponentStartup args)
@@ -181,11 +230,6 @@ namespace Content.Server.Kitchen.EntitySystems
         /// <param name="time">The time on the microwave, in seconds.</param>
         private void AddTemperature(MicrowaveComponent component, float time)
         {
-            // ADT-Tweak: temperature requires heat or irradiation
-            if (!component.CanHeat && !component.CanIrradiate)
-                return;
-            // End ADT-Tweak
-
             var heatToAdd = time * component.BaseHeatMultiplier;
             foreach (var entity in component.Storage.ContainedEntities)
             {
@@ -312,11 +356,6 @@ namespace Content.Server.Kitchen.EntitySystems
             if (!TryComp<DamageableComponent>(args.Victim, out var damageableComponent))
                 return;
 
-            // ADT-Tweak: suicide requires heat or irradiation
-            if (!ent.Comp.CanHeat && !ent.Comp.CanIrradiate)
-                return;
-            // ADT-Tweak
-
             // The application of lethal damage is what kills you...
             _suicide.ApplyLethalDamage((args.Victim, damageableComponent), "Heat");
 
@@ -365,35 +404,6 @@ namespace Content.Server.Kitchen.EntitySystems
             UpdateUserInterfaceState(uid, component);
         }
 
-        private void OnInsertAttempt(Entity<MicrowaveComponent> ent, ref ContainerIsInsertingAttemptEvent args)
-        {
-            if (args.Container.ID != ent.Comp.ContainerId)
-                return;
-
-            if (ent.Comp.Broken)
-            {
-                args.Cancel();
-                return;
-            }
-
-            if (TryComp<ItemComponent>(args.EntityUid, out var item))
-            {
-                if (_item.GetSizePrototype(item.Size) > _item.GetSizePrototype(ent.Comp.MaxItemSize))
-                {
-                    args.Cancel();
-                    return;
-                }
-            }
-            else
-            {
-                args.Cancel();
-                return;
-            }
-
-            if (ent.Comp.Storage.Count >= ent.Comp.Capacity)
-                args.Cancel();
-        }
-
         private void OnInteractUsing(Entity<MicrowaveComponent> ent, ref InteractUsingEvent args)
         {
             if (args.Handled)
@@ -413,39 +423,10 @@ namespace Content.Server.Kitchen.EntitySystems
             if (TryComp<ItemComponent>(args.Used, out var item))
             {
                 // check if size of an item you're trying to put in is too big
-                // ADT-Tweak start
-                // TODO: Исправить работу рецептов микроволновых печеней не через тэги by WsWiss
-                if (TryComp<TagComponent>(args.Used, out var tagComponent))
-                {
-                    var tags = tagComponent.Tags;
-                    if (!tags.Contains("ADTMedicalAssemblerStuff"))
-                    {
-                        if (TryComp<MicrowaveComponent>(ent, out var component))
-                        {
-                            if (component.ValidRecipeTypes == (int)MicrowaveRecipeType.MedicalAssembler)
-                            {
-                                _popupSystem.PopupEntity(Loc.GetString("microwave-component-interact-using-transfer-fail"), ent, args.User);
-                                return;
-                            }
-                        }
-                    }
-                }
-                // ADT-Tweak end
                 if (_item.GetSizePrototype(item.Size) > _item.GetSizePrototype(ent.Comp.MaxItemSize))
                 {
-                    if (TryComp<MicrowaveComponent>(ent, out var component))
-                    {
-                        if (component.ValidRecipeTypes == (int)MicrowaveRecipeType.Microwave)
-                            _popupSystem.PopupEntity(Loc.GetString(ent.Comp.TooBigPopup, ("item", args.Used)), ent, args.User); // ADT-Tweak: "microwave-component-interact-item-too-big"<ent.Comp.TooBigPopup
-                        if (component.ValidRecipeTypes == (int)MicrowaveRecipeType.Assembler)
-                            _popupSystem.PopupEntity(Loc.GetString(ent.Comp.TooBigPopupAssembler, ("item", args.Used)), ent, args.User);
-                        if (component.ValidRecipeTypes == (int)MicrowaveRecipeType.MedicalAssembler)
-                            _popupSystem.PopupEntity(Loc.GetString(ent.Comp.TooBigPopupMedicalAssembler, ("item", args.Used)), ent, args.User);
-                        if (component.ValidRecipeTypes == (int)MicrowaveRecipeType.Oven)
-                            _popupSystem.PopupEntity(Loc.GetString(ent.Comp.TooBigPopupRange, ("item", args.Used)), ent, args.User);
-                        return;
-
-                    }
+                    _popupSystem.PopupEntity(Loc.GetString("microwave-component-interact-item-too-big", ("item", args.Used)), ent, args.User);
+                    return;
                 }
             }
             else
@@ -504,7 +485,7 @@ namespace Content.Server.Kitchen.EntitySystems
 
         public void UpdateUserInterfaceState(EntityUid uid, MicrowaveComponent component)
         {
-            _userInterface.SetUiState(uid, component.Key, new MicrowaveUpdateUserInterfaceState(
+            _userInterface.SetUiState(uid, MicrowaveUiKey.Key, new MicrowaveUpdateUserInterfaceState(
                 GetNetEntityArray(component.Storage.ContainedEntities.ToArray()),
                 HasComp<ActiveMicrowaveComponent>(uid),
                 component.CurrentCookTimeButtonIndex,
@@ -587,7 +568,7 @@ namespace Content.Server.Kitchen.EntitySystems
             foreach (var item in component.Storage.ContainedEntities.ToArray())
             {
                 // special behavior when being microwaved ;)
-                var ev = new BeingMicrowavedEvent(uid, user, component.CanHeat, component.CanIrradiate); // ADT-Tweak: add CanHeat, CanIrradiate
+                var ev = new BeingMicrowavedEvent(uid, user);
                 RaiseLocalEvent(item, ev);
 
                 if (ev.Handled)
@@ -657,11 +638,11 @@ namespace Content.Server.Kitchen.EntitySystems
 
             _audio.PlayPvs(component.StartCookingSound, uid);
             var activeComp = AddComp<ActiveMicrowaveComponent>(uid); //microwave is now cooking
-            activeComp.CookTimeRemaining = component.CurrentCookTimerTime;
+            activeComp.CookTimeRemaining = component.CurrentCookTimerTime * component.CookTimeMultiplier;
             activeComp.TotalTime = component.CurrentCookTimerTime; //this doesn't scale so that we can have the "actual" time
             activeComp.PortionedRecipe = portionedRecipe;
             //Scale tiems with cook times
-            component.CurrentCookTimeEnd = _gameTiming.CurTime + TimeSpan.FromSeconds(component.CurrentCookTimerTime);
+            component.CurrentCookTimeEnd = _gameTiming.CurTime + TimeSpan.FromSeconds(component.CurrentCookTimerTime * component.CookTimeMultiplier);
             if (malfunctioning)
                 activeComp.MalfunctionTime = _gameTiming.CurTime + TimeSpan.FromSeconds(component.MalfunctionInterval);
             UpdateUserInterfaceState(uid, component);
@@ -685,13 +666,6 @@ namespace Content.Server.Kitchen.EntitySystems
                 //can't be a multiple of this recipe
                 return (recipe, 0);
             }
-
-            // ADT-Tweak: microwave recipe machine types
-            if ((recipe.RecipeType & component.ValidRecipeTypes) == 0)
-            {
-                return (recipe, 0);
-            }
-            // End ADT-Tweak
 
             foreach (var solid in recipe.IngredientsSolids)
             {
@@ -721,7 +695,7 @@ namespace Content.Server.Kitchen.EntitySystems
             }
 
             //cook only as many of those portions as time allows
-            return (recipe, (int)Math.Min(portions, component.CurrentCookTimerTime / recipe.CookTime));
+            return (recipe, (int) Math.Min(portions, component.CurrentCookTimerTime / recipe.CookTime));
         }
 
         public override void Update(float frameTime)
@@ -752,12 +726,7 @@ namespace Content.Server.Kitchen.EntitySystems
                     for (var i = 0; i < active.PortionedRecipe.Item2; i++)
                     {
                         SubtractContents(microwave, active.PortionedRecipe.Item1);
-                        // ADT-Tweak: ResultCount - support multiple results per recipe
-                        for (var r = 0; r < active.PortionedRecipe.Item1.ResultCount; r++)
-                        {
-                            Spawn(active.PortionedRecipe.Item1.Result, coords);
-                        }
-                        // End ADT-Tweak
+                        Spawn(active.PortionedRecipe.Item1.Result, coords);
                     }
                 }
 

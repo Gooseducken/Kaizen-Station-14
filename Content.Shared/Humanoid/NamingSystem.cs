@@ -1,3 +1,15 @@
+// SPDX-FileCopyrightText: 2022 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 DEATHB4DEFEAT <77995199+DEATHB4DEFEAT@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 portfiend <109661617+portfiend@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Dataset;
 using Content.Shared.Random.Helpers;
@@ -32,24 +44,20 @@ namespace Content.Shared.Humanoid
                         ("first", GetFirstName(speciesProto, gender)));
                 case SpeciesNaming.TheFirstofLast:
                     return Loc.GetString("namepreset-thefirstoflast",
-                        ("first", GetFirstName(speciesProto, gender)), ("last", GetLastName(speciesProto, gender))); // Corvax-LastnameGender
+                        ("first", GetFirstName(speciesProto, gender)), ("last", GetLastName(speciesProto)));
                 case SpeciesNaming.FirstDashFirst:
                     return Loc.GetString("namepreset-firstdashfirst",
                         ("first1", GetFirstName(speciesProto, gender)), ("first2", GetFirstName(speciesProto, gender)));
-                // Start ADT Tweak: Drask naming
-                case SpeciesNaming.FirstDashFirstDashFirst:
-                    return Loc.GetString("namepreset-firstdashfirstdashfirst",
-                        ("first1", GetFirstName(speciesProto, gender)), ("first2", GetFirstName(speciesProto, gender)), ("first3", GetFirstName(speciesProto, gender)));
-                // End ADT Tweak
-                // Parkstation-Ipc-Start
-                case SpeciesNaming.FirstDashLast:
+                case SpeciesNaming.FirstDashLast: // Goobstation
                     return Loc.GetString("namepreset-firstdashlast",
-                        ("first", GetFirstName(speciesProto, gender)), ("last", GetLastName(speciesProto, gender)));
-                // Parkstation-Ipc-End
+                        ("first", GetFirstName(speciesProto, gender)), ("last", GetLastName(speciesProto)));
+                case SpeciesNaming.LastFirst: // DeltaV: Rodentia name scheme
+                    return Loc.GetString("namepreset-lastfirst",
+                        ("last", GetLastName(speciesProto)), ("first", GetFirstName(speciesProto, gender)));
                 case SpeciesNaming.FirstLast:
                 default:
                     return Loc.GetString("namepreset-firstlast",
-                        ("first", GetFirstName(speciesProto, gender)), ("last", GetLastName(speciesProto, gender))); // Corvax-LastnameGender
+                        ("first", GetFirstName(speciesProto, gender)), ("last", GetLastName(speciesProto)));
             }
         }
 
@@ -58,33 +66,20 @@ namespace Content.Shared.Humanoid
             switch (gender)
             {
                 case Gender.Male:
-                    return _random.Pick(_prototypeManager.Index<LocalizedDatasetPrototype>(speciesProto.MaleFirstNames));
+                    return _random.Pick(_prototypeManager.Index(speciesProto.MaleFirstNames));
                 case Gender.Female:
-                    return _random.Pick(_prototypeManager.Index<LocalizedDatasetPrototype>(speciesProto.FemaleFirstNames));
+                    return _random.Pick(_prototypeManager.Index(speciesProto.FemaleFirstNames));
                 default:
                     if (_random.Prob(0.5f))
-                        return _random.Pick(_prototypeManager.Index<LocalizedDatasetPrototype>(speciesProto.MaleFirstNames));
+                        return _random.Pick(_prototypeManager.Index(speciesProto.MaleFirstNames));
                     else
-                        return _random.Pick(_prototypeManager.Index<LocalizedDatasetPrototype>(speciesProto.FemaleFirstNames));
+                        return _random.Pick(_prototypeManager.Index(speciesProto.FemaleFirstNames));
             }
         }
 
-        // Corvax-LastnameGender-Start: Added custom gender split logic
-        public string GetLastName(SpeciesPrototype speciesProto, Gender? gender = null)
+        public string GetLastName(SpeciesPrototype speciesProto)
         {
-            switch (gender)
-            {
-                case Gender.Male:
-                    return _random.Pick(_prototypeManager.Index<LocalizedDatasetPrototype>(speciesProto.MaleLastNames));
-                case Gender.Female:
-                    return _random.Pick(_prototypeManager.Index<LocalizedDatasetPrototype>(speciesProto.FemaleLastNames));
-                default:
-                    if (_random.Prob(0.5f))
-                        return _random.Pick(_prototypeManager.Index<LocalizedDatasetPrototype>(speciesProto.MaleLastNames));
-                    else
-                        return _random.Pick(_prototypeManager.Index<LocalizedDatasetPrototype>(speciesProto.FemaleLastNames));
-            }
+            return _random.Pick(_prototypeManager.Index(speciesProto.LastNames));
         }
-        // Corvax-LastnameGender-End
     }
 }

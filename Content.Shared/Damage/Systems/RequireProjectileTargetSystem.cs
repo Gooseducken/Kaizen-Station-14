@@ -1,19 +1,25 @@
+// SPDX-FileCopyrightText: 2024 Aviu00 <93730715+Aviu00@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Content.Goobstation.Common.Projectiles;
 using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Standing;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Containers;
-using Content.Shared.ADT.Crawling; // ADT Anti-Lying-Warrior
-using Content.Shared.Mobs.Systems; // ADT Anti-Lying-Warrior
-using Content.Shared.ADT.Crawling.Components; // ADT Anti-Lying-Warrior
+using Robust.Shared.Physics.Components;
 
 namespace Content.Shared.Damage.Components;
 
 public sealed class RequireProjectileTargetSystem : EntitySystem
 {
     [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!; // ADT Anti-Lying-Warrior
 
     public override void Initialize()
     {
@@ -31,33 +37,32 @@ public sealed class RequireProjectileTargetSystem : EntitySystem
             return;
 
         var other = args.OtherEntity;
-        if (HasComp<ProjectileIgnoreCrawlingComponent>(other)) // ADT-Tweak
-            return;
+        // Goob edit start
+        if (TryComp(other, out TargetedProjectileComponent? targeted))
+        {
+            if (targeted.Target == null || targeted.Target == ent)
+                return;
+
+            var ev = new ShouldTargetedProjectileCollideEvent(targeted.Target.Value);
+            RaiseLocalEvent(ent, ev);
+            if (ev.Handled)
+                return;
+        }
 
         if (TryComp(other, out ProjectileComponent? projectile))
         {
-            // ADT Crawling abuse fix start
-            if (TryComp<TargetedProjectileComponent>(other, out var targeted) &&
-                targeted.TargetCoords != null)
-            {
-                foreach (var item in _lookup.GetEntitiesInRange(targeted.TargetCoords.Value, 0.5f))
-                {
-                    if (item == ent.Owner)
-                        return;
-                }
-                // ADT Crawling abuse fix end
-
-                // ADT ALW Tweak
-                var weapon = projectile.Weapon;
-                var alwTarget = targeted.Target;
-                if (weapon.HasValue && HasComp<AntiLyingWarriorComponent>(weapon) && _mobState.IsDead(alwTarget))
-                    return;
-            }
-            // ADT ALW Tweak
+            // Goob edit end
 
             // Prevents shooting out of while inside of crates
             var shooter = projectile.Shooter;
             if (!shooter.HasValue)
+                return;
+
+            // Goobstation - Crawling
+            if (TryComp<StandingStateComponent>(shooter, out var standingState) && standingState.CurrentState != StandingState.Standing)
+                return;
+
+            if (TryComp(ent, out PhysicsComponent? physics) && physics.LinearVelocity.Length() > 2.5f) // Goobstation
                 return;
 
             // ProjectileGrenades delete the entity that's shooting the projectile,
@@ -66,7 +71,7 @@ public sealed class RequireProjectileTargetSystem : EntitySystem
                 return;
 
             if (!_container.IsEntityOrParentInContainer(shooter.Value))
-                args.Cancelled = true;
+               args.Cancelled = true;
         }
     }
 

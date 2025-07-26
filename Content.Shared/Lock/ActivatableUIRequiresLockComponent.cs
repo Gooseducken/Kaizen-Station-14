@@ -1,4 +1,10 @@
-using Robust.Shared.Audio;
+// SPDX-FileCopyrightText: 2023 themias <89101928+themias@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Lock;
@@ -15,10 +21,4 @@ public sealed partial class ActivatableUIRequiresLockComponent : Component
     /// </summary>
     [DataField]
     public bool RequireLocked;
-
-    /// <summary>
-    /// Sound to be played if an attempt is blocked.
-    /// </summary>
-    [DataField]
-    public SoundSpecifier? AccessDeniedSound = new SoundPathSpecifier("/Audio/Machines/custom_deny.ogg");
 }

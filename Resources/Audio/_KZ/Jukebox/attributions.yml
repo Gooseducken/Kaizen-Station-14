@@ -13,11 +13,6 @@
   copyright: "General release by Mike Klubnika. Converted to mono OGG."
   source: "https://www.youtube.com/watch?v=GXvHmYwcmF0&list=PL39jRdjFRxGRzwi3Vd_k5frovImgWirXb&index=2&pp=iAQB8AUB"
 
-- files: ["ch3_karaoke_full.ogg"]
-  license: "Custom"
-  copyright: "Raise Up Your Bat by Toby Fox. Converted to mono OGG."
-  source: "https://tobyfox.bandcamp.com/track/raise-up-your-bat"
-
 - files: ["ch4_credits.ogg"]
   license: "Custom"
   copyright: "Neverending Night by Toby fox. Converted to mono OGG."
@@ -37,11 +32,6 @@
   license: "Custom"
   copyright: "The Third Sanctuary by Toby fox. Converted to mono OGG."
   source: "https://tobyfox.bandcamp.com/track/the-third-sanctuary"
-
-- files: ["jitterbug.ogg"]
-  license: "Custom"
-  copyright: "the Ol' jitterbug by Toby Fox. Converted to mono OGG."
-  source: "https://tobyfox.bandcamp.com/track/the-ol-jitterbug"
 
 - files: ["knight.ogg"]
   license: "Custom"

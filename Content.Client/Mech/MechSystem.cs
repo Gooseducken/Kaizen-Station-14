@@ -1,4 +1,11 @@
-﻿using Content.Shared.Mech;
+// SPDX-FileCopyrightText: 2022 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
+using Content.Shared.Mech;
 using Content.Shared.Mech.Components;
 using Content.Shared.Mech.EntitySystems;
 using Robust.Client.GameObjects;
@@ -7,7 +14,7 @@ using DrawDepth = Content.Shared.DrawDepth.DrawDepth;
 namespace Content.Client.Mech;
 
 /// <inheritdoc/>
-public sealed partial class MechSystem : SharedMechSystem
+public sealed class MechSystem : SharedMechSystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
 
@@ -17,8 +24,6 @@ public sealed partial class MechSystem : SharedMechSystem
         base.Initialize();
 
         SubscribeLocalEvent<MechComponent, AppearanceChangeEvent>(OnAppearanceChanged);
-
-        InitializeADT();    // ADT tweak (да ладно)
     }
 
     private void OnAppearanceChanged(EntityUid uid, MechComponent component, ref AppearanceChangeEvent args)
@@ -26,7 +31,7 @@ public sealed partial class MechSystem : SharedMechSystem
         if (args.Sprite == null)
             return;
 
-        if (!args.Sprite.TryGetLayer((int)MechVisualLayers.Base, out var layer))
+        if (!args.Sprite.TryGetLayer((int) MechVisualLayers.Base, out var layer))
             return;
 
         var state = component.BaseState;
@@ -43,6 +48,6 @@ public sealed partial class MechSystem : SharedMechSystem
         }
 
         layer.SetState(state);
-        args.Sprite.DrawDepth = (int)drawDepth;
+        args.Sprite.DrawDepth = (int) drawDepth;
     }
 }

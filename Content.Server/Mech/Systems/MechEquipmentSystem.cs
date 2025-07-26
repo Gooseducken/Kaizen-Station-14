@@ -1,11 +1,20 @@
-using System.Linq;
-using Content.Server.Mech.Equipment.Components;
+// SPDX-FileCopyrightText: 2022 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 brainfood1183 <113240905+brainfood1183@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 keronshb <54602815+keronshb@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 keronshb <keronshb@live.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Server.Popups;
-using Content.Shared.ADT.Mech.EntitySystems;
-using Content.Shared.ADT.Weapons.Ranged.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
-using Content.Shared.Mech;
 using Content.Shared.Mech.Components;
 using Content.Shared.Mech.Equipment.Components;
 using Content.Shared.Whitelist;
@@ -15,7 +24,7 @@ namespace Content.Server.Mech.Systems;
 /// <summary>
 /// Handles the insertion of mech equipment into mechs.
 /// </summary>
-public sealed class MechEquipmentSystem : SharedMechEquipmentSystem // ADT - Parent changed
+public sealed class MechEquipmentSystem : EntitySystem
 {
     [Dependency] private readonly MechSystem _mech = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
@@ -25,15 +34,8 @@ public sealed class MechEquipmentSystem : SharedMechEquipmentSystem // ADT - Par
     /// <inheritdoc/>
     public override void Initialize()
     {
-        base.Initialize();  // ADT fix I guess?
-
         SubscribeLocalEvent<MechEquipmentComponent, AfterInteractEvent>(OnUsed);
         SubscribeLocalEvent<MechEquipmentComponent, InsertEquipmentEvent>(OnInsertEquipment);
-
-        // ADT Content start
-        SubscribeLocalEvent<MechEquipmentComponent, EntityTerminatingEvent>(OnTerminating);
-        SubscribeLocalEvent<MechEquipmentComponent, MechEquipmentUiStateReadyEvent>(OnGetUIState);
-        // ADT Content end
     }
 
     private void OnUsed(EntityUid uid, MechEquipmentComponent component, AfterInteractEvent args)
@@ -75,32 +77,6 @@ public sealed class MechEquipmentSystem : SharedMechEquipmentSystem // ADT - Par
         _popup.PopupEntity(Loc.GetString("mech-equipment-finish-install", ("item", uid)), args.Args.Target.Value);
         _mech.InsertEquipment(args.Args.Target.Value, uid);
 
-        // ADT Mech start
-        if (TryComp<MechComponent>(args.Args.Target, out var mech))
-        {
-            var ev = new PopulateMechEquipmentMenuEvent(mech.EquipmentContainer.ContainedEntities.Select(x => GetNetEntity(x)).ToList());
-            RaiseNetworkEvent(ev, args.Args.Target.Value);
-        }
-
-        // ADT Mech end
-
         args.Handled = true;
     }
-
-    // ADT Content start
-    private void OnTerminating(EntityUid uid, MechEquipmentComponent comp, ref EntityTerminatingEvent args)
-    {
-        _mech.UpdateUserInterfaceByEquipment(uid);
-    }
-
-    private void OnGetUIState(EntityUid uid, MechEquipmentComponent component, MechEquipmentUiStateReadyEvent args)
-    {
-        if (HasComp<MechGrabberComponent>(uid)) // Мне лень делать нормальную проверку, как-нибудь потом будет.
-            return;
-        if (HasComp<BallisticMechAmmoProviderComponent>(uid))
-            return;
-
-        args.States.Add(GetNetEntity(uid), null);
-    }
-    // ADT Content end
 }

@@ -1,3 +1,27 @@
+// SPDX-FileCopyrightText: 2022 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Moony <moony@hellomouse.net>
+// SPDX-FileCopyrightText: 2022 moonheart08 <moonheart08@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Southbridge <7013162+southbridge-fur@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Spanky <scott@wearejacob.com>
+// SPDX-FileCopyrightText: 2024 Spessmann <156740760+Spessmann@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
+// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Server.Administration.Logs;
 using Content.Server.Hands.Systems;
 using Content.Shared.Database;
@@ -6,8 +30,10 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Item;
 using Content.Shared.Whitelist;
 using Robust.Server.Audio;
+using Robust.Shared.Audio;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -29,9 +55,6 @@ public sealed class RandomGiftSystem : EntitySystem
 
     private readonly List<string> _possibleGiftsSafe = new();
     private readonly List<string> _possibleGiftsUnsafe = new();
-    // ADT
-    private readonly List<string> _possibleGiftsUnsafeADT = new();
-    // END
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -80,14 +103,8 @@ public sealed class RandomGiftSystem : EntitySystem
 
     private void OnGiftMapInit(EntityUid uid, RandomGiftComponent component, MapInitEvent args)
     {
-        if (component.InsaneMode == "Unsafe")
+        if (component.InsaneMode)
             component.SelectedEntity = _random.Pick(_possibleGiftsUnsafe);
-        else if (component.InsaneMode == "Safe")
-            component.SelectedEntity = _random.Pick(_possibleGiftsSafe);
-        // ADT
-        else if (component.InsaneMode == "ADTUnsafe")
-            component.SelectedEntity = _random.Pick(_possibleGiftsUnsafeADT);
-        // END
         else
             component.SelectedEntity = _random.Pick(_possibleGiftsSafe);
     }
@@ -102,9 +119,6 @@ public sealed class RandomGiftSystem : EntitySystem
     {
         _possibleGiftsSafe.Clear();
         _possibleGiftsUnsafe.Clear();
-        // ADT
-        _possibleGiftsUnsafeADT.Clear();
-        // END
         var itemCompName = _componentFactory.GetComponentName(typeof(ItemComponent));
         var mapGridCompName = _componentFactory.GetComponentName(typeof(MapGridComponent));
         var physicsCompName = _componentFactory.GetComponentName(typeof(PhysicsComponent));
@@ -113,20 +127,12 @@ public sealed class RandomGiftSystem : EntitySystem
         {
             if (proto.Abstract || proto.HideSpawnMenu || proto.Components.ContainsKey(mapGridCompName) || !proto.Components.ContainsKey(physicsCompName))
                 continue;
+
             _possibleGiftsUnsafe.Add(proto.ID);
 
-            // ADT
-            if (proto.Components.TryGetValue("Physics", out var value))
-            {
-                if (value.Mapping.Count > 0)
-                    if (object.Equals(value.Mapping[0].Value?.ToString(), "Dynamic"))
-                        _possibleGiftsUnsafeADT.Add(proto.ID);
-                    else
-                        continue;
-            }
-            // END
             if (!proto.Components.ContainsKey(itemCompName))
                 continue;
+
             _possibleGiftsSafe.Add(proto.ID);
         }
     }

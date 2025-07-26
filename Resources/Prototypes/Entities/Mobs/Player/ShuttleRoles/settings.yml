@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
 ## See also ../roles.yml and ../spawners.yml
 
 ### Visitors with Visitor ID
@@ -16,6 +21,19 @@
       raffle:
         settings: default
 
+# Reserve - no MS for heads begin
+- type: randomHumanoidSettings
+  id: VisitorHeadNoMindShield
+  parent: EventHumanoid
+  components:
+    - type: GhostRole
+      name: ghost-role-information-command-name
+      description: ghost-role-information-command-description
+      rules: ghost-role-information-nonantagonist-rules
+      raffle:
+        settings: default
+# Reserve - no MS for heads end
+
 - type: randomHumanoidSettings
   id: VisitorCaptain
   parent: VisitorHead
@@ -29,7 +47,7 @@
 
 - type: randomHumanoidSettings
   id: VisitorCE
-  parent: VisitorHead
+  parent: VisitorHeadNoMindShield #Reserve - no MS for heads
   components:
     - type: GhostRole
       name: job-name-ce
@@ -40,7 +58,7 @@
 
 - type: randomHumanoidSettings
   id: VisitorCMO
-  parent: VisitorHead
+  parent: VisitorHeadNoMindShield #Reserve - no MS for heads
   components:
     - type: GhostRole
       name: job-name-cmo
@@ -51,7 +69,7 @@
 
 - type: randomHumanoidSettings
   id: VisitorHOP
-  parent: VisitorHead
+  parent: VisitorHeadNoMindShield #Reserve - no MS for heads
   components:
     - type: GhostRole
       name: job-name-hop
@@ -73,7 +91,7 @@
 
 - type: randomHumanoidSettings
   id: VisitorResearchDirector
-  parent: VisitorHead
+  parent: VisitorHeadNoMindShield #Reserve - no MS for heads
   components:
     - type: GhostRole
       name: job-name-rd
@@ -84,7 +102,7 @@
 
 - type: randomHumanoidSettings
   id: VisitorQM
-  parent: VisitorHead
+  parent: VisitorHeadNoMindShield #Reserve - no MS for heads
   components:
     - type: GhostRole
       name: job-name-qm
@@ -397,7 +415,7 @@
   parent: VisitorCivilian
   components:
     - type: BibleUser
-    - type: Chaplain
+    - type: CanEnchant
     - type: GhostRole
       name: job-name-chaplain
     - type: Loadout

@@ -1,10 +1,20 @@
+// SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Javier Guardia Fernández <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 EmoGarbage404 <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Clothing;
 using Content.Shared.Damage.Components;
 using Content.Shared.Examine;
-using Content.Shared.FixedPoint;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Inventory;
 using Content.Shared.Movement.Systems;
-//using Content.Shared.ADT.Damage.Components; //adt чо блять
 
 namespace Content.Shared.Damage
 {
@@ -24,10 +34,9 @@ namespace Content.Shared.Damage
             SubscribeLocalEvent<ClothingSlowOnDamageModifierComponent, ClothingGotEquippedEvent>(OnGotEquipped);
             SubscribeLocalEvent<ClothingSlowOnDamageModifierComponent, ClothingGotUnequippedEvent>(OnGotUnequipped);
 
+            SubscribeLocalEvent<IgnoreSlowOnDamageComponent, ComponentStartup>(OnIgnoreStartup);
             SubscribeLocalEvent<IgnoreSlowOnDamageComponent, ComponentShutdown>(OnIgnoreShutdown);
-
-            SubscribeLocalEvent<IgnoreSlowOnDamageComponent, ComponentStartup>(OnIgnoreStartup); //ADT-Medicine start
-            SubscribeLocalEvent<IgnoreSlowOnDamageComponent, ModifySlowOnDamageSpeedEvent>(OnIgnoreModifySpeed); //ADT-Medicine end
+            SubscribeLocalEvent<IgnoreSlowOnDamageComponent, ModifySlowOnDamageSpeedEvent>(OnIgnoreModifySpeed);
         }
 
         private void OnRefreshMovespeed(EntityUid uid, SlowOnDamageComponent component, RefreshMovementSpeedModifiersEvent args)
@@ -51,11 +60,12 @@ namespace Content.Shared.Damage
             {
                 var speed = component.SpeedModifierThresholds[closest];
 
-                var ev = new ModifySlowOnDamageSpeedEvent(speed); //ADT-Medicine start
+                var ev = new ModifySlowOnDamageSpeedEvent(speed);
                 RaiseLocalEvent(uid, ref ev);
-                args.ModifySpeed(ev.Speed, ev.Speed); //ADT-Medicine end
+                args.ModifySpeed(ev.Speed, ev.Speed);
             }
         }
+
         private void OnDamageChanged(EntityUid uid, SlowOnDamageComponent component, DamageChangedEvent args)
         {
             // We -could- only refresh if it crossed a threshold but that would kind of be a lot of duplicated
@@ -89,7 +99,8 @@ namespace Content.Shared.Damage
         {
             _movementSpeedModifierSystem.RefreshMovementSpeedModifiers(args.Wearer);
         }
-        private void OnIgnoreStartup(Entity<IgnoreSlowOnDamageComponent> ent, ref ComponentStartup args) //ADT-Medicine start
+
+        private void OnIgnoreStartup(Entity<IgnoreSlowOnDamageComponent> ent, ref ComponentStartup args)
         {
             _movementSpeedModifierSystem.RefreshMovementSpeedModifiers(ent);
         }
@@ -105,10 +116,9 @@ namespace Content.Shared.Damage
         }
     }
 
-
     [ByRefEvent]
     public record struct ModifySlowOnDamageSpeedEvent(float Speed) : IInventoryRelayEvent
     {
         public SlotFlags TargetSlots => SlotFlags.WITHOUT_POCKET;
-    } //ADT-Medicine end
+    }
 }

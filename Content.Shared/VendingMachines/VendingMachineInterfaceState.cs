@@ -1,44 +1,13 @@
+// SPDX-FileCopyrightText: 2022 Andreas Kämper <andreas@kaemper.tech>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.VendingMachines
 {
-    [NetSerializable, Serializable]
-    public sealed class VendingMachineInterfaceState : BoundUserInterfaceState
-    {
-        public List<VendingMachineInventoryEntry> Inventory;
-        //ADT-Economy-Start
-        public double PriceMultiplier;
-        public int Credits;
-        //ADT-Economy-End
-        public VendingMachineInterfaceState(List<VendingMachineInventoryEntry> inventory, double priceMultiplier, int credits) //ADT-Economy
-        {
-            Inventory = inventory;
-            //ADT-Economy-Start
-            PriceMultiplier = priceMultiplier;
-            Credits = credits;
-            //ADT-Economy-End
-        }
-    }
-    //ADT-Economy-Start
-    [Serializable, NetSerializable]
-    public sealed class VendingMachineWithdrawMessage : BoundUserInterfaceMessage
-    {
-    }
-
-    [Serializable, NetSerializable]
-    public sealed class VendingMachineEjectCountMessage : BoundUserInterfaceMessage
-    {
-        public readonly VendingMachineInventoryEntry Entry;
-        public readonly int Count;
-        public VendingMachineEjectCountMessage(VendingMachineInventoryEntry entry, int count)
-        {
-            Entry = entry;
-            Count = count;
-        }
-    }
-
-    //ADT-Economy-End
-
     [Serializable, NetSerializable]
     public sealed class VendingMachineEjectMessage : BoundUserInterfaceMessage
     {

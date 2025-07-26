@@ -1,3 +1,10 @@
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Destructible.Thresholds;
 using Content.Shared.Procedural;
 using Content.Shared.Procedural.DungeonLayers;
@@ -16,18 +23,18 @@ public abstract partial class SharedSalvageSystem
 
     private readonly Dictionary<ISalvageMagnetOffering, float> _offeringWeights = new()
     {
-        // { new AsteroidOffering(), 4.5f },  ADT tweak, no more shitty salvage
+        { new AsteroidOffering(), 4.5f },
         { new DebrisOffering(), 3.5f },
         { new SalvageOffering(), 2.0f },
     };
 
-    // private readonly List<ProtoId<DungeonConfigPrototype>> _asteroidConfigs = new() ADT tweak, no  more shitty asteroids
-    // {
-    //     "BlobAsteroid",
-    //     "ClusterAsteroid",
-    //     "SpindlyAsteroid",
-    //     "SwissCheeseAsteroid"
-    // };
+    private readonly List<ProtoId<DungeonConfigPrototype>> _asteroidConfigs = new()
+    {
+        "BlobAsteroid",
+        "ClusterAsteroid",
+        "SpindlyAsteroid",
+        "SwissCheeseAsteroid"
+    };
 
     private readonly ProtoId<WeightedRandomPrototype> _asteroidOreWeights = "AsteroidOre";
 
@@ -45,43 +52,43 @@ public abstract partial class SharedSalvageSystem
         var type = SharedRandomExtensions.Pick(_offeringWeights, rand);
         switch (type)
         {
-            // case AsteroidOffering: ADT tweak no more shitty salvage
-            //     var configId = _asteroidConfigs[rand.Next(_asteroidConfigs.Count)];
-            //     var configProto =_proto.Index(configId);
-            //     var layers = new Dictionary<string, int>();
+            case AsteroidOffering:
+                var configId = _asteroidConfigs[rand.Next(_asteroidConfigs.Count)];
+                var configProto =_proto.Index(configId);
+                var layers = new Dictionary<string, int>();
 
-            //     var data = new DungeonData();
-            //     data.Apply(configProto.Data);
+                var data = new DungeonData();
+                data.Apply(configProto.Data);
 
-            //     var config = new DungeonConfig
-            //     {
-            //         Data = data,
-            //         Layers = new(configProto.Layers),
-            //         MaxCount = configProto.MaxCount,
-            //         MaxOffset = configProto.MaxOffset,
-            //         MinCount = configProto.MinCount,
-            //         MinOffset = configProto.MinOffset,
-            //         ReserveTiles = configProto.ReserveTiles
-            //     };
+                var config = new DungeonConfig
+                {
+                    Data = data,
+                    Layers = new(configProto.Layers),
+                    MaxCount = configProto.MaxCount,
+                    MaxOffset = configProto.MaxOffset,
+                    MinCount = configProto.MinCount,
+                    MinOffset = configProto.MinOffset,
+                    ReserveTiles = configProto.ReserveTiles
+                };
 
-            //     var count = _asteroidOreCount.Next(rand);
-            //     var weightedProto = _proto.Index(_asteroidOreWeights);
-            //     for (var i = 0; i < count; i++)
-            //     {
-            //         var ore = weightedProto.Pick(rand);
-            //         config.Layers.Add(_proto.Index<OreDunGenPrototype>(ore));
+                var count = _asteroidOreCount.Next(rand);
+                var weightedProto = _proto.Index(_asteroidOreWeights);
+                for (var i = 0; i < count; i++)
+                {
+                    var ore = weightedProto.Pick(rand);
+                    config.Layers.Add(_proto.Index<OreDunGenPrototype>(ore));
 
-            //         var layerCount = layers.GetOrNew(ore);
-            //         layerCount++;
-            //         layers[ore] = layerCount;
-            //     }
+                    var layerCount = layers.GetOrNew(ore);
+                    layerCount++;
+                    layers[ore] = layerCount;
+                }
 
-            //     return new AsteroidOffering
-            //     {
-            //         Id = configId,
-            //         DungeonConfig = config,
-            //         MarkerLayers = layers,
-            //     };
+                return new AsteroidOffering
+                {
+                    Id = configId,
+                    DungeonConfig = config,
+                    MarkerLayers = layers,
+                };
             case DebrisOffering:
                 var id = rand.Pick(_debrisConfigs);
                 return new DebrisOffering

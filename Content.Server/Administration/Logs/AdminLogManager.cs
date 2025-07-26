@@ -1,4 +1,16 @@
-﻿using System.Collections.Concurrent;
+// SPDX-FileCopyrightText: 2021 Javier Guardia Fernández <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
+// SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
+using System.Collections.Concurrent;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
@@ -330,12 +342,7 @@ public sealed partial class AdminLogManager : SharedAdminLogManager, IAdminLogMa
                 var cachedInfo = adminSys.GetCachedPlayerInfo(new NetUserId(id));
                 if (cachedInfo != null && cachedInfo.Antag)
                 {
-                    var subtype = Loc.GetString(cachedInfo.Subtype ?? cachedInfo.RoleProto.Name);
-                    logMessage = Loc.GetString(
-                        "admin-alert-antag-label",
-                        ("message", logMessage),
-                        ("name", cachedInfo.CharacterName),
-                        ("subtype", subtype));
+                    logMessage += " [ANTAG: " + cachedInfo.CharacterName + "]";
                 }
             }
 

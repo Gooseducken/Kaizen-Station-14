@@ -1,9 +1,35 @@
-using Content.Shared.ADT.Language;
+// SPDX-FileCopyrightText: 2022 EmoGarbage404 <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Javier Guardia Fernández <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
+// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 T-Stalker <43253663+DogZeroX@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 ZeroDayDaemon <60460608+ZeroDayDaemon@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 DEATHB4DEFEAT <77995199+DEATHB4DEFEAT@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Firewatch <54725557+musicmanvr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Mr. 27 <koolthunder019@gmail.com>
+// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2024 ScyronX <166930367+ScyronX@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 portfiend <109661617+portfiend@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Dataset;
 using Content.Shared.Humanoid.Markings;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using Robust.Shared.Utility;
 
 namespace Content.Shared.Humanoid.Prototypes;
 
@@ -35,14 +61,6 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// </summary>
     [DataField(required: true)]
     public bool RoundStart { get; private set; } = false;
-
-    // Corvax-Sponsors-Start
-    /// <summary>
-    /// Whether the species is available only for sponsors
-    /// </summary>
-    [DataField]
-    public bool SponsorOnly { get; private set; } = false;
-    // Corvax-Sponsors-End
 
     // The below two are to avoid fetching information about the species from the entity
     // prototype.
@@ -99,13 +117,8 @@ public sealed partial class SpeciesPrototype : IPrototype
     [DataField]
     public ProtoId<LocalizedDatasetPrototype> FemaleFirstNames { get; private set; } = "NamesFirstFemale";
 
-    // Corvax-LastnameGender-Start: Split lastname field by gender
     [DataField]
-    public ProtoId<LocalizedDatasetPrototype> MaleLastNames { get; private set; } = "NamesHumanLastMale";
-
-    [DataField]
-    public ProtoId<LocalizedDatasetPrototype> FemaleLastNames { get; private set; } = "NamesHumanLastFemale";
-    // Corvax-LastnameGender-End
+    public ProtoId<LocalizedDatasetPrototype> LastNames { get; private set; } = "NamesLast";
 
     [DataField]
     public SpeciesNaming Naming { get; private set; } = SpeciesNaming.FirstLast;
@@ -137,39 +150,6 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// </summary>
     [DataField]
     public int MaxAge = 120;
-
-    // ADT start
-    [DataField]
-    public SpeciesCategory Category = SpeciesCategory.Classic;
-
-    [DataField]
-    public ResPath? Description;
-
-    [DataField]
-    public List<string> Pros = new();
-
-    [DataField]
-    public List<string> Cons = new();
-
-    [DataField]
-    public List<string> Special = new();
-
-    /// <summary>
-    /// Особые языки, которые не могут выбрать представители других рас.
-    /// Уникальные языки не должны быть раундстартовыми.
-    /// </summary>
-    [DataField]
-    public List<ProtoId<LanguagePrototype>> UniqueLanguages = new();
-
-    [DataField]
-    public List<ProtoId<LanguagePrototype>> DefaultLanguages = new() { "GalacticCommon" };
-
-    [DataField]
-    public int MaxLanguages = 3;
-
-    [DataField]
-    public List<ProtoId<LanguagePrototype>> ForceLanguages = new();
-    // ADT end
 }
 
 public enum SpeciesNaming : byte
@@ -177,19 +157,8 @@ public enum SpeciesNaming : byte
     First,
     FirstLast,
     FirstDashFirst,
-    // ADT Start tweak: Drask naming
-    FirstDashFirstDashFirst,
-    // ADT End tweak
     TheFirstofLast,
-    FirstDashLast, // Parkstation-IPC
+    LastFirst, // DeltaV
+    LastNoFirst, // DeltaV
+    FirstDashLast, // Goobstation
 }
-
-// ADT start
-public enum SpeciesCategory : byte
-{
-    Classic,
-    Unusual,
-    Special,
-    Sponsor
-}
-// ADT end

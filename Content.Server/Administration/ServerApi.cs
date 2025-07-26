@@ -1,4 +1,19 @@
-﻿using System.Linq;
+// SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
+// SPDX-FileCopyrightText: 2024 Hannah Giovanna Dawson <karakkaraz@gmail.com>
+// SPDX-FileCopyrightText: 2024 Myzumi <34660019+Myzumi@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2024 Whatstone <166147148+whatston3@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Whatstone <whatston3@gmail.com>
+// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2024 sleepyyapril <123355664+sleepyyapril@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography;
@@ -7,12 +22,12 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Content.Server.Administration.Systems;
+using Content.Server.Administration.Managers;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Presets;
-using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Maps;
 using Content.Server.RoundEnd;
-using Content.Shared.Administration.Managers;
+using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Prototypes;
@@ -58,7 +73,7 @@ public sealed partial class ServerApi : IPostInjectInit
     [Dependency] private readonly IStatusHost _statusHost = default!;
     [Dependency] private readonly IConfigurationManager _config = default!;
     [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
-    [Dependency] private readonly ISharedAdminManager _adminManager = default!;
+    [Dependency] private readonly IAdminManager _adminManager = default!; // Frontier: ISharedAdminManager<IAdminManager>
     [Dependency] private readonly IGameMapManager _gameMapManager = default!;
     [Dependency] private readonly IServerNetManager _netManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
@@ -99,6 +114,7 @@ public sealed partial class ServerApi : IPostInjectInit
         RegisterActorHandler(HttpMethod.Post, "/admin/actions/force_preset", ActionForcePreset);
         RegisterActorHandler(HttpMethod.Post, "/admin/actions/set_motd", ActionForceMotd);
         RegisterActorHandler(HttpMethod.Patch, "/admin/actions/panic_bunker", ActionPanicPunker);
+        RegisterHandler(HttpMethod.Post, "/admin/actions/send_bwoink", ActionSendBwoink); // Frontier - Discord Ahelp Reply
         RegisterActorHandler(HttpMethod.Post, "/admin/actions/a_chat", ActionAdminChat);                // ADT Tweak
         RegisterActorHandler(HttpMethod.Post, "/admin/actions/play_time_addjob", ActionPlayAddTimeJob); // ADT Tweak
         RegisterActorHandler(HttpMethod.Post, "/admin/actions/server_ban", ActionServerBan);            // ADT Tweak
@@ -415,6 +431,40 @@ public sealed partial class ServerApi : IPostInjectInit
             await RespondOk(context);
         });
     }
+    #endregion
+
+    #region Frontier
+    // Creating a region here incase more actions are added in the future
+
+    private async Task ActionSendBwoink(IStatusHandlerContext context)
+    {
+        var body = await ReadJson<BwoinkActionBody>(context);
+        if (body == null)
+            return;
+
+        await RunOnMainThread(async () =>
+    {
+        // Player not online or wrong Guid
+        if (!_playerManager.TryGetSessionById(new NetUserId(body.Guid), out var player))
+        {
+            await RespondError(
+                context,
+                ErrorCode.PlayerNotFound,
+                HttpStatusCode.UnprocessableContent,
+                "Player not found");
+            return;
+        }
+
+        var serverBwoinkSystem = _entitySystemManager.GetEntitySystem<BwoinkSystem>();
+        var message = new SharedBwoinkSystem.BwoinkTextMessage(player.UserId, SharedBwoinkSystem.SystemUserId, body.Text);
+        serverBwoinkSystem.OnWebhookBwoinkTextMessage(message, body);
+
+        // Respond with OK
+        await RespondOk(context);
+    });
+
+
+    }
 
     #endregion
 
@@ -505,7 +555,7 @@ public sealed partial class ServerApi : IPostInjectInit
                     IsAdmin = adminData != null,
                     IsDeadminned = !adminData?.Active ?? false,
                     PingUser = player.Ping,                 // ADT-Tweak: Передаём пинг пользователя
-                    AdminTitle = adminData?.Title ?? "Null" // ADT-Tweak: Добавляем передачу инфы о Title админа
+                    AdminTitle = adminData?.Title ?? string.Empty // ADT-Tweak: Добавляем передачу инфы о Title админа
                 });
             }
 
@@ -654,6 +704,17 @@ public sealed partial class ServerApi : IPostInjectInit
         public required string Motd { get; init; }
     }
 
+    public sealed class BwoinkActionBody
+    {
+        public required string Text { get; init; }
+        public required string Username { get; init; }
+        public required Guid Guid { get; init; }
+        public bool UserOnly { get; init; }
+        public required bool WebhookUpdate { get; init; }
+        public required string RoleName { get; init; }
+        public required string RoleColor { get; init; }
+    }
+
     #endregion
 
     #region Responses
@@ -743,7 +804,7 @@ public sealed partial class ServerApi : IPostInjectInit
         if (body == null)
             return;
 
-        string discordName = $"{body.NickName}(Discord)";
+        string discordName = $"{body.NickName}";
         string message = body.Message;
         var authorUser = new NetUserId(actor.Guid);
 
@@ -751,7 +812,8 @@ public sealed partial class ServerApi : IPostInjectInit
         {
             var clients = _admin.ActiveAdmins
             .Where(admin => _adminManager.GetAdminData(admin)?.Flags.HasFlag(AdminFlags.Adminchat) == true)
-            .Select(p => p.Channel).ToList();
+            .Select(p => p.Channel)
+            .ToList();
 
             // Используем Loc.GetString для формирования сообщения
             var wrappedMessage = Loc.GetString("chat-manager-send-admin-chat-wrap-message",
@@ -875,7 +937,7 @@ public sealed partial class ServerApi : IPostInjectInit
                 Expires = DateTimeOffset.Now + TimeSpan.FromMinutes(minutes)
             };
 
-            await _discordBanInfoSender.SendBanInfoAsync<PostServerBanPayloadGenerator>(banInfo);
+            await _discordBanInfoSender.SendBanInfoAsync<ServerBanPayloadGenerator>(banInfo);
             await RespondOk(context);
             _sawmill.Info($"{actor.Name} banned {body.NickName} for {body.Time} minutes. Reason: {body.Reason}");
         });

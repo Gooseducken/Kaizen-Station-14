@@ -1,9 +1,21 @@
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Interrobang01 <113810873+Interrobang01@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2023 moonheart08 <moonheart08@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Speech.Components;
 using Content.Shared.EntityEffects;
 using Content.Shared.Mind.Components;
 using Robust.Shared.Prototypes;
-using Content.Shared.ADT.Language;
 
 namespace Content.Server.EntityEffects.Effects;
 
@@ -23,14 +35,6 @@ public sealed partial class MakeSentient : EntityEffect
         entityManager.RemoveComponent<ReplacementAccentComponent>(uid);
         entityManager.RemoveComponent<MonkeyAccentComponent>(uid);
 
-        // ADT Languages start
-        var lang = entityManager.EnsureComponent<LanguageSpeakerComponent>(uid);
-        if (!lang.Languages.ContainsKey("GalacticCommon"))
-            lang.Languages.Add("GalacticCommon", LanguageKnowledge.Speak);
-        else
-            lang.Languages["GalacticCommon"] = LanguageKnowledge.Speak;
-        // ADT Languages end
-
         // Stops from adding a ghost role to things like people who already have a mind
         if (entityManager.TryGetComponent<MindContainerComponent>(uid, out var mindContainer) && mindContainer.HasMind)
         {
@@ -42,7 +46,6 @@ public sealed partial class MakeSentient : EntityEffect
         {
             return;
         }
-
 
         ghostRole = entityManager.AddComponent<GhostRoleComponent>(uid);
         entityManager.EnsureComponent<GhostTakeoverAvailableComponent>(uid);

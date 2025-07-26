@@ -10,7 +10,6 @@ salvage-magnet-resources =
         [OreIron] Железо
         [OreCoal] Уголь
         [OreQuartz] Кварц
-        [OreSalt] Соль
         [OreGold] Золото
         [OreDiamond] Алмазы
         [OreSilver] Серебро
@@ -18,7 +17,6 @@ salvage-magnet-resources =
         [OreUranium] Уран
         [OreArtifactFragment] Фрагменты артефактов
         [OreBananium] Бананиум
-        [OreSalt] Соль
        *[other] { $resource }
     }
 salvage-magnet-resources-count =

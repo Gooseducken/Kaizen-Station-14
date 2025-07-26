@@ -14,7 +14,7 @@
     bodyType: Static
   - type: Fixtures
     fixtures:
-      fix1:
+      fix1: #Reserve fix
         shape:
           !type:PhysShapeAabb
           bounds: "-1.5,0,1.5,-1"
@@ -37,7 +37,7 @@
                 max: 20
           - !type:PlaySoundBehavior
             sound:
-              collection: MetalBreak
+              path: /Audio/Effects/metalbreak.ogg
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
 

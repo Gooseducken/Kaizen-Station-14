@@ -1,8 +1,41 @@
+// SPDX-FileCopyrightText: 2020 DamianX <DamianX@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
+// SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Leo <lzimann@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Metal Gear Sloth <metalgearsloth@gmail.com>
+// SPDX-FileCopyrightText: 2021 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 mirrorcult <notzombiedude@gmail.com>
+// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Javier Guardia Fernández <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Veritius <veritiusgaming@gmail.com>
+// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
+// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 ElectroJr <leonsfriedrich@gmail.com>
+// SPDX-FileCopyrightText: 2024 Firewatch <54725557+musicmanvr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Mr. 27 <koolthunder019@gmail.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers@gmail.com>
+// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Content.Server.Corvax.Sponsors;
 using Content.Server.Database;
 using Content.Shared.CCVar;
 using Content.Shared.Preferences;
@@ -10,7 +43,6 @@ using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Preferences.Managers
@@ -26,8 +58,6 @@ namespace Content.Server.Preferences.Managers
         [Dependency] private readonly IServerDbManager _db = default!;
         [Dependency] private readonly IPlayerManager _playerManager = default!;
         [Dependency] private readonly IDependencyCollection _dependencies = default!;
-        [Dependency] private readonly IPrototypeManager _protos = default!;
-        [Dependency] private readonly SponsorsManager _sponsors = default!;
         [Dependency] private readonly ILogManager _log = default!;
         [Dependency] private readonly UserDbDataManager _userDb = default!;
 
@@ -35,8 +65,9 @@ namespace Content.Server.Preferences.Managers
         private readonly Dictionary<NetUserId, PlayerPrefData> _cachedPlayerPrefs =
             new();
 
-        private int MaxCharacterSlots => _cfg.GetCVar(CCVars.GameMaxCharacterSlots); // Corvax-Sponsors
         private ISawmill _sawmill = default!;
+
+        private int MaxCharacterSlots => _cfg.GetCVar(CCVars.GameMaxCharacterSlots);
 
         public void Init()
         {
@@ -58,7 +89,7 @@ namespace Content.Server.Preferences.Managers
                 return;
             }
 
-            if (index < 0 || index >= GetMaxUserCharacterSlots(userId)) // Corvax-Sponsors
+            if (index < 0 || index >= MaxCharacterSlots)
             {
                 return;
             }
@@ -98,15 +129,13 @@ namespace Content.Server.Preferences.Managers
                 return;
             }
 
-            if (slot < 0 || slot >= GetMaxUserCharacterSlots(userId)) // Corvax-Sponsors
+            if (slot < 0 || slot >= MaxCharacterSlots)
                 return;
 
             var curPrefs = prefsData.Prefs!;
             var session = _playerManager.GetSessionById(userId);
-            var collection = IoCManager.Instance!;
 
-            var allowedMarkings = _sponsors.TryGetInfo(userId, out var sponsor) ? sponsor.AllowedMarkings : new string[] { };
-            profile.EnsureValid(session, collection, allowedMarkings);
+            profile.EnsureValid(session, _dependencies);
 
             var profiles = new Dictionary<int, ICharacterProfile>(curPrefs.Characters)
             {
@@ -130,7 +159,7 @@ namespace Content.Server.Preferences.Managers
                 return;
             }
 
-            if (slot < 0 || slot >= GetMaxUserCharacterSlots(userId)) // Corvax-Sponsors
+            if (slot < 0 || slot >= MaxCharacterSlots)
             {
                 return;
             }
@@ -198,22 +227,7 @@ namespace Content.Server.Preferences.Managers
                 async Task LoadPrefs()
                 {
                     var prefs = await GetOrCreatePreferencesAsync(session.UserId, cancel);
-                    var collection = IoCManager.Instance!;
-                    foreach (var (_, profile) in prefs.Characters)
-                    {
-                        var allowedMarkings = _sponsors.TryGetInfo(session.UserId, out var sponsor) ? sponsor.AllowedMarkings : new string[] { };;
-                        profile.EnsureValid(session, collection, allowedMarkings);
-                    }
                     prefsData.Prefs = prefs;
-                    prefsData.PrefsLoaded = true;
-
-                    var msg = new MsgPreferencesAndSettings();
-                    msg.Preferences = prefs;
-                    msg.Settings = new GameSettings
-                    {
-                        MaxCharacterSlots = MaxCharacterSlots
-                    };
-                    _netManager.ServerSendMessage(msg, session.Channel);
                 }
             }
         }
@@ -242,15 +256,6 @@ namespace Content.Server.Preferences.Managers
         {
             _cachedPlayerPrefs.Remove(session.UserId);
         }
-
-        // Corvax-Sponsors-Start: Calculate total available users slots with sponsors
-        private int GetMaxUserCharacterSlots(NetUserId userId)
-        {
-            var maxSlots = _cfg.GetCVar(CCVars.GameMaxCharacterSlots);
-            var extraSlots = _sponsors.TryGetInfo(userId, out var sponsor) ? sponsor.ExtraSlots : 0;
-            return maxSlots + extraSlots;
-        }
-        // Corvax-Sponsors-End
 
         public bool HavePreferencesLoaded(ICommonSession session)
         {
@@ -312,10 +317,7 @@ namespace Content.Server.Preferences.Managers
                 return await _db.InitPrefsAsync(userId, HumanoidCharacterProfile.Random(), cancel);
             }
 
-            var session = _playerManager.GetSessionById(userId);
-            var collection = IoCManager.Instance!;
-
-            return SanitizePreferences(session, prefs, collection);
+            return prefs;
         }
 
         private PlayerPreferences SanitizePreferences(ICommonSession session, PlayerPreferences prefs, IDependencyCollection collection)
@@ -323,11 +325,9 @@ namespace Content.Server.Preferences.Managers
             // Clean up preferences in case of changes to the game,
             // such as removed jobs still being selected.
 
-            var allowedMarkings = _sponsors.TryGetInfo(session.UserId, out var sponsor) ? sponsor.AllowedMarkings : new string[] { };
-
             return new PlayerPreferences(prefs.Characters.Select(p =>
             {
-                return new KeyValuePair<int, ICharacterProfile>(p.Key, p.Value.Validated(session, collection, allowedMarkings));
+                return new KeyValuePair<int, ICharacterProfile>(p.Key, p.Value.Validated(session, collection));
             }), prefs.SelectedCharacterIndex, prefs.AdminOOCColor);
         }
 

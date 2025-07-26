@@ -1,4 +1,13 @@
-using Content.Shared.ActionBlocker;
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Movement.Components;
 
 namespace Content.Shared.Movement.Systems;
@@ -60,7 +69,6 @@ public abstract partial class SharedMoverController
         targetComp.Source = uid;
         Dirty(uid, component);
         Dirty(relayEntity, targetComp);
-        _blocker.UpdateCanMove(uid);
     }
 
     private void OnRelayShutdown(Entity<RelayInputMoverComponent> entity, ref ComponentShutdown args)
@@ -76,8 +84,6 @@ public abstract partial class SharedMoverController
 
         if (TryComp(entity.Comp.RelayEntity, out MovementRelayTargetComponent? target) && target.LifeStage <= ComponentLifeStage.Running)
             RemComp(entity.Comp.RelayEntity, target);
-
-        _blocker.UpdateCanMove(entity.Owner);
     }
 
     private void OnTargetRelayShutdown(Entity<MovementRelayTargetComponent> entity, ref ComponentShutdown args)

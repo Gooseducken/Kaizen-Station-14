@@ -1,6 +1,12 @@
+// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Errant <35878406+dmnct@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Server.Chat.Systems;
 using Content.Server.Speech.Components;
-using Content.Shared.ADT.Language;
 
 namespace Content.Server.Speech.EntitySystems;
 
@@ -19,10 +25,10 @@ public sealed class ListeningSystem : EntitySystem
 
     private void OnSpeak(EntitySpokeEvent ev)
     {
-        PingListeners(ev.Source, ev.Message, ev.ObfuscatedMessage, ev.Language); // ADT-Language
+        PingListeners(ev.Source, ev.Message, ev.ObfuscatedMessage);
     }
 
-    public void PingListeners(EntityUid source, string message, string? obfuscatedMessage, LanguagePrototype? language = null) // ADT-Language
+    public void PingListeners(EntityUid source, string message, string? obfuscatedMessage)
     {
         // TODO whispering / audio volume? Microphone sensitivity?
         // for now, whispering just arbitrarily reduces the listener's max range.
@@ -32,8 +38,8 @@ public sealed class ListeningSystem : EntitySystem
         var sourcePos = _xforms.GetWorldPosition(sourceXform, xformQuery);
 
         var attemptEv = new ListenAttemptEvent(source);
-        var ev = new ListenEvent(message, source, language); // ADT-Language
-        var obfuscatedEv = obfuscatedMessage == null ? null : new ListenEvent(obfuscatedMessage, source, language); // ADT-Language
+        var ev = new ListenEvent(message, source);
+        var obfuscatedEv = obfuscatedMessage == null ? null : new ListenEvent(obfuscatedMessage, source);
         var query = EntityQueryEnumerator<ActiveListenerComponent, TransformComponent>();
 
         while(query.MoveNext(out var listenerUid, out var listener, out var xform))

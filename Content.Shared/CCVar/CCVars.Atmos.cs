@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Robust.Shared.Configuration;
 
 namespace Content.Shared.CCVar;
@@ -149,5 +154,5 @@ public sealed partial class CCVars
     ///     Setting this to zero disables the explosion but still allows the tank to burst and leak.
     /// </summary>
     public static readonly CVarDef<float> AtmosTankFragment =
-        CVarDef.Create("atmos.max_explosion_range", 13f, CVar.SERVERONLY); /// ADT-Tweak 26f to 13f - нерф лимиток
+        CVarDef.Create("atmos.max_explosion_range", 26f, CVar.SERVERONLY);
 }

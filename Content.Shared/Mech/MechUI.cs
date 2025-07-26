@@ -1,4 +1,12 @@
-﻿using Robust.Shared.Serialization;
+// SPDX-FileCopyrightText: 2022 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.Mech;
 
@@ -13,22 +21,19 @@ public enum MechUiKey : byte
 /// </summary>
 public sealed class MechEquipmentUiStateReadyEvent : EntityEventArgs
 {
-    public Dictionary<NetEntity, BoundUserInterfaceState?> States = new();  // ADT Mech UI Fix
+    public Dictionary<NetEntity, BoundUserInterfaceState> States = new();
 }
 
 /// <summary>
 /// Event raised to relay an equipment ui message
 /// </summary>
-[Serializable, NetSerializable] // ADT Mech predict
 public sealed class MechEquipmentUiMessageRelayEvent : EntityEventArgs
 {
     public MechEquipmentUiMessage Message;
-    public NetEntity? Pilot;    // ADT Mech
 
-    public MechEquipmentUiMessageRelayEvent(MechEquipmentUiMessage message, NetEntity? pilot)
+    public MechEquipmentUiMessageRelayEvent(MechEquipmentUiMessage message)
     {
         Message = message;
-        Pilot = pilot;  // ADT Mech
     }
 }
 
@@ -109,7 +114,7 @@ public sealed class MechSoundboardPlayMessage : MechEquipmentUiMessage
 [Serializable, NetSerializable]
 public sealed class MechBoundUiState : BoundUserInterfaceState
 {
-    public Dictionary<NetEntity, BoundUserInterfaceState?> EquipmentStates = new(); // ADT Mech UI Fix
+    public Dictionary<NetEntity, BoundUserInterfaceState> EquipmentStates = new();
 }
 
 [Serializable, NetSerializable]

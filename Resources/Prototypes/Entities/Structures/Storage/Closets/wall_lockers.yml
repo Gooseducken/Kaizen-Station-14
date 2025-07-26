@@ -1,3 +1,12 @@
+# SPDX-FileCopyrightText: 2022 Martin Petkovski <63034378+martin69420@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 ChilbroBaggins <107660393+ChilbroBaggins@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Jeff <velcroboy333@hotmail.com>
+# SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
 - type: entity
   id: ClosetWall
   parent: BaseWallCloset
@@ -55,7 +64,7 @@
   - type: Appearance
   - type: EntityStorageVisuals
     stateBaseClosed: generic
-    stateDoorOpen: generic_open2
+    stateDoorOpen: generic_open
     stateDoorClosed: blue_door
 
 - type: entity
@@ -67,7 +76,7 @@
   - type: Appearance
   - type: EntityStorageVisuals
     stateBaseClosed: generic
-    stateDoorOpen: generic_open2
+    stateDoorOpen: generic_open
     stateDoorClosed: pink_door
 
 - type: entity
@@ -79,7 +88,7 @@
   - type: Appearance
   - type: EntityStorageVisuals
     stateBaseClosed: generic
-    stateDoorOpen: generic_open2
+    stateDoorOpen: generic_open
     stateDoorClosed: black_door
 
 - type: entity
@@ -91,7 +100,7 @@
   - type: Appearance
   - type: EntityStorageVisuals
     stateBaseClosed: generic
-    stateDoorOpen: generic_open2
+    stateDoorOpen: generic_open
     stateDoorClosed: green_door
 
 - type: entity
@@ -102,7 +111,7 @@
   - type: Appearance
   - type: EntityStorageVisuals
     stateBaseClosed: generic
-    stateDoorOpen: generic_open2
+    stateDoorOpen: generic_open
     stateDoorClosed: orange_door
 
 - type: entity
@@ -114,7 +123,7 @@
   - type: Appearance
   - type: EntityStorageVisuals
     stateBaseClosed: generic
-    stateDoorOpen: generic_open2
+    stateDoorOpen: generic_open
     stateDoorClosed: yellow_door
 
 - type: entity
@@ -126,7 +135,7 @@
   - type: Appearance
   - type: EntityStorageVisuals
     stateBaseClosed: generic
-    stateDoorOpen: generic_open2
+    stateDoorOpen: generic_open
     stateDoorClosed: white_door
 
 - type: entity
@@ -138,7 +147,7 @@
   - type: Appearance
   - type: EntityStorageVisuals
     stateBaseClosed: generic
-    stateDoorOpen: generic_open2
+    stateDoorOpen: generic_open
     stateDoorClosed: gray_door
 
 - type: entity
@@ -150,7 +159,7 @@
   - type: Appearance
   - type: EntityStorageVisuals
     stateBaseClosed: generic
-    stateDoorOpen: generic_open2
+    stateDoorOpen: generic_open
     stateDoorClosed: mixed_door
 
 - type: entity
@@ -161,7 +170,7 @@
   - type: Appearance
   - type: EntityStorageVisuals
     stateBaseClosed: generic
-    stateDoorOpen: generic_open2
+    stateDoorOpen: generic_open
     stateDoorClosed: atmos_door
 
 - type: entity

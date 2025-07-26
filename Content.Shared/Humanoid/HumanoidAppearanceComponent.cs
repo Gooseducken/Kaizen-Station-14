@@ -1,6 +1,11 @@
-using Content.Shared.DisplacementMap;
-using Content.Shared.ADT.SpeechBarks;
-using Content.Shared.Corvax.TTS;
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 csqrb <56765288+CaptainSqrBeard@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Inventory;
@@ -50,14 +55,6 @@ public sealed partial class HumanoidAppearanceComponent : Component
     [DataField(required: true), AutoNetworkedField]
     public ProtoId<SpeciesPrototype> Species { get; set; }
 
-    // Corvax-TTS-Start
-    /// <summary>
-    ///     Current voice. Used for correct cloning.
-    /// </summary>
-    [DataField("voice")]
-    public ProtoId<TTSVoicePrototype> Voice { get; set; } = SharedHumanoidAppearanceSystem.DefaultVoice;
-    // Corvax-TTS-End
-
     /// <summary>
     ///     The initial profile and base layers to apply to this humanoid.
     /// </summary>
@@ -101,36 +98,6 @@ public sealed partial class HumanoidAppearanceComponent : Component
     /// </summary>
     [DataField]
     public HashSet<HumanoidVisualLayers> HideLayersOnEquip = [HumanoidVisualLayers.Hair];
-
-    /// <summary>
-    ///     Which markings the humanoid defaults to when nudity is toggled off.
-    /// </summary>
-    [DataField]
-    public ProtoId<MarkingPrototype>? UndergarmentTop; // ADT-Tweak
-
-    [DataField]
-    public ProtoId<MarkingPrototype>? UndergarmentBottom; // ADT-Tweak
-
-    /// <summary>
-    ///     The displacement maps that will be applied to specific layers of the humanoid.
-    /// </summary>
-    [DataField]
-    public Dictionary<HumanoidVisualLayers, DisplacementData> MarkingsDisplacement = new();
-
-    // ADT Barks start
-
-    /// <summary>
-    ///     Current voice. Used for correct cloning.
-    /// </summary>
-
-    [DataField("bark")]
-    public BarkData Bark = new();
-    // ADT Barks end
-
-    //ADT tweak - allow markings to support shaders
-    [DataField("shader")]
-    public string? Shader { get; private set; } = null;
-    //ADT tweak impstation edit
 }
 
 [DataDefinition]

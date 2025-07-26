@@ -1,4 +1,15 @@
-﻿using Robust.Shared.Configuration;
+// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 deathride58 <deathride58@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Myra <vasilis@pikachu.systems>
+// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2025 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Robust.Shared.Configuration;
 
 namespace Content.Shared.CCVar;
 
@@ -14,7 +25,7 @@ public sealed partial class CCVars
     ///     The token used to authenticate with the admin API. Leave empty to disable the admin API. This is a secret! Do not share!
     /// </summary>
     public static readonly CVarDef<string> AdminApiToken =
-        CVarDef.Create("admin.api_token", string.Empty, CVar.SERVERONLY | CVar.CONFIDENTIAL | CVar.ARCHIVE); // ADT-Tweak
+        CVarDef.Create("admin.api_token", string.Empty, CVar.SERVERONLY | CVar.CONFIDENTIAL);
 
     /// <summary>
     ///     Should users be able to see their own notes? Admins will be able to see and set notes regardless
@@ -140,7 +151,8 @@ public sealed partial class CCVars
     ///     If 0, appearing as a new player is disabled.
     /// </summary>
     public static readonly CVarDef<int> NewPlayerThreshold =
-        CVarDef.Create("admin.new_player_threshold", 600, CVar.ARCHIVE | CVar.REPLICATED | CVar.SERVER); // ADT-Tweak
+        CVarDef.Create("admin.new_player_threshold", 0, CVar.ARCHIVE | CVar.REPLICATED | CVar.SERVER);
+
     /// <summary>
     ///     How long an admin client can go without any input before being considered AFK.
     /// </summary>

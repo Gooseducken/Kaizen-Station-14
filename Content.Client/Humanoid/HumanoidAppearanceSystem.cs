@@ -1,12 +1,21 @@
-using Content.Client.DisplacementMap;
-using Content.Shared.CCVar;
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Flipp Syder <76629141+vulppine@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Morb <14136326+Morb0@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 csqrb <56765288+CaptainSqrBeard@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Inventory;
 using Content.Shared.Preferences;
 using Robust.Client.GameObjects;
-using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -16,30 +25,17 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
 {
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly MarkingManager _markingManager = default!;
-    [Dependency] private readonly IConfigurationManager _configurationManager = default!;
-    [Dependency] private readonly DisplacementMapSystem _displacement = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<HumanoidAppearanceComponent, AfterAutoHandleStateEvent>(OnHandleState);
-        Subs.CVar(_configurationManager, CCVars.AccessibilityClientCensorNudity, OnCvarChanged, true);
-        Subs.CVar(_configurationManager, CCVars.AccessibilityServerCensorNudity, OnCvarChanged, true);
     }
 
     private void OnHandleState(EntityUid uid, HumanoidAppearanceComponent component, ref AfterAutoHandleStateEvent args)
     {
         UpdateSprite(component, Comp<SpriteComponent>(uid));
-    }
-
-    private void OnCvarChanged(bool value)
-    {
-        var humanoidQuery = EntityManager.AllEntityQueryEnumerator<HumanoidAppearanceComponent, SpriteComponent>();
-        while (humanoidQuery.MoveNext(out var _, out var humanoidComp, out var spriteComp))
-        {
-            UpdateSprite(humanoidComp, spriteComp);
-        }
     }
 
     private void UpdateSprite(HumanoidAppearanceComponent component, SpriteComponent sprite)
@@ -72,7 +68,8 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         foreach (var (key, info) in component.CustomBaseLayers)
         {
             oldLayers.Remove(key);
-            SetLayerData(component, sprite, key, info.Id, sexMorph: false, color: info.Color);
+            // Shitmed Change: For whatever reason these weren't actually ignoring the skin color as advertised.
+            SetLayerData(component, sprite, key, info.Id, sexMorph: false, color: info.Color, overrideSkin: true);
         }
 
         // hide old layers
@@ -90,7 +87,8 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         HumanoidVisualLayers key,
         string? protoId,
         bool sexMorph = false,
-        Color? color = null)
+        Color? color = null,
+        bool overrideSkin = false) // Shitmed Change
     {
         var layerIndex = sprite.LayerMapReserveBlank(key);
         var layer = sprite[layerIndex];
@@ -108,7 +106,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         var proto = _prototypeManager.Index<HumanoidSpeciesSpriteLayer>(protoId);
         component.BaseLayers[key] = proto;
 
-        if (proto.MatchSkin)
+        if (proto.MatchSkin && !overrideSkin) // Shitmed Change
             layer.Color = component.SkinColor.WithAlpha(proto.LayerAlpha);
 
         if (proto.BaseSprite != null)
@@ -224,30 +222,16 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         // Really, markings should probably be a separate component altogether.
         ClearAllMarkings(humanoid, sprite);
 
-        var censorNudity = _configurationManager.GetCVar(CCVars.AccessibilityClientCensorNudity) ||
-                           _configurationManager.GetCVar(CCVars.AccessibilityServerCensorNudity);
-        // The reason we're splitting this up is in case the character already has undergarment equipped in that slot.
-        var applyUndergarmentTop = censorNudity;
-        var applyUndergarmentBottom = censorNudity;
-
         foreach (var markingList in humanoid.MarkingSet.Markings.Values)
         {
             foreach (var marking in markingList)
             {
                 if (_markingManager.TryGetMarking(marking, out var markingPrototype))
-                {
                     ApplyMarking(markingPrototype, marking.MarkingColors, marking.Visible, humanoid, sprite);
-                    if (markingPrototype.BodyPart == HumanoidVisualLayers.UndergarmentTop)
-                        applyUndergarmentTop = false;
-                    else if (markingPrototype.BodyPart == HumanoidVisualLayers.UndergarmentBottom)
-                        applyUndergarmentBottom = false;
-                }
             }
         }
 
         humanoid.ClientOldMarkings = new MarkingSet(humanoid.MarkingSet);
-
-        AddUndergarments(humanoid, sprite, applyUndergarmentTop, applyUndergarmentBottom);
     }
 
     private void ClearAllMarkings(HumanoidAppearanceComponent humanoid, SpriteComponent sprite)
@@ -295,31 +279,6 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             spriteComp.RemoveLayer(index);
         }
     }
-
-    private void AddUndergarments(HumanoidAppearanceComponent humanoid, SpriteComponent sprite, bool undergarmentTop, bool undergarmentBottom)
-    {
-        if (undergarmentTop && humanoid.UndergarmentTop != null)
-        {
-            var marking = new Marking(humanoid.UndergarmentTop, new List<Color> { new Color() });
-            if (_markingManager.TryGetMarking(marking, out var prototype))
-            {
-                // Markings are added to ClientOldMarkings because otherwise it causes issues when toggling the feature on/off.
-                humanoid.ClientOldMarkings.Markings.Add(MarkingCategories.UndergarmentTop, new List<Marking>{ marking });
-                ApplyMarking(prototype, null, true, humanoid, sprite);
-            }
-        }
-
-        if (undergarmentBottom && humanoid.UndergarmentBottom != null)
-        {
-            var marking = new Marking(humanoid.UndergarmentBottom, new List<Color> { new Color() });
-            if (_markingManager.TryGetMarking(marking, out var prototype))
-            {
-                humanoid.ClientOldMarkings.Markings.Add(MarkingCategories.UndergarmentBottom, new List<Marking>{ marking });
-                ApplyMarking(prototype, null, true, humanoid, sprite);
-            }
-        }
-    }
-
     private void ApplyMarking(MarkingPrototype markingPrototype,
         IReadOnlyList<Color>? colors,
         bool visible,
@@ -353,18 +312,6 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
                 sprite.LayerSetSprite(layerId, rsi);
             }
 
-            //ADT tweak begin - check if there's a shader defined in the markingPrototype's shader datafield, and if there is...
-            if (markingPrototype.Shader != null)
-            {
-                // use spriteComponent's layersetshader function to set the layer's shader to that which is specified.
-                sprite.LayerSetShader(layerId, markingPrototype.Shader);
-            }
-            if (humanoid.Shader != null)
-            {
-                // use spriteComponent's layersetshader function to set the layer's shader to that which is specified.
-                sprite.LayerSetShader(layerId, humanoid.Shader);
-            }
-            //ADT tweak edit end
             sprite.LayerSetVisible(layerId, visible);
 
             if (!visible || setting == null) // this is kinda implied
@@ -382,11 +329,6 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             else
             {
                 sprite.LayerSetColor(layerId, Color.White);
-            }
-
-            if (humanoid.MarkingsDisplacement.TryGetValue(markingPrototype.BodyPart, out var displacementData) && markingPrototype.CanBeDisplaced)
-            {
-                _displacement.TryAddDisplacement(displacementData, sprite, targetLayer + j + 1, layerId, out _);
             }
         }
     }

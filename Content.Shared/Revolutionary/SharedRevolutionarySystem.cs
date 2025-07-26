@@ -1,3 +1,15 @@
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 EmoGarbage404 <retron404@gmail.com>
+// SPDX-FileCopyrightText: 2023 coolmankid12345 <55817627+coolmankid12345@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 coolmankid12345 <coolmankid12345@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mindshield.Components;
 using Content.Shared.Popups;
@@ -6,7 +18,6 @@ using Content.Shared.Stunnable;
 using Robust.Shared.GameStates;
 using Robust.Shared.Player;
 using Content.Shared.Antag;
-using Content.Shared.ADT.Phantom.Components;
 
 namespace Content.Shared.Revolutionary;
 
@@ -34,7 +45,8 @@ public abstract class SharedRevolutionarySystem : EntitySystem
     {
         if (HasComp<HeadRevolutionaryComponent>(uid))
         {
-            RemCompDeferred<MindShieldComponent>(uid);
+            comp.Broken = true; // Goobstation - Broken mindshield implant instead of break it
+            Dirty(uid, comp);
             return;
         }
 
@@ -46,21 +58,6 @@ public abstract class SharedRevolutionarySystem : EntitySystem
             _sharedStun.TryParalyze(uid, stunTime, true);
             _popupSystem.PopupEntity(Loc.GetString("rev-break-control", ("name", name)), uid);
         }
-
-        // who and why have done it THIS way
-        // ADT phantom start
-        if (HasComp<VesselComponent>(uid))
-        {
-            if (HasComp<PhantomPuppetComponent>(uid))
-                RemCompDeferred<MindShieldComponent>(uid);
-            else
-            {
-                var stunTime = TimeSpan.FromSeconds(4);
-                RemComp<VesselComponent>(uid);
-                _sharedStun.TryParalyze(uid, stunTime, true);
-            }
-        }
-        // ADT phantom end
     }
 
     /// <summary>
@@ -115,5 +112,14 @@ public abstract class SharedRevolutionarySystem : EntitySystem
         {
             Dirty(uid, comp);
         }
+    }
+
+    // GoobStation
+    /// <summary>
+    /// Change headrevs ability to convert people
+    /// </summary>
+    public void ToggleConvertAbility(Entity<HeadRevolutionaryComponent> headRev, bool toggle = true)
+    {
+        headRev.Comp.ConvertAbilityEnabled = toggle;
     }
 }

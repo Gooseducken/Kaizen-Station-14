@@ -1,5 +1,7 @@
 ent-ImmovableRod = неподвижный жезл
     .desc = Вы чувствуете, что он голоден. Как правило, это плохой знак.
+ent-ImmovableVoidRod = неподвижный стержень пустоты
+    .desc = Вы можете почувствовать, что он голоден. Обычно это плохой знак.
 ent-ImmovableRodDespawn = { ent-ImmovableRod }
     .desc = { ent-ImmovableRod.desc }
     .suffix = Деспавн
@@ -26,7 +28,7 @@ ent-ImmovableRodBanana = неподвижный банан
 ent-ImmovableRodHammer = неподвижный молот
     .desc = Бвоинк.
 ent-ImmovableRodThrongler = неподвижный нагибатор
-    .desc = Поймаете — можете оставить себе.
+    .desc = Поймаете - можете оставить себе.
 ent-ImmovableRodGibstick = неподвижная гиб-палка
     .desc = А чего вы ожидали?
 ent-ImmovableRodWeh = неподвижный вех

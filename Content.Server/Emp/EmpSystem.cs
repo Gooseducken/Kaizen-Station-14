@@ -1,3 +1,15 @@
+// SPDX-FileCopyrightText: 2023 Pspritechologist <81725545+Pspritechologist@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2024 TemporalOroboros <TemporalOroboros@gmail.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Server.Explosion.EntitySystems;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Radio;
@@ -6,15 +18,11 @@ using Content.Shared.Emp;
 using Content.Shared.Examine;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
-using Content.Shared.Projectiles;
-using Content.Shared.ADT.Emp;
-using Content.Shared.Inventory;
 
 namespace Content.Server.Emp;
 
 public sealed class EmpSystem : SharedEmpSystem
 {
-    [Dependency] private readonly ChargerSystem _charger = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
 
@@ -30,8 +38,6 @@ public sealed class EmpSystem : SharedEmpSystem
         SubscribeLocalEvent<EmpDisabledComponent, RadioReceiveAttemptEvent>(OnRadioReceiveAttempt);
         SubscribeLocalEvent<EmpDisabledComponent, ApcToggleMainBreakerAttemptEvent>(OnApcToggleMainBreaker);
         SubscribeLocalEvent<EmpDisabledComponent, SurveillanceCameraSetActiveAttemptEvent>(OnCameraSetActive);
-
-        SubscribeLocalEvent<EmpOnCollideComponent, ProjectileHitEvent>(OnProjectileHit); ///ADT ion
     }
 
     /// <summary>
@@ -42,45 +48,6 @@ public sealed class EmpSystem : SharedEmpSystem
     /// <param name="energyConsumption">The amount of energy consumed by the EMP pulse.</param>
     /// <param name="duration">The duration of the EMP effects.</param>
     public void EmpPulse(MapCoordinates coordinates, float range, float energyConsumption, float duration)
-    {
-        /*
-        foreach (var uid in _lookup.GetEntitiesInRange(coordinates, range))
-        {
-            TryEmpEffects(uid, energyConsumption, duration);
-        }
-        Spawn(EmpPulseEffectPrototype, coordinates);
-        */
-
-        ///ADT-Tweak IPC start
-        foreach (var uid in _lookup.GetEntitiesInRange(coordinates, range))
-        {
-            if (HasComp<EmpProtectionComponent>(uid))
-                continue;
-
-            var ev = new EmpPulseEvent(energyConsumption, false, false, TimeSpan.FromSeconds(duration)); // Parkstation-IPCs
-            RaiseLocalEvent(uid, ref ev);
-            if (ev.Affected)
-            {
-                Spawn(EmpDisabledEffectPrototype, Transform(uid).Coordinates);
-            }
-            if (ev.Disabled)
-            {
-                var disabled = EnsureComp<EmpDisabledComponent>(uid);
-                disabled.DisabledUntil = Timing.CurTime + TimeSpan.FromSeconds(duration);
-            }
-        }
-        Spawn(EmpPulseEffectPrototype, coordinates);
-        ///ADT-Tweak IPC end
-    }
-
-    /// <summary>
-    ///   Triggers an EMP pulse at the given location, by first raising an <see cref="EmpAttemptEvent"/>, then a raising <see cref="EmpPulseEvent"/> on all entities in range.
-    /// </summary>
-    /// <param name="coordinates">The location to trigger the EMP pulse at.</param>
-    /// <param name="range">The range of the EMP pulse.</param>
-    /// <param name="energyConsumption">The amount of energy consumed by the EMP pulse.</param>
-    /// <param name="duration">The duration of the EMP effects.</param>
-    public void EmpPulse(EntityCoordinates coordinates, float range, float energyConsumption, float duration)
     {
         foreach (var uid in _lookup.GetEntitiesInRange(coordinates, range))
         {
@@ -97,7 +64,6 @@ public sealed class EmpSystem : SharedEmpSystem
     /// <param name="duration">The duration of the EMP effects.</param>
     public void TryEmpEffects(EntityUid uid, float energyConsumption, float duration)
     {
-        if (HasComp<EmpProtectionComponent>(uid)) return; //ADT tweak
         var attemptEv = new EmpAttemptEvent();
         RaiseLocalEvent(uid, attemptEv);
         if (attemptEv.Cancelled)
@@ -173,17 +139,6 @@ public sealed class EmpSystem : SharedEmpSystem
     {
         args.Cancelled = true;
     }
-
-    ///ADT ion start
-    private void OnProjectileHit(EntityUid uid, EmpOnCollideComponent component, ref ProjectileHitEvent args)
-    {
-        TryEmpEffects(args.Target, component.EnergyConsumption, component.DisableDuration);
-        if (!TryComp<InventoryComponent>(args.Target, out var inventory))
-            return;
-        if (_charger.SearchForBattery(args.Target, out var batteryEnt, out var batteryComp))
-            TryEmpEffects(batteryEnt.Value, component.EnergyConsumption, component.DisableDuration);
-    }
-    ///ADT ion end
 }
 
 /// <summary>
@@ -194,7 +149,7 @@ public sealed partial class EmpAttemptEvent : CancellableEntityEventArgs
 }
 
 [ByRefEvent]
-public record struct EmpPulseEvent(float EnergyConsumption, bool Affected, bool Disabled, TimeSpan Duration); // Parkstation-IPCs
+public record struct EmpPulseEvent(float EnergyConsumption, bool Affected, bool Disabled, TimeSpan Duration);
 
 [ByRefEvent]
 public record struct EmpDisabledRemoved();

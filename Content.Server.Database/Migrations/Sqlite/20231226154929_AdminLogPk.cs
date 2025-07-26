@@ -1,4 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -10,9 +15,9 @@ namespace Content.Server.Database.Migrations.Sqlite
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            // migrationBuilder.DropForeignKey(
-            //     name: "FK_admin_log_player_admin_log_log_id_round_id",
-            //     table: "admin_log_player");
+            migrationBuilder.DropForeignKey(
+                name: "FK_admin_log_player_admin_log_log_id_round_id",
+                table: "admin_log_player");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_admin_log_player",

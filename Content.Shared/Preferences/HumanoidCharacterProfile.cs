@@ -1,13 +1,56 @@
+// SPDX-FileCopyrightText: 2019 Pieter-Jan Briers <pieterjan.briers@gmail.com>
+// SPDX-FileCopyrightText: 2020 20kdc <asdd2808@gmail.com>
+// SPDX-FileCopyrightText: 2020 DamianX <DamianX@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
+// SPDX-FileCopyrightText: 2021 Metal Gear Sloth <metalgearsloth@gmail.com>
+// SPDX-FileCopyrightText: 2021 Remie Richards <remierichards@gmail.com>
+// SPDX-FileCopyrightText: 2021 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
+// SPDX-FileCopyrightText: 2021 ike709 <ike709@github.com>
+// SPDX-FileCopyrightText: 2021 ike709 <ike709@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Javier Guardia Fernández <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 T-Stalker <43253663+DogZeroX@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Veritius <veritiusgaming@gmail.com>
+// SPDX-FileCopyrightText: 2022 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Flipp Syder <76629141+vulppine@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Morb <14136326+Morb0@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Ciac32 <aknoxlor@gmail.com>
+// SPDX-FileCopyrightText: 2024 Debug <49997488+DebugOk@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Firewatch <54725557+musicmanvr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Krunklehorn <42424291+Krunklehorn@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Mr. 27 <koolthunder019@gmail.com>
+// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2024 PoTeletubby <151896601+PoTeletubby@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Whisper <121047731+QuietlyWhisper@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 dffdff2423 <dffdff2423@gmail.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Hyper B <137433177+HyperB1@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Linq;
 using System.Text.RegularExpressions;
-using Content.Shared.ADT.Language;
-using Content.Shared.ADT.SpeechBarks;
 using Content.Shared.CCVar;
-using Content.Shared.Corvax.TTS;
+using Content.Shared.Dataset;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences.Loadouts;
+using Content.Shared.Random.Helpers;
 using Content.Shared.Roles;
 using Content.Shared.Traits;
 using Robust.Shared.Collections;
@@ -28,10 +71,10 @@ namespace Content.Shared.Preferences
     [Serializable, NetSerializable]
     public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     {
-        private static readonly Regex RestrictedNameRegex = new("[^А-Яа-яёЁ0-9' -]"); // Corvax-Localization
+        private static readonly Regex RestrictedNameRegex = new("[^A-Z, ,a-z,0-9,А-Яа-яёЁ0-9,\\-,']"); //Reserve-Localization
         private static readonly Regex ICNameCaseRegex = new(@"^(?<word>\w)|\b(?<word>\w)(?=\w*$)");
 
-        public const int MaxNameLength = 96;    // ну тип ADT
+        public const int MaxNameLength = 32;
         public const int MaxLoadoutNameLength = 32;
         public const int MaxDescLength = 512;
 
@@ -82,10 +125,12 @@ namespace Content.Shared.Preferences
         public ProtoId<SpeciesPrototype> Species { get; set; } = SharedHumanoidAppearanceSystem.DefaultSpecies;
 
         [DataField]
-        public string Voice { get; set; } = SharedHumanoidAppearanceSystem.DefaultVoice;
+        public int Age { get; set; } = 18;
+
+        // #Goobstation - Prefered Borg Name Stuff
 
         [DataField]
-        public int Age { get; set; } = 18;
+        public string BorgName { get; set; } = "Genero-Bot";
 
         [DataField]
         public Sex Sex { get; private set; } = Sex.Male;
@@ -110,16 +155,6 @@ namespace Content.Shared.Preferences
         [DataField]
         public SpawnPriorityPreference SpawnPriority { get; private set; } = SpawnPriorityPreference.None;
 
-        // ADT Barks start
-        public BarkData Bark = new();
-        // ADT Barks end
-        // ADT Languages start
-        [DataField]
-        private HashSet<ProtoId<LanguagePrototype>> _languages = new();
-
-        public IReadOnlySet<ProtoId<LanguagePrototype>> Languages => _languages;
-        // ADT Languages end
-
         /// <summary>
         /// <see cref="_jobPriorities"/>
         /// </summary>
@@ -129,6 +164,7 @@ namespace Content.Shared.Preferences
         /// <see cref="_antagPreferences"/>
         /// </summary>
         public IReadOnlySet<ProtoId<AntagPrototype>> AntagPreferences => _antagPreferences;
+
         /// <summary>
         /// <see cref="_traitPreferences"/>
         /// </summary>
@@ -140,12 +176,12 @@ namespace Content.Shared.Preferences
         [DataField]
         public PreferenceUnavailableMode PreferenceUnavailable { get; private set; } =
             PreferenceUnavailableMode.SpawnAsOverflow;
-
+        // #Goobstation - Borg Preferred Name (borgname)
         public HumanoidCharacterProfile(
             string name,
             string flavortext,
             string species,
-            string voice, // Corvax-TTS
+            string borgname,
             int age,
             Sex sex,
             Gender gender,
@@ -155,16 +191,13 @@ namespace Content.Shared.Preferences
             PreferenceUnavailableMode preferenceUnavailable,
             HashSet<ProtoId<AntagPrototype>> antagPreferences,
             HashSet<ProtoId<TraitPrototype>> traitPreferences,
-            Dictionary<string, RoleLoadout> loadouts,
-            // ADT start
-            BarkData bark,
-            HashSet<ProtoId<LanguagePrototype>> languages)
-            // ADT end
+            Dictionary<string, RoleLoadout> loadouts)
+
         {
             Name = name;
             FlavorText = flavortext;
             Species = species;
-            Voice = voice; // Corvax-TTS
+            BorgName = borgname;
             Age = age;
             Sex = sex;
             Gender = gender;
@@ -175,10 +208,6 @@ namespace Content.Shared.Preferences
             _antagPreferences = antagPreferences;
             _traitPreferences = traitPreferences;
             _loadouts = loadouts;
-            // ADT start
-            Bark = bark;
-            _languages = languages;
-            // ADT end
 
             var hasHighPrority = false;
             foreach (var (key, value) in _jobPriorities)
@@ -200,7 +229,8 @@ namespace Content.Shared.Preferences
             : this(other.Name,
                 other.FlavorText,
                 other.Species,
-                other.Voice,
+                // #Goobstation - Borg Preferred Name
+                other.BorgName,
                 other.Age,
                 other.Sex,
                 other.Gender,
@@ -210,11 +240,7 @@ namespace Content.Shared.Preferences
                 other.PreferenceUnavailable,
                 new HashSet<ProtoId<AntagPrototype>>(other.AntagPreferences),
                 new HashSet<ProtoId<TraitPrototype>>(other.TraitPreferences),
-                new Dictionary<string, RoleLoadout>(other.Loadouts),
-                // ADT start
-                other.Bark,
-                other._languages)
-                // ADT end
+                new Dictionary<string, RoleLoadout>(other.Loadouts))
         {
         }
 
@@ -234,11 +260,9 @@ namespace Content.Shared.Preferences
         /// <returns>Humanoid character profile with default settings.</returns>
         public static HumanoidCharacterProfile DefaultWithSpecies(string species = SharedHumanoidAppearanceSystem.DefaultSpecies)
         {
-            var proto = IoCManager.Resolve<IPrototypeManager>();    // ADT Languages
             return new()
             {
                 Species = species,
-                _languages = proto.Index<SpeciesPrototype>(species).DefaultLanguages.ToHashSet()    // ADT Languages
             };
         }
 
@@ -264,20 +288,11 @@ namespace Content.Shared.Preferences
 
             var sex = Sex.Unsexed;
             var age = 18;
-            HashSet<ProtoId<LanguagePrototype>> languages = new();  // ADT Languages
             if (prototypeManager.TryIndex<SpeciesPrototype>(species, out var speciesPrototype))
             {
                 sex = random.Pick(speciesPrototype.Sexes);
                 age = random.Next(speciesPrototype.MinAge, speciesPrototype.OldAge); // people don't look and keep making 119 year old characters with zero rp, cap it at middle aged
-                languages = speciesPrototype.DefaultLanguages.ToHashSet();  // ADT Languages
             }
-
-            // Corvax-TTS-Start
-            var voiceId = random.Pick(prototypeManager
-                .EnumeratePrototypes<TTSVoicePrototype>()
-                .Where(o => CanHaveVoice(o, sex)).ToArray()
-            ).ID;
-            // Corvax-TTS-End
 
             var gender = Gender.Epicene;
 
@@ -293,16 +308,18 @@ namespace Content.Shared.Preferences
 
             var name = GetName(species, gender);
 
+            // #Goobstation - Borg Preferred Name
+            var borgname = GetBorgName();
+
             return new HumanoidCharacterProfile()
             {
                 Name = name,
+                BorgName = borgname,
                 Sex = sex,
                 Age = age,
                 Gender = gender,
                 Species = species,
-                Voice = voiceId, // Corvax-TTS
                 Appearance = HumanoidCharacterAppearance.Random(species, sex),
-                _languages = languages,
             };
         }
 
@@ -321,6 +338,13 @@ namespace Content.Shared.Preferences
             return new(this) { Age = age };
         }
 
+        // #Goobstation - Borg Stuff (see above for more borgname things
+
+        public HumanoidCharacterProfile WithBorgName(string borgname)
+        {
+            return new(this) { BorgName = borgname };
+        }
+
         public HumanoidCharacterProfile WithSex(Sex sex)
         {
             return new(this) { Sex = sex };
@@ -336,46 +360,7 @@ namespace Content.Shared.Preferences
             return new(this) { Species = species };
         }
 
-        // Corvax-TTS-Start
-        public HumanoidCharacterProfile WithVoice(string voice)
-        {
-            return new(this) { Voice = voice };
-        }
-        // Corvax-TTS-End
 
-        // ADT Barks start
-        public HumanoidCharacterProfile WithBarkProto(string bark)
-        {
-            return new(this)
-            {
-                Bark = Bark.WithProto(bark),
-            };
-        }
-
-        public HumanoidCharacterProfile WithBarkPitch(float pitch)
-        {
-            return new(this)
-            {
-                Bark = Bark.WithPitch(pitch),
-            };
-        }
-
-        public HumanoidCharacterProfile WithBarkMinVariation(float variation)
-        {
-            return new(this)
-            {
-                Bark = Bark.WithMinVar(variation),
-            };
-        }
-
-        public HumanoidCharacterProfile WithBarkMaxVariation(float variation)
-        {
-            return new(this)
-            {
-                Bark = Bark.WithMaxVar(variation),
-            };
-        }
-        // ADT Barks end
         public HumanoidCharacterProfile WithCharacterAppearance(HumanoidCharacterAppearance appearance)
         {
             return new(this) { Appearance = appearance };
@@ -448,7 +433,7 @@ namespace Content.Shared.Preferences
         {
             return new(this)
             {
-                _antagPreferences = new (antagPreferences),
+                _antagPreferences = new(antagPreferences),
             };
         }
 
@@ -541,8 +526,9 @@ namespace Content.Shared.Preferences
         {
             if (maybeOther is not HumanoidCharacterProfile other) return false;
             if (Name != other.Name) return false;
-            if (Voice != other.Voice) return false; //ADT-TTS-Tweak
             if (Age != other.Age) return false;
+            // #Goobstation - Borg Preferred Name
+            if (BorgName != other.BorgName) return false;
             if (Sex != other.Sex) return false;
             if (Gender != other.Gender) return false;
             if (Species != other.Species) return false;
@@ -551,16 +537,12 @@ namespace Content.Shared.Preferences
             if (!_jobPriorities.SequenceEqual(other._jobPriorities)) return false;
             if (!_antagPreferences.SequenceEqual(other._antagPreferences)) return false;
             if (!_traitPreferences.SequenceEqual(other._traitPreferences)) return false;
-            if (!_languages.SequenceEqual(other._languages)) return false;  // ADT Languages
             if (!Loadouts.SequenceEqual(other.Loadouts)) return false;
             if (FlavorText != other.FlavorText) return false;
-            // ADT Barks start
-            if (!Bark.MemberwiseEquals(other.Bark)) return false;
-            // ADT Barks end
             return Appearance.MemberwiseEquals(other.Appearance);
         }
 
-        public void EnsureValid(ICommonSession session, IDependencyCollection collection, string[] sponsorPrototypes)
+        public void EnsureValid(ICommonSession session, IDependencyCollection collection)
         {
             var configManager = collection.Resolve<IConfigurationManager>();
             var prototypeManager = collection.Resolve<IPrototypeManager>();
@@ -570,14 +552,6 @@ namespace Content.Shared.Preferences
                 Species = SharedHumanoidAppearanceSystem.DefaultSpecies;
                 speciesPrototype = prototypeManager.Index(Species);
             }
-
-            // Corvax-Sponsors-Start: Reset to human if player not sponsor
-            if (speciesPrototype.SponsorOnly && !sponsorPrototypes.Contains(Species.Id))
-            {
-                Species = SharedHumanoidAppearanceSystem.DefaultSpecies;
-                speciesPrototype = prototypeManager.Index(Species);
-            }
-            // Corvax-Sponsors-End
 
             var sex = Sex switch
             {
@@ -618,6 +592,7 @@ namespace Content.Shared.Preferences
 
             name = name.Trim();
 
+
             if (configManager.GetCVar(CCVars.RestrictedNames))
             {
                 name = RestrictedNameRegex.Replace(name, string.Empty);
@@ -634,6 +609,7 @@ namespace Content.Shared.Preferences
                 name = GetName(Species, gender);
             }
 
+
             string flavortext;
             if (FlavorText.Length > MaxDescLength)
             {
@@ -643,8 +619,29 @@ namespace Content.Shared.Preferences
             {
                 flavortext = FormattedMessage.RemoveMarkupOrThrow(FlavorText);
             }
+            // #Goobstation - Borg Preferred Name
+            string borgname;
+            if (string.IsNullOrEmpty(BorgName))
+            {
+                borgname = GetBorgName();
+            }
+            else if (BorgName.Length > MaxNameLength)
+            {
+                borgname = BorgName[..MaxNameLength];
+            }
+            else
+            {
+                borgname = BorgName;
+            }
 
-            var appearance = HumanoidCharacterAppearance.EnsureValid(Appearance, Species, Sex, sponsorPrototypes);
+            borgname = borgname.Trim();
+
+            if (string.IsNullOrEmpty(borgname))
+            {
+                borgname = GetBorgName();
+            }
+
+            var appearance = HumanoidCharacterAppearance.EnsureValid(Appearance, Species, Sex);
 
             var prefsUnavailableMode = PreferenceUnavailable switch
             {
@@ -692,6 +689,8 @@ namespace Content.Shared.Preferences
 
             Name = name;
             FlavorText = flavortext;
+            // #Goobstation - Borg Preferred Name
+            BorgName = borgname;
             Age = age;
             Sex = sex;
             Gender = gender;
@@ -713,12 +712,6 @@ namespace Content.Shared.Preferences
             _traitPreferences.Clear();
             _traitPreferences.UnionWith(GetValidTraits(traits, prototypeManager));
 
-            // Corvax-TTS-Start
-            prototypeManager.TryIndex<TTSVoicePrototype>(Voice, out var voice);
-            if (voice is null || !CanHaveVoice(voice, Sex))
-                Voice = SharedHumanoidAppearanceSystem.DefaultSexVoice[sex];
-            // Corvax-TTS-End
-
             // Checks prototypes exist for all loadouts and dump / set to default if not.
             var toRemove = new ValueList<string>();
 
@@ -737,23 +730,6 @@ namespace Content.Shared.Preferences
             {
                 _loadouts.Remove(value);
             }
-
-            // ADT start
-            if (_languages.Count <= 0)
-                _languages = new(speciesPrototype.DefaultLanguages);
-            List<ProtoId<LanguagePrototype>> langsInvalid = new();
-            foreach (var language in _languages)
-            {
-                if (!prototypeManager.Index(language).Roundstart && !speciesPrototype.UniqueLanguages.Contains(language))
-                    langsInvalid.Add(language);
-            }
-            foreach (var lang in langsInvalid)
-            {
-                _languages.Remove(lang);
-            }
-
-            GetQuirkPoints();
-            // ADT end
         }
 
         /// <summary>
@@ -795,18 +771,10 @@ namespace Content.Shared.Preferences
             return result;
         }
 
-        // Corvax-TTS-Start
-        // SHOULD BE NOT PUBLIC, BUT....
-        public static bool CanHaveVoice(TTSVoicePrototype voice, Sex sex)
-        {
-            return voice.RoundStart && sex == Sex.Unsexed || (voice.Sex == sex || voice.Sex == Sex.Unsexed);
-        }
-        // Corvax-TTS-End
-
-        public ICharacterProfile Validated(ICommonSession session, IDependencyCollection collection, string[] sponsorPrototypes)
+        public ICharacterProfile Validated(ICommonSession session, IDependencyCollection collection)
         {
             var profile = new HumanoidCharacterProfile(this);
-            profile.EnsureValid(session, collection, sponsorPrototypes);
+            profile.EnsureValid(session, collection);
             return profile;
         }
 
@@ -816,6 +784,15 @@ namespace Content.Shared.Preferences
         {
             var namingSystem = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<NamingSystem>();
             return namingSystem.GetName(species, gender);
+        }
+        // #Goobstation - Borg Preferred Name
+        public static string GetBorgName()
+        {
+            var random = IoCManager.Resolve<IRobustRandom>();
+            var prototypeSystem = IoCManager.Resolve<IPrototypeManager>();
+            var prototype = prototypeSystem.Index<LocalizedDatasetPrototype>("NamesBorg");
+            return random.Pick(prototype);
+
         }
 
         public override bool Equals(object? obj)
@@ -832,14 +809,15 @@ namespace Content.Shared.Preferences
             hashCode.Add(_loadouts);
             hashCode.Add(Name);
             hashCode.Add(FlavorText);
+            // #Goobstation - Borg Preferred Name
+            hashCode.Add(BorgName);
             hashCode.Add(Species);
             hashCode.Add(Age);
-            hashCode.Add((int)Sex);
-            hashCode.Add(Voice); //ADT-TTS-Tweak
-            hashCode.Add((int)Gender);
+            hashCode.Add((int) Sex);
+            hashCode.Add((int) Gender);
             hashCode.Add(Appearance);
-            hashCode.Add((int)SpawnPriority);
-            hashCode.Add((int)PreferenceUnavailable);
+            hashCode.Add((int) SpawnPriority);
+            hashCode.Add((int) PreferenceUnavailable);
             return hashCode.ToHashCode();
         }
 
@@ -883,84 +861,5 @@ namespace Content.Shared.Preferences
         {
             return new HumanoidCharacterProfile(this);
         }
-
-        // ADT start
-        public HumanoidCharacterProfile WithLanguage(ProtoId<LanguagePrototype> language)
-        {
-            var proto = IoCManager.Resolve<IPrototypeManager>();
-            var species = proto.Index(Species);
-            if (!proto.Index(language).Roundstart && !species.UniqueLanguages.Contains(language))
-                return new(this);
-            if (_languages.Contains(language))
-                return new(this);
-            if (_languages.Count >= species.MaxLanguages)
-                return new(this);
-
-            HashSet<ProtoId<LanguagePrototype>> list = new(_languages);
-            list.Add(language);
-
-            return new(this)
-            {
-                _languages = list,
-            };
-        }
-
-        public HumanoidCharacterProfile WithoutLanguage(ProtoId<LanguagePrototype> language)
-        {
-            var proto = IoCManager.Resolve<IPrototypeManager>();
-            var species = proto.Index(Species);
-            if (!proto.Index(language).Roundstart && !species.UniqueLanguages.Contains(language))
-                return new(this);
-            if (!_languages.Contains(language))
-                return new(this);
-            if (_languages.Count <= 1)
-                return new(this);
-
-            HashSet<ProtoId<LanguagePrototype>> list = new(_languages);
-            list.Remove(language);
-
-            return new(this)
-            {
-                _languages = list,
-            };
-        }
-
-        public bool CanToggleQuirk(TraitPrototype proto)
-        {
-            var protoMan = IoCManager.Resolve<IPrototypeManager>();
-            var list = TraitPreferences.Where(x => protoMan.Index(x).Quirk);
-
-            int points = 0;
-            foreach (var item in list)
-            {
-                points -= protoMan.Index(item).Cost;
-            }
-
-            if (list.Contains(proto.ID) && points + proto.Cost < 0)
-                return false;
-            else if (!list.Contains(proto.ID) && points < proto.Cost)
-                return false;
-
-            return true;
-        }
-
-        public int GetQuirkPoints()
-        {
-            var count = 0;
-            var proto = IoCManager.Resolve<IPrototypeManager>();
-            var quirks = TraitPreferences.Where(x => proto.Index(x).Quirk);
-            foreach (var item in quirks)
-            {
-                count += proto.Index(item).Cost;
-            }
-            if (count > 0)
-            {
-                _traitPreferences.Clear();
-                count = 0;
-            }
-
-            return -count;
-        }
-        // ADT end
     }
 }

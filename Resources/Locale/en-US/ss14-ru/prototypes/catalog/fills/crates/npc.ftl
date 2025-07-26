@@ -46,5 +46,5 @@ ent-CrateNPCLizard = lizard crate
     .desc = A crate containing a lizard.
 ent-CrateNPCKangaroo = kangaroo crate
     .desc = A crate containing a kangaroo.
-ent-CrateNPCMothroach = crate of mothroaches
-    .desc = A crate containing four mothroaches.
+ent-CrateNPCMothroach = crate of moth maggots
+    .desc = A crate containing four moth maggots.

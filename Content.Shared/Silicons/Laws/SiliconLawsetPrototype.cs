@@ -1,4 +1,11 @@
-﻿using Content.Shared.FixedPoint;
+// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2024 Jajsha <101492056+Zap527@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
@@ -79,12 +86,4 @@ public sealed partial class SiliconLawsetPrototype : IPrototype
     /// </summary>
     [DataField(required: true), ViewVariables(VVAccess.ReadWrite)]
     public string ObeysTo = string.Empty;
-
-    // ADT SAI Custom start
-    [DataField]
-    public int Priority = 0;
-
-    [DataField]
-    public bool Roundstart = false;
-    // ADT SAI Custom end
 }

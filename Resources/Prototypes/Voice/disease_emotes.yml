@@ -1,28 +1,19 @@
+# SPDX-FileCopyrightText: 2023 Flipp Syder <76629141+vulppine@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 brainfood1183 <113240905+brainfood1183@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
+# SPDX-FileCopyrightText: 2024 Morb <14136326+Morb0@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Ty Ashley <42426760+TyAshley@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Unkn0wn_Gh0st <shadowstalkermll@gmail.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: emote
   id: Sneeze
   name: chat-emote-name-sneeze
   category: Vocal
   chatMessages: ["chat-emote-msg-sneeze"]
-  # ADT tweak start
-  icon: Interface/Emotes/yawn.png
-  whitelist:
-    components:
-    - Vocal
-  blacklist:
-    components:
-    - BorgChassis
-    # ADT tweak start
-    tags:
-    - ADTSiliconEmotes
-    # ADT tweak end
-  chatTriggers:
-    - sneeze
-    - sneezes
-    - чихнул
-    - чихнула
-    - чихнуло
-    - чихает
-  # ADT tweak end
 
 - type: emote
   id: Cough
@@ -33,22 +24,19 @@
     components:
     - Vocal
   blacklist:
-    tags:
-    - SiliconEmotes
+    components:
+    - BorgChassis
   chatMessages: ["chat-emote-msg-cough"]
   chatTriggers:
     - cough
     - coughs
-    - coughed
-    # Corvax-Localization-Start
-    - кашель
-    - кашляет
-    - кашлянул
-    # Corvax-Localization-End
-    # Start-ADT-Tweak-AddComp-BloodCough
-    - кашляет кровью
-    - кашляет плазмой
-    # End-ADT-Tweak-AddComp-BloodCough
+    - coughed 
+    - cough.
+    - coughs.
+    - coughed.
+    - cough!
+    - coughs!
+    - coughed!
 
 - type: emote
   id: CatMeow
@@ -83,16 +71,12 @@
     components:
     - Vocal
   blacklist:
-    tags:
-    - SiliconEmotes
+    components:
+    - BorgChassis
   chatMessages: ["chat-emote-msg-yawn"]
   chatTriggers:
     - yawn
     - yawns
-    # Corvax-Localization-Start
-    - зевок
-    - зевает
-    # Corvax-Localization-End
 
 - type: emote
   id: Snore

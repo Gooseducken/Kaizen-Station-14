@@ -1,0 +1,12 @@
+C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.ModuleManager\bin\DebugOpt\net9.0\Content.ModuleManager.deps.json
+C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.ModuleManager\bin\DebugOpt\net9.0\Content.ModuleManager.dll
+C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.ModuleManager\bin\DebugOpt\net9.0\Content.ModuleManager.pdb
+C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.ModuleManager\obj\DebugOpt\net9.0\Content.ModuleManager.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.ModuleManager\obj\DebugOpt\net9.0\Content.ModuleManager.AssemblyInfoInputs.cache
+C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.ModuleManager\obj\DebugOpt\net9.0\Content.ModuleManager.AssemblyInfo.cs
+C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.ModuleManager\obj\DebugOpt\net9.0\Content.ModuleManager.csproj.CoreCompileInputs.cache
+C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.ModuleManager\obj\DebugOpt\net9.0\Content.ModuleManager.sourcelink.json
+C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.ModuleManager\obj\DebugOpt\net9.0\Content.ModuleManager.dll
+C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.ModuleManager\obj\DebugOpt\net9.0\refint\Content.ModuleManager.dll
+C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.ModuleManager\obj\DebugOpt\net9.0\Content.ModuleManager.pdb
+C:\Users\goose\Documents\GitHub\Kaizen-Station-14\Content.ModuleManager\obj\DebugOpt\net9.0\ref\Content.ModuleManager.dll

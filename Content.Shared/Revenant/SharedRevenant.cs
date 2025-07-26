@@ -1,3 +1,11 @@
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 keronshb <keronshb@live.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Actions;
 using Content.Shared.DoAfter;
 using Robust.Shared.Serialization;
@@ -46,6 +54,10 @@ public sealed partial class RevenantShopActionEvent : InstantActionEvent
 {
 }
 
+public sealed partial class RevenantHauntActionEvent : InstantActionEvent // Imp
+{
+}
+
 public sealed partial class RevenantDefileActionEvent : InstantActionEvent
 {
 }
@@ -62,19 +74,34 @@ public sealed partial class RevenantMalfunctionActionEvent : InstantActionEvent
 {
 }
 
-// ADT Revenant upd start
-public sealed partial class RevenantHysteriaActionEvent : InstantActionEvent
+public sealed partial class RevenantBloodWritingEvent : InstantActionEvent // Begin Imp Changes
 {
 }
 
-public sealed partial class RevenantGhostSmokeActionEvent : InstantActionEvent
+public sealed partial class RevenantAnimateEvent : EntityTargetActionEvent
 {
 }
 
-public sealed partial class RevenantLockActionEvent : InstantActionEvent
+[Serializable, NetSerializable]
+public sealed partial class RevenantHauntWitnessEvent : EntityEventArgs
 {
+    public HashSet<NetEntity> Witnesses = new();
+
+    public RevenantHauntWitnessEvent(HashSet<NetEntity> witnesses)
+    {
+        Witnesses = witnesses;
+    }
+
+    public RevenantHauntWitnessEvent() : this(new())
+    {
+    }
 }
-// ADT Revenant upd end
+
+[Serializable, NetSerializable]
+public sealed partial class ExorciseRevenantDoAfterEvent : SimpleDoAfterEvent
+{
+} // End Imp Changes
+
 
 [NetSerializable, Serializable]
 public enum RevenantVisuals : byte
@@ -91,17 +118,3 @@ public enum RevenantVisualLayers : byte
     Digit2,
     Digit3
 }
-
-// ADT Content start
-[NetSerializable, Serializable]
-[DataDefinition]
-public sealed partial class AddRevenantShieldEvent : EntityEventArgs
-{
-}
-
-[NetSerializable, Serializable]
-[DataDefinition]
-public sealed partial class StartRevenantMiseryEvent : EntityEventArgs
-{
-}
-// ADT Content end

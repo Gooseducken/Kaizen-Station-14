@@ -1,8 +1,22 @@
+# SPDX-FileCopyrightText: 2022 Emisse <99158783+Emisse@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 Vordenburg <114301317+Vordenburg@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+# SPDX-FileCopyrightText: 2023 Ubaser <134914314+UbaserB@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 EmoGarbage404 <retron404@gmail.com>
+# SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
+# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+# SPDX-FileCopyrightText: 2024 pigeonpeas <147350443+pigeonpeas@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ApolloVector <149586366+ApolloVector@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   parent: [ClothingNeckBase, BaseCommandContraband]
   id: ClothingNeckMantleCap
   name: captain's mantle
-  description: A formal mantle to drape around the shoulders. Others stand on the shoulders of giants. You're the giant they stand on.  # Corvax-Resprite
+  description: A comfortable and chique mantle befitting of only the most experienced captain.
   components:
   - type: Sprite
     sprite: Clothing/Neck/mantles/capmantle.rsi
@@ -13,7 +27,7 @@
   parent: [ClothingNeckBase, BaseCommandContraband]
   id: ClothingNeckMantleCE
   name: chief engineer's mantle
-  description: A bright white and yellow striped mantle. Do not wear around active machinery.  # Corvax-Resprite
+  description: High visibility, check. RIG system, check. High capacity cell, check. Everything a chief engineer could need in a stylish mantle.
   components:
   - type: Sprite
     sprite: Clothing/Neck/mantles/cemantle.rsi
@@ -24,7 +38,7 @@
   parent: [ClothingNeckBase, BaseCommandContraband]
   id: ClothingNeckMantleCMO
   name: chief medical officer's mantle
-  description: A light blue shoulder draping for THE medical professional. Contrasts well with blood.  # Corvax-Resprite
+  description: For a CMO that has been in enough medbays to know that more PPE means less central command dry cleaning visits when the shift is over.
   components:
   - type: Sprite
     sprite: Clothing/Neck/mantles/cmomantle.rsi
@@ -35,7 +49,7 @@
   parent: [ClothingNeckBase, BaseCommandContraband]
   id: ClothingNeckMantleHOP
   name: head of personnel's mantle
-  description: A decorative draping of blue and red over your shoulders, signifying your stamping prowess.  # Corvax-Resprite
+  description: A good HOP knows that paper pushing is only half the job... petting your dog and looking fashionable is the other half.
   components:
   - type: Sprite
     sprite: Clothing/Neck/mantles/hopmantle.rsi
@@ -57,7 +71,7 @@
   parent: [ClothingNeckBase, BaseCommandContraband]
   id: ClothingNeckMantleRD
   name: research director's mantle
-  description: A terribly comfortable shoulder draping for the discerning scientist of fashion.  # Corvax-Resprite
+  description: For when long days in the office consist of explosives, poisonous gas, murder robots, and a fresh pizza from cargo; this mantle will keep you comfy.
   components:
   - type: Sprite
     sprite: Clothing/Neck/mantles/rdmantle.rsi
@@ -84,4 +98,4 @@
   - type: Sprite
     sprite: Clothing/Neck/mantles/mantle.rsi
   - type: Clothing
-    sprite: Clothing/Neck/mantles/mantle.rsi
+    sprite: Clothing/Neck/mantles/mantle.rsi 

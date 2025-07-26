@@ -1,4 +1,10 @@
-﻿- type: constructionGraph
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 August Sun <45527070+august-sun@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 august-sun <45527070+august.sun@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: constructionGraph
   id: HardsuitGoliath
   start: start
   graph:
@@ -10,13 +16,13 @@
         icon:
           sprite: Clothing/OuterClothing/Hardsuits/spatio.rsi
           state: icon
-        name: construction-graph-tag-spationaut-hardsuit
+        name: spationaut hardsuit
         doAfter: 10
       - material: Durathread
         amount: 5
         doAfter: 10
       - material: GoliathHide
-        amount: 4 # ADT tweak 12 >> 4
+        amount: 12
         doAfter: 10
   - node: hardsuitGoliath
     entity: ClothingOuterHardsuitGoliath

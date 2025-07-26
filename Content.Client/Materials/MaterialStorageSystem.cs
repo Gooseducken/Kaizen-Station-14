@@ -1,3 +1,12 @@
+// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Materials;
 using Robust.Client.GameObjects;
 
@@ -45,8 +54,7 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
         EntityUid receiver,
         MaterialStorageComponent? storage = null,
         MaterialComponent? material = null,
-        PhysicalCompositionComponent? composition = null,
-        bool showPopup = true) // ADT tweak
+        PhysicalCompositionComponent? composition = null)
     {
         if (!base.TryInsertMaterialEntity(user, toInsert, receiver, storage, material, composition))
             return false;

@@ -1,15 +1,30 @@
+<!--
+SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+SPDX-FileCopyrightText: 2023 Myakot <30875116+Myakot@users.noreply.github.com>
+SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
+SPDX-FileCopyrightText: 2023 Warentan <113652968+Warentan@users.noreply.github.com>
+SPDX-FileCopyrightText: 2023 end <72604018+laok233@users.noreply.github.com>
+SPDX-FileCopyrightText: 2024 Kira Bridgeton <161087999+Verbalase@users.noreply.github.com>
+SPDX-FileCopyrightText: 2024 Terraspark4941 <terraspark4941@gmail.com>
+SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
+SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+SPDX-FileCopyrightText: 2025 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
+
+SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+
 <Document>
 # Двигатель антиматерии (ДАМ)
 
 Двигатель антиматерии — один из самых простых в применении генераторов электроэнергии. Соберите мультиблоковую структуру генератора на небольшой площади, закиньте баллон топлива, и всё готово. Однако, это не означает что этот тип генератора является полностью безопасным, потенциальной опасностью является риск его перегрева.
 
-  ## Construction
-  <Box>Required parts:</Box>
-  <Box>
-  <GuideEntityEmbed Entity="AmeController"/>
-  <GuideEntityEmbed Entity="AmePartFlatpack"/>
-  <GuideEntityEmbed Entity="AmeJar"/>
-  </Box>
+## Строительство
+<Box>Требуемые компоненты:</Box>
+<Box>
+<GuideEntityEmbed Entity="AmeController"/>
+<GuideEntityEmbed Entity="AmePartFlatpack"/>
+<GuideEntityEmbed Entity="AmeJar"/>
+</Box>
 
 Начните сборку ДАМ с установки и закрепления контроллера ДАМ на ВВ кабеле. На многих станциях в генераторных на полу имеются решётчатые мостики, которые упростят понимание где что, и куда. Разложите части ДАМ квадратом минимум 3 на 3, старайтесь максимизировать количество "центральных" ядер ДАМ, такие ядра должны быть окружены другими частями со всех 8-ми сторон.
 

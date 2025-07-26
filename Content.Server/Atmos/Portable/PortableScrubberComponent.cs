@@ -1,3 +1,15 @@
+// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Steve <marlumpy@gmail.com>
+// SPDX-FileCopyrightText: 2025 marc-pelletier <113944176+marc-pelletier@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Atmos;
 using Content.Shared.Guidebook;
 
@@ -30,19 +42,9 @@ namespace Content.Server.Atmos.Portable
             Gas.Ammonia,
             Gas.NitrousOxide,
             Gas.Frezon,
-            //ADT-Gas-Start
-            Gas.BZ,
-            Gas.Pluoxium,
-            Gas.Hydrogen,
-            Gas.Nitrium,
-            Gas.Healium,
-            Gas.HyperNoblium,
-            Gas.ProtoNitrate,
-            Gas.Zauker,
-            Gas.Halon,
-            Gas.Helium,
-            Gas.AntiNoblium
-            //ADT-Gas-End
+            Gas.BZ, // Assmos - /tg/ gases
+            Gas.Healium, // Assmos - /tg/ gases
+            Gas.Nitrium, // Assmos - /tg/ gases
         };
 
         [ViewVariables(VVAccess.ReadWrite)]

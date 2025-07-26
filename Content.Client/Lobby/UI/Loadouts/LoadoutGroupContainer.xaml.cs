@@ -1,3 +1,11 @@
+// SPDX-FileCopyrightText: 2024 Firewatch <54725557+musicmanvr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Mr. 27 <koolthunder019@gmail.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Linq;
 using Content.Shared.Clothing;
 using Content.Shared.Preferences;
@@ -18,18 +26,18 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
     public event Action<ProtoId<LoadoutPrototype>>? OnLoadoutPressed;
     public event Action<ProtoId<LoadoutPrototype>>? OnLoadoutUnpressed;
 
-    public LoadoutGroupContainer(HumanoidCharacterProfile profile, RoleLoadout loadout, LoadoutGroupPrototype groupProto, ICommonSession session, IDependencyCollection collection, bool isSponsor)
+    public LoadoutGroupContainer(HumanoidCharacterProfile profile, RoleLoadout loadout, LoadoutGroupPrototype groupProto, ICommonSession session, IDependencyCollection collection)
     {
         RobustXamlLoader.Load(this);
         _groupProto = groupProto;
 
-        RefreshLoadouts(profile, loadout, session, collection, isSponsor);
+        RefreshLoadouts(profile, loadout, session, collection);
     }
 
     /// <summary>
     /// Updates button availabilities and buttons.
     /// </summary>
-    public void RefreshLoadouts(HumanoidCharacterProfile profile, RoleLoadout loadout, ICommonSession session, IDependencyCollection collection, bool isSponsor)
+    public void RefreshLoadouts(HumanoidCharacterProfile profile, RoleLoadout loadout, ICommonSession session, IDependencyCollection collection)
     {
         var protoMan = collection.Resolve<IPrototypeManager>();
         var loadoutSystem = collection.Resolve<IEntityManager>().System<LoadoutSystem>();
@@ -71,11 +79,6 @@ public sealed partial class LoadoutGroupContainer : BoxContainer
         {
             if (!protoMan.TryIndex(loadoutProto, out var loadProto))
                 continue;
-
-            //ADT-Sponsors-Loadout-Start
-            if (loadProto.SponsorOnly && !isSponsor)
-                continue;
-            //ADT-Sponsors-Loadout-End
 
             var matchingLoadout = selected.FirstOrDefault(e => e.Prototype == loadoutProto);
             var pressed = matchingLoadout != null;

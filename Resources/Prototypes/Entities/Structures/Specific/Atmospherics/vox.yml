@@ -1,3 +1,11 @@
+# SPDX-FileCopyrightText: 2024 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Steve <marlumpy@gmail.com>
+# SPDX-FileCopyrightText: 2025 marc-pelletier <113944176+marc-pelletier@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   abstract: true
   parent: AirSensorBase
@@ -15,19 +23,9 @@
       Ammonia: stationAmmonia
       NitrousOxide: stationNO
       Frezon: danger
-      # ADT-Gas-Start
-      BZ: danger
-      Pluoxium: unwanted
-      Hydrogen: danger
-      Nitrium: unwanted
-      Healium: danger
-      HyperNoblium: unwanted
-      ProtoNitrate: danger
-      Zauker: danger
-      Halon: danger
-      Helium: unwanted
-      AntiNoblium: danger
-      # ADT-Gas-End
+      BZ: danger # Assmos - /tg/ gases
+      Healium: stationNO # Assmos - /tg/ gases
+      Nitrium: danger # Assmos - /tg/ gases
 
 - type: entity
   parent: [AirSensorVoxBase, AirSensor]
@@ -52,6 +50,9 @@
     - Ammonia
     - NitrousOxide
     - Frezon
+    - BZ
+    - Healium
+    - Nitrium
 
 # use this to prevent overriding filters with hardcoded defaults
 - type: entity

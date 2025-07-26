@@ -29,8 +29,11 @@ cargo-console-too-many = Слишком много одобренных зака
 cargo-console-snip-snip = Заказ урезан до вместимости
 cargo-console-insufficient-funds = Недостаточно средств (требуется { $cost })
 cargo-console-unfulfilled = Нет места для выполнения заказа
-cargo-console-trade-station = Отправлено на { $destination }
+cargo-console-trade-station = Отправить на { $destination }
 cargo-console-unlock-approved-order-broadcast = [bold]Заказ на { $productName } x{ $orderAmount }[/bold], стоимостью [bold]{ $cost }[/bold], был одобрен [bold]{ $approver }[/bold]
+# GoobStation - cooldown on Cargo Orders (specifically gamba)
+cargo-console-cooldown-count = Cannot order more than one { $product } at a time.
+cargo-console-cooldown-active = Orders for { $product } cannot be placed for another { $timeCount } { $timeUnits }.
 cargo-console-paper-print-name = Заказ #{ $orderNumber }
 cargo-console-paper-print-text =
     Заказ #{ $orderNumber }

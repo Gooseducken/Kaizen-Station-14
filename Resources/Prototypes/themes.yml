@@ -1,3 +1,14 @@
+# SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Flareguy <78941145+Flareguy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+# SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 anotherbutton <MADpfeifer@outlook.com>
+# SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: uiTheme
   id: SS14DefaultTheme
   path: /Textures/Interface/Default/
@@ -14,7 +25,6 @@
     disabledFore: "#5A5A5A"
     _itemstatus_content_margin_right: "#06060404"
     _itemstatus_content_margin_left: "#04060604"
-    _itemstatus_patch_margin: "#07060404"
 - type: uiTheme
   id: SS14PlasmafireTheme
   path: /Textures/Interface/Plasmafire/
@@ -31,7 +41,6 @@
     disabledFore: "#FFF5EE"
     _itemstatus_content_margin_right: "#06060404"
     _itemstatus_content_margin_left: "#04060604"
-    _itemstatus_patch_margin: "#07060404"
 - type: uiTheme
   id: SS14SlimecoreTheme
   path: /Textures/Interface/Slimecore/
@@ -48,7 +57,6 @@
     disabledFore: "#FFF5EE"
     _itemstatus_content_margin_right: "#06060404"
     _itemstatus_content_margin_left: "#04060604"
-    _itemstatus_patch_margin: "#07060404"
 - type: uiTheme
   id: SS14ClockworkTheme
   path: /Textures/Interface/Clockwork/
@@ -65,7 +73,6 @@
     disabledFore: "#FFF5EE"
     _itemstatus_content_margin_right: "#06060404"
     _itemstatus_content_margin_left: "#04060604"
-    _itemstatus_patch_margin: "#07060404"
 - type: uiTheme
   id: SS14RetroTheme
   path: /Textures/Interface/Retro/
@@ -82,7 +89,6 @@
     disabledFore: "#FFF5EE"
     _itemstatus_content_margin_right: "#06060404"
     _itemstatus_content_margin_left: "#04060604"
-    _itemstatus_patch_margin: "#07060404"
 - type: uiTheme
   id: SS14MinimalistTheme
   path: /Textures/Interface/Minimalist/
@@ -99,7 +105,6 @@
     disabledFore: "#5A5A5A"
     _itemstatus_content_margin_right: "#06060604"
     _itemstatus_content_margin_left: "#06060604"
-    _itemstatus_patch_margin: "#07060404"
 - type: uiTheme
   id: SS14AshenTheme
   path: /Textures/Interface/Ashen/
@@ -116,4 +121,3 @@
     disabledFore: "#FFF5EE"
     _itemstatus_content_margin_right: "#06060604"
     _itemstatus_content_margin_left: "#06060604"
-    _itemstatus_patch_margin: "#07060505"

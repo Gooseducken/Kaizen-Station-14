@@ -1,3 +1,9 @@
+// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using Content.Server.Objectives.Systems;
 
 namespace Content.Server.Objectives.Components;
@@ -10,14 +16,8 @@ namespace Content.Server.Objectives.Components;
 public sealed partial class KillPersonConditionComponent : Component
 {
     /// <summary>
-    /// Whether the target must be dead
+    /// Whether the target must be truly dead, ignores missing evac.
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public bool RequireDead = false;
-
-    /// <summary>
-    /// Whether the target must not be on evac
-    /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public bool RequireMaroon = false;
 }

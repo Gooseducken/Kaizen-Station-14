@@ -1,3 +1,11 @@
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Ilya246 <57039557+Ilya246@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Kevin Zheng <kevinz5000@gmail.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 namespace Content.Server.Atmos.Components;
 
 [RegisterComponent]
@@ -31,12 +39,5 @@ public sealed partial class HeatExchangerComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("radiationCoefficient")]
-    public float alpha { get; set; } = 500f;
-
-    /// <summary>
-    /// ADT-Tweak. Using for normal heatexchanger work.
-    /// </summary>
-    [DataField("usePassiveGate")]
-    public bool UsePassiveGate = true;
+    public float alpha { get; set; } = 140f;
 }
-

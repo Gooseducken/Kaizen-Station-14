@@ -1,3 +1,12 @@
+# SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 eclips_e <67359748+Just-a-Unity-Dev@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Adrian16199 <144424013+Adrian16199@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
 - type: species
   id: SlimePerson
   name: species-name-slime
@@ -8,28 +17,6 @@
   markingLimits: MobSlimeMarkingLimits
   dollPrototype: MobSlimePersonDummy
   skinColoration: Hues
-  # ADT start
-  description: "/ServerInfo/ADT/SpeciesDescriptions/Slime.xml"
-  pros:
-  - Могут хранить внутри себя небольшие объекты.
-  - Улучшенная пассивная регенерация (в сравнении с людьми).
-  - Получают на 40% меньше урона ушибами.
-  - Получают на 20% меньше урона от ядов.
-  - Получают на 80% меньше урона от клеточных.
-  special:
-  - Могут дышать чистым азотом, но не чистым кислородом.
-  - Могут менять стиль своей причёски в любой момент.
-  cons:
-  - Получают на 20% больше колющего урона.
-  - Получают на 20% больше урона от порезов.
-  - Получают на 50% больше урона от холода.
-  - Получают на 50% больше урона от химических.
-  defaultLanguages:
-  - GalacticCommon
-  - Bubblish
-  uniqueLanguages:
-  - Bubblish
-  # ADT end
 
 - type: speciesBaseSprites
   id: MobSlimeSprites
@@ -37,11 +24,8 @@
     Head: MobSlimeHead
     Hair: MobSlimeMarkingFollowSkin
     FacialHair: MobSlimeMarkingFollowSkin
-    # UndergarmentTop: MobHumanoidAnyMarking # ADT-No-More-Useless-Feature
-    # UndergarmentBottom: MobHumanoidAnyMarking # ADT-No-More-Useless-Feature
-    Chest: MobSlimeTorso
-    HeadTop: MobHumanoidAnyMarking # Corvax Sponsors
-    Tail: MobHumanoidAnyMarking # Corvax Sponsors
+    Chest: MobSlimeChest
+    Groin: MobSlimeGroin
     Eyes: MobHumanoidEyes
     LArm: MobSlimeLArm
     RArm: MobSlimeRArm
@@ -61,26 +45,20 @@
     FacialHair:
       points: 1
       required: false
-    Tail: # :despair:
-      points: 1 # Corvax Sponsors
-      required: false
-    HeadTop: # :skull:
-      points: 1 # Corvax Sponsors
-      required: false
     Chest:
-      points: 4 #ADT_Tweak
+      points: 1
       required: false
     Legs:
-      points: 8 #ADT_Tweak
+      points: 4
       required: false
     Arms:
-      points: 8 #ADT_Tweak
+      points: 4
       required: false
 
 - type: humanoidBaseSprite
   id: MobSlimeMarkingFollowSkin
   markingsMatchSkin: true
-  layerAlpha: 0.75 #ADT_Tweak
+  layerAlpha: 0.72
 
 - type: humanoidBaseSprite
   id: MobSlimeHead
@@ -101,22 +79,40 @@
     state: head_f
 
 - type: humanoidBaseSprite
-  id: MobSlimeTorso
+  id: MobSlimeChest
   baseSprite:
     sprite: Mobs/Species/Slime/parts.rsi
-    state: torso_m
+    state: chest_m
 
 - type: humanoidBaseSprite
-  id: MobSlimeTorsoMale
+  id: MobSlimeChestMale
   baseSprite:
     sprite: Mobs/Species/Slime/parts.rsi
-    state: torso_m
+    state: chest_m
 
 - type: humanoidBaseSprite
-  id: MobSlimeTorsoFemale
+  id: MobSlimeChestFemale
   baseSprite:
     sprite: Mobs/Species/Slime/parts.rsi
-    state: torso_f
+    state: chest_f
+
+- type: humanoidBaseSprite
+  id: MobSlimeGroin
+  baseSprite:
+    sprite: Mobs/Species/Slime/parts.rsi
+    state: groin_m
+
+- type: humanoidBaseSprite
+  id: MobSlimeGroinMale
+  baseSprite:
+    sprite: Mobs/Species/Slime/parts.rsi
+    state: groin_m
+
+- type: humanoidBaseSprite
+  id: MobSlimeGroinFemale
+  baseSprite:
+    sprite: Mobs/Species/Slime/parts.rsi
+    state: groin_f
 
 - type: humanoidBaseSprite
   id: MobSlimeLLeg

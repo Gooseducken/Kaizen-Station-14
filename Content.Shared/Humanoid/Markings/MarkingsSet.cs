@@ -1,10 +1,19 @@
+// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Morb <14136326+Morb0@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 csqrb <56765288+CaptainSqrBeard@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared.Humanoid.Prototypes;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
-using Robust.Shared.Utility;
 
 namespace Content.Shared.Humanoid.Markings;
 
@@ -198,43 +207,6 @@ public sealed partial class MarkingSet
             }
         }
     }
-
-    // Corvax-Sponsors-Start
-    /// <summary>
-    ///     Filters sponsor markings unavailable for not sponsors check that from their prototype and allowed param
-    /// </summary>
-    /// <param name="sponsorMarkings">Sponsor markings that allowed to have.</param>
-    /// <param name="markingManager">Markings manager.</param>
-    /// <param name="prototypeManager">Prototype manager.</param>
-    public void FilterSponsor(string[] sponsorMarkings, MarkingManager? markingManager = null, IPrototypeManager? prototypeManager = null)
-    {
-        IoCManager.Resolve(ref markingManager);
-        IoCManager.Resolve(ref prototypeManager);
-
-        var toRemove = new List<(MarkingCategories category, string id)>();
-        foreach (var (category, list) in Markings)
-        {
-            foreach (var marking in list)
-            {
-                if (prototypeManager.TryIndex<MarkingPrototype>(marking.MarkingId, out var proto) && !proto.SponsorOnly)
-                {
-                    continue;
-                }
-
-                var allowedToHave = sponsorMarkings.Contains(marking.MarkingId);
-                if (!allowedToHave)
-                {
-                    toRemove.Add((category, marking.MarkingId));
-                }
-            }
-        }
-
-        foreach (var marking in toRemove)
-        {
-            Remove(marking.category, marking.id);
-        }
-    }
-    // Corvax-Sponsors-End
 
     /// <summary>
     ///     Filters markings based on sex and it's restrictions in the marking's prototype from this marking set.

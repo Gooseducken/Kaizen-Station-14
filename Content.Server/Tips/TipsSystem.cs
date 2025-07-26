@@ -1,10 +1,21 @@
+// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
+// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
+// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Dataset;
 using Content.Shared.Tips;
-using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
@@ -12,8 +23,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Server.Administration.Logs;
-using Content.Shared.Database;
 
 namespace Content.Server.Tips;
 
@@ -30,23 +39,12 @@ public sealed class TipsSystem : EntitySystem
     [Dependency] private readonly GameTicker _ticker = default!;
     [Dependency] private readonly IConsoleHost _conHost = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
 
     private bool _tipsEnabled;
     private float _tipTimeOutOfRound;
     private float _tipTimeInRound;
     private string _tipsDataset = "";
     private float _tipTippyChance;
-
-    /// <summary>
-    /// Always adds this time to a speech message. This is so really short message stay around for a bit.
-    /// </summary>
-    private const float SpeechBuffer = 3f;
-
-    /// <summary>
-    /// Expected reading speed.
-    /// </summary>
-    private const float Wpm = 180f;
 
     [ViewVariables(VVAccess.ReadWrite)]
     private TimeSpan _nextTipTime = TimeSpan.Zero;
@@ -95,13 +93,6 @@ public sealed class TipsSystem : EntitySystem
             return;
         }
 
-        // ADT-Tweak-Start Логируем сообщение
-        _adminLogger.Add(
-            LogType.AdminMessage,
-            LogImpact.Low,
-            $"[АДМИНАБУЗ] {shell.Player?.Name} used the command tippy or tip. EntityPrototype: {args[2]}"
-        );
-        // ADT-Tweak-End
         ActorComponent? actor = null;
         if (args[0] != "all")
         {
@@ -147,8 +138,6 @@ public sealed class TipsSystem : EntitySystem
 
         if (args.Length > 3)
             ev.SpeakTime = float.Parse(args[3]);
-        else
-            ev.SpeakTime = GetSpeechTime(ev.Msg);
 
         if (args.Length > 4)
             ev.SlideTime = float.Parse(args[4]);
@@ -205,12 +194,6 @@ public sealed class TipsSystem : EntitySystem
         _tipTippyChance = value;
     }
 
-    public static float GetSpeechTime(string text)
-    {
-        var wordCount = (float)text.Split().Length;
-        return SpeechBuffer + wordCount * (60f / Wpm);
-    }
-
     private void AnnounceRandomTip()
     {
         if (!_prototype.TryIndex<LocalizedDatasetPrototype>(_tipsDataset, out var tips))
@@ -222,7 +205,7 @@ public sealed class TipsSystem : EntitySystem
         if (_random.Prob(_tipTippyChance))
         {
             var ev = new TippyEvent(msg);
-            ev.SpeakTime = GetSpeechTime(msg);
+            ev.SpeakTime = 1 + tip.Length * 0.05f;
             RaiseNetworkEvent(ev);
         } else
         {

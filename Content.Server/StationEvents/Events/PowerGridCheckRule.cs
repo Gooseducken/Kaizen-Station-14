@@ -1,3 +1,18 @@
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
+// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 moonheart08 <moonheart08@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Threading;
 using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
@@ -33,38 +48,35 @@ namespace Content.Server.StationEvents.Events
                     component.Powered.Add(apcUid);
             }
 
-            DisableApc(component.Powered, component);  // ADT Tweak
-
             RobustRandom.Shuffle(component.Powered);
 
             component.NumberPerSecond = Math.Max(1, (int)(component.Powered.Count / component.SecondsUntilOff)); // Number of APCs to turn off every second. At least one.
         }
 
-        // ADT: достаточно сильно поменял эту функцию, потому считайте что она фулл наша
         protected override void Ended(EntityUid uid, PowerGridCheckRuleComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)
         {
             base.Ended(uid, component, gameRule, args);
 
+            foreach (var entity in component.Unpowered)
+            {
+                if (Deleted(entity))
+                    continue;
+
+                if (TryComp(entity, out ApcComponent? apcComponent))
+                {
+                    if(!apcComponent.MainBreakerEnabled)
+                        _apcSystem.ApcToggleBreaker(entity, apcComponent);
+                }
+            }
+
             // Can't use the default EndAudio
             component.AnnounceCancelToken?.Cancel();
             component.AnnounceCancelToken = new CancellationTokenSource();
-            Audio.PlayGlobal(component.EndSound ?? new SoundPathSpecifier("/Audio/Announcements/power_on.ogg"), Filter.Broadcast(), true);
-            Timer.Spawn(TimeSpan.FromSeconds(2), () =>
+            Timer.Spawn(3000, () =>
             {
-                foreach (var entity in component.Unpowered)
-                {
-                    if (Deleted(entity))
-                        continue;
-
-                    if (TryComp(entity, out ApcComponent? apcComponent))
-                    {
-                        if (!apcComponent.MainBreakerEnabled)
-                            _apcSystem.ApcToggleBreaker(entity, apcComponent);
-                    }
-                }
-
-                component.Unpowered.Clear();
+                Audio.PlayGlobal("/Audio/_Reserve/announcement/power_on.ogg", Filter.Broadcast(), true, AudioParams.Default.WithVolume(-4f)); /// Reserve
             }, component.AnnounceCancelToken.Token);
+            component.Unpowered.Clear();
         }
 
         protected override void ActiveTick(EntityUid uid, PowerGridCheckRuleComponent component, GameRuleComponent gameRule, float frameTime)
@@ -95,22 +107,5 @@ namespace Content.Server.StationEvents.Events
                 component.Unpowered.Add(selected);
             }
         }
-
-        // ADT Start
-        private void DisableApc(List<EntityUid> list, PowerGridCheckRuleComponent component)
-        {
-            foreach (var item in list)
-            {
-                if (Deleted(item))
-                    continue;
-                if (TryComp<ApcComponent>(item, out var apcComponent))
-                {
-                    if (apcComponent.MainBreakerEnabled)
-                        _apcSystem.ApcToggleBreaker(item, apcComponent);
-                }
-                component.Unpowered.Add(item);
-            }
-        }
-        // ADT End
     }
 }

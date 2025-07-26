@@ -1,8 +1,12 @@
-using System.Linq;
+// SPDX-FileCopyrightText: 2023 Jackrost <jackrost@mail.ru>
+// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Server.Popups;
 using Content.Shared.Spider;
 using Content.Shared.Maps;
-using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 
 namespace Content.Server.Spider;
@@ -35,43 +39,26 @@ public sealed class SpiderSystem : SharedSpiderSystem
         // TODO generic way to get certain coordinates
 
         var result = false;
-// ADT tweak start
-        // Spawn small web if there is a small spider
-        if (component.SmallWeb == true)
-// ADT tweak end
+        // Spawn web in center
+        if (!IsTileBlockedByWeb(coords))
         {
-// ADT tweak start
-            // Spawn web in center
-            if (!IsTileBlockedByWeb(coords))
-            {
-                Spawn(component.WebPrototype, coords);
-                result = true;
-            }
-// ADT tweak end
+            Spawn(component.WebPrototype, coords);
+            result = true;
         }
-        else // ADT tweak
-        {
-        // Spawn web in center ADT tweak
-            if (!IsTileBlockedByWeb(coords))
-            {
-                Spawn(component.WebPrototype, coords);
-                result = true;
-            }
-// ADT tweak start
-            // Spawn web in other directions
-            for (var i = 0; i < 4; i++)
-            {
-                var direction = (DirectionFlag) (1 << i);
-                coords = transform.Coordinates.Offset(direction.AsDir().ToVec());
 
-                if (!IsTileBlockedByWeb(coords))
-                {
-                    Spawn(component.WebPrototype, coords);
-                    result = true;
-                }
+        // Spawn web in other directions
+        for (var i = 0; i < 4; i++)
+        {
+            var direction = (DirectionFlag) (1 << i);
+            coords = transform.Coordinates.Offset(direction.AsDir().ToVec());
+
+            if (!IsTileBlockedByWeb(coords))
+            {
+                Spawn(component.WebPrototype, coords);
+                result = true;
             }
         }
-// ADT tweak end
+
         if (result)
         {
             _popup.PopupEntity(Loc.GetString("spider-web-action-success"), args.Performer, args.Performer);
@@ -91,4 +78,3 @@ public sealed class SpiderSystem : SharedSpiderSystem
         return false;
     }
 }
-

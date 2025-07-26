@@ -1,10 +1,10 @@
-ent-BaseCartridgeLightRifle = патрон (7.62х39 мм)
+ent-BaseCartridgeLightRifle = патрон (.30 винтовочный)
     .desc = { ent-BaseCartridge.desc }
-ent-CartridgeLightRifle = патрон (7.62х39 мм)
+ent-CartridgeLightRifle = патрон (.30 винтовочный)
     .desc = { ent-BaseCartridgeLightRifle.desc }
-ent-CartridgeLightRiflePractice = патрон (7.62х39 мм учебный)
+ent-CartridgeLightRiflePractice = патрон (.30 винтовочный учебный)
     .desc = { ent-BaseCartridgeLightRifle.desc }
-ent-CartridgeLightRifleIncendiary = патрон (7.62х39 мм зажигательный)
+ent-CartridgeLightRifleIncendiary = патрон (.30 винтовочный зажигательный)
     .desc = { ent-BaseCartridgeLightRifle.desc }
-ent-CartridgeLightRifleUranium = патрон (7.62х39 мм урановый)
+ent-CartridgeLightRifleUranium = патрон (.30 винтовочный урановый)
     .desc = { ent-BaseCartridgeLightRifle.desc }

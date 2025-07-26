@@ -1,4 +1,10 @@
-﻿using System.Text.RegularExpressions;
+// SPDX-FileCopyrightText: 2022 Alex Evgrashin <aevgrashin@yandex.ru>
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using System.Text.RegularExpressions;
 using Content.Server.Speech.Components;
 using Robust.Shared.Random;
 
@@ -12,7 +18,7 @@ public sealed class LizardAccentSystem : EntitySystem
     private static readonly Regex RegexLowerEndX = new(@"\bx([\-|r|R]|\b)");
     private static readonly Regex RegexUpperEndX = new(@"\bX([\-|r|R]|\b)");
 
-    [Dependency] private readonly IRobustRandom _random = default!; // Corvax-Localization
+    [Dependency] private readonly IRobustRandom _random = default!; // Reserve-Localization
 
     public override void Initialize()
     {
@@ -35,7 +41,7 @@ public sealed class LizardAccentSystem : EntitySystem
         // eckS
         message = RegexUpperEndX.Replace(message, "ECKS$1");
 
-        // Corvax-Localization-Start
+        // Reserve-Localization-Start
         // c => ссс
         message = Regex.Replace(
             message,
@@ -84,7 +90,7 @@ public sealed class LizardAccentSystem : EntitySystem
             "Ч+",
             _random.Pick(new List<string>() { "ЩЩ", "ЩЩЩ" })
         );
-        // Corvax-Localization-End
+        // Reserve-Localization-End
         args.Message = message;
     }
 }

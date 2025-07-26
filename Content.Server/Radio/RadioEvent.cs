@@ -1,11 +1,16 @@
+// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 SkaldetSkaeg <impotekh@gmail.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Chat;
 using Content.Shared.Radio;
-using Content.Shared.ADT.Language;  // ADT Languages
 
 namespace Content.Server.Radio;
 
 [ByRefEvent]
-public readonly record struct RadioReceiveEvent(string Message, EntityUid MessageSource, RadioChannelPrototype Channel, EntityUid RadioSource, MsgChatMessage ChatMsg, MsgChatMessage UnknownLanguageChatMsg, LanguagePrototype Language);  // ADT Languages
+public readonly record struct RadioReceiveEvent(string Message, EntityUid MessageSource, RadioChannelPrototype Channel, EntityUid RadioSource, MsgChatMessage ChatMsg);
 
 /// <summary>
 /// Use this event to cancel sending message per receiver

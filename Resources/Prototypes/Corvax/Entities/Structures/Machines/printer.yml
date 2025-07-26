@@ -26,10 +26,10 @@
     idleState: icon
     runningState: building
     staticPacks:
-    - ADTPrinterStaticPack
-  - type: EmagLatheRecipes
+      - PaperFormsStatic
+  - type: EmagLatheRecipes # Goobstation
     emagStaticPacks:
-    - ADTPrinterEmagPack
+    - PaperFormsSyndicateStatic
   - type: Fixtures
     fixtures:
       fix1:
@@ -46,5 +46,4 @@
       tags:
       - Document
     storage:
-      ADTPaper: 0 # ADT tweak
-  - type: DocumentPrinter #DocumentPrinterComponent (ADT)
+      SheetPrinter: 0

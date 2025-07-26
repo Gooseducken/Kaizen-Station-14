@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
 
@@ -16,7 +21,7 @@ public sealed partial class StunOnContactComponent : Component
     /// The duration of the stun.
     /// </summary>
     [DataField]
-    public TimeSpan Duration = TimeSpan.FromSeconds(3); /// 5>>3  #ADT-Tweak
+    public TimeSpan Duration = TimeSpan.FromSeconds(5);
 
     [DataField]
     public EntityWhitelist Blacklist = new();

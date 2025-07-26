@@ -1,3 +1,60 @@
+// SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@gmail.com>
+// SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@googlemail.com>
+// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
+// SPDX-FileCopyrightText: 2021 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2021 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2021 pointer-to-null <91910481+pointer-to-null@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Acruid <shatter66@gmail.com>
+// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 keronshb <54602815+keronshb@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
+// SPDX-FileCopyrightText: 2023 Jezithyr <jezithyr@gmail.com>
+// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
+// SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
+// SPDX-FileCopyrightText: 2024 Alice "Arimah" Heurlin <30327355+arimah@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 HS <81934438+HolySSSS@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Remuchi <72476615+Remuchi@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Rouge2t7 <81053047+Sarahon@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-FileCopyrightText: 2024 Truoizys <153248924+Truoizys@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 VMSolidus <evilexecutive@gmail.com>
+// SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
+// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 osjarw <62134478+osjarw@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
+// SPDX-FileCopyrightText: 2024 username <113782077+whateverusername0@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 whateverusername0 <whateveremail>
+// SPDX-FileCopyrightText: 2024 Арт <123451459+JustArt1m@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Milon <milonpl.git@proton.me>
+// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
+// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Interaction;
@@ -5,7 +62,6 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Item;
 using Content.Shared.Bed.Sleep;
-using Content.Shared.Damage.Components;
 using Content.Shared.Database;
 using Content.Shared.Hands;
 using Content.Shared.Mobs;
@@ -17,15 +73,22 @@ using Content.Shared.StatusEffect;
 using Content.Shared.Throwing;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
-using Content.Shared.ADT.Crawling;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
+using Robust.Shared.Containers;
+using Content.Shared.Jittering;
+using Content.Shared.Speech.EntitySystems;
+using Content.Goobstation.Common.Standing;
+using Content.Goobstation.Common.Stunnable;
+using Content.Shared._White.Standing;
 
 namespace Content.Shared.Stunnable;
 
 public abstract class SharedStunSystem : EntitySystem
 {
+    [Dependency] private readonly IComponentFactory _componentFactory = default!;
+
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] private readonly SharedBroadphaseSystem _broadphase = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
@@ -34,16 +97,20 @@ public abstract class SharedStunSystem : EntitySystem
     [Dependency] private readonly EntityWhitelistSystem _entityWhitelist = default!;
     [Dependency] private readonly StandingStateSystem _standingState = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffect = default!;
+    [Dependency] private readonly SharedLayingDownSystem _layingDown = default!; // WD EDIT
+    [Dependency] private readonly SharedContainerSystem _container = default!; // WD EDIT
+    [Dependency] private readonly SharedStutteringSystem _stutter = default!; // goob edit
+    [Dependency] private readonly SharedJitteringSystem _jitter = default!; // goob edit
 
     /// <summary>
     /// Friction modifier for knocked down players.
     /// Doesn't make them faster but makes them slow down... slower.
     /// </summary>
-    public const float KnockDownModifier = 0.2f;
+    public const float KnockDownModifier = 0.4f;
 
     public override void Initialize()
     {
-        // SubscribeLocalEvent<KnockedDownComponent, ComponentInit>(OnKnockInit); ADT tweak
+        SubscribeLocalEvent<KnockedDownComponent, ComponentInit>(OnKnockInit);
         SubscribeLocalEvent<KnockedDownComponent, ComponentShutdown>(OnKnockShutdown);
         SubscribeLocalEvent<KnockedDownComponent, StandAttemptEvent>(OnStandAttempt);
 
@@ -136,16 +203,30 @@ public abstract class SharedStunSystem : EntitySystem
         TryKnockdown(args.OtherEntity, ent.Comp.Duration, true, status);
     }
 
-    // private void OnKnockInit(EntityUid uid, KnockedDownComponent component, ComponentInit args) ADT tweak, stun no droping items
-    // {
-    //     _standingState.Down(uid);
-    // }
+    private void OnKnockInit(EntityUid uid, KnockedDownComponent component, ComponentInit args)
+    {
+        _layingDown.UpdateSpriteRotation(uid); // Goobstation
+        RaiseLocalEvent(uid, new CheckAutoGetUpEvent()); // WD EDIT
+        _layingDown.TryLieDown(uid, null, null, component.DropHeldItemsBehavior); // WD EDIT
+    }
 
     private void OnKnockShutdown(EntityUid uid, KnockedDownComponent component, ComponentShutdown args)
     {
-        if (HasComp<CrawlerComponent>(uid)) // ADT crawling
+        // WD EDIT START
+        if (!TryComp(uid, out StandingStateComponent? standing))
             return;
-        _standingState.Stand(uid);
+
+        if (TryComp(uid, out LayingDownComponent? layingDown)
+            && component.StandOnRemoval) // Shitmed Change
+        {
+            if (layingDown.AutoGetUp && !_container.IsEntityInContainer(uid))
+                _layingDown.TryStandUp(uid, layingDown);
+            return;
+        }
+
+        if (component.StandOnRemoval) // Shitmed Change
+            _standingState.Stand(uid, standing);
+        // WD EDIT END
     }
 
     private void OnStandAttempt(EntityUid uid, KnockedDownComponent component, StandAttemptEvent args)
@@ -179,6 +260,10 @@ public abstract class SharedStunSystem : EntitySystem
     public bool TryStun(EntityUid uid, TimeSpan time, bool refresh,
         StatusEffectsComponent? status = null)
     {
+        var modifierEv = new GetClothingStunModifierEvent(uid);
+        RaiseLocalEvent(modifierEv);
+        time *= modifierEv.Modifier;
+
         if (time <= TimeSpan.Zero)
             return false;
 
@@ -187,6 +272,11 @@ public abstract class SharedStunSystem : EntitySystem
 
         if (!_statusEffect.TryAddStatusEffect<StunnedComponent>(uid, "Stun", time, refresh))
             return false;
+
+        // goob edit
+        _jitter.DoJitter(uid, time, refresh);
+        _stutter.DoStutter(uid, time, refresh);
+        // goob edit end
 
         var ev = new StunnedEvent();
         RaiseLocalEvent(uid, ref ev);
@@ -199,9 +289,51 @@ public abstract class SharedStunSystem : EntitySystem
     ///     Knocks down the entity, making it fall to the ground.
     /// </summary>
     public bool TryKnockdown(EntityUid uid, TimeSpan time, bool refresh,
-        StatusEffectsComponent? status = null,
-        bool dropItems = true, bool down = true) //ADT tweak
+        DropHeldItemsBehavior behavior, StatusEffectsComponent? status = null, bool standOnRemoval = true) // Shitmed Change
     {
+        var modifierEv = new GetClothingStunModifierEvent(uid);
+        RaiseLocalEvent(modifierEv);
+        time *= modifierEv.Modifier;
+
+        if (!HasComp<LayingDownComponent>(uid)) // Goobstation - only knockdown mobs that can lie down
+            return false;
+
+        if (time <= TimeSpan.Zero || !Resolve(uid, ref status, false))
+            return false;
+
+        var component = _componentFactory.GetComponent<KnockedDownComponent>();
+        component.DropHeldItemsBehavior = behavior;
+        component.StandOnRemoval = standOnRemoval;
+        if (!_statusEffect.TryAddStatusEffect(uid, "KnockedDown", time, refresh, component))
+            return false;
+
+        var ev = new KnockedDownEvent();
+        RaiseLocalEvent(uid, ref ev);
+        return true;
+    }
+
+    /// <summary>
+    ///     Goobstation.
+    ///     Try knockdown, if it fails - stun.
+    /// </summary>
+    public bool KnockdownOrStun(EntityUid uid, TimeSpan time, bool refresh, StatusEffectsComponent? status = null)
+    {
+        return TryKnockdown(uid, time, refresh, status) || TryStun(uid, time, refresh, status);
+    }
+
+    /// <summary>
+    ///     Knocks down the entity, making it fall to the ground.
+    /// </summary>
+    public bool TryKnockdown(EntityUid uid, TimeSpan time, bool refresh,
+        StatusEffectsComponent? status = null)
+    {
+        var modifierEv = new GetClothingStunModifierEvent(uid);
+        RaiseLocalEvent(modifierEv);
+        time *= modifierEv.Modifier;
+
+        if (!HasComp<LayingDownComponent>(uid)) // Goobstation - only knockdown mobs that can lie down
+            return false;
+
         if (time <= TimeSpan.Zero)
             return false;
 
@@ -214,8 +346,6 @@ public abstract class SharedStunSystem : EntitySystem
         var ev = new KnockedDownEvent();
         RaiseLocalEvent(uid, ref ev);
 
-        if (down)  //ADT tweak
-            _standingState.Down(uid, dropHeldItems: dropItems); //ADT tweak
         return true;
     }
 
@@ -223,13 +353,13 @@ public abstract class SharedStunSystem : EntitySystem
     ///     Applies knockdown and stun to the entity temporarily.
     /// </summary>
     public bool TryParalyze(EntityUid uid, TimeSpan time, bool refresh,
-        StatusEffectsComponent? status = null,
-        bool dropItems = true, bool down = true) //ADT tweak
+        StatusEffectsComponent? status = null, bool standOnRemoval = true) // Shitmed Change
     {
         if (!Resolve(uid, ref status, false))
             return false;
 
-        return TryKnockdown(uid, time, refresh, status, dropItems: dropItems, down: down) && TryStun(uid, time, refresh, status); //ADT tweaked
+        return TryKnockdown(uid, time, refresh, DropHeldItemsBehavior.AlwaysDrop, status, standOnRemoval) && // Shitmed Change
+               TryStun(uid, time, refresh, status); // Goob edit
     }
 
     /// <summary>
@@ -256,61 +386,11 @@ public abstract class SharedStunSystem : EntitySystem
             slowed.SprintSpeedModifier *= runSpeedMultiplier;
 
             _movementSpeedModifier.RefreshMovementSpeedModifiers(uid);
+
             return true;
         }
 
         return false;
-    }
-
-    /// <summary>
-    /// Updates the movement speed modifiers of an entity by applying or removing the <see cref="SlowedDownComponent"/>.
-    /// If both walk and run modifiers are approximately 1 (i.e. normal speed) and <see cref="StaminaComponent.StaminaDamage"/> is 0,
-    /// or if the both modifiers are 0, the slowdown component is removed to restore normal movement.
-    /// Otherwise, the slowdown component is created or updated with the provided modifiers,
-    /// and the movement speed is refreshed accordingly.
-    /// </summary>
-    /// <param name="ent">Entity whose movement speed should be updated.</param>
-    /// <param name="walkSpeedModifier">New walk speed modifier. Default is 1f (normal speed).</param>
-    /// <param name="runSpeedModifier">New run (sprint) speed modifier. Default is 1f (normal speed).</param>
-    public void UpdateStunModifiers(Entity<StaminaComponent?> ent,
-        float walkSpeedModifier = 1f,
-        float runSpeedModifier = 1f)
-    {
-        if (!Resolve(ent, ref ent.Comp))
-            return;
-
-        if (
-            (MathHelper.CloseTo(walkSpeedModifier, 1f) && MathHelper.CloseTo(runSpeedModifier, 1f) && ent.Comp.StaminaDamage == 0f) ||
-            (walkSpeedModifier == 0f && runSpeedModifier == 0f)
-        )
-        {
-            RemComp<SlowedDownComponent>(ent);
-            return;
-        }
-
-        EnsureComp<SlowedDownComponent>(ent, out var comp);
-
-        comp.WalkSpeedModifier = walkSpeedModifier;
-
-        comp.SprintSpeedModifier = runSpeedModifier;
-
-        _movementSpeedModifier.RefreshMovementSpeedModifiers(ent);
-
-        Dirty(ent);
-    }
-
-    /// <summary>
-    /// A convenience overload of <see cref="UpdateStunModifiers(EntityUid, float, float, StaminaComponent?)"/> that sets both
-    /// walk and run speed modifiers to the same value.
-    /// </summary>
-    /// <param name="ent">Entity whose movement speed should be updated.</param>
-    /// <param name="speedModifier">New walk and run speed modifier. Default is 1f (normal speed).</param>
-    /// <param name="component">
-    /// Optional <see cref="StaminaComponent"/> of the entity.
-    /// </param>
-    public void UpdateStunModifiers(Entity<StaminaComponent?> ent, float speedModifier = 1f)
-    {
-        UpdateStunModifiers(ent, speedModifier, speedModifier);
     }
 
     private void OnInteractHand(EntityUid uid, KnockedDownComponent knocked, InteractHandEvent args)

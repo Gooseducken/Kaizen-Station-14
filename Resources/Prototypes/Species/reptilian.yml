@@ -1,3 +1,13 @@
+# SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Adrian16199 <144424013+Adrian16199@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 coolsurf6 <coolsurf24@yahoo.com.au>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 PuroSlavKing <103608145+PuroSlavKing@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: species
   id: Reptilian
   name: species-name-reptilian
@@ -11,48 +21,26 @@
   maleFirstNames: NamesReptilianMale
   femaleFirstNames: NamesReptilianFemale
   naming: FirstDashFirst
-  # ADT start
-  description: "/ServerInfo/ADT/SpeciesDescriptions/Unath.xml"
-  pros:
-  - Могут таскать объекты хвостом.
-  - Меньше замедляются от накопленных повреждений.
-  - Имеют высокую комфортную температуру до 127 единиц по цельсию.
-  special:
-  - Имеют общий язык с таярами.
-  cons:
-  - Получают на 30% больше урона от холода.
-  - Имеет низкую комфортную температуру до 12 единиц по цельсию.
-  - Шприцы не могут пройти через чешую унатхов.
-  defaultLanguages:
-  - GalacticCommon
-  - Draconic
-  - CintaTaj
-  maxAge: 90
-  oldAge: 50
-  youngAge: 30
-  # ADT end
 
 - type: speciesBaseSprites
   id: MobReptilianSprites
   sprites:
     Head: MobReptilianHead
     Snout: MobHumanoidAnyMarking
-    # UndergarmentTop: MobHumanoidAnyMarking # ADT-No-More-Useless-Feature
-    # UndergarmentBottom: MobHumanoidAnyMarking # ADT-No-More-Useless-Feature
-    Chest: MobReptilianTorso
+    Chest: MobReptilianChest
+    Groin: MobReptilianGroin
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
-    SnoutOverlay: MobHumanoidAnyMarking # ADT Tweak
     Tail: MobHumanoidAnyMarking
     Eyes: MobHumanoidEyes
     LArm: MobReptilianLArm
     RArm: MobReptilianRArm
     LHand: MobReptilianLHand
     RHand: MobReptilianRHand
-    LLeg: MobReptilianLLeg
-    RLeg: MobReptilianRLeg
-    LFoot: MobReptilianLFoot
-    RFoot: MobReptilianRFoot
+    LLeg: MobReptilianLLegDigi # WWDP-Edit
+    RLeg: MobReptilianRLegDigi # WWDP-Edit
+    LFoot: MobReptilianLFootDigi # WWDP-Edit
+    RFoot: MobReptilianRFootDigi # WWDP-Edit
 
 - type: markingPoints
   id: MobReptilianMarkingLimits
@@ -68,11 +56,6 @@
       points: 1
       required: true
       defaultMarkings: [ LizardTailSmooth ]
-### Start ADT Tweak
-    SnoutOverlay:
-      points: 1
-      required: false
-### End ADT Tweak
     Snout:
       points: 1
       required: true
@@ -81,22 +64,16 @@
       points: 2
       required: false
     HeadSide:
-      points: 1
-      required: false
-    UndergarmentTop:
-      points: 1
-      required: false
-    UndergarmentBottom:
-      points: 1
+      points: 2 # WWDP-Edit
       required: false
     Chest:
-      points: 4 #ADT_Tweak
+      points: 3
       required: false
     Legs:
-      points: 8   #ADT_Tweak
+      points: 2
       required: false
     Arms:
-      points: 8   #ADT_Tweak
+      points: 2
       required: false
 
 - type: humanoidBaseSprite
@@ -118,22 +95,40 @@
     state: head_f
 
 - type: humanoidBaseSprite
-  id: MobReptilianTorso
+  id: MobReptilianChest
   baseSprite:
     sprite: Mobs/Species/Reptilian/parts.rsi
-    state: torso_m
+    state: chest_m
 
 - type: humanoidBaseSprite
-  id: MobReptilianTorsoMale
+  id: MobReptilianChestMale
   baseSprite:
     sprite: Mobs/Species/Reptilian/parts.rsi
-    state: torso_m
+    state: chest_m
 
 - type: humanoidBaseSprite
-  id: MobReptilianTorsoFemale
+  id: MobReptilianChestFemale
   baseSprite:
     sprite: Mobs/Species/Reptilian/parts.rsi
-    state: torso_f
+    state: chest_f
+
+- type: humanoidBaseSprite
+  id: MobReptilianGroin
+  baseSprite:
+    sprite: Mobs/Species/Reptilian/parts.rsi
+    state: groin_m
+
+- type: humanoidBaseSprite
+  id: MobReptilianGroinMale
+  baseSprite:
+    sprite: Mobs/Species/Reptilian/parts.rsi
+    state: groin_m
+
+- type: humanoidBaseSprite
+  id: MobReptilianGroinFemale
+  baseSprite:
+    sprite: Mobs/Species/Reptilian/parts.rsi
+    state: groin_f
 
 - type: humanoidBaseSprite
   id: MobReptilianLLeg

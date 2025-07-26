@@ -86,5 +86,3 @@ ent-FoodCocoaBeans = cocoa beans
     .desc = You can never have too much chocolate!
 ent-FoodCroissantRaw = raw croissant
     .desc = Buttery, flaky goodness waiting to happen.
-ent-FoodCroissantRawCotton = raw cotton croissant
-    .desc = Buttery, flaky, fibery goodness waiting to happen.

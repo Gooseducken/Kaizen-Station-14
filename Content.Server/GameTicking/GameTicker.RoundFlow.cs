@@ -1,3 +1,82 @@
+// SPDX-FileCopyrightText: 2021 20kdc <asdd2808@gmail.com>
+// SPDX-FileCopyrightText: 2021 Galactic Chimp <63882831+GalacticChimp@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Javier Guardia Fernández <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Acruid <shatter66@gmail.com>
+// SPDX-FileCopyrightText: 2022 Jacob Tong <10494922+ShadowCommander@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Jessica M <jessica@jessicamaybe.com>
+// SPDX-FileCopyrightText: 2022 Julian Giebel <j.giebel@netrocks.info>
+// SPDX-FileCopyrightText: 2022 Julian Giebel <juliangiebel@live.de>
+// SPDX-FileCopyrightText: 2022 KIBORG04 <bossmira4@gmail.com>
+// SPDX-FileCopyrightText: 2022 Mervill <mervills.email@gmail.com>
+// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Morber <14136326+Morb0@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
+// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <gradientvera@outlook.com>
+// SPDX-FileCopyrightText: 2022 Veritius <veritiusgaming@gmail.com>
+// SPDX-FileCopyrightText: 2022 keronshb <54602815+keronshb@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2022 moonheart08 <moonheart08@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 theashtronaut <112137107+theashtronaut@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2023 Kevin Zheng <kevinz5000@gmail.com>
+// SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
+// SPDX-FileCopyrightText: 2023 Morb <14136326+Morb0@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
+// SPDX-FileCopyrightText: 2023 Riggle <27156122+RigglePrime@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Tom Leys <tom@crump-leys.com>
+// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Vordenburg <114301317+Vordenburg@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
+// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
+// SPDX-FileCopyrightText: 2024 Alice "Arimah" Heurlin <30327355+arimah@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 ElectroJr <leonsfriedrich@gmail.com>
+// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Fildrance <fildrance@gmail.com>
+// SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 HS <81934438+HolySSSS@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Hannah Giovanna Dawson <karakkaraz@gmail.com>
+// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Rouge2t7 <81053047+Sarahon@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-FileCopyrightText: 2024 Truoizys <153248924+Truoizys@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
+// SPDX-FileCopyrightText: 2024 Wrexbe (Josh) <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 osjarw <62134478+osjarw@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 pa.pecherskij <pa.pecherskij@interfax.ru>
+// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
+// SPDX-FileCopyrightText: 2024 username <113782077+whateverusername0@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 whateverusername0 <whateveremail>
+// SPDX-FileCopyrightText: 2024 wrexbe <wrexbe@protonmail.com>
+// SPDX-FileCopyrightText: 2024 Арт <123451459+JustArt1m@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 pathetic meowmeow <uhhadd@gmail.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Linq;
 using System.Numerics;
 using Content.Server.Announcements;
@@ -25,13 +104,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
-using System.Threading;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.IO;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Diagnostics;
 namespace Content.Server.GameTicking
 {
     public sealed partial class GameTicker
@@ -349,9 +421,6 @@ namespace Content.Server.GameTicking
                 if (!_playerManager.TryGetSessionById(userId, out _))
                     continue;
 
-                if (_banManager.GetRoleBans(userId) == null) // ADT-Tweak
-                    continue;
-
                 total++;
             }
 
@@ -396,11 +465,6 @@ namespace Content.Server.GameTicking
                 DebugTools.Assert(_userDb.IsLoadComplete(session), $"Player was readied up but didn't have user DB data loaded yet??");
 #endif
 
-                if (_banManager.GetRoleBans(userId) == null) // ADT-tweak
-                {
-                    Logger.ErrorS("RoleBans", $"Role bans for player {session} {userId} have not been loaded yet.");
-                    continue;
-                }
                 readyPlayers.Add(session);
                 HumanoidCharacterProfile profile;
                 if (_prefsManager.TryGetCachedPreferences(userId, out var preferences))
@@ -453,7 +517,6 @@ namespace Content.Server.GameTicking
             AnnounceRound();
             UpdateInfoText();
             SendRoundStartedDiscordMessage();
-            RaiseLocalEvent(new RoundStartedEvent(RoundId)); // Corvax
 
 #if EXCEPTION_TOLERANCE
             }
@@ -499,25 +562,24 @@ namespace Content.Server.GameTicking
             _sawmill.Info("Ending round!");
 
             RunLevel = GameRunLevel.PostRound;
-            // ADT-Commented-start
-            // try
-            // {
-            //     ShowRoundEndScoreboard(text);
-            // }
-            // catch (Exception e)
-            // {
-            //     Log.Error($"Error while showing round end scoreboard: {e}");
-            // }
-            // try
-            // {
-            //     SendRoundEndDiscordMessage();
-            // }
-            // catch (Exception e)
-            // {
-            //     Log.Error($"Error while sending round end Discord message: {e}");
-            // }
-            // ADT-Commented-end
-            ShowRoundEndScoreboard(text); // ADT-tweak
+
+            try
+            {
+                ShowRoundEndScoreboard(text);
+            }
+            catch (Exception e)
+            {
+                Log.Error($"Error while showing round end scoreboard: {e}");
+            }
+
+            try
+            {
+                SendRoundEndDiscordMessage();
+            }
+            catch (Exception e)
+            {
+                Log.Error($"Error while sending round end Discord message: {e}");
+            }
         }
 
         public void ShowRoundEndScoreboard(string text = "")
@@ -615,55 +677,10 @@ namespace Content.Server.GameTicking
             );
             RaiseNetworkEvent(roundEndMessageEvent);
             RaiseLocalEvent(roundEndMessageEvent);
-            RaiseLocalEvent(new RoundEndedEvent(RoundId, roundDuration)); // Corvax
 
             _replayRoundPlayerInfo = listOfPlayerInfoFinal;
             _replayRoundText = roundEndText;
-            // ADT-Tweak-start
-            var roundEndSummary = GenerateRoundEndSummary(gamemodeTitle, roundEndText, listOfPlayerInfoFinal);
-            SendRoundEndDiscordMessageFile(roundEndSummary);
-            SendRoundEndDiscordMessage();
-            // ADT-Tweak-end
         }
-        // ADT-Tweak-start
-        private string ConvertBBCodeToMarkdown(string text)
-        {
-            text = Regex.Replace(text, @"\[.*?\]", "");
-            return text; }
-        private string GenerateRoundEndSummary(string gamemodeTitle, string roundEndText, RoundEndMessageEvent.RoundEndPlayerInfo[] playerInfoArray)
-        {
-            var roundEndTextMarkdown = ConvertBBCodeToMarkdown(roundEndText);
-            var stringBuilder = new System.Text.StringBuilder();
-
-            stringBuilder.AppendLine($"Режим: {gamemodeTitle}\n");
-
-            if (!string.IsNullOrWhiteSpace(roundEndTextMarkdown))
-            {
-                stringBuilder.AppendLine($"Информация: {roundEndTextMarkdown}\n");
-            }
-
-            var groupedPlayers = playerInfoArray
-                .GroupBy(p => new { p.PlayerOOCName, p.PlayerICName })
-                .Select(g => new
-                {
-                    PlayerOOCName = g.Key.PlayerOOCName,
-                    PlayerICName = g.Key.PlayerICName,
-                    Roles = string.Join(", ", g.Select(p => p.Role).Distinct())
-                })
-                .ToList();
-
-            int totalPlayers = groupedPlayers.Count;
-
-            stringBuilder.AppendLine($"Всего было игроков: {totalPlayers}\n");
-            stringBuilder.AppendLine($"Игроки:\n");
-
-            foreach (var playerInfo in groupedPlayers)
-            {
-                stringBuilder.AppendLine($"{playerInfo.PlayerICName}({playerInfo.PlayerOOCName}) в роли: {Loc.GetString(playerInfo.Roles)}");
-            }
-
-            return stringBuilder.ToString();}
-        // ADT-Tweak-end
 
         private async void SendRoundEndDiscordMessage()
         {
@@ -696,72 +713,6 @@ namespace Content.Server.GameTicking
                 Log.Error($"Error while sending discord round end message:\n{e}");
             }
         }
-        // ADT-Tweak-start
-        private async void SendRoundEndDiscordMessageFile(string roundEndSummary)
-        {
-            try
-            {
-                if (!_webhookIdentifier.HasValue)
-                {
-                    Log.Warning("WebhookIdentifier is null or does not have a value.");
-                    return;
-                }
-
-                var duration = RoundDuration();
-                var content = $"Раунд {RoundId} завершен!\n" +
-                            $"Продолжительность: {Math.Truncate(duration.TotalHours)} часов {duration.Minutes} минут {duration.Seconds} секунд\n" +
-                            $"{roundEndSummary}";
-
-                var payload = new WebhookPayload { Content = content };
-                payload = new WebhookPayload { Content = content };
-
-                // Создаем временный файл с информацией о завершении раунда
-                var tempFilePath = Path.GetTempFileName();
-                var fileName = $"Round_{RoundId}_Summary.txt";
-                await File.WriteAllTextAsync(tempFilePath, content);
-
-                // Construct the webhook URL using the Id and Token
-                string webhookUrl = $"https://discord.com/api/webhooks/{_webhookIdentifier.Value.Id}/{_webhookIdentifier.Value.Token}";
-
-                Uri webhookUri;
-                try
-                {
-                    // Create the URI from the constructed webhook URL
-                    webhookUri = new Uri(webhookUrl);
-                }
-                catch (UriFormatException e)
-                {
-                    Log.Warning($"Ошибка при преобразовании webhookIdentifier в URI: {e.Message}");
-                    return;
-                }
-
-                using (var client = new HttpClient())
-                using (var form = new MultipartFormDataContent())
-                {
-                    var fileBytes = await File.ReadAllBytesAsync(tempFilePath);
-                    var fileContent = new ByteArrayContent(fileBytes);
-                    fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse("text/plain");
-                    form.Add(fileContent, "file", fileName);
-
-                    var response = await client.PostAsync(webhookUri, form); // Using the constructed URI
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        Log.Warning($"Ошибка при отправке файла в Discord: {response.StatusCode}");
-                    }
-                    else
-                    {
-                        Log.Info("Файл с информацией о завершении раунда успешно отправлен.");
-                    }
-                }
-
-                File.Delete(tempFilePath);
-            }
-            catch (Exception e)
-            {
-                Log.Warning($"Ошибка при отправке сообщения о завершении раунда в Discord:\n{e}");
-            }
-        }
-        // ADT-Tweak-end
 
         public void RestartRound()
         {
@@ -774,9 +725,6 @@ namespace Content.Server.GameTicking
             // Handle restart for server update
             if (_serverUpdates.RoundEnded())
                 return;
-
-            // Check if the GamePreset needs to be reset
-            TryResetPreset();
 
             _sawmill.Info("Restarting round!");
 
@@ -1121,6 +1069,12 @@ namespace Content.Server.GameTicking
 
             Text += text;
             _doNewLine = true;
+        }
+
+        // goob edit
+        public void AppendAtStart(string text)
+        {
+            Text = text + Text;
         }
     }
 }

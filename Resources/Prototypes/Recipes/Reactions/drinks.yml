@@ -1,3 +1,54 @@
+# SPDX-FileCopyrightText: 2020 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2020 Injazz <injazza@gmail.com>
+# SPDX-FileCopyrightText: 2020 nuke <47336974+nuke-makes-games@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2021 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+# SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 Fishfish458 <47410468+Fishfish458@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 Mervill <mervills.email@gmail.com>
+# SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 Peptide90 <78795277+Peptide90@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 Plasmaguy <jrjr3000@outlook.com>
+# SPDX-FileCopyrightText: 2022 Veritius <45957058+Veritius@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 ZeroDayDaemon <60460608+ZeroDayDaemon@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 fishfish458 <fishfish458>
+# SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+# SPDX-FileCopyrightText: 2023 Alzore <140123969+Blackern5000@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Floofi <126319569+Shadowtheprotogen546@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Jeff <velcroboy333@hotmail.com>
+# SPDX-FileCopyrightText: 2023 Kevin Zheng <kevinz5000@gmail.com>
+# SPDX-FileCopyrightText: 2023 Kit0vras <123590995+Kit0vras@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Velcroboy <107660393+IamVelcroboy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Veritius <veritiusgaming@gmail.com>
+# SPDX-FileCopyrightText: 2023 Vordenburg <114301317+Vordenburg@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Waylon Cude <waylon531@gmail.com>
+# SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 keronshb <54602815+keronshb@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 lapatison <100279397+lapatison@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 lzk <124214523+lzk228@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2024 BlitzTheSquishy <73762869+BlitzTheSquishy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 CatMagic <135462166+CatMagic1@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Firewatch <54725557+musicmanvr@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Hannah Giovanna Dawson <karakkaraz@gmail.com>
+# SPDX-FileCopyrightText: 2024 Hanz <41141796+Hanzdegloker@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 RedBookcase <Usualmoves@gmail.com>
+# SPDX-FileCopyrightText: 2024 RedBookcase <crazykid1590@gmail.com>
+# SPDX-FileCopyrightText: 2024 Southbridge <7013162+southbridge-fur@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Verm <32827189+Vermidia@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 dragonryan06 <71857681+dragonryan06@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 joshepvodka <86210200+joshepvodka@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 potato1234_x <79580518+potato1234x@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 saga3152 <133799418+saga3152@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Alpaccalypse <21291379+Alpaccalypse@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: reaction
   id: AcidSpit
   reactants:
@@ -7,18 +58,6 @@
       amount: 1
   products:
     AcidSpit: 3
-
-- type: reaction
-  id: AlienBrainHemorrhage
-  reactants:
-    IrishCream:
-      amount: 1
-    BlueCuracao:
-      amount: 1
-    Grenadine:
-      amount: 1
-  products:
-    AlienBrainHemorrhage: 3
 
 - type: reaction
   id: AlliesCocktail
@@ -90,14 +129,14 @@
     Uranium:
       amount: 1
   products:
-    AtomicBomb: 10
+    AtomicBomb: 11
 
 - type: reaction
   id: B52
   reactants:
     Cognac:
       amount: 1
-    IrishSlammer:
+    IrishCarBomb:
       amount: 1
     CoffeeLiqueur:
       amount: 1
@@ -251,20 +290,6 @@
     BraveBull: 3
 
 - type: reaction
-  id: Bronx
-  requiredMixerCategories:
-  - Shake
-  reactants:
-    Gin:
-      amount: 1
-    Vermouth:
-      amount: 1
-    JuiceOrange:
-      amount: 1
-  products:
-    Bronx: 3
-
-- type: reaction
   id: CafeLatte
   reactants:
     Coffee:
@@ -309,16 +334,6 @@
     CreamOfCoconut: 3
 
 - type: reaction
-  id: CrushDepth
-  reactants:
-    RootBeerFloat:
-      amount: 1
-    Rum:
-      amount: 1
-  products:
-    CrushDepth: 2
-
-- type: reaction
   id: CubaLibre
   reactants:
     Cola:
@@ -327,16 +342,6 @@
       amount: 1
   products:
     CubaLibre: 3
-
-- type: reaction
-  id: DarkandStormy
-  reactants:
-    SolDry:
-      amount: 1
-    Rum:
-      amount: 1
-  products:
-    DarkandStormy: 2
 
 - type: reaction
   id: DemonsBlood
@@ -397,34 +402,6 @@
       amount: 1
   products:
     DriestMartini: 2
-
-- type: reaction
-  id: Eggnog
-  requiredMixerCategories:
-  - Shake
-  reactants:
-    Egg:
-      amount: 1
-    Milk:
-      amount: 4
-    Rum:
-      amount: 5
-  products:
-    Eggnog: 10
-
-- type: reaction
-  id: ElectricShark
-  requiredMixerCategories:
-  - Shake
-  reactants:
-    DarkandStormy:
-      amount: 4
-    BlueCuracao:
-      amount: 1
-    JuicePineapple:
-      amount: 1
-  products:
-    ElectricShark: 6
 
 - type: reaction
   id: ErikaSurprise
@@ -633,22 +610,20 @@
   reactants:
     EnergyDrink:
       amount: 1
-    IrishSlammer:
+    IrishCarBomb:
       amount: 1
   products:
     IrishBool: 2
 
 - type: reaction
-  id: IrishSlammer
+  id: IrishCarBomb
   reactants:
     Ale:
       amount: 1
     IrishCream:
       amount: 1
   products:
-    IrishSlammer: 2
-  sound:
-    path: /Audio/Animals/penguin_squawk.ogg # Cocktail is called grenade penguin in localisation
+    IrishCarBomb: 2
 
 - type: reaction
   id: IrishCoffee
@@ -671,48 +646,6 @@
       amount: 2
   products:
     IrishCream: 3
-
-- type: reaction
-  id: JackRose
-  requiredMixerCategories:
-  - Shake
-  reactants:
-    JuiceApple:
-      amount: 1
-    Cognac:
-      amount: 1
-    Grenadine:
-      amount: 1
-    JuiceLemon:
-      amount: 1
-  products:
-    JackRose: 4
-
-- type: reaction
-  id: JungleBird
-  requiredMixerCategories:
-  - Shake
-  reactants:
-    Rum:
-      amount: 3
-    JuicePineapple:
-      amount: 1
-    Grenadine:
-      amount: 1
-    JuiceLime:
-      amount: 1
-  products:
-    JungleBird: 6
-
-- type: reaction
-  id: Kalimotxo
-  reactants:
-    Cola:
-      amount: 1
-    Wine:
-      amount: 1
-  products:
-    Kalimotxo: 2
 
 - type: reaction
   id: KiraSpecial
@@ -854,22 +787,6 @@
     Mojito: 4
 
 - type: reaction
-  id: MonkeyBusiness
-  requiredMixerCategories:
-  - Shake
-  reactants:
-    Gin:
-      amount: 1
-    JuiceOrange:
-      amount: 1
-    Grenadine:
-      amount: 1
-    Absinthe:
-      amount: 1
-  products:
-    MonkeyBusiness: 4
-
-- type: reaction
   id: Moonshine
   reactants:
     Tequila:
@@ -969,16 +886,6 @@
       amount: 1
   products:
     Posca: 3
-
-- type: reaction
-  id: Radler
-  reactants:
-    Lemonade:
-      amount: 1
-    Beer:
-      amount: 1
-  products:
-    Radler: 2
 
 - type: reaction
   id: RedMead
@@ -1184,18 +1091,6 @@
     ThreeMileIsland: 10
 
 - type: reaction
-  id: Tortuga
-  requiredMixerCategories:
-  - Stir
-  reactants:
-    IcedTea:
-      amount: 1
-    Sugar:
-      amount: 1
-  products:
-    Tortuga: 2
-
-- type: reaction
   id: ToxinsSpecial
   requiredMixerCategories:
   - Shake
@@ -1208,22 +1103,6 @@
       amount: 2
   products:
     ToxinsSpecial: 5
-
-- type: reaction
-  id: Vampiro
-  requiredMixerCategories:
-  - Shake
-  reactants:
-    TequilaSunrise:
-      amount: 3
-    BloodyMary:
-      amount: 1
-    Hotsauce:
-      amount: 1
-    LemonLime:
-      amount: 1
-  products:
-    Vampiro: 6
 
 - type: reaction
   id: VodkaMartini
@@ -1391,7 +1270,7 @@
       amount: 1
   products:
     Cola: 4
-
+    
 - type: reaction
   id: Caipirinha
   requiredMixerCategories:

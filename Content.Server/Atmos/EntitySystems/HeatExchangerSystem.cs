@@ -1,17 +1,22 @@
-using Content.Server.Atmos.EntitySystems;
+// SPDX-FileCopyrightText: 2023 Ilya246 <57039557+Ilya246@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
+// SPDX-FileCopyrightText: 2024 Kevin Zheng <kevinz5000@gmail.com>
+// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Server.Atmos.Piping.Components;
-using Content.Server.Atmos.Piping.Unary.Components;
-using Content.Server.Atmos.Piping.Binary.EntitySystems;
-using Content.Server.Atmos;
 using Content.Server.Atmos.Components;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NodeContainer.Nodes;
-using Content.Server.NodeContainer;
-using Content.Shared.Atmos.Piping;
 using Content.Shared.Atmos;
 using Content.Shared.CCVar;
-using Content.Shared.Interaction;
-using JetBrains.Annotations;
 using Robust.Shared.Configuration;
 
 namespace Content.Server.Atmos.EntitySystems;
@@ -22,7 +27,6 @@ public sealed class HeatExchangerSystem : EntitySystem
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly NodeContainerSystem _nodeContainer = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly GasPassiveGateSystem _passiveGate = default!;
 
     float tileLoss;
 
@@ -55,73 +59,33 @@ public sealed class HeatExchangerSystem : EntitySystem
 
         var dt = args.dt;
 
-        float n;
+        // Let n = moles(inlet) - moles(outlet), really a Δn
+        var P = inlet.Air.Pressure - outlet.Air.Pressure; // really a ΔP
+        // Such that positive P causes flow from the inlet to the outlet.
 
-        if (comp.UsePassiveGate)
-        {
-            // Passive valve model: instantly equalizes pressure assuming perfect conduction.
-            var n1 = inlet.Air.TotalMoles;
-            var n2 = outlet.Air.TotalMoles;
-            var P1 = inlet.Air.Pressure;
-            var P2 = outlet.Air.Pressure;
-            var V1 = inlet.Air.Volume;
-            var V2 = outlet.Air.Volume;
-            var T1 = inlet.Air.Temperature;
-            var T2 = outlet.Air.Temperature;
-            var denom = (T1 * V2 + T2 * V1);
+        // We want moles transferred to be proportional to the pressure difference, i.e.
+        // dn/dt = G*P
 
-            if (P1 != P2 && denom > 0)
-            {
-                // Calculate the number of moles to transfer to equalize the final pressure of both sides.
-                float targetN1 = (n1 + n2) * T2 * V1 / denom;
-                n = n1 - targetN1;
-            }
-            else
-            {
-                return;
-            }
-        }
-        else
-        {
-            // Let n = moles(inlet) - moles(outlet), really a Δn
-            var P = inlet.Air.Pressure - outlet.Air.Pressure; // really a ΔP
-            // Such that positive P causes flow from the inlet to the outlet.
+        // To solve this we need to write dn in terms of P. Since PV=nRT, dP/dn=RT/V.
+        // This assumes that the temperature change from transferring dn moles is negligible.
+        // Since we have P=Pi-Po, then dP/dn = dPi/dn-dPo/dn = R(Ti/Vi - To/Vo):
+        float dPdn = Atmospherics.R * (outlet.Air.Temperature / outlet.Air.Volume + inlet.Air.Temperature / inlet.Air.Volume);
 
-            // We want moles transferred to be proportional to the pressure difference, i.e.
-            // dn/dt = G*P
+        // Multiplying both sides of the differential equation by dP/dn:
+        // dn/dt * dP/dn = dP/dt = G*P * (dP/dn)
+        // Which is a first-order linear differential equation with constant (heh...) coefficients:
+        // dP/dt + kP = 0, where k = -G*(dP/dn).
+        // This differential equation has a closed-form solution, namely:
+        float Pfinal = P * MathF.Exp(-comp.G * dPdn * dt);
 
-            // To solve this we need to write dn in terms of P. Since PV=nRT, dP/dn=RT/V.
-            // This assumes that the temperature change from transferring dn moles is negligible.
-            // Since we have P=Pi-Po, then dP/dn = dPi/dn-dPo/dn = R(Ti/Vi - To/Vo):
-            float dPdn = Atmospherics.R * (outlet.Air.Temperature / outlet.Air.Volume + inlet.Air.Temperature / inlet.Air.Volume);
-
-            // Multiplying both sides of the differential equation by dP/dn:
-            // dn/dt * dP/dn = dP/dt = G*P * (dP/dn)
-            // Which is a first-order linear differential equation with constant (heh...) coefficients:
-            // dP/dt + kP = 0, where k = -G*(dP/dn).
-            // This differential equation has a closed-form solution, namely:
-            float Pfinal = P * MathF.Exp(-comp.G * dPdn * dt);
-
-            // Finally, back out n, the moles transferred in this tick:
-            n = (P - Pfinal) / dPdn;
-        }
+        // Finally, back out n, the moles transferred in this tick:
+        float n = (P - Pfinal) / dPdn;
 
         GasMixture xfer;
-        PipeNode sourceNode;
-        PipeNode targetNode;
-
         if (n > 0)
-        {
-            sourceNode = inlet;
-            targetNode = outlet;
             xfer = inlet.Air.Remove(n);
-        }
         else
-        {
-            sourceNode = outlet;
-            targetNode = inlet;
             xfer = outlet.Air.Remove(-n);
-        }
 
         float CXfer = _atmosphereSystem.GetHeatCapacity(xfer, true);
         if (CXfer < Atmospherics.MinimumHeatCapacity)
@@ -153,7 +117,7 @@ public sealed class HeatExchangerSystem : EntitySystem
         // ΔT' = -kΔT^4, k = -ΔT'/ΔT^4
         float kR = comp.alpha * a0 * TdivQ;
         // Based on the fact that ((3t)^(-1/3))' = -(3t)^(-4/3) = -((3t)^(-1/3))^4, and ΔT' = -kΔT^4.
-        float dT2R = dTR * MathF.Pow((1f + 3f * kR * dt * dTRA * dTRA * dTRA), -1f / 3f);
+        float dT2R = dTR * MathF.Pow((1f + 3f * kR * dt * dTRA * dTRA * dTRA), -1f/3f);
         float dER = (dTR - dT2R) / TdivQ;
         _atmosphereSystem.AddHeat(xfer, -dER);
         if (hasEnv && environment != null)
@@ -172,6 +136,10 @@ public sealed class HeatExchangerSystem : EntitySystem
             _atmosphereSystem.AddHeat(environment, dE);
         }
 
-        _atmosphereSystem.Merge(targetNode.Air, xfer);
+        if (n > 0)
+            _atmosphereSystem.Merge(outlet.Air, xfer);
+        else
+            _atmosphereSystem.Merge(inlet.Air, xfer);
+
     }
 }

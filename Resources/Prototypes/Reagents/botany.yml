@@ -1,3 +1,36 @@
+# SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
+# SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2021 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2021 mirrorcult <lunarautomaton6@gmail.com>
+# SPDX-FileCopyrightText: 2022 Alex Evgrashin <aevgrashin@yandex.ru>
+# SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 Sam Weaver <weaversam8@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 moonheart08 <moonheart08@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Doru991 <75124791+Doru991@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
+# SPDX-FileCopyrightText: 2023 Maxtone <124747282+MagnusCrowe@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Sailor <109166122+Equivocateur@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
+# SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2024 Alpha-Two <92269094+Alpha-Two@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Alpha-Two <alpha2.5232@gmail.com>
+# SPDX-FileCopyrightText: 2024 Ashley Woodiss-Field <ash@DESKTOP-H64M4AI.localdomain>
+# SPDX-FileCopyrightText: 2024 ColesMagnum <98577947+AW-FulCode@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Eris <eris@erisws.com>
+# SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Flesh <62557990+PolterTzi@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 IlyaElDunaev <154531074+IlyaElDunaev@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
+# SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: reagent
   id: EZNutrient
   name: reagent-name-e-z-nutrient
@@ -205,21 +238,6 @@
   color: "#77b58e"
   boilingPoint: -33.0
   meltingPoint: -77.7
-  #ADT-tweak-start
-  reactiveEffects:
-    Acidic:
-      methods: [ Touch ]
-      effects:
-      - !type:HealthChange
-        scaleByQuantity: true
-        ignoreResistances: false
-        damage:
-          types:
-            Caustic: 0.13
-      - !type:Emote
-        emote: Scream
-        probability: 0.3
-  #ADT-tweak-end
   plantMetabolism:
   - !type:PlantAdjustNutrition
     amount: 1
@@ -231,11 +249,14 @@
       - !type:HealthChange
         damage:
           types:
-            Caustic: 0.5 #ADT-tweak. 1 -> 0.5
+            Caustic: 1
     Gas:
       effects:
       - !type:HealthChange
         conditions:
+        - !type:OrganType # Goobstation - Yowie
+          type: Yowie
+          shouldHave: false
         - !type:OrganType
           type: Rat
           shouldHave: false
@@ -249,6 +270,9 @@
       - !type:ChemVomit
         probability: 0.12
         conditions:
+        - !type:OrganType # Goobstation - Yowie
+          type: Yowie
+          shouldHave: false
         - !type:OrganType
           type: Rat
           shouldHave: false
@@ -299,21 +323,6 @@
   color: "#a1000b"
   boilingPoint: 55.5
   meltingPoint: -50.0
-  #ADT-tweak-start
-  reactiveEffects:
-    Acidic:
-      methods: [ Touch ]
-      effects:
-      - !type:HealthChange
-        scaleByQuantity: true
-        ignoreResistances: false
-        damage:
-          types:
-            Caustic: 0.19
-      - !type:Emote
-        emote: Scream
-        probability: 0.3
-  #ADT-tweak-end
   plantMetabolism:
   - !type:PlantAdjustNutrition
     amount: 0.1
@@ -332,4 +341,4 @@
       - !type:HealthChange
         damage:
           types:
-            Caustic: 0.7 #ADT-tweak. 1 -> 0.7
+            Caustic: 1

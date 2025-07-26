@@ -1,2 +1,2 @@
-ent-SpeedLoaderLightRifle = спидлоадер (7.62х39 мм)
+ent-SpeedLoaderLightRifle = спидлоадер (.30 винтовочные)
     .desc = { ent-BaseItem.desc }

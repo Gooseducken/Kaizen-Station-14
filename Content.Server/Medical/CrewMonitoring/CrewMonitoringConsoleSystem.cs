@@ -1,16 +1,30 @@
+// SPDX-FileCopyrightText: 2021 Alex Evgrashin <aevgrashin@yandex.ru>
+// SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@googlemail.com>
+// SPDX-FileCopyrightText: 2022 Acruid <shatter66@gmail.com>
+// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2023 Julian Giebel <juliangiebel@live.de>
+// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
+// SPDX-FileCopyrightText: 2023 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 keronshb <54602815+keronshb@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 themias <89101928+themias@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+// SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Linq;
+using Content.Goobstation.Shared.CrewMonitoring;
 using Content.Server.DeviceNetwork;
 using Content.Server.DeviceNetwork.Systems;
-using Content.Server.Popups;
 using Content.Server.PowerCell;
-using Content.Shared.DeviceNetwork;
-using Content.Shared.DeviceNetwork.Events;
-using Content.Shared.Emag.Systems;
 using Content.Shared.Medical.CrewMonitoring;
 using Content.Shared.Medical.SuitSensor;
 using Content.Shared.Pinpointer;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio.Systems;
 
 namespace Content.Server.Medical.CrewMonitoring;
 
@@ -19,18 +33,12 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
     [Dependency] private readonly PowerCellSystem _cell = default!;
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
 
-    // ADT-Tweak-Start
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    // ADT-Tweak-End
-
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<CrewMonitoringConsoleComponent, ComponentRemove>(OnRemove);
         SubscribeLocalEvent<CrewMonitoringConsoleComponent, DeviceNetworkPacketEvent>(OnPacketReceived);
         SubscribeLocalEvent<CrewMonitoringConsoleComponent, BoundUIOpenedEvent>(OnUIOpened);
-        SubscribeLocalEvent<CrewMonitoringConsoleComponent, GotEmaggedEvent>(OnEmagged); // ADT-Tweak
     }
 
     private void OnRemove(EntityUid uid, CrewMonitoringConsoleComponent component, ComponentRemove args)
@@ -52,7 +60,25 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
         if (!payload.TryGetValue(SuitSensorConstants.NET_STATUS_COLLECTION, out Dictionary<string, SuitSensorStatus>? sensorStatus))
             return;
 
+        // Goobstation - start
+        if (TryComp<CrewMonitorScanningComponent>(uid, out var scanned))
+        {
+            var newSensorStatus = new Dictionary<string, SuitSensorStatus>();
+            foreach (var pair in sensorStatus)
+            {
+                var sensorUid = GetEntity(pair.Value.SuitSensorUid);
+                if (!HasComp<TransformComponent>(sensorUid))
+                    continue;
+
+                if (scanned.ScannedEntities.Contains(Transform(sensorUid).ParentUid))
+                    newSensorStatus[pair.Key] = pair.Value;
+            }
+            sensorStatus = newSensorStatus;
+        }
+        // Goobstation - end
+
         component.ConnectedSensors = sensorStatus;
+
         UpdateUserInterface(uid, component);
     }
 
@@ -80,21 +106,6 @@ public sealed class CrewMonitoringConsoleSystem : EntitySystem
 
         // Update all sensors info
         var allSensors = component.ConnectedSensors.Values.ToList();
-        _uiSystem.SetUiState(uid, CrewMonitoringUIKey.Key, new CrewMonitoringState(allSensors, component.IsEmagged)); // ADT-Tweak
+        _uiSystem.SetUiState(uid, CrewMonitoringUIKey.Key, new CrewMonitoringState(allSensors));
     }
-
-    // ADT-Tweak-Start
-    private void OnEmagged(EntityUid uid, CrewMonitoringConsoleComponent component, ref GotEmaggedEvent ev)
-    {
-        if (ev.Handled || component.IsEmagged)
-            return;
-
-        _audio.PlayPvs(component.SparkSound, uid);
-        _popup.PopupEntity(Loc.GetString("crew-monitoring-component-upgrade-emag"), uid);
-
-        component.IsEmagged = true;
-        UpdateUserInterface(uid, component);
-        ev.Handled = true;
-    }
-    // ADT-Tweak-End
 }

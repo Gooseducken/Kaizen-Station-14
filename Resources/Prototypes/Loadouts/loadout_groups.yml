@@ -1,17 +1,166 @@
+# SPDX-FileCopyrightText: 2024 AJCM <AJCM@tutanota.com>
+# SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2024 Alex Evgrashin <aevgrashin@yandex.ru>
+# SPDX-FileCopyrightText: 2024 Alex Pavlenko <diraven@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Alice "Arimah" Heurlin <30327355+arimah@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 ArkiveDev <95712736+ArkiveDev@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Aviu00 <93730715+Aviu00@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 BeeRobynn <robynthewarcrime@proton.me>
+# SPDX-FileCopyrightText: 2024 Bellwether <157836624+BellwetherLogic@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Boaz1111 <149967078+Boaz1111@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 CaasGit <87243814+CaasGit@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 DieselMohawk <gavin.drinka@gmail.com>
+# SPDX-FileCopyrightText: 2024 Doctor-Cpu <77215380+Doctor-Cpu@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Doomsdrayk <robotdoughnut@comcast.net>
+# SPDX-FileCopyrightText: 2024 DrEnzyme <DrEnzyme@gmail.com>
+# SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Elysium206 <151651971+Elysium206@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 EmoGarbage404 <retron404@gmail.com>
+# SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
+# SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Firewatch <54725557+musicmanvr@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Floofi <126319569+Shadowtheprotogen546@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Ghagliiarghii <68826635+Ghagliiarghii@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 HS <81934438+HolySSSS@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Hanz <41141796+Hanzdegloker@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Hrosts <35345601+Hrosts@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Ian <ignaz.k@live.de>
+# SPDX-FileCopyrightText: 2024 Ilya246 <57039557+Ilya246@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Joel Zimmerman <JoelZimmerman@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 JustCone <141039037+JustCone14@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 K-Dynamic <20566341+K-Dynamic@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Kevin Zheng <kevinz5000@gmail.com>
+# SPDX-FileCopyrightText: 2024 Killerqu00 <47712032+Killerqu00@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Ko4ergaPunk <62609550+Ko4ergaPunk@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Kukutis96513 <146854220+Kukutis96513@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 LittleNorthStar <vorriasam@gmail.com>
+# SPDX-FileCopyrightText: 2024 Lye <128915833+Lyroth001@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 MerrytheManokit <167581110+MerrytheManokit@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
+# SPDX-FileCopyrightText: 2024 MetalSage <74924875+MetalSage@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 MetalSage <metalsage.official@gmail.com>
+# SPDX-FileCopyrightText: 2024 Michael Krebs <michael@krb.io>
+# SPDX-FileCopyrightText: 2024 MilenVolf <63782763+MilenVolf@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Mr. 27 <koolthunder019@gmail.com>
+# SPDX-FileCopyrightText: 2024 MureixloI <132683811+MureixloI@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 NakataRin <45946146+NakataRin@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 OrangeMoronage9622 <whyteterry0092@gmail.com>
+# SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
+# SPDX-FileCopyrightText: 2024 Pancake <Pangogie@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Partmedia <kevinz5000@gmail.com>
+# SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+# SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+# SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 PoorMansDreams <150595537+PoorMansDreams@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 PopGamer46 <yt1popgamer@gmail.com>
+# SPDX-FileCopyrightText: 2024 Preston Smith <92108534+thetolbean@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Psychpsyo <60073468+Psychpsyo@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Redfire1331 <125223432+Redfire1331@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Repo <47093363+Titian3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 RiceMar1244 <138547931+RiceMar1244@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Rouge2t7 <81053047+Sarahon@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 SpeltIncorrectyl <66873282+SpeltIncorrectyl@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Spessmann <156740760+Spessmann@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Stalen <33173619+stalengd@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 TakoDragon <69509841+BackeTako@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
+# SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Truoizys <153248924+Truoizys@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Unkn0wn_Gh0st <shadowstalkermll@gmail.com>
+# SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
+# SPDX-FileCopyrightText: 2024 Verm <32827189+Vermidia@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Vigers Ray <60344369+VigersRay@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 WarMechanic <69510347+WarMechanic@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Weide <64257676+Lyacs@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 cool dolphin <36332236+Afrokada@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 coolboy911 <85909253+coolboy911@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 deathride58 <deathride58@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
+# SPDX-FileCopyrightText: 2024 dffdff2423 <dffdff2423@gmail.com>
+# SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
+# SPDX-FileCopyrightText: 2024 fishbait <gnesse@gmail.com>
+# SPDX-FileCopyrightText: 2024 foboscheshir <156405958+foboscheshir@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 joshepvodka <86210200+joshepvodka@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 lunarcomets <140772713+lunarcomets@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 marbow <152051971+marboww@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
+# SPDX-FileCopyrightText: 2024 mhamster <81412348+mhamsterr@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 neutrino <67447925+neutrino-laser@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 osjarw <62134478+osjarw@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 pigeonpeas <147350443+pigeonpeas@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
+# SPDX-FileCopyrightText: 2024 redfire1331 <Redfire1331@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 saintmuntzer <47153094+saintmuntzer@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 shamp <140359015+shampunj@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 strO0pwafel <153459934+strO0pwafel@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 stroopwafel <j.o.luijkx@student.tudelft.nl>
+# SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 to4no_fix <156101927+chavonadelal@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 voidnull000 <18663194+voidnull000@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Арт <123451459+JustArt1m@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
+# SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
+# SPDX-FileCopyrightText: 2025 Brassica Prime <114382089+Pumkin69@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+# SPDX-FileCopyrightText: 2025 JORJ949 <159719201+JORJ949@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Julian Giebel <juliangiebel@live.de>
+# SPDX-FileCopyrightText: 2025 Momo <Rsnesrud@gmail.com>
+# SPDX-FileCopyrightText: 2025 Pumkin69 <judeb@DESKTOP-M4B8G5D>
+# SPDX-FileCopyrightText: 2025 RadsammyT <32146976+RadsammyT@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
+# SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 centcomofficer24 <theo75cg@gmail.com>
+# SPDX-FileCopyrightText: 2025 grub <unalterableness@gmail.com>
+# SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
+# SPDX-FileCopyrightText: 2025 lzk <124214523+lzk228@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
+# SPDX-FileCopyrightText: 2025 shityaml <unalterableness@gmail.com>
+# SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 starch <starchpersonal@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
 # Miscellaneous
-
 - type: loadoutGroup
   id: Trinkets
   name: loadout-group-trinkets
   minLimit: 0
   maxLimit: 3
   loadouts:
-  - SpaceLaw # Corvax-HyperLink
   - FlowerWreath
   - Hairflower
   - Headphones
   - PlushieLizard
   - PlushieSpaceLizard
+  - PersonalAI # Goobstation
+  - GoldPersonalAI # Goobstation
   - ThreeCandles
   - Lighter
   - CigPackGreen
@@ -20,30 +169,26 @@
   - CigPackBlack
   - CigarCase
   - CigarGold
-  #ADT start
-  # - ClothingNeckLGBTPin
-  # - ClothingNeckAromanticPin
-  # - ClothingNeckAsexualPin
-  # - ClothingNeckBisexualPin
-  # - ClothingNeckIntersexPin
-  # - ClothingNeckLesbianPin
-  # - ClothingNeckNonBinaryPin
-  # - ClothingNeckPansexualPin
-  # - ClothingNeckTransPin
-  # - ClothingNeckAutismPin
-  # - ClothingNeckGoldAutismPin
-  # # Corvax-Loadouts-Start
-  # - ClothingNeckAtharaPin
-  # - ClothingNeckCorvaxPin
-  # - ClothingNeckEchoPin
-  # - ClothingNeckElysiumPin
-  # - ClothingNeckMainPin
-  # - ClothingNeckNebulaPin
-  # - ClothingNeckNovaPin
-  # - ClothingNeckSolarisPin
-  # - ClothingNeckWhiteListPin
-  # # Corvax-Loadouts-End
-  #ADT end
+  - ClothingNeckLGBTPin
+  - ClothingNeckAllyPin
+  - ClothingNeckAromanticPin
+  - ClothingNeckAsexualPin
+  - ClothingNeckAroacePin
+  - ClothingNeckBisexualPin
+  - ClothingNeckGayPin
+  - ClothingNeckIntersexPin
+  - ClothingNeckLesbianPin
+  - ClothingNeckNonBinaryPin
+  - ClothingNeckPansexualPin
+  - ClothingNeckOmnisexualPin
+  - ClothingNeckGenderqueerPin
+  - ClothingNeckTransPin
+  - ClothingNeckAutismPin
+  - CardBoxBlack # GoobStation
+  - CardBoxNanotrasen # GoobStation
+  - FoodSnackLollypopWrapped # Goobstation
+  - FoodSnackLollypopWrappedRainbow # Goobstation
+  - FoodSnackLollypopWrappedCarp # Goobstation
   - TowelColorBlack
   - TowelColorDarkBlue
   - TowelColorDarkGreen
@@ -60,12 +205,13 @@
   - TowelColorSilver
   - TowelColorWhite
   - TowelColorYellow
-  # ADT-Tweak-Start
-  - AcousticGuitarInstrument
-  - HarmonicaInstrument
-  - ADTModStorageVoucher
-  - ADTClothingGeorgeRibbonPin
-  # ADT-Tweak-End
+  # Begin DeltaV Additions
+  - GoldRing
+  - SilverRing
+  - Cane
+  - WhiteCane
+  - TapeRecorder
+  # End DeltaV Additions
 
 - type: loadoutGroup
   id: Glasses
@@ -75,6 +221,7 @@
   - Glasses
   - GlassesJamjar
   - GlassesJensen
+  - CheapSunglasses # Goobstation
 
 - type: loadoutGroup
   id: GroupTankHarness
@@ -93,10 +240,6 @@
   - EmergencyNitrogen
   - EmergencyOxygen
   - LoadoutSpeciesVoxNitrogen
-  # ADT-Species-Start
-  - ADTEmergencyMoth
-  - ADTEmergencyIPC
-  # ADT-Species-End
 
 # nitrogen or oxygen tank, depending on what your species needs
 - type: loadoutGroup
@@ -124,7 +267,6 @@
   - LoadoutSpeciesPocketDoubleOxygen
 
 # Command
-
 - type: loadoutGroup
   id: CaptainHead
   name: loadout-group-captain-head
@@ -141,10 +283,7 @@
   - CaptainJumpskirt
   - CaptainFormalSuit
   - CaptainFormalSkirt
-  # Corvax-Loadouts-Start
-  - CaptainJumpsuitTurtleneck
-  - CaptainJumpskirtTurtleneck
-  # Corvax-Loadouts-End
+  - CaptainJumpsuitMilitary # goob
 
 - type: loadoutGroup
   id: CaptainNeck
@@ -153,7 +292,6 @@
   loadouts:
   - CaptainCloak
   - CaptainCloakFormal
-  - ADTClothingCaptainShoulderNeck # ADT Loadout
   - CaptainMantle
 
 - type: loadoutGroup
@@ -163,6 +301,7 @@
   - CaptainBackpack
   - CaptainSatchel
   - CaptainDuffel
+  - CaptainMessenger # Frontier
 
 - type: loadoutGroup
   id: CaptainOuterClothing
@@ -170,7 +309,6 @@
   loadouts:
   - CaptainOuterClothing
   - CaptainWintercoat
-  - ADTArmorVestHidden # ADT Loadout
 
 - type: loadoutGroup
   id: HoPHead
@@ -178,9 +316,6 @@
   minLimit: 0
   loadouts:
   - HoPHead
-  # ADT-Loadouts-Start
-  - ADTHatBeretHOP
-  # ADT-Loadouts-End
 
 - type: loadoutGroup
   id: HoPJumpsuit
@@ -188,16 +323,7 @@
   loadouts:
   - HoPJumpsuit
   - HoPJumpskirt
-  # Corvax-Loadouts-Start
-  - HoPJumpsuitTurtleneck
-  - HoPJumpskirtTurtleneck
-  # Corvax-Loadouts-End
-  # ADT-Loadouts-Start
-  - ADTJumpsuitHopWarm
-  - ADTJumpskirtHopWarm
-  - ADTJumpsuitHopAlt
-  - ADTJumpskirtHopAlt
-  # ADT-Loadouts-End
+  - HoPJumpsuitMilitary # goob
 
 - type: loadoutGroup
   id: HoPNeck
@@ -206,9 +332,6 @@
   loadouts:
   - HoPCloak
   - HoPMantle
-  # ADT-Loadouts-Start
-  - ADTHoPAltCloak
-  # ADT-Loadouts-End
 
 - type: loadoutGroup
   id: HoPBackpack
@@ -217,6 +340,7 @@
   - CommonBackpack
   - CommonSatchel
   - CommonDuffel
+  - CommonMessenger # Frontier
   - HoPBackpackIan
 
 - type: loadoutGroup
@@ -225,12 +349,8 @@
   minLimit: 0
   loadouts:
   - HoPWintercoat
-  # ADT-Loadouts-Start
-  - ADTCoatHOP
-  # ADT-Loadouts-End
 
 # Civilian
-
 - type: loadoutGroup
   id: PassengerJumpsuit
   name: loadout-group-passenger-jumpsuit
@@ -239,6 +359,23 @@
   - GreyJumpskirt
   - AncientJumpsuit
   - RainbowJumpsuit
+ # goob changes start
+  - GreyMJ
+  - BlackMJ
+  - BlueMJ
+  - DarkBlueMJ
+  - TealMJ
+  - GreenMJ
+  - DarkGreenMJ
+  - OrangeMJ
+  - PinkMJ
+  - RedMJ
+  - YellowMJ
+  - PurpleMJ
+  - LightBrownMJ
+  - BrownMJ
+  - MaroonMJ
+ # goob changes end
 
 - type: loadoutGroup
   id: PassengerFace
@@ -261,6 +398,7 @@
   - CommonBackpack
   - CommonSatchel
   - CommonDuffel
+  - CommonMessenger # Frontier
 
 - type: loadoutGroup
   id: PassengerNeck
@@ -298,6 +436,7 @@
   - BartenderJumpsuit
   - BartenderJumpskirt
   - BartenderJumpsuitPurple
+  - ServiceMJ # goob
 
 - type: loadoutGroup
   id: BartenderOuterClothing
@@ -328,6 +467,7 @@
   loadouts:
   - ChefJumpsuit
   - ChefJumpskirt
+  - ServiceMJ # goob
 
 - type: loadoutGroup
   id: ChefOuterClothing
@@ -346,16 +486,8 @@
   - LibrarianJumpskirt
   - CuratorJumpsuit
   - CuratorJumpskirt
-# ADT-Loadouts-Start
-- type: loadoutGroup
-  id: LibrarianBackpack
-  name: loadout-group-librarian-backpack
-  loadouts:
-  - CommonBackpack
-  - CommonSatchel
-  - CommonDuffel
-  - ADTLibrarianBWinRAR
-# ADT-Loadouts-End
+  - ServiceMJ # goob
+
 - type: loadoutGroup
   id: LawyerJumpsuit
   name: loadout-group-lawyer-jumpsuit
@@ -370,7 +502,7 @@
   - LawyerJumpskirtRed
   - LawyerJumpsuitGood
   - LawyerJumpskirtGood
-  - LawyerGreenSuit # ADT-Loadouts
+  - ServiceMJ # goob
 
 - type: loadoutGroup
   id: LawyerNeck
@@ -405,6 +537,7 @@
   - ChaplainJumpskirt
   - ChaplainRobesLight
   - ChaplainRobesDark
+  - ServiceMJ # goob
 
 - type: loadoutGroup
   id: ChaplainOuterClothing
@@ -422,12 +555,6 @@
   minLimit: 0
   loadouts:
   - ChaplainNeck
-  # ADT-Loadouts-Start
-  - ADTChaplainWCross
-  - ADTChaplainBCross
-  - ADTChaplainSCross
-  - ADTChaplainGCross
-  # ADT-Loadouts-End
 
 - type: loadoutGroup
   id: JanitorHead
@@ -442,11 +569,7 @@
   loadouts:
   - JanitorJumpsuit
   - JanitorJumpskirt
-  # ADT-Loadouts-Start
-  - ADTJanitorJumpsuitJanimaid
-  - ADTJanitorJumpsuitJanimaidmini
-  - ADTJanitorJumpsuitJanimaidElegant
-  # ADT-Loadouts-End
+  - ServiceMJ # goob
 
 - type: loadoutGroup
   id: JanitorGloves
@@ -478,6 +601,7 @@
   loadouts:
   - BotanistHead
   - BotanistBandana
+  - BotanistBeret # Goobstation
 
 - type: loadoutGroup
   id: BotanistJumpsuit
@@ -486,6 +610,8 @@
   - BotanistJumpsuit
   - BotanistJumpskirt
   - BotanistOveralls
+  - ServiceMJ # goob
+  - HydroMJ # goob
 
 - type: loadoutGroup
   id: BotanistBackpack
@@ -494,6 +620,7 @@
   - BotanistBackpack
   - BotanistSatchel
   - BotanistDuffel
+  - BotanistMessenger # Frontier
 
 - type: loadoutGroup
   id: BotanistOuterClothing
@@ -527,6 +654,7 @@
   - ClownBackpack
   - ClownSatchel
   - ClownDuffel
+  - ClownMessenger # Frontier
 
 - type: loadoutGroup
   id: ClownOuterClothing
@@ -552,10 +680,6 @@
   - EmergencyNitrogenClown
   - EmergencyOxygenClown
   - LoadoutSpeciesVoxNitrogen
-  # ADT-Loadout-Species-Start
-  - ADTEmergencyMothClown
-  - ADTEmergencyIPCClown
-  # ADT-Loadout-Species-End
 
 - type: loadoutGroup
   id: MimeHead
@@ -588,6 +712,7 @@
   - MimeBackpack
   - MimeSatchel
   - MimeDuffel
+  - MimeMessenger # Frontier
 
 - type: loadoutGroup
   id: MimeOuterClothing
@@ -595,7 +720,6 @@
   minLimit: 0
   loadouts:
   - MimeWintercoat
-  - ADTMimeWintercoatLong #ADT Tweak
 
 - type: loadoutGroup
   id: MimeBelt
@@ -620,6 +744,7 @@
   loadouts:
   - MusicianJumpsuit
   - MusicianJumpskirt
+  - ServiceMJ # goob
 
 - type: loadoutGroup
   id: MusicianOuterClothing
@@ -634,7 +759,6 @@
   minLimit: 0
   maxLimit: 2
   loadouts:
-  - MusicianSuperSynthesizer # ADT-Tweak
   - Glockenspiel
   - MusicBox
   - Xylophone
@@ -665,7 +789,6 @@
   - Bagpipe
 
 # Cargo
-
 - type: loadoutGroup
   id: QuartermasterHead
   name: loadout-group-quartermaster-head
@@ -673,9 +796,6 @@
   loadouts:
   - QuartermasterHead
   - QuartermasterBeret
-  # ADT-Loadouts-Start
-  - ADTCargoTechnicianBeret
-  # ADT-Loadouts-End
 
 - type: loadoutGroup
   id: QuartermasterJumpsuit
@@ -686,10 +806,7 @@
   - QuartermasterTurtleneck
   - QuartermasterTurtleneckSkirt
   - QuartermasterFormalSuit
-  # ADT-Loadout-Start
-  - ADTQMJumpsuitCamisole
-  - ADTQMJumpskirtCamisole
-  # ADT-Loadout-End
+  - QuartermasterMJ # goob
 
 - type: loadoutGroup
   id: QuartermasterNeck
@@ -712,14 +829,6 @@
   loadouts:
   - BrownShoes
   - CargoWinterBoots
-  # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
-  # ADT tweak end
 
 - type: loadoutGroup
   id: CargoTechnicianHead
@@ -727,9 +836,7 @@
   minLimit: 0
   loadouts:
   - CargoTechnicianHead
-  # ADT-Loadouts-Start
-  - ADTCargoTechnicianBeret
-  # ADT-Loadouts-End
+  - CargoTechnicianHeadMail # Goob/DeltaV - Mail
 
 - type: loadoutGroup
   id: CargoTechnicianJumpsuit
@@ -737,6 +844,9 @@
   loadouts:
   - CargoTechnicianJumpsuit
   - CargoTechnicianJumpskirt
+  - CargoTechnicianJumpsuitMail # Goob/DeltaV - Mail
+  - CargoTechnicianJumpskirtMail # Goob/DeltaV - Mail
+  - CargoTechMJ # goob
 
 - type: loadoutGroup
   id: CargoTechnicianBackpack
@@ -745,6 +855,7 @@
   - CargoTechnicianBackpack
   - CargoTechnicianSatchel
   - CargoTechnicianDuffel
+  - CargoTechnicianMessenger # Frontier
 
 - type: loadoutGroup
   id: CargoTechnicianOuterClothing
@@ -752,6 +863,7 @@
   minLimit: 0
   loadouts:
   - CargoTechnicianWintercoat
+  - CargoTechnicianWintercoatMail # Goob/DeltaV - Mail
 
 - type: loadoutGroup
   id: CargoTechnicianShoes
@@ -759,14 +871,6 @@
   loadouts:
   - BlackShoes
   - CargoWinterBoots
-  # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
-  # ADT tweak end
 
 - type: loadoutGroup
   id: SalvageSpecialistBackpack
@@ -775,15 +879,14 @@
   - SalvageSpecialistBackpack
   - SalvageSpecialistSatchel
   - SalvageSpecialistDuffel
+  - SalvageSpecialistMessenger # Frontier
 
 - type: loadoutGroup
   id: SalvageSpecialistOuterClothing
   name: loadout-group-salvage-specialist-outerclothing
   minLimit: 0
-  maxLimit: 1 #ADT tweak
   loadouts:
   - SalvageSpecialistWintercoat
-  - ADTNeckSalvageSpecialistEBomber # ADT tweak
 
 - type: loadoutGroup
   id: SalvageSpecialistShoes
@@ -791,24 +894,15 @@
   loadouts:
   - SalvageBoots
   - CargoWinterBoots
-  # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
-  # ADT tweak end
 
 # Engineering
-
 - type: loadoutGroup
   id: ChiefEngineerHead
   name: loadout-group-chief-engineer-head
   minLimit: 0
   loadouts:
   - ChiefEngineerHead
-  - ADTChiefEngineerBeret # ADT tweak
+  - ChiefEngineerBeret
 
 - type: loadoutGroup
   id: ChiefEngineerJumpsuit
@@ -818,6 +912,7 @@
   - ChiefEngineerJumpskirt
   - ChiefEngineerTurtleneck
   - ChiefEngineerTurtleneckSkirt
+  - ChiefEngineerMJ # goob
 
 - type: loadoutGroup
   id: ChiefEngineerNeck
@@ -840,14 +935,6 @@
   loadouts:
   - BrownShoes
   - EngineeringWinterBoots
-  # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
-  # ADT tweak end
 
 - type: loadoutGroup
   id: TechnicalAssistantJumpsuit
@@ -855,6 +942,7 @@
   loadouts:
   - YellowJumpsuit
   - YellowJumpskirt
+  - EngiMJ # goob
 
 - type: loadoutGroup
   id: StationEngineerHead
@@ -864,7 +952,7 @@
   - StationEngineerHardhatYellow
   - StationEngineerHardhatOrange
   - StationEngineerHardhatRed
-  - HonoredEngineerBeret # ADT-Tweak-senior
+  - SeniorEngineerBeret
 
 - type: loadoutGroup
   id: StationEngineerJumpsuit
@@ -873,6 +961,9 @@
   - StationEngineerJumpsuit
   - StationEngineerJumpskirt
   - StationEngineerHazardsuit
+  - SeniorEngineerJumpsuit
+  - SeniorEngineerJumpskirt
+  - EngiMJ # goob
 
 - type: loadoutGroup
   id: StationEngineerBackpack
@@ -881,6 +972,7 @@
   - StationEngineerBackpack
   - StationEngineerSatchel
   - StationEngineerDuffel
+  - StationEngineerMessenger # Frontier
 
 - type: loadoutGroup
   id: StationEngineerOuterClothing
@@ -896,22 +988,20 @@
   loadouts:
   - WorkBoots
   - EngineeringWinterBoots
-  # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
-  # ADT tweak end
 
 - type: loadoutGroup
   id: StationEngineerID
   name: loadout-group-station-engineer-id
   loadouts:
   - StationEngineerPDA
-  - ADTElectricianPDA # ADT
-  - ADTMechanicPDA # ADT
+  - SeniorEngineerPDA
+
+- type: loadoutGroup
+  id: AtmosphericTechnicianHead
+  name: loadout-group-atmospheric-technician-head
+  minLimit: 0
+  loadouts:
+  - SeniorEngineerBeret   # Goobstation
 
 - type: loadoutGroup
   id: AtmosphericTechnicianJumpsuit
@@ -920,6 +1010,9 @@
   - AtmosphericTechnicianJumpsuit
   - AtmosphericTechnicianJumpskirt
   - AtmosphericTechnicianJumpsuitCasual
+  - SeniorEngineerJumpskirt  # Goobstation
+  - SeniorEngineerJumpsuit   # Goobstation
+  - AtmosMJ # goob
 
 - type: loadoutGroup
   id: AtmosphericTechnicianOuterClothing
@@ -927,9 +1020,6 @@
   minLimit: 0
   loadouts:
   - AtmosphericTechnicianWintercoat
-  # ADT-Loadouts-Start
-  - ADTOuterAtmosianBomberJacket
-  # ADT-Loadouts-End
 
 - type: loadoutGroup
   id: AtmosphericTechnicianBackpack
@@ -938,6 +1028,7 @@
   - AtmosphericTechnicianBackpack
   - AtmosphericTechnicianSatchel
   - AtmosphericTechnicianDuffel
+  - AtmosphericTechnicianMessenger # Frontier
 
 - type: loadoutGroup
   id: AtmosphericTechnicianShoes
@@ -945,14 +1036,6 @@
   loadouts:
   - WhiteShoes
   - EngineeringWinterBoots
-  # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
-  # ADT tweak end
 
 - type: loadoutGroup
   id: SurvivalExtended
@@ -963,11 +1046,8 @@
   - EmergencyNitrogenExtended
   - EmergencyOxygenExtended
   - LoadoutSpeciesVoxNitrogen
-  - ADTEmergencyMothExtended #ADT_Species
-  - ADTEmergencyIPCExtended #ADT_Species
 
 # Science
-
 - type: loadoutGroup
   id: ResearchDirectorHead
   name: loadout-group-research-director-head
@@ -989,10 +1069,7 @@
   loadouts:
   - ResearchDirectorJumpsuit
   - ResearchDirectorJumpskirt
-  # Corvax-Loadouts-Start
-  - ResearchDirectorJumpsuitClassical
-  - ResearchDirectorJumpskirtClassical
-  # Corvax-Loadouts-End
+  - ResearchDirectorMJ # goob
 
 - type: loadoutGroup
   id: ResearchDirectorOuterClothing
@@ -1001,7 +1078,6 @@
   loadouts:
   - ResearchDirectorLabCoat
   - ResearchDirectorWintercoat
-  - ADTOuterClothingCoatsCrazySci # ADT tweak
 
 - type: loadoutGroup
   id: ResearchDirectorShoes
@@ -1009,26 +1085,15 @@
   loadouts:
   - BrownShoes
   - ScienceWinterBoots
-  # ADT tweak start
-  - PurpleShoes
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
-  # ADT tweak end
 
 - type: loadoutGroup
   id: ScientistHead
   name: loadout-group-scientist-head
   minLimit: 0
   loadouts:
+  - RoboticistCap
   - SkullBandana
-  # ADT-Loadout-Senior-Start
-  - PurpleCap
-  - HonoredScientistBeret
-  # ADT-Loadout-Senior-End
+  - ScientificBeret
 
 - type: loadoutGroup
   id: ScientistNeck
@@ -1043,6 +1108,11 @@
   loadouts:
   - ScientistJumpsuit
   - ScientistJumpskirt
+  - RoboticistJumpsuit
+  - RoboticistJumpskirt
+  - SeniorResearcherJumpsuit
+  - SeniorResearcherJumpskirt
+  - ResearchMJ # goob
 
 - type: loadoutGroup
   id: ScientistBackpack
@@ -1051,16 +1121,19 @@
   - ScientistBackpack
   - ScientistSatchel
   - ScientistDuffel
+  - ScientistMessenger # Frontier
 
 - type: loadoutGroup
   id: ScientistOuterClothing
   name: loadout-group-scientist-outerclothing
   minLimit: 0
   loadouts:
-  - ScienceLabCoat
   - RegularLabCoat
+  - ScienceLabCoat
   - ScienceWintercoat
-  - ADTOuterClothingCoatsCrazySci # ADT tweak
+  - RoboticistLabCoat
+  - RoboticistWintercoat
+  - SeniorResearcherLabCoat
 
 - type: loadoutGroup
   id: ScientistShoes
@@ -1069,15 +1142,6 @@
   - WhiteShoes
   - BlackShoes
   - ScienceWinterBoots
-  # ADT tweak start
-  - PurpleShoes
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
-  # ADT tweak end
 
 - type: loadoutGroup
   id: ScientistGloves
@@ -1086,15 +1150,14 @@
   loadouts:
   - LatexGloves
   - PurpleGloves
+  - RobohandsGloves
 
 - type: loadoutGroup
   id: ScientistPDA
   name: loadout-group-scientist-id
   loadouts:
   - ScientistPDA
-  - ADTLabTechPDA # ADT
-  - ADTXenoarchPDA # ADT
-  - ADTAnomalistPDA # ADT
+  - SeniorResearcherPDA
 
 - type: loadoutGroup
   id: ResearchAssistantJumpsuit
@@ -1102,9 +1165,9 @@
   loadouts:
   - WhiteJumpsuit
   - WhiteJumpskirt
+  - ResearchMJ # goob
 
 # Security
-
 - type: loadoutGroup
   id: HeadofSecurityHead
   name: loadout-group-head-of-security-head
@@ -1112,6 +1175,7 @@
   loadouts:
   - HeadofSecurityHead
   - HeadofSecurityBeret
+  - HeadofSecuritySpecialBeret # Goobstation
 
 - type: loadoutGroup
   id: HeadofSecurityJumpsuit
@@ -1123,10 +1187,6 @@
   - HeadofSecurityTurtleneckSkirt
   - HeadofSecurityFormalSuit
   - HeadofSecurityFormalSkirt
-  # Corvax-Loadouts-Start
-  - HeadofSecurityJumpsuitBlack
-  - HeadofSecurityJumpskirtBlack
-  # Corvax-Loadouts-End
 
 - type: loadoutGroup
   id: HeadofSecurityNeck
@@ -1135,20 +1195,17 @@
   loadouts:
   - HeadofSecurityCloak
   - HeadofSecurityMantle
-  # ADT-Loadout-Start
-  - HeadofSecurityMantleShoulder
-  - ADTNeckSecBadgeBronze
-  - ADTNeckSecBadgeSilver
-  - ADTNeckSecBadgeGold
-  # - HeadofSecurityShoulderMantle # Corvax-Loadouts
-  # ADT-Loadout-End
+  - Bodycam # Goobstation - Body cameras
 
 - type: loadoutGroup
   id: HeadofSecurityOuterClothing
   name: loadout-group-head-of-security-outerclothing
   loadouts:
   - HeadofSecurityCoat
+  - HeadofSecurityGreatCoat # Goobstation
   - HeadofSecurityWinterCoat
+  - ArmorVest #Goobstation change
+  - ArmorVestSlim #Goobstation change
 
 - type: loadoutGroup
   id: WardenHead
@@ -1178,6 +1235,7 @@
   minLimit: 0
   loadouts:
   - SecurityHelmet
+  - SecurityHelmetAlt # Goobstation
   - SecurityBeret
   - SecurityHat
   - TrooperHat
@@ -1190,12 +1248,9 @@
   - SecurityJumpskirt
   - SecurityJumpsuitGrey
   - SecurityJumpskirtGrey
+  - SeniorOfficerJumpsuit
+  - SeniorOfficerJumpskirt
   - TrooperUniform
-  # ADT-Loadouts-Start
-  - ADTSecurityOfficerMogesBrown
-  - ADTSecurityOfficerMogesBlue
-  - ADTSecurityOfficerMogesGray
-  # ADT-Loadouts-End
 
 - type: loadoutGroup
   id: SecurityBackpack
@@ -1204,6 +1259,7 @@
   - SecurityBackpack
   - SecuritySatchel
   - SecurityDuffel
+  - SecurityMessenger # Frontier
 
 - type: loadoutGroup
   id: SecurityBelt
@@ -1216,33 +1272,23 @@
   id: SecurityOuterClothing
   name: loadout-group-security-outerclothing
   loadouts:
-  - ArmorVestSec # Corvax
   - ArmorVest
   - ArmorVestSlim
   - SecurityOfficerWintercoat
-  - ADTArmorVestHidden #ADT-Loadout
 
 - type: loadoutGroup
   id: SecurityShoes
   name: loadout-group-security-shoes
   loadouts:
-  - JackSecBoots # Corvax
   - JackBoots
   - SecurityWinterBoots
-  # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
-  # ADT tweak end
 
 - type: loadoutGroup
   id: SecurityPDA
   name: loadout-group-security-id
   loadouts:
   - SecurityPDA
+  - SeniorOfficerPDA
 
 - type: loadoutGroup
   id: DetectiveHead
@@ -1251,10 +1297,6 @@
   loadouts:
   - DetectiveFedora
   - DetectiveFedoraGrey
-  # ADT-Loadout-Start
-  - DetectiveInvestigatorCap
-  - ADTDetectiveOldFedora
-  # ADT-Loadout-End
 
 - type: loadoutGroup
   id: DetectiveNeck
@@ -1262,11 +1304,7 @@
   minLimit: 0
   loadouts:
   - DetectiveTie
-  # ADT-Loadout-Start
-  - ADTNeckSecBadgeBronze
-  - ADTNeckSecBadgeSilver
-  - ADTNeckSecBadgeGold
-  # ADT-Loadout-End
+  - Bodycam # Goobstation - Body cameras
 
 - type: loadoutGroup
   id: DetectiveJumpsuit
@@ -1276,14 +1314,6 @@
   - DetectiveJumpskirt
   - NoirJumpsuit
   - NoirJumpskirt
-  # ADT-Loadouts-Start
-  - ADTDetectiveOldSuit
-  - ADTDetectiveOldJumpskirt
-  - DetectiveInvestigatorSuit
-  - ADTSecurityOfficerMogesBrown
-  - ADTSecurityOfficerMogesBlue
-  - ADTSecurityOfficerMogesGray
-  # ADT-Loadouts-End
 
 - type: loadoutGroup
   id: DetectiveOuterClothing
@@ -1292,18 +1322,13 @@
   - DetectiveArmorVest
   - DetectiveCoat
   - DetectiveCoatGrey
-  # ADT-Loadouts-Start
-  - ADTDetectiveCoatOld
-  - DetectiveCoatInvestigator
-  - ADTArmorVestHidden
-  # ADT-Loadouts-End
 
 - type: loadoutGroup
   id: SecurityCadetJumpsuit
   name: loadout-group-security-cadet-jumpsuit
   loadouts:
-  - SecurityJumpsuitGrey # Corvax-Resprite
-  - SecurityJumpskirtGrey # Corvax-Resprite
+  - RedJumpsuit
+  - RedJumpskirt
 
 - type: loadoutGroup
   id: SurvivalSecurity
@@ -1314,10 +1339,6 @@
   - EmergencyNitrogenSecurity
   - EmergencyOxygenSecurity
   - LoadoutSpeciesVoxNitrogen
-  # ADT-Loadout-Species-Start
-  - ADTEmergencyMothSecurity
-  - ADTEmergencyIPCSecurity
-  # ADT-Loadout-Species-Start
 
 - type: loadoutGroup
   id: SecurityStar
@@ -1334,6 +1355,7 @@
   loadouts:
   - ChiefMedicalOfficerBeret
   - CMOMedicalHeadMirror
+  - ChemistUshanka # Goobstation
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerJumpsuit
@@ -1343,10 +1365,7 @@
   - ChiefMedicalOfficerJumpskirt
   - ChiefMedicalOfficerTurtleneckJumpsuit
   - ChiefMedicalOfficerTurtleneckJumpskirt
-  # ADT-Loadout-Start
-  - ADTCMOJumpsuitHike
-  - ADTCMOJumpskirtHike
-  # ADT-Loadout-End
+  - CMOMJ # goob
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerOuterClothing
@@ -1355,7 +1374,6 @@
   loadouts:
   - ChiefMedicalOfficerLabCoat
   - ChiefMedicalOfficerWintercoat
-  - ADTCMOLabcoatHike # ADT tweak
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerNeck
@@ -1371,23 +1389,18 @@
   loadouts:
   - BrownShoes
   - MedicalWinterBoots
-  - ADTCMOHighBoots # ADT tweak
-  # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
-  # ADT tweak end
 
 - type: loadoutGroup
   id: MedicalDoctorHead
   name: loadout-group-medical-doctor-head
   minLimit: 0
   loadouts:
-  - HonoredDoctorBeret
+  - MedicalBeret
+  - SeniorPhysicianBeret
   - MedicalHeadMirror
+  - BlueSurgeryCap
+  - GreenSurgeryCap
+  - PurpleSurgeryCap
   - NurseHat
 
 - type: loadoutGroup
@@ -1396,6 +1409,12 @@
   loadouts:
   - MedicalDoctorJumpsuit
   - MedicalDoctorJumpskirt
+  - SeniorPhysicianJumpsuit
+  - SeniorPhysicianJumpskirt
+  - MedicalBlueScrubs
+  - MedicalGreenScrubs
+  - MedicalPurpleScrubs
+  - MedicMJ # goob
 
 - type: loadoutGroup
   id: MedicalDoctorOuterClothing
@@ -1404,6 +1423,8 @@
   loadouts:
   - RegularLabCoat
   - MedicalDoctorWintercoat
+  - SeniorPhysicianLabCoat
+
 - type: loadoutGroup
   id: MedicalBackpack
   name: loadout-group-medical-doctor-backpack
@@ -1411,6 +1432,7 @@
   - MedicalDoctorBackpack
   - MedicalDoctorSatchel
   - MedicalDoctorDuffel
+  - MedicalDoctorMessenger # Frontier
 
 - type: loadoutGroup
   id: MedicalShoes
@@ -1418,24 +1440,13 @@
   loadouts:
   - WhiteShoes
   - MedicalWinterBoots
-  # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
-  # ADT tweak end
 
 - type: loadoutGroup
   id: MedicalDoctorPDA
   name: loadout-group-medical-doctor-id
   loadouts:
   - MedicalDoctorPDA
-  - ADTClinicianPDA # ADT
-  - ADTDoctorPDA # ADT
-  - ADTTherapistPDA # ADT
-  - ADTTraumatologistPDA # ADT
+  - SeniorPhysicianPDA
 
 - type: loadoutGroup
   id: MedicalGloves
@@ -1458,6 +1469,7 @@
   loadouts:
   - WhiteJumpsuit
   - WhiteJumpskirt
+  - MedicMJ # goob
 
 - type: loadoutGroup
   id: ChemistJumpsuit
@@ -1465,14 +1477,19 @@
   loadouts:
   - ChemistJumpsuit
   - ChemistJumpskirt
+  - SeniorPhysicianJumpsuit # Goobstation
+  - SeniorPhysicianJumpskirt # Goobstation
+  - ChemistMJ # goob
 
 - type: loadoutGroup
   id: ChemistOuterClothing
   name: loadout-group-chemist-outerclothing
   minLimit: 0
   loadouts:
+  - RegularLabCoat
   - ChemistLabCoat
   - ChemistWintercoat
+  - SeniorPhysicianLabCoat # Goobstation
 
 - type: loadoutGroup
   id: ChemistBackpack
@@ -1481,6 +1498,7 @@
   - ChemistBackpack
   - ChemistSatchel
   - ChemistDuffel
+  - ChemistMessenger # Frontier
 
 - type: loadoutGroup
   id: ParamedicHead
@@ -1488,7 +1506,7 @@
   minLimit: 0
   loadouts:
   - ParamedicHead
-  - ADTParamedicBeret # ADT tweak
+  - SeniorPhysicianBeret # Goobstation
 
 - type: loadoutGroup
   id: ParamedicJumpsuit
@@ -1496,7 +1514,9 @@
   loadouts:
   - ParamedicJumpsuit
   - ParamedicJumpskirt
-  - ADTClothingJumpsuitParamedicField # ADT tweak
+  - SeniorPhysicianJumpsuit # Goobstation
+  - SeniorPhysicianJumpskirt # Goobstation
+  - ParamedMJ # goob
 
 - type: loadoutGroup
   id: ParamedicOuterClothing
@@ -1505,33 +1525,14 @@
   loadouts:
   - ParamedicWindbreaker
   - ParamedicWintercoat
+  - SeniorPhysicianLabCoat # Goobstation
 
 - type: loadoutGroup
   id: ParamedicShoes
   name: loadout-group-paramedic-shoes
   loadouts:
   - BlueShoes
-  - WhiteShoes
   - MedicalWinterBoots
-  # ADT tweak start
-  - ADTFootWrapsW
-  - ADTFootWrapsHighW
-  - ADTFootWrapsBr
-  - ADTFootWrapsHighBr
-  - ADTFootWrapsBl
-  - ADTFootWrapsHighBl
-  # ADT tweak end
-
-- type: loadoutGroup
-  id: MedicalEyewear
-  name: loadout-group-medical-glasses
-  minLimit: 0
-  loadouts:
-  - MedicalHud
-  - MedicalEyePatchHud
-  - Glasses
-  - GlassesJamjar
-  - GlassesJensen
 
 - type: loadoutGroup
   id: SurvivalMedical
@@ -1542,19 +1543,15 @@
   - EmergencyNitrogenMedical
   - EmergencyOxygenMedical
   - LoadoutSpeciesVoxNitrogen
-  # ADT-Loadout-Species-Start
-  - ADTEmergencyMothMedical
-  - ADTEmergencyIPCMedical
-  # ADT-Loadout-Species-End
 
 # Wildcards
-
 - type: loadoutGroup
   id: ReporterJumpsuit
   name: loadout-group-reporter-jumpsuit
   loadouts:
   - ReporterJumpsuit
   - JournalistJumpsuit
+  - ReporterDress
 
 - type: loadoutGroup
   id: PsychologistJumpsuit
@@ -1580,7 +1577,6 @@
   - YellowBoxingGloves
 
 # Other
-
 - type: loadoutGroup
   id: SurvivalSyndicate
   name: loadout-group-survival-syndicate
@@ -1590,10 +1586,6 @@
   - EmergencyNitrogenSyndicate
   - EmergencyOxygenSyndicate
   - LoadoutSpeciesVoxNitrogen
-  # ADT-Loadout-Species-Start
-  - ADTEmergencyMothSyndicate
-  - ADTEmergencyIPCSyndicate
-  # ADT-Loadout-Species-End
 
 - type: loadoutGroup
   id: GroupSpeciesBreathTool

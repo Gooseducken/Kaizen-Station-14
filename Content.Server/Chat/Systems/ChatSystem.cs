@@ -1,19 +1,123 @@
+// SPDX-FileCopyrightText: 2022 EmoGarbage404 <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Julian Giebel <juliangiebel@live.de>
+// SPDX-FileCopyrightText: 2022 Justin Trotter <trotter.justin@gmail.com>
+// SPDX-FileCopyrightText: 2022 Júlio César Ueti <52474532+Mirino97@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Kevin Zheng <kevinz5000@gmail.com>
+// SPDX-FileCopyrightText: 2022 Morber <14136326+Morb0@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Taran <legendaryflame50@gmail.com>
+// SPDX-FileCopyrightText: 2022 Tom Richardson <tgrkzus@gmail.com>
+// SPDX-FileCopyrightText: 2022 Tomás Alves <tomasalves35@gmail.com>
+// SPDX-FileCopyrightText: 2022 Veritius <veritiusgaming@gmail.com>
+// SPDX-FileCopyrightText: 2022 keronshb <54602815+keronshb@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 20kdc <asdd2808@gmail.com>
+// SPDX-FileCopyrightText: 2023 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Alex Evgrashin <aevgrashin@yandex.ru>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
+// SPDX-FileCopyrightText: 2023 Errant <35878406+dmnct@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Hannah Giovanna Dawson <karakkaraz@gmail.com>
+// SPDX-FileCopyrightText: 2023 HerCoyote23 <131214189+HerCoyote23@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Interrobang01 <113810873+Interrobang01@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Jezithyr <jezithyr@gmail.com>
+// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2023 Mr. 27 <45323883+27alaing@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
+// SPDX-FileCopyrightText: 2023 Skye <57879983+Rainbeon@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
+// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
+// SPDX-FileCopyrightText: 2024 AJCM <AJCM@tutanota.com>
+// SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
+// SPDX-FileCopyrightText: 2024 Alex Pavlenko <diraven@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Alice "Arimah" Heurlin <30327355+arimah@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Boaz1111 <149967078+Boaz1111@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Ghagliiarghii <68826635+Ghagliiarghii@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 HS <81934438+HolySSSS@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
+// SPDX-FileCopyrightText: 2024 MilenVolf <63782763+MilenVolf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Redfire1331 <125223432+Redfire1331@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Rouge2t7 <81053047+Sarahon@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Southbridge <7013162+southbridge-fur@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Spanky <scott@wearejacob.com>
+// SPDX-FileCopyrightText: 2024 Spessmann <156740760+Spessmann@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Truoizys <153248924+Truoizys@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
+// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 chavonadelal <156101927+chavonadelal@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2024 ike709 <ike709@github.com>
+// SPDX-FileCopyrightText: 2024 ike709 <ike709@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2024 neutrino <67447925+neutrino-laser@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 osjarw <62134478+osjarw@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
+// SPDX-FileCopyrightText: 2024 redfire1331 <Redfire1331@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Арт <123451459+JustArt1m@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
+// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
+// SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
+// SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2025 Rinary <72972221+Rinary1@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
+// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 pathetic meowmeow <uhhadd@gmail.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using System.Collections.Immutable; // Goobstation - Starlight collective mind port
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using Content.Server._Goobstation.Wizard.Systems;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.Players.RateLimiting;
 using Content.Server.Speech.Prototypes;
+using Content.Server.Speech.Components;
 using Content.Server.Speech.EntitySystems;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
+using Content.Shared._Goobstation.Wizard.Chuuni;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
+using Content.Shared._Starlight.CollectiveMind; // Goobstation - Starlight collective mind port
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Ghost;
@@ -34,11 +138,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
-using Content.Shared.ADT.Language;  // ADT Languages
-using Content.Server.ADT.Language;  // ADT Languages
-using Content.Shared.Interaction;
-using Content.Server.ADT.Chat;
-using Content.Shared.ADT.CCVar;
 
 namespace Content.Server.Chat.Systems;
 
@@ -62,18 +161,19 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private readonly StationSystem _stationSystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
     [Dependency] private readonly ReplacementAccentSystem _wordreplacement = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
-    [Dependency] private readonly LanguageSystem _language = default!;  // ADT Languages
-
+    [Dependency] private readonly TelepathicChatSystem _telepath = default!; // Goobstation Change
+    [Dependency] private readonly GhostVisibilitySystem _ghostVisibility = default!; // Goobstation Change
+    [Dependency] private readonly ScryingOrbSystem _scrying = default!; // Goobstation Change
+    [Dependency] private readonly CollectiveMindUpdateSystem _collectiveMind = default!; // Goobstation - Starlight collective mind port
 
     public const int VoiceRange = 10; // how far voice goes in world units
     public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
     public const int WhisperMuffledRange = 5; // how far whisper goes at all, in world units
-    public const string DefaultAnnouncementSound = "/Audio/Corvax/Announcements/announce.ogg"; // Corvax-Announcements
-    public const string CentComAnnouncementSound = "/Audio/Corvax/Announcements/centcomm.ogg"; // Corvax-Announcements
+    public const string DefaultAnnouncementSound = "/Audio/_Reserve/announcement/attention.ogg"; // Reserve Announcements
+    public const string CentComAnnouncementSound = "/Audio/_Reserve/announcement/command_report.ogg"; // Reserve Announcements
 
     private bool _loocEnabled = true;
     private bool _deadLoocEnabled;
@@ -155,9 +255,10 @@ public sealed partial class ChatSystem : SharedChatSystem
         ICommonSession? player = null, string? nameOverride = null,
         bool checkRadioPrefix = true,
         bool ignoreActionBlocker = false,
-        LanguagePrototype? language = null) // ADT Languages
+        string wrappedMessagePostfix = "" // Goobstation
+        )
     {
-        TrySendInGameICMessage(source, message, desiredType, hideChat ? ChatTransmitRange.HideChat : ChatTransmitRange.Normal, hideLog, shell, player, nameOverride, checkRadioPrefix, ignoreActionBlocker, language);  // ADT Languages
+        TrySendInGameICMessage(source, message, desiredType, hideChat ? ChatTransmitRange.HideChat : ChatTransmitRange.Normal, hideLog, shell, player, nameOverride, checkRadioPrefix, ignoreActionBlocker, wrappedMessagePostfix); // Goob edit
     }
 
     /// <summary>
@@ -182,15 +283,22 @@ public sealed partial class ChatSystem : SharedChatSystem
         string? nameOverride = null,
         bool checkRadioPrefix = true,
         bool ignoreActionBlocker = false,
-        LanguagePrototype? language = null  // ADT Languages
+        string wrappedMessagePostfix = "" // Goobstation
         )
     {
+        if (message.Contains("/"))
+            return;
+
         if (HasComp<GhostComponent>(source))
         {
             // Ghosts can only send dead chat messages, so we'll forward it to InGame OOC.
             TrySendInGameOOCMessage(source, message, InGameOOCChatType.Dead, range == ChatTransmitRange.HideChat, shell, player);
             return;
         }
+
+        // Goobstation - Starlight collective mind port
+        if (TryComp<CollectiveMindComponent>(source, out var collective))
+            _collectiveMind.UpdateCollectiveMind(source, collective);
 
         if (player != null && _chatManager.HandleRateLimit(player) != RateLimitStatus.Allowed)
             return;
@@ -226,29 +334,13 @@ public sealed partial class ChatSystem : SharedChatSystem
             message = message[1..];
         }
 
-        // ADT Languages start
-
         bool shouldCapitalize = (desiredType != InGameICChatType.Emote);
         bool shouldPunctuate = _configurationManager.GetCVar(CCVars.ChatPunctuation);
         // Capitalizing the word I only happens in English, so we check language here
         bool shouldCapitalizeTheWordI = (!CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Parent.Name == "en")
             || (CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Name == "en");
-        // ADT-Tweak: SanitizeInGameICMessageLanguages Да это дублирование уже сущетвующей функции, но без проверки на замены
-        string sanitizedMessage = SanitizeInGameICMessageLanguages(source, message, out var emoteStr, shouldCapitalize, shouldPunctuate, shouldCapitalizeTheWordI);
 
-        // ADT Languages end
-
-        // ADT Alternative speech start
-        var altEv = new AlternativeSpeechEvent(sanitizedMessage, false, desiredType);
-        if (TryProccessRadioMessage(source, sanitizedMessage, out var altSpeechRadioResult, out _, true))
-        {
-            altEv.Radio = true;
-            altEv.Message = altSpeechRadioResult;
-        }
-        RaiseLocalEvent(source, altEv);
-        if (altEv.Cancelled)
-            return;
-        // ADT Alternative speech end
+        message = SanitizeInGameICMessage(source, message, out var emoteStr, shouldCapitalize, shouldPunctuate, shouldCapitalizeTheWordI);
 
         // Was there an emote in the message? If so, send it.
         if (player != null && emoteStr != message && emoteStr != null)
@@ -260,12 +352,29 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (string.IsNullOrEmpty(message))
             return;
 
+        // Goobstation start
+        var postfixEv = new GetMessagePostfixEvent();
+        RaiseLocalEvent(source, postfixEv);
+        if (!string.IsNullOrEmpty(postfixEv.Postfix))
+            wrappedMessagePostfix = postfixEv.Postfix;
+        // Goobstation end
+
         // This message may have a radio prefix, and should then be whispered to the resolved radio channel
-        if (checkRadioPrefix && (language ?? _language.GetCurrentLanguage(source)).LanguageType is Generic gen) // ADT Tweaked
+        if (checkRadioPrefix)
         {
-            if (TryProccessRadioMessage(source, sanitizedMessage, out var modMessage, out var channel)) // Accent fix
+            if (TryProccessRadioMessage(source, message, out var modMessage, out var channel))
             {
-                SendEntityWhisper(source, modMessage, range, channel, nameOverride, hideLog, ignoreActionBlocker);
+                SendEntityWhisper(source, modMessage, range, channel, nameOverride, hideLog, ignoreActionBlocker, wrappedMessagePostfix); // Goob edit
+                return;
+            }
+        }
+
+        // Goobstation - Starlight collective mind port
+        if (desiredType == InGameICChatType.CollectiveMind)
+        {
+            if (TryProccessCollectiveMindMessage(source, message, out var modMessage, out var channel))
+            {
+                SendCollectiveMindChat(source, modMessage, channel);
                 return;
             }
         }
@@ -274,13 +383,16 @@ public sealed partial class ChatSystem : SharedChatSystem
         switch (desiredType)
         {
             case InGameICChatType.Speak:
-                SendEntitySpeak(source, message, range, nameOverride, hideLog, ignoreActionBlocker, language);  // ADT Languages
+                SendEntitySpeak(source, message, range, nameOverride, hideLog, ignoreActionBlocker, wrappedMessagePostfix); // Goob edit
                 break;
             case InGameICChatType.Whisper:
-                SendEntityWhisper(source, message, range, null, nameOverride, hideLog, ignoreActionBlocker, language);  // ADT Languages
+                SendEntityWhisper(source, message, range, null, nameOverride, hideLog, ignoreActionBlocker, wrappedMessagePostfix); // Goob edit
                 break;
             case InGameICChatType.Emote:
-                SendEntityEmote(source, sanitizedMessage, range, nameOverride, hideLog: hideLog, ignoreActionBlocker: ignoreActionBlocker);     // ADT Languages
+                SendEntityEmote(source, message, range, nameOverride, hideLog: hideLog, ignoreActionBlocker: ignoreActionBlocker);
+                break;
+            case InGameICChatType.Telepathic:
+                _telepath.SendTelepathicChat(source, message, range == ChatTransmitRange.HideChat);
                 break;
         }
     }
@@ -343,21 +455,25 @@ public sealed partial class ChatSystem : SharedChatSystem
     /// <param name="colorOverride">Optional color for the announcement message</param>
     public void DispatchGlobalAnnouncement(
         string message,
-        string sender = "Central Command",
+        string? sender = null,
         bool playSound = true,
         SoundSpecifier? announcementSound = null,
         Color? colorOverride = null
         )
+    // Reserve-Start
     {
+        sender ??= Loc.GetString("chat-manager-sender-announcement");
+
         var wrappedMessage = Loc.GetString("chat-manager-sender-announcement-wrap-message", ("sender", sender), ("message", FormattedMessage.EscapeText(message)));
         _chatManager.ChatMessageToAll(ChatChannel.Radio, message, wrappedMessage, default, false, true, colorOverride);
         if (playSound)
         {
-            if (sender == Loc.GetString("admin-announce-announcer-default")) announcementSound = new SoundPathSpecifier(CentComAnnouncementSound); // Corvax-Announcements: Support custom alert sound from admin panel
-            _audio.PlayGlobal(announcementSound == null ? DefaultAnnouncementSound : _audio.ResolveSound(announcementSound), Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f));
+            if (sender == Loc.GetString("admin-announce-announcer-default")) announcementSound = new SoundPathSpecifier(CentComAnnouncementSound); // Reserve-Announcements: Support custom alert sound from admin panel
+            _audio.PlayGlobal(announcementSound == null ? DefaultAnnouncementSound : _audio.GetSound(announcementSound), Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f));
         }
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Global station announcement from {sender}: {message}");
     }
+    // Reserve-End
 
     /// <summary>
     /// Dispatches an announcement to players selected by filter.
@@ -384,7 +500,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         _chatManager.ChatMessageToManyFiltered(filter, ChatChannel.Radio, message, wrappedMessage, source ?? default, false, true, colorOverride);
         if (playSound)
         {
-            _audio.PlayGlobal(announcementSound?.ToString() ?? DefaultAnnouncementSound, filter, true, AudioParams.Default.WithVolume(-2f));
+            _audio.PlayGlobal(announcementSound ?? new SoundPathSpecifier(DefaultAnnouncementSound), filter, true, AudioParams.Default.WithVolume(-2f));
         }
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Station Announcement from {sender}: {message}");
     }
@@ -400,11 +516,13 @@ public sealed partial class ChatSystem : SharedChatSystem
     public void DispatchStationAnnouncement(
         EntityUid source,
         string message,
-        string sender = "Central Command",
+        string? sender = null,
         bool playDefaultSound = true,
         SoundSpecifier? announcementSound = null,
         Color? colorOverride = null)
     {
+        sender ??= Loc.GetString("chat-manager-sender-announcement");
+
         var wrappedMessage = Loc.GetString("chat-manager-sender-announcement-wrap-message", ("sender", sender), ("message", FormattedMessage.EscapeText(message)));
         var station = _stationSystem.GetOwningStation(source);
 
@@ -422,7 +540,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         if (playDefaultSound)
         {
-            _audio.PlayGlobal(announcementSound?.ToString() ?? DefaultAnnouncementSound, filter, true, AudioParams.Default.WithVolume(-2f));
+            _audio.PlayGlobal(announcementSound ?? new SoundPathSpecifier(DefaultAnnouncementSound), filter, true, AudioParams.Default.WithVolume(-2f));
         }
 
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Station Announcement on {station} from {sender}: {message}");
@@ -432,6 +550,81 @@ public sealed partial class ChatSystem : SharedChatSystem
 
     #region Private API
 
+    // Goobstation - Starlight collective mind port
+    private void SendCollectiveMindChat(EntityUid source, string message, CollectiveMindPrototype? collectiveMind)
+    {
+        if (_mobStateSystem.IsDead(source) || collectiveMind == null || message == "" || !TryComp<CollectiveMindComponent>(source, out var sourseCollectiveMindComp) || !sourseCollectiveMindComp.Minds.ContainsKey(collectiveMind.ID))
+            return;
+
+        var clients = Filter.Empty();
+        var clientsSeeNames = Filter.Empty();
+        var mindQuery = EntityQueryEnumerator<CollectiveMindComponent, ActorComponent>();
+        while (mindQuery.MoveNext(out var uid, out var collectMindComp, out var actorComp))
+        {
+            if (_mobStateSystem.IsDead(uid))
+                continue;
+
+            if (collectMindComp.Minds.ContainsKey(collectiveMind.ID) || collectMindComp.HearAll)
+            {
+                if (collectMindComp.SeeAllNames)
+                    clientsSeeNames.AddPlayer(actorComp.PlayerSession);
+                else
+                    clients.AddPlayer(actorComp.PlayerSession);
+            }
+        }
+
+        var Number = $"{sourseCollectiveMindComp.Minds[collectiveMind.ID]}";
+
+        var admins = _adminManager.ActiveAdmins
+            .Select(p => p.Channel);
+
+        string messageWrap = Loc.GetString("collective-mind-chat-wrap-message",
+            ("message", message),
+            ("channel", collectiveMind.LocalizedName),
+            ("number", Number));
+        string namedMessageWrap = Loc.GetString("collective-mind-chat-wrap-message-named",
+            ("source", source),
+            ("message", message),
+            ("channel", collectiveMind.LocalizedName));
+        string adminMessageWrap = Loc.GetString("collective-mind-chat-wrap-message-admin",
+            ("source", source),
+            ("message", message),
+            ("channel", collectiveMind.LocalizedName),
+            ("number", Number));
+
+        _adminLogger.Add(LogType.Chat, LogImpact.Low, $"CollectiveMind chat from {ToPrettyString(source):Player}: {message}");
+
+        // send to normal clients
+        _chatManager.ChatMessageToManyFiltered(clients,
+            ChatChannel.CollectiveMind,
+            message,
+            collectiveMind.ShowNames ? namedMessageWrap : messageWrap,
+            source,
+            false,
+            true,
+            collectiveMind.Color);
+
+        // send to normal clients that should always see names, aka ghosts
+        _chatManager.ChatMessageToManyFiltered(clientsSeeNames,
+            ChatChannel.CollectiveMind,
+            message,
+            namedMessageWrap,
+            source,
+            false,
+            true,
+            collectiveMind.Color);
+
+        // FOR ADMINS
+        _chatManager.ChatMessageToMany(ChatChannel.CollectiveMind,
+            message,
+            adminMessageWrap,
+            source,
+            false,
+            true,
+            admins,
+            collectiveMind.Color);
+    }
+
     private void SendEntitySpeak(
         EntityUid source,
         string originalMessage,
@@ -439,31 +632,16 @@ public sealed partial class ChatSystem : SharedChatSystem
         string? nameOverride,
         bool hideLog = false,
         bool ignoreActionBlocker = false,
-        LanguagePrototype? language = null  // ADT Languages
+        string wrappedMessagePostfix = "" // Goobstation
         )
     {
-        // if (!_actionBlocker.CanSpeak(source) && !ignoreActionBlocker)    // ADT Commented
-        //     return;
+        if (!_actionBlocker.CanSpeak(source) && !ignoreActionBlocker)
+            return;
 
-        //var message = TransformSpeech(source, originalMessage);   // ADT Commented
-        var message = originalMessage;
+        var message = TransformSpeech(source, originalMessage);
 
         if (message.Length == 0)
             return;
-
-        // ADT Languages start
-        if (language == null)
-            language = _language.GetCurrentLanguage(source);
-
-        if (!ignoreActionBlocker)
-        {
-            foreach (var item in language.Conditions.Where(x => !x.RaiseOnListener))
-            {
-                if (!item.Condition(source, null, EntityManager))
-                    return;
-            }
-        }
-        // ADT Languages end
 
         var speech = GetSpeechVerb(source, message);
 
@@ -483,25 +661,19 @@ public sealed partial class ChatSystem : SharedChatSystem
                 speech = proto;
         }
 
-        // ADT Languages start
-        bool shouldPunctuate = _configurationManager.GetCVar(CCVars.ChatPunctuation);
-        // Capitalizing the word I only happens in English, so we check language here
-        bool shouldCapitalizeTheWordI = (!CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Parent.Name == "en")
-            || (CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Name == "en");
+        name = FormattedMessage.EscapeText(name);
 
-        var sanitizedMessage = SanitizeInGameICMessage(source, FormattedMessage.EscapeText(message), out _);
-        language.LanguageType.Speak(source, sanitizedMessage, name, speech, range, EntityManager, out var success, out var resultMessage);
-        if (!success)
-            return;
+        var wrappedMessage = Loc.GetString((speech.Bold ? "chat-manager-entity-say-bold-wrap-message" : "chat-manager-entity-say-wrap-message") + wrappedMessagePostfix, // Goob edit
+            ("entityName", name),
+            ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
+            ("fontType", speech.FontId),
+            ("fontSize", speech.FontSize),
+            ("message", FormattedMessage.EscapeText(message)));
 
-        // ADT - Вырезал старую часть начиная с GetLanguageColoredMessages, заканчивая SendInVoiceRange, так как вся логика теперь находится в языках
+        SendInVoiceRange(ChatChannel.Local, message, wrappedMessage, source, range);
 
-        if (language.LanguageType.RaiseEvent)
-        {
-            var ev = new EntitySpokeEvent(source, resultMessage, language, null, null);  // ADT message => resultMessage
-            RaiseLocalEvent(source, ev, true);
-        }
-        // ADT Languages end
+        var ev = new EntitySpokeEvent(source, message, null, null);
+        RaiseLocalEvent(source, ev, true);
 
         // To avoid logging any messages sent by entities that are not players, like vendors, cloning, etc.
         // Also doesn't log if hideLog is true.
@@ -534,32 +706,17 @@ public sealed partial class ChatSystem : SharedChatSystem
         string? nameOverride,
         bool hideLog = false,
         bool ignoreActionBlocker = false,
-        LanguagePrototype? language = null  // ADT Languages
+        string wrappedMessagePostfix = "" // Goobstation
         )
     {
-        // if (!_actionBlocker.CanSpeak(source) && !ignoreActionBlocker)    // ADT Commented
-        //     return;
+        if (!_actionBlocker.CanSpeak(source) && !ignoreActionBlocker)
+            return;
 
-        //var message = TransformSpeech(source, FormattedMessage.RemoveMarkupOrThrow(originalMessage));
-        var message = FormattedMessage.RemoveMarkupOrThrow(originalMessage);
+        var message = TransformSpeech(source, FormattedMessage.RemoveMarkupOrThrow(originalMessage));
         if (message.Length == 0)
             return;
 
         var obfuscatedMessage = ObfuscateMessageReadability(message, 0.2f);
-
-        // ADT Languages start
-        if (language == null)
-            language = _language.GetCurrentLanguage(source);
-
-        if (!ignoreActionBlocker)
-        {
-            foreach (var item in language.Conditions.Where(x => !x.RaiseOnListener))
-            {
-                if (!item.Condition(source, null, EntityManager))
-                    return;
-            }
-        }
-        // ADT Languages end
 
         // get the entity's name by visual identity (if no override provided).
         string nameIdentity = FormattedMessage.EscapeText(nameOverride ?? Identity.Name(source, EntityManager));
@@ -575,28 +732,43 @@ public sealed partial class ChatSystem : SharedChatSystem
             RaiseLocalEvent(source, nameEv);
             name = nameEv.VoiceName;
         }
-        // ADT Languages start
-
-        bool shouldPunctuate = _configurationManager.GetCVar(CCVars.ChatPunctuation);
-        // Capitalizing the word I only happens in English, so we check language here
-        bool shouldCapitalizeTheWordI = (!CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Parent.Name == "en")
-            || (CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Name == "en");
-
         name = FormattedMessage.EscapeText(name);
-        var sanitizedMessage = SanitizeInGameICMessage(source, FormattedMessage.EscapeText(message), out _);
-        language.LanguageType.Whisper(source, sanitizedMessage, name, nameIdentity, range, EntityManager, out var success, out var resultMessage, out var resultObfMessage);
-        if (!success)
-            return;
 
-        // ADT - Вырезал старую часть, связанную с построением сообщений и их отправкой. Всё теперь в языках
-        // ADT Languages end
+        var wrappedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message" + wrappedMessagePostfix, // Goob edit
+            ("entityName", name), ("message", FormattedMessage.EscapeText(message)));
 
-        if (language.LanguageType.RaiseEvent)   // ADT Tweaked
+        var wrappedobfuscatedMessage = Loc.GetString("chat-manager-entity-whisper-wrap-message" + wrappedMessagePostfix, // Goob edit
+            ("entityName", nameIdentity), ("message", FormattedMessage.EscapeText(obfuscatedMessage)));
+
+        var wrappedUnknownMessage = Loc.GetString("chat-manager-entity-whisper-unknown-wrap-message" + wrappedMessagePostfix, // Goob edit
+            ("message", FormattedMessage.EscapeText(obfuscatedMessage)));
+
+
+        foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange))
         {
-            var ev = new EntitySpokeEvent(source, resultMessage, language, channel, resultObfMessage, true);
-            RaiseLocalEvent(source, ev, true);
+            EntityUid listener;
+
+            if (session.AttachedEntity is not { Valid: true } playerEntity)
+                continue;
+            listener = session.AttachedEntity.Value;
+
+            if (MessageRangeCheck(session, data, range) != MessageRangeCheckResult.Full)
+                continue; // Won't get logged to chat, and ghosts are too far away to see the pop-up, so we just won't send it to them.
+
+            if (data.Range <= WhisperClearRange)
+                _chatManager.ChatMessageToOne(ChatChannel.Whisper, message, wrappedMessage, source, false, session.Channel);
+            //If listener is too far, they only hear fragments of the message
+            else if (_examineSystem.InRangeUnOccluded(source, listener, WhisperMuffledRange))
+                _chatManager.ChatMessageToOne(ChatChannel.Whisper, obfuscatedMessage, wrappedobfuscatedMessage, source, false, session.Channel);
+            //If listener is too far and has no line of sight, they can't identify the whisperer's identity
+            else
+                _chatManager.ChatMessageToOne(ChatChannel.Whisper, obfuscatedMessage, wrappedUnknownMessage, source, false, session.Channel);
         }
 
+        _replay.RecordServerMessage(new ChatMessage(ChatChannel.Whisper, message, wrappedMessage, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
+
+        var ev = new EntitySpokeEvent(source, message, channel, obfuscatedMessage);
+        RaiseLocalEvent(source, ev, true);
         if (!hideLog)
             if (originalMessage == message)
             {
@@ -642,7 +814,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         if (checkEmote)
             TryEmoteChatInput(source, action);
-        SendInVoiceRange(ChatChannel.Emotes, action, wrappedMessage, wrappedMessage, source, range, author, ignoreLanguage: true);  // ADT Languages
+        SendInVoiceRange(ChatChannel.Emotes, action, wrappedMessage, source, range, author);
         if (!hideLog)
             if (name != Name(source))
                 _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Emote from {ToPrettyString(source):user} as {name}: {action}");
@@ -669,7 +841,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("entityName", name),
             ("message", FormattedMessage.EscapeText(message)));
 
-        SendInVoiceRange(ChatChannel.LOOC, message, wrappedMessage, wrappedMessage, source, hideChat ? ChatTransmitRange.HideChat : ChatTransmitRange.Normal, player.UserId, ignoreLanguage: true); // ADT Languages
+        SendInVoiceRange(ChatChannel.LOOC, message, wrappedMessage, source, hideChat ? ChatTransmitRange.HideChat : ChatTransmitRange.Normal, player.UserId);
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"LOOC from {player:Player}: {message}");
     }
 
@@ -678,9 +850,13 @@ public sealed partial class ChatSystem : SharedChatSystem
         var clients = GetDeadChatClients();
         var playerName = Name(source);
         string wrappedMessage;
+
+        var speech = GetSpeechVerb(source, message); // Goobstation - Dead chat verbs
+
         if (_adminManager.IsAdmin(player))
         {
             wrappedMessage = Loc.GetString("chat-manager-send-admin-dead-chat-wrap-message",
+                ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))), // Goobstation - Dead chat verbs
                 ("adminChannelName", Loc.GetString("chat-manager-admin-channel-name")),
                 ("userName", player.Channel.UserName),
                 ("message", FormattedMessage.EscapeText(message)));
@@ -689,6 +865,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         else
         {
             wrappedMessage = Loc.GetString("chat-manager-send-dead-chat-wrap-message",
+                ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))), // Goobstation - Dead chat verbs
                 ("deadChannelName", Loc.GetString("chat-manager-dead-channel-name")),
                 ("playerName", (playerName)),
                 ("message", FormattedMessage.EscapeText(message)));
@@ -696,32 +873,12 @@ public sealed partial class ChatSystem : SharedChatSystem
         }
 
         _chatManager.ChatMessageToMany(ChatChannel.Dead, message, wrappedMessage, source, hideChat, true, clients.ToList(), author: player.UserId);
-        // ADT-Tweak-start: Поиск ругательств и оскорбление родных
-        if (_configurationManager.GetCVar(ADTCCVars.ChatFilterAdminAlertEnable))
-        {
-            var words = message.Split(
-                new[] { ' ', ',', '.', '!', '?', ';', ':', '"', '\'', '(', ')', '[', ']', '{', '}' },
-                StringSplitOptions.RemoveEmptyEntries
-            );
-            foreach (var word in words)
-            {
-                if (ChatFilterConstants.OffensiveWords.Contains(word))
-                {
-                    _chatManager.SendAdminAlert(
-                        $"Внимние!! Сущность {ToPrettyString(source)} использовала слово `{word}`" +
-                        $" в сообщении, требуется проверка администратора: {message}"
-                    );
-                    break;
-                }
-            }
-        }
-        // ADT-Tweak-end
     }
     #endregion
 
     #region Utility
 
-    public enum MessageRangeCheckResult
+    private enum MessageRangeCheckResult
     {
         Disallowed,
         HideChat,
@@ -740,7 +897,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     ///     Checks if a target as returned from GetRecipients should receive the message.
     ///     Keep in mind data.Range is -1 for out of range observers.
     /// </summary>
-    public MessageRangeCheckResult MessageRangeCheck(ICommonSession session, ICChatRecipientData data, ChatTransmitRange range)
+    private MessageRangeCheckResult MessageRangeCheck(ICommonSession session, ICChatRecipientData data, ChatTransmitRange range)
     {
         var initialResult = MessageRangeCheckResult.Full;
         switch (range)
@@ -770,44 +927,16 @@ public sealed partial class ChatSystem : SharedChatSystem
     /// <summary>
     ///     Sends a chat message to the given players in range of the source entity.
     /// </summary>
-    public void SendInVoiceRange(ChatChannel channel, string message, string wrappedMessage, string wrappedLanguageMessage, EntityUid source, ChatTransmitRange range, NetUserId? author = null, ProtoId<LanguagePrototype>? language = null, bool ignoreLanguage = false)  // ADT Languages
+    private void SendInVoiceRange(ChatChannel channel, string message, string wrappedMessage, EntityUid source, ChatTransmitRange range, NetUserId? author = null)
     {
-        // ADT Languages start
-        var lang = language != null ? _prototypeManager.Index(language.Value) : _language.GetCurrentLanguage(source);
-
         foreach (var (session, data) in GetRecipients(source, VoiceRange))
         {
-            EntityUid listener;
-
-            if (session.AttachedEntity is not { Valid: true } playerEntity)
-                continue;
-            listener = session.AttachedEntity.Value;
-
-            bool condition = true;
-            foreach (var item in lang.Conditions.Where(x => x.RaiseOnListener))
-            {
-                if (!item.Condition(listener, source, EntityManager))
-                    condition = false;
-            }
-            if (!condition && !ignoreLanguage)
-                continue;
-
             var entRange = MessageRangeCheck(session, data, range);
             if (entRange == MessageRangeCheckResult.Disallowed)
                 continue;
             var entHideChat = entRange == MessageRangeCheckResult.HideChat;
-            if (ignoreLanguage)
-            {
-                _chatManager.ChatMessageToOne(channel, message, wrappedMessage, source, entHideChat, session.Channel, author: author);
-                continue;
-            }
-
-            if (!_language.CanUnderstand(listener, lang))
-                _chatManager.ChatMessageToOne(channel, message, wrappedLanguageMessage, source, entHideChat, session.Channel, author: author);
-            else
-                _chatManager.ChatMessageToOne(channel, message, wrappedMessage, source, entHideChat, session.Channel, author: author);
+            _chatManager.ChatMessageToOne(channel, message, wrappedMessage, source, entHideChat, session.Channel, author: author);
         }
-        // ADT Languages end
 
         _replay.RecordServerMessage(new ChatMessage(channel, message, wrappedMessage, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
     }
@@ -839,13 +968,9 @@ public sealed partial class ChatSystem : SharedChatSystem
     }
 
     // ReSharper disable once InconsistentNaming
-    public string SanitizeInGameICMessage(EntityUid source, string message, out string? emoteStr, bool capitalize = true, bool punctuate = false, bool capitalizeTheWordI = true)
+    private string SanitizeInGameICMessage(EntityUid source, string message, out string? emoteStr, bool capitalize = true, bool punctuate = false, bool capitalizeTheWordI = true)
     {
         var newMessage = SanitizeMessageReplaceWords(message.Trim());
-        // ADT-Tweak-start: Проверка, нужно ли отправлять в чат админам об использовании замены.
-        if ((message != newMessage) && HasComp<ActorComponent>(source))
-            _chatManager.SendAdminAlert($"Сущность {ToPrettyString(source)} применила слово из списка для замены: {message}");
-        // ADT-Tweak-end
 
         GetRadioKeycodePrefix(source, newMessage, out newMessage, out var prefix);
 
@@ -861,23 +986,6 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         return prefix + newMessage;
     }
-
-    // ADT-Tweak-start: дааааааааааа дублируем чучучуть код
-    public string SanitizeInGameICMessageLanguages(EntityUid source, string message, out string? emoteStr, bool capitalize = true, bool punctuate = false, bool capitalizeTheWordI = true)
-    {
-        var newMessage = message;
-        GetRadioKeycodePrefix(source, newMessage, out newMessage, out var prefix);
-        // Sanitize it first as it might change the word order
-        _sanitizer.TrySanitizeEmoteShorthands(newMessage, source, out newMessage, out emoteStr);
-        if (capitalize)
-            newMessage = SanitizeMessageCapital(newMessage);
-        if (capitalizeTheWordI)
-            newMessage = SanitizeMessageCapitalizeTheWordI(newMessage, "i");
-        if (punctuate)
-            newMessage = SanitizeMessagePeriod(newMessage);
-        return prefix + newMessage;
-    }
-    // ADT-Tweak-end
 
     private string SanitizeInGameOOCMessage(string message)
     {
@@ -908,8 +1016,12 @@ public sealed partial class ChatSystem : SharedChatSystem
 
     private IEnumerable<INetChannel> GetDeadChatClients()
     {
+        if (_ghostVisibility.GhostsVisible()) // Goobstation
+            return Filter.Broadcast().Recipients.Select(p => p.Channel);
+
         return Filter.Empty()
             .AddWhereAttachedEntity(HasComp<GhostComponent>)
+            .AddWhereAttachedEntity(_scrying.IsScryingOrbEquipped) // Goobstation
             .Recipients
             .Union(_adminManager.ActiveAdmins)
             .Select(p => p.Channel);
@@ -926,28 +1038,23 @@ public sealed partial class ChatSystem : SharedChatSystem
     }
 
     [ValidatePrototypeId<ReplacementAccentPrototype>]
-    public static readonly string[] ChatSanitize_Accent = { "adt_chatsanitize", "chatsanitize" }; // ADT-Tweak
+    public const string ChatSanitize_Accent = "chatsanitize";
 
     public string SanitizeMessageReplaceWords(string message)
     {
         if (string.IsNullOrEmpty(message)) return message;
 
         var msg = message;
-        // ADT-Tweak-start: теперь можно обрабатывать сразу несколько прототипов списка общих акцентов.
-        foreach (var accent in ChatSanitize_Accent)
-        {
-            msg = _wordreplacement.ApplyReplacements(msg, accent);
-        }
-        // ... ... ^_^
-        // msg = _wordreplacement.ApplyReplacements(msg, ChatSanitize_Accent);
-        // ADT-Tweak-end
+
+        msg = _wordreplacement.ApplyReplacements(msg, ChatSanitize_Accent);
+
         return msg;
     }
 
     /// <summary>
     ///     Returns list of players and ranges for all players withing some range. Also returns observers with a range of -1.
     /// </summary>
-    public Dictionary<ICommonSession, ICChatRecipientData> GetRecipients(EntityUid source, float voiceGetRange)
+    private Dictionary<ICommonSession, ICChatRecipientData> GetRecipients(EntityUid source, float voiceGetRange)
     {
         // TODO proper speech occlusion
 
@@ -971,16 +1078,8 @@ public sealed partial class ChatSystem : SharedChatSystem
 
             var observer = ghostHearing.HasComponent(playerEntity);
 
-            // ADT Resomi start
-            var range = voiceGetRange;
-            if (TryComp<ChatModifierComponent>(playerEntity, out var modifier) && modifier.Modifiers.ContainsKey(ChatModifierType.Say))
-            {
-                range = modifier.Modifiers[ChatModifierType.Say];
-            }
-            // ADT Resomi end
-
             // even if they are a ghost hearer, in some situations we still need the range
-            if (sourceCoords.TryDistance(EntityManager, transformEntity.Coordinates, out var distance) && distance < range) // ADT Resomi tweaked
+            if (sourceCoords.TryDistance(EntityManager, transformEntity.Coordinates, out var distance) && distance < voiceGetRange)
             {
                 recipients.Add(player, new ICChatRecipientData(distance, observer));
                 continue;
@@ -994,11 +1093,11 @@ public sealed partial class ChatSystem : SharedChatSystem
         return recipients;
     }
 
-    public readonly record struct ICChatRecipientData(float Range, bool Observer, bool? HideChatOverride = null, bool Muffled = false)
+    public readonly record struct ICChatRecipientData(float Range, bool Observer, bool? HideChatOverride = null)
     {
     }
 
-    public string ObfuscateMessageReadability(string message, float chance)
+    private string ObfuscateMessageReadability(string message, float chance)
     {
         var modifiedMessage = new StringBuilder(message);
 
@@ -1074,22 +1173,19 @@ public sealed class EntitySpokeEvent : EntityEventArgs
     public readonly EntityUid Source;
     public readonly string Message;
     public readonly string? ObfuscatedMessage; // not null if this was a whisper
+
     /// <summary>
     ///     If the entity was trying to speak into a radio, this was the channel they were trying to access. If a radio
     ///     message gets sent on this channel, this should be set to null to prevent duplicate messages.
     /// </summary>
     public RadioChannelPrototype? Channel;
-    public readonly LanguagePrototype Language;
-    public readonly bool Whisper;
 
-    public EntitySpokeEvent(EntityUid source, string message, LanguagePrototype language, RadioChannelPrototype? channel, string? obfuscatedMessage, bool whisper = false)
+    public EntitySpokeEvent(EntityUid source, string message, RadioChannelPrototype? channel, string? obfuscatedMessage)
     {
         Source = source;
         Message = message;
         Channel = channel;
         ObfuscatedMessage = obfuscatedMessage;
-        Language = language;
-        Whisper = whisper;
     }
 }
 
@@ -1101,7 +1197,9 @@ public enum InGameICChatType : byte
 {
     Speak,
     Emote,
-    Whisper
+    Whisper,
+    Telepathic, // Goobstation Change
+    CollectiveMind // Goobstation - Starlight collective mind port
 }
 
 /// <summary>
@@ -1113,18 +1211,17 @@ public enum InGameOOCChatType : byte
     Dead
 }
 
-// ADT - moved to shared
-// /// <summary>
-// ///     Controls transmission of chat.
-// /// </summary>
-// public enum ChatTransmitRange : byte
-// {
-//     /// Acts normal, ghosts can hear across the map, etc.
-//     Normal,
-//     /// Normal but ghosts are still range-limited.
-//     GhostRangeLimit,
-//     /// Hidden from the chat window.
-//     HideChat,
-//     /// Ghosts can't hear or see it at all. Regular players can if in-range.
-//     NoGhosts
-// }
+/// <summary>
+///     Controls transmission of chat.
+/// </summary>
+public enum ChatTransmitRange : byte
+{
+    /// Acts normal, ghosts can hear across the map, etc.
+    Normal,
+    /// Normal but ghosts are still range-limited.
+    GhostRangeLimit,
+    /// Hidden from the chat window.
+    HideChat,
+    /// Ghosts can't hear or see it at all. Regular players can if in-range.
+    NoGhosts
+}

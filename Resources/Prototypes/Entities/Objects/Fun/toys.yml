@@ -1,32 +1,204 @@
-## Base stash
-
-- type: entity
-  id: BaseStash
-  abstract: true
-  components:
-  - type: Speech
-    speechVerb: Default # for pais (In the secret stash)
-  - type: SecretStash
-    secretStashName: secret-stash-plushie
-    blacklist:
-      components:
-      - SecretStash # Prevents being able to insert plushies inside each other (infinite plush)!
-      - NukeDisk # Could confuse the nukies if they don't know that plushies have a stash.
-      tags:
-      - QuantumSpinInverter # It will cause issues with the grinder...
-      - FakeNukeDisk # So you can't tell if the nuke disk is real or fake depending on if it can be inserted or not.
-  - type: ToolOpenable
-    openToolQualityNeeded: Slicing
-    closeToolQualityNeeded: Slicing # Should probably be stitching or something if that gets added
-    name: secret-stash-plushie
-  - type: ContainerContainer
-    containers:
-      stash: !type:ContainerSlot {}
-
+# SPDX-FileCopyrightText: 2020 Swept <jamesurquhartwebb@gmail.com>
+# SPDX-FileCopyrightText: 2020 TheCze <38573433+TheCze@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2020 Vera Aguilera Puerto <zddm@outlook.es>
+# SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2020 Ygg01 <daniel.fath7@gmail.com>
+# SPDX-FileCopyrightText: 2020 py01 <pyronetics01@gmail.com>
+# SPDX-FileCopyrightText: 2021 DmitriyRubetskoy <75271456+DmitriyRubetskoy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2021 Galactic Chimp <63882831+GalacticChimp@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2021 Galactic Chimp <GalacticChimpanzee@gmail.com>
+# SPDX-FileCopyrightText: 2021 GraniteSidewalk <32942106+GraniteSidewalk@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2021 Moony <moonheart08@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2021 Pancake <Pangogie@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@gmail.com>
+# SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@googlemail.com>
+# SPDX-FileCopyrightText: 2021 Peptide90 <78795277+Peptide90@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2021 Rubetskoy Dmitriy <rubetskoy234@mail.ru>
+# SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
+# SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 Aerocrux <69610864+Aerocrux@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 Alex Evgrashin <aevgrashin@yandex.ru>
+# SPDX-FileCopyrightText: 2022 Fishfish458 <47410468+Fishfish458@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 Jack Fox <35575261+DubiousDoggo@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 PixelTK <85175107+PixelTheKermit@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 T-Stalker <43253663+DogZeroX@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 T-Stalker <le0nel_1van@hotmail.com>
+# SPDX-FileCopyrightText: 2022 Veritius <veritiusgaming@gmail.com>
+# SPDX-FileCopyrightText: 2022 Willhelm53 <97707302+Willhelm53@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 ZeroDayDaemon <60460608+ZeroDayDaemon@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2022 fishfish458 <fishfish458>
+# SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
+# SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+# SPDX-FileCopyrightText: 2023 AJCM <AJCM@tutanota.com>
+# SPDX-FileCopyrightText: 2023 Arendian <137322659+Arendian@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 CMDR-Piboy314 <92357316+CMDR-Piboy314@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Cody ~ Aexxie <125095677+Aexxie@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 ElectroJr <leonsfriedrich@gmail.com>
+# SPDX-FileCopyrightText: 2023 Fromoriss <106442259+Fromoriss@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 HighTechPuddle <131694215+HighTechPuddle@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
+# SPDX-FileCopyrightText: 2023 LankLTE <135308300+LankLTE@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Nairod <110078045+Nairodian@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Puro <103608145+PuroSlavKing@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Raitononai <136900466+Raitononai@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Renlou <rubensvidal@hotmail.co.uk>
+# SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
+# SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 brainfood1183 <113240905+brainfood1183@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 dontbetank <59025279+dontbetank@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 lapatison <100279397+lapatison@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 lzk228 <124214523+lzk228@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 mhamster <81412348+mhamsterr@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 notquitehadouken <1isthisameme>
+# SPDX-FileCopyrightText: 2023 vanx <vanx#5477>
+# SPDX-FileCopyrightText: 2024 12rabbits <53499656+12rabbits@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Adrian16199 <144424013+Adrian16199@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 AutoOtter <joshuademorris@gmail.com>
+# SPDX-FileCopyrightText: 2024 BeeRobynn <robynthewarcrime@proton.me>
+# SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 CaasGit <87243814+CaasGit@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Chubbicous <100180479+Chubbicous@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Deatherd <69344159+Deatherd@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 DieselMohawk <gavin.drinka@gmail.com>
+# SPDX-FileCopyrightText: 2024 Dimastra <65184747+Dimastra@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Dimastra <dimastra@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 EmoGarbage404 <retron404@gmail.com>
+# SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
+# SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Firewatch <54725557+musicmanvr@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Hrosts <35345601+Hrosts@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 I.K <45953835+notquitehadouken@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Ian <ignaz.k@live.de>
+# SPDX-FileCopyrightText: 2024 Ilya246 <57039557+Ilya246@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 JIP <jipdawg93@gmail.com>
+# SPDX-FileCopyrightText: 2024 JIPDawg <51352440+JIPDawg@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 JIPDawg <JIPDawg93@gmail.com>
+# SPDX-FileCopyrightText: 2024 Joel Zimmerman <JoelZimmerman@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 JustCone <141039037+JustCone14@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 K-Dynamic <20566341+K-Dynamic@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 KieueCaprie <103897346+KieueCaprie@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Killerqu00 <47712032+Killerqu00@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Ko4ergaPunk <62609550+Ko4ergaPunk@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Krunklehorn <42424291+Krunklehorn@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Kukutis96513 <146854220+Kukutis96513@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 LevitatingTree <114672939+LevitatingTree@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 LevitatingTree <None>
+# SPDX-FileCopyrightText: 2024 Lye <128915833+Lyroth001@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 MACMAN2003 <macman2003c@gmail.com>
+# SPDX-FileCopyrightText: 2024 MerrytheManokit <167581110+MerrytheManokit@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
+# SPDX-FileCopyrightText: 2024 MisterMecky <mrmecky@hotmail.com>
+# SPDX-FileCopyrightText: 2024 Moomoobeef <62638182+Moomoobeef@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 MureixloI <132683811+MureixloI@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 NakataRin <45946146+NakataRin@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 OrangeMoronage9622 <whyteterry0092@gmail.com>
+# SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
+# SPDX-FileCopyrightText: 2024 Partmedia <kevinz5000@gmail.com>
+# SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+# SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers@gmail.com>
+# SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+# SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Plykiya <plykiya@protonmail.com>
+# SPDX-FileCopyrightText: 2024 PoorMansDreams <150595537+PoorMansDreams@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 PopGamer46 <yt1popgamer@gmail.com>
+# SPDX-FileCopyrightText: 2024 Preston Smith <92108534+thetolbean@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Psychpsyo <60073468+Psychpsyo@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Psychpsyo <psychpsyo@gmail.com>
+# SPDX-FileCopyrightText: 2024 PursuitInAshes <pursuitinashes@gmail.com>
+# SPDX-FileCopyrightText: 2024 QueerNB <176353696+QueerNB@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Repo <47093363+Titian3@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 RiceMar1244 <138547931+RiceMar1244@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 RumiTiger <154005209+RumiTiger@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Saphire Lattice <lattice@saphi.re>
+# SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Spessmann <156740760+Spessmann@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Stalen <33173619+stalengd@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 TakoDragon <69509841+BackeTako@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Unisol <1929445+Unisol@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Unkn0wn_Gh0st <shadowstalkermll@gmail.com>
+# SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
+# SPDX-FileCopyrightText: 2024 Vigers Ray <60344369+VigersRay@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Whisper <121047731+QuietlyWhisper@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 coolboy911 <85909253+coolboy911@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 deathride58 <deathride58@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
+# SPDX-FileCopyrightText: 2024 dffdff2423 <dffdff2423@gmail.com>
+# SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
+# SPDX-FileCopyrightText: 2024 foboscheshir <156405958+foboscheshir@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 gambesun <116504990+gambesun@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 lunarcomets <140772713+lunarcomets@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 marboww <152051971+marboww@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
+# SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 osjarw <oskariwjarvinen@gmail.com>
+# SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
+# SPDX-FileCopyrightText: 2024 saintmuntzer <47153094+saintmuntzer@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 shamp <140359015+shampunj@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 stellar-novas <stellar_novas@riseup.net>
+# SPDX-FileCopyrightText: 2024 strO0pwafel <153459934+strO0pwafel@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 stroopwafel <j.o.luijkx@student.tudelft.nl>
+# SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 to4no_fix <156101927+chavonadelal@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 voidnull000 <18663194+voidnull000@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 wafehling <wafehling@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 xprospero <116504990+xprospero@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Armok <155400926+ARMOKS@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Eagle <lincoln.mcqueen@gmail.com>
+# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+# SPDX-FileCopyrightText: 2025 GreenArg7 <GreenArc12@outlook.com>
+# SPDX-FileCopyrightText: 2025 Killerqu00 <killerqueen1777@gmail.com>
+# SPDX-FileCopyrightText: 2025 Minemoder5000 <minemoder50000@gmail.com>
+# SPDX-FileCopyrightText: 2025 Momo <Rsnesrud@gmail.com>
+# SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 SeamLesss <kai.julian.watson@gmail.com>
+# SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
+# SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
+# SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
+# SPDX-FileCopyrightText: 2025 VMSolidus <evilexecutive@gmail.com>
+# SPDX-FileCopyrightText: 2025 Winkarst <74284083+Winkarst-cpu@users.noreply.github.co>
+# SPDX-FileCopyrightText: 2025 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
+# SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
+# SPDX-FileCopyrightText: 2025 lzk <124214523+lzk228@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 thebiggestbruh <marcus2008stoke@gmail.com>
+# SPDX-FileCopyrightText: 2025 vanx <61917534+Vaaankas@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
 ## Plushies
 
 - type: entity
-  parent: [BaseItem, BaseStash]
+  parent: BaseItem
   id: BasePlushie
   abstract: true
   components:
@@ -78,7 +250,25 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 10
-
+  - type: ContainerContainer
+    containers:
+      stash: !type:ContainerSlot {}
+  - type: Speech
+    speechVerb: Default # for pais (In the secret stash)
+    speechSounds: Plushie # Imp
+  - type: SecretStash
+    secretStashName: secret-stash-plushie
+    blacklist:
+      components:
+      - SecretStash # Prevents being able to insert plushies inside each other (infinite plush)!
+      - NukeDisk # Could confuse the nukies if they don't know that plushies have a stash.
+      tags:
+      - QuantumSpinInverter # It will cause issues with the grinder...
+      - FakeNukeDisk # So you can't tell if the nuke disk is real or fake depending on if it can be inserted or not.
+  - type: ToolOpenable
+    openToolQualityNeeded: Slicing
+    closeToolQualityNeeded: Slicing # Should probably be stitching or something if that gets added
+    name: secret-stash-plushie
 
 - type: entity
   parent: BasePlushie
@@ -95,10 +285,6 @@
     - type: Item
       size: Ginormous
       sprite: Objects/Weapons/Melee/Throngler-in-hand.rsi
-    - type: FoodSequenceElement
-      entries:
-        CottonBurger: ThronglerPlushie
-
 
 - type: entity
   parent: BasePlushie
@@ -138,15 +324,12 @@
       accumulatorRatio: 0.5
       maxSpeed: 1
       minSpeed: 0.25
-    - type: FoodSequenceElement
-      entries:
-        CottonBurger: GhostPlushie
 
 - type: entity
   parent: PlushieGhost
   id: PlushieGhostRevenant
   name: revenant soft toy
-  # categories: [ DoNotMap ] #ADT_Tweak - категория убрана, так как ломает тесты
+  categories: [ DoNotMap ]
   description: So soft it almost makes you want to take a nap...
   components:
     - type: Item
@@ -158,9 +341,6 @@
     - type: Construction
       graph: PlushieGhostRevenant
       node: plushie
-    - type: FoodSequenceElement
-      entries:
-        CottonBurger: RevenantPlushie
 
 - type: entity
   parent: BasePlushie
@@ -196,9 +376,6 @@
     equippedPrefix: bee
     slots:
     - HEAD
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: BeePlushie
 
 - type: entity
   parent: BasePlushie
@@ -231,9 +408,6 @@
     wideAnimationRotation: 180
     soundHit:
       path: /Audio/Items/Toys/mousesqueek.ogg
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: HamptrPlushie
 
 - type: entity
   parent: PlushieBee
@@ -261,16 +435,13 @@
         shader: unshaded
 
 - type: entity
-  parent: [ BasePlushie ] #, BaseSyndicateContraband ] # ADT Remove cringe
+  parent: BasePlushie
   id: PlushieNuke
   name: nukie plushie
   description: A stuffed toy that resembles a syndicate nuclear operative. The tag claims operatives to be purely fictitious.
   components:
   - type: Sprite
     state: plushie_nuke
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: NukiePlushie
 
 - type: entity
   parent: BasePlushie
@@ -281,9 +452,6 @@
   - type: Sprite
     state: plushie_rouny
   - type: Rotatable
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: RounyPlushie
 
 - type: entity
   parent: BasePlushie
@@ -297,9 +465,6 @@
     radius: 1.5
     energy: 2
     netsync: false
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: LampPlushie
 
 - type: entity
   parent: BasePlushie
@@ -332,9 +497,6 @@
     wideAnimationRotation: 180
     soundHit:
       path: /Audio/Voice/Arachnid/arachnid_laugh.ogg
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: ArachnidPlushie
 
 - type: entity
   parent: BasePlushie
@@ -397,68 +559,6 @@
     - ClothMade
     - Payload
     - PlushieLizard
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: LizardPlushie
-
-- type: entity
-  parent: BasePlushie
-  id: PlushieExperiment #Arf!
-  name: experiment plushie
-  description: A plushie of a canid of sorts, it yearns to be detonated on a landmine.
-  components:
-  - type: Sprite
-    sprite: Objects/Fun/expiplush.rsi
-    state: expi
-  - type: Item
-    inhandVisuals:
-      left:
-      - state: expi-inhand-left
-        shader: shaded
-      right:
-      - state: expi-inhand-right
-        shader: shaded
-    heldPrefix: plushielizard
-  - type: EmitSoundOnUse
-    sound:
-      path: /Audio/Items/Toys/arf.ogg
-  - type: EmitSoundOnLand
-    sound:
-      path: /Audio/Items/Toys/arf.ogg
-  - type: EmitSoundOnActivate
-    sound:
-      path: /Audio/Items/Toys/arf.ogg
-  - type: EmitSoundOnTrigger
-    sound:
-      path: /Audio/Items/Toys/arf.ogg
-  - type: EmitSoundOnCollide
-    sound:
-      path: /Audio/Items/Toys/arf.ogg
-  - type: Food
-    requiresSpecialDigestion: true
-    useSound:
-      path: /Audio/Items/Toys/arf.ogg
-  - type: MeleeWeapon
-    wideAnimationRotation: 180
-    soundHit:
-      path: /Audio/Items/Toys/arf.ogg
-  - type: Tag
-    tags:
-    - ClothMade
-    - Payload
-  - type: Clothing
-    clothingVisuals:
-      head:
-      - state: expi-equipped-HELMET
-        shader: shaded
-    quickEquip: false
-    sprite: Objects/Fun/toys.rsi
-    equippedPrefix: expi
-    slots:
-    - HEAD
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: ExperimentPlushie
 
 - type: entity
   parent: PlushieLizard
@@ -552,9 +652,6 @@
       head:
       - state: spacelizard-equipped-HELMET
         offset: "0, 0.03"
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: SpaceLizardPlushie
 
 - type: entity
   parent: PlushieLizard
@@ -606,9 +703,6 @@
     equippedPrefix: lizard-inversed
     slots:
     - HEAD
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: InversedLizardPlushie
 
 
 - type: entity
@@ -689,9 +783,6 @@
             - LowImpassable
     - type: CollisionWake
       enabled: false
-    - type: FoodSequenceElement
-      entries:
-        CottonBurger: DionaPlushie
 
 - type: entity
   parent: BasePlushie
@@ -702,25 +793,25 @@
   - type: Sprite
     sprite: Objects/Fun/sharkplush.rsi
     state: blue
-  - type: EmitSoundOnLand
-    sound:
-      path: /Audio/Items/Toys/rawr.ogg
-  - type: EmitSoundOnTrigger
-    sound:
-      path: /Audio/Items/Toys/rawr.ogg
   - type: EmitSoundOnUse
     sound:
-      path: /Audio/Items/Toys/rawr.ogg
+      collection: ToySqueak
   - type: EmitSoundOnActivate
     sound:
-      path: /Audio/Items/Toys/rawr.ogg
+      collection: ToySqueak
   - type: EmitSoundOnCollide
     sound:
-      path: /Audio/Items/Toys/rawr.ogg
+      collection: ToySqueak
+  - type: EmitSoundOnLand
+    sound:
+      collection: ToyFall
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: ToySqueak
   - type: MeleeWeapon
     wideAnimationRotation: 180
     soundHit:
-      path: /Audio/Items/Toys/rawr.ogg
+      collection: ToySqueak
   - type: Item
     heldPrefix: blue
     storedRotation: -90
@@ -728,9 +819,6 @@
     tags:
       - PlushieSharkBlue
       - Payload
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: BlueSharkPlushie
 
 - type: entity
   parent: PlushieSharkBlue
@@ -747,9 +835,6 @@
     tags:
       - PlushieSharkPink
       - Payload
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: PinkSharkPlushie
 
 - type: entity
   parent: PlushieSharkBlue
@@ -766,9 +851,6 @@
     tags:
       - PlushieSharkGrey
       - Payload
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: GreySharkPlushie
 
 - type: entity
   parent: BasePlushie
@@ -780,9 +862,6 @@
     size: Normal
   - type: Sprite
     state: plushie_ratvar
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: RatvarPlushie
 
 - type: entity
   parent: BasePlushie
@@ -794,9 +873,6 @@
     size: Normal
   - type: Sprite
     state: narplush
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: NarPlushie
 
 - type: entity
   parent: BasePlushie
@@ -834,14 +910,18 @@
       path: /Audio/Effects/bite.ogg
     angle: 0
     animation: WeaponArcBite # Rrrr!
+  - type: GibThisGuy  # Goobstation
+    requireBoth: false
+    icNames:
+    - Aubrey White
+    ocNames:
+    - SolsticeOfTheWinter
+    - BrizbyMouse
   - type: Tag
     tags:
       - Payload
       - ClothMade
       - PlushieCarp
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: CarpPlushie
 
 - type: entity
   parent: PlushieCarp
@@ -851,9 +931,6 @@
   components:
   - type: Sprite
     state: magicplush
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: MagicarpPlushie
 
 - type: entity
   parent: PlushieCarp
@@ -885,9 +962,6 @@
   components:
   - type: Sprite
     state: holoplush
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: HolocarpPlushie
 
 - type: entity
   parent: BasePlushie
@@ -913,9 +987,6 @@
     wideAnimationRotation: 180
     soundHit:
       path: /Audio/Voice/Slime/slime_squish.ogg
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: SlimePlushie
 
 - type: entity
   parent: BasePlushie
@@ -957,9 +1028,6 @@
     - NECK
   - type: Speech
     speechVerb: Reptilian # for pais (In the secret stash)
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: SnakePlushie
 
 - type: entity
   parent: BasePlushie
@@ -998,9 +1066,45 @@
     equippedPrefix: mouse
     slots:
     - HEAD
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: MousePlushie
+
+- type: entity
+  parent: BasePlushie
+  id: ToyRubberDuck
+  name: rubber ducky
+  description: Not carried here by ocean currents.
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Objects/Fun/ducky.rsi
+    state: icon
+  - type: Clothing
+    quickEquip: false
+    sprite: Objects/Fun/ducky.rsi
+    slots:
+    - HEAD
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Items/Toys/quack.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/Toys/quack.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Items/Toys/quack.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Items/Toys/quack.ogg
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/Items/Toys/quack.ogg
+  - type: Food
+    requiresSpecialDigestion: true
+    useSound:
+      path: /Audio/Items/Toys/mousesqueek.ogg
+  - type: Tag
+    tags:
+    - ToyRubberDuck
 
 - type: entity
   parent: BasePlushie
@@ -1033,9 +1137,6 @@
     wideAnimationRotation: 180
     soundHit:
       path: /Audio/Voice/Vox/shriek1.ogg
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: VoxPlushie
 
 - type: entity
   parent: BasePlushie
@@ -1045,9 +1146,6 @@
   components:
   - type: Sprite
     state: plushie_atmosian
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: AtmosianPlushie
 
 - type: entity
   parent: BasePlushie
@@ -1082,10 +1180,6 @@
     wideAnimationRotation: 180
     soundHit:
       path: /Audio/Weapons/Xeno/alien_spitacid.ogg
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: XenoPlushie
-
 - type: entity
   parent: BasePlushie
   id: PlushiePenguin
@@ -1094,9 +1188,6 @@
   components:
   - type: Sprite
     state: plushie_penguin
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: PenguinPlushie
 
 - type: entity
   parent: BasePlushie
@@ -1128,9 +1219,6 @@
   - type: EmitSoundOnTrigger
     sound:
       path: /Audio/Voice/Human/malescream_5.ogg
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: HumanPlushie
 
 - type: entity
   parent: BasePlushie
@@ -1162,115 +1250,6 @@
     requiresSpecialDigestion: true
     useSound:
       path: /Audio/Voice/Moth/moth_chitter.ogg
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: MothPlushie
-
-## Rubber
-
-- type: entity
-  parent: [BaseItem, BaseStash]
-  id: BaseRubberToy
-  abstract: true
-  components:
-  - type: Sprite
-    sprite: Objects/Fun/toys.rsi
-  - type: Tag
-    tags:
-      - Payload
-  - type: UseDelay
-    delay: 1.0
-  - type: MeleeWeapon
-    wideAnimationRotation: 180
-    soundHit:
-      collection: ToySqueak
-    damage:
-      types:
-        Blunt: 0
-    hidden: true
-  - type: PhysicalComposition
-    materialComposition:
-      Plastic: 25
-  - type: StaticPrice
-    price: 5
-  - type: ContainerContainer
-    containers:
-      stash: !type:ContainerSlot {}
-
-- type: entity
-  parent: BaseRubberToy
-  id: ToyRubberDuck
-  name: rubber ducky
-  description: Not carried here by ocean currents.
-  components:
-  - type: Item
-    size: Tiny
-  - type: Sprite
-    sprite: Objects/Fun/ducky.rsi
-    state: icon
-  - type: Clothing
-    quickEquip: false
-    sprite: Objects/Fun/ducky.rsi
-    slots:
-    - HEAD
-  - type: EmitSoundOnUse
-    sound:
-      path: /Audio/Items/Toys/quack.ogg
-  - type: EmitSoundOnLand
-    sound:
-      path: /Audio/Items/Toys/quack.ogg
-  - type: EmitSoundOnActivate
-    sound:
-      path: /Audio/Items/Toys/quack.ogg
-  - type: EmitSoundOnTrigger
-    sound:
-      path: /Audio/Items/Toys/quack.ogg
-  - type: EmitSoundOnCollide
-    sound:
-      path: /Audio/Items/Toys/quack.ogg
-  - type: Tag
-    tags:
-    - ToyRubberDuck
-
-- type: entity
-  parent: BaseRubberToy
-  id: RubberChicken
-  name: rubber chicken
-  description: A stress inducing parody of nature's most delectable avian.
-  components:
-  - type: Sprite
-    state: rubber_chicken
-  - type: EmitSoundOnUse
-    sound:
-      collection: RubberChicken
-      params:
-        variation: 0.125
-  - type: EmitSoundOnLand
-    sound:
-      collection: RubberChicken
-      params:
-        variation: 0.125
-  - type: EmitSoundOnActivate
-    sound:
-      collection: RubberChicken
-      params:
-        variation: 0.125
-  - type: EmitSoundOnCollide
-    sound:
-      collection: RubberChicken
-      params:
-        variation: 0.125
-  - type: EmitSoundOnTrigger
-    sound:
-      collection: RubberChicken
-      params:
-        variation: 0.125
-  - type: MeleeWeapon
-    wideAnimationRotation: 110
-    soundHit:
-      collection: RubberChicken
-      params:
-        variation: 0.125
 
 ## Cheapo Figurines
 
@@ -1365,9 +1344,6 @@
     requiresSpecialDigestion: true
     useSound:
       path: /Audio/Items/Toys/ian.ogg
-  - type: FoodSequenceElement
-    entries:
-      CottonBurger: IanPlushie
 
 ## Toyweapons
 
@@ -1477,9 +1453,9 @@
       tags:
         - CartridgeCap
         - SpeedLoaderCap
-        - ADTCartridgeMagnumLesser
-        - ADTSpeedLoaderMagnumLesser
-    proto: ADTCartridgeMagnumLesserAP
+        - CartridgeMagnum
+        - SpeedLoaderMagnum
+    proto: CartridgeMagnumAP
 
 - type: entity
   parent: BaseItem
@@ -1498,11 +1474,17 @@
     damage:
       types:
         Blunt: 0
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg #spoooky
   - type: Item
     size: Small
     sprite: Objects/Fun/toys.rsi
     heldPrefix: foamblade
   - type: UseDelay
+    delay: 1.5
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Effects/gib1.ogg #spoooky x2
 
 # MISC
 
@@ -1662,7 +1644,7 @@
         volume: -10
 
 - type: entity
-  parent: [ BaseItem, BaseMagicalContraband ]
+  parent: BaseItem
   id: PonderingOrb
   name: pondering orb
   description: Ponderous, man... Really ponderous.
@@ -1682,34 +1664,14 @@
     modifier: 0.001
 
 - type: entity
-  parent: PonderingOrb
-  id: PonderingOrbWizard
-  name: pondering orb
-  description: Ponderous, man... Really ponderous. Magically shows the station's camera network.
-  suffix: Wizard
-  components:
-  - type: ActivatableUI
-    requireActiveHand: false
-    inHandsOnly: true
-    key: enum.SurveillanceCameraMonitorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.SurveillanceCameraMonitorUiKey.Key:
-        type: SurveillanceCameraMonitorBoundUserInterface
-  - type: DeviceNetwork
-    deviceNetId: Wired
-    receiveFrequencyId: SurveillanceCamera
-    transmitFrequencyId: SurveillanceCamera
-  - type: WiredNetworkConnection
-  - type: SurveillanceCameraMonitor
-
-- type: entity
   parent: BaseItem
   id: ToySword
   name: toy sword
   description: New Sandy-Cat plastic sword! Comes with realistic sound and full color! Looks almost like the real thing!
   components:
     - type: EnergySword
+    #  colorOptions: reserve toy sword all colors
+    #    - DodgerBlue reserve toy sword all colors
     - type: ItemToggle
       soundActivate:
         path: /Audio/Weapons/ebladeon.ogg
@@ -1721,12 +1683,12 @@
     - type: Sprite
       sprite: Objects/Weapons/Melee/e_sword.rsi
       layers:
-        - state: e_sword
-        - state: e_sword_blade
-          color: "#FFFFFF"
-          visible: false
-          shader: unshaded
-          map: [ "blade" ]
+      - state: e_sword
+      - state: e_sword_blade
+        color: "#FFFFFF"
+        visible: false
+        shader: unshaded
+        map: [ "blade" ]
     - type: Item
       size: Small
       sprite: Objects/Weapons/Melee/e_sword-inhands.rsi
@@ -1771,6 +1733,15 @@
         path: /Audio/Weapons/eblademiss.ogg
         params:
           variation: 0.125
+    - type: Tag
+      tags:
+      - ToySword #Goobstation
+    #reserve toy sword tweaks begin
+    - type: Construction
+      deconstructionTarget: null
+      graph: DoubleToySwordGraph
+      node: esword
+    #reserve toy sword tweaks end
 
 - type: entity
   parent: BasePlushie
@@ -1788,10 +1759,6 @@
     available:
       - enum.DamageStateVisualLayers.Base:
           base: Sixteen
-#  - type: FoodSequenceElement - does not work with randomized sprites
-#    entries:
-#      CottonBurger: AmongPequeno
-
 
 - type: entity
   parent: BaseItem
@@ -1811,11 +1778,7 @@
         Blunt: 0
   - type: Item
     size: Normal
-    storedSprite:
-      state: foam_storage
-      sprite: Objects/Weapons/Melee/cutlass.rsi
-    shape:
-    - 0,0,0,2
+    sprite: Objects/Weapons/Melee/cutlass.rsi
 
 - type: entity
   parent: BaseItem
@@ -1921,9 +1884,7 @@
   - type: UseDelay
     delay: 0.8
   - type: Slippery
-    slipData:
-      paralyzeTime: 0
-      launchForwardsMultiplier: 0
+    paralyzeTime: 0
     slipSound:
       collection: Parp
       params:
@@ -1938,8 +1899,13 @@
         Blunt: 0
   - type: StepTrigger
     intersectRatio: 0.2
-    requiredTriggeredSpeed: 2
+    requiredTriggeredSpeed: 1
   - type: TriggerOnStepTrigger
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: Parp
+      params:
+        variation: 0.125
   - type: Appearance
   - type: CollisionWake
     enabled: false
@@ -2052,3 +2018,81 @@
       params:
         volume: -9
         maxDistance: 3
+
+- type: entity
+  name: The Throngler
+  parent: ToyHammer
+  id: ThronglerToy
+  suffix: Toy
+  description: Why would you make this?
+  components:
+    - type: Sprite
+      sprite: Objects/Weapons/Melee/Throngler2.rsi
+      state: icon
+    - type: StaminaDamageOnHit
+      damage: 0.8
+    - type: MeleeWeapon
+      animationRotation: -45 # WWDP
+      wideAnimationRotation: -135
+      attackRate: .1
+      damage:
+        types:
+          Blunt: 0
+      soundHit:
+        path: /Audio/Effects/explosion_small1.ogg
+      soundNoDamage:
+        path: /Audio/Effects/explosion_small1.ogg
+    - type: Item
+      size: Ginormous
+      sprite: Objects/Weapons/Melee/Throngler-in-hand.rsi
+    - type: DisarmMalus
+      malus: 0
+
+- type: entity
+  parent: BasePlushie
+  id: RubberChicken
+  name: rubber chicken
+  description: A stress inducing parody of nature's most delectable avian.
+  components:
+  - type: Sprite
+    state: rubber_chicken
+  - type: EmitSoundOnUse
+    sound:
+      collection: RubberChicken
+      params:
+        variation: 0.125
+  - type: EmitSoundOnLand
+    sound:
+      collection: RubberChicken
+      params:
+        variation: 0.125
+  - type: EmitSoundOnActivate
+    sound:
+      collection: RubberChicken
+      params:
+        variation: 0.125
+  - type: EmitSoundOnCollide
+    sound:
+      collection: RubberChicken
+      params:
+        variation: 0.125
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: RubberChicken
+      params:
+        variation: 0.125
+  - type: Food
+    requiresSpecialDigestion: true
+    useSound:
+      collection: RubberChicken
+      params:
+        variation: 0.125
+  - type: MeleeWeapon
+    wideAnimationRotation: 110
+    soundHit:
+      collection: RubberChicken
+      params:
+        variation: 0.125
+  - type: PhysicalComposition #Goobstation - Recycle update
+    materialComposition:
+      Plastic: 25

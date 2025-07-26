@@ -1,3 +1,9 @@
+// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Damage;
 using Content.Shared.Ninja.Systems;
 using Content.Shared.Whitelist;
@@ -55,7 +61,7 @@ public sealed partial class StunProviderComponent : Component
     /// How long stunning is disabled after stunning something.
     /// </summary>
     [DataField]
-    public TimeSpan Cooldown = TimeSpan.FromSeconds(6); // adt tweak xz
+    public TimeSpan Cooldown = TimeSpan.FromSeconds(2);
 
     /// <summary>
     /// ID of the cooldown use delay.

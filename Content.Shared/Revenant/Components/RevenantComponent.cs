@@ -1,13 +1,30 @@
+// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2023 keronshb <54602815+keronshb@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
+// SPDX-FileCopyrightText: 2024 DisposableCrewmember42 <disposablecrewmember42@proton.me>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+// SPDX-FileCopyrightText: 2025 OnsenCapy <lucasgrds166@gmail.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Numerics;
 using Content.Shared.Alert;
-using Content.Shared.FixedPoint;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Store;
 using Content.Shared.Whitelist;
+using Robust.Shared.Audio; // Imp
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using Content.Shared.Chemistry.Components;
-using Robust.Shared.Audio;
 
 namespace Content.Shared.Revenant.Components;
 
@@ -32,12 +49,33 @@ public sealed partial class RevenantComponent : Component
     [DataField("spawnOnDeathPrototype", customTypeSerializer:typeof(PrototypeIdSerializer<EntityPrototype>))]
     public string SpawnOnDeathPrototype = "Ectoplasm";
 
+    [DataField("stasisTime"), ViewVariables(VVAccess.ReadWrite)] // Begin Imp Changes
+    public TimeSpan StasisTime = TimeSpan.FromSeconds(60);
+
+    /// <summary>
+    /// If true, only bible users can exorcise this revenant
+    /// with a bible.
+    ///
+    /// If false, anyone who tries to exorcise a revenant with
+    /// a bible will be able to.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public bool ExorcismRequiresBibleUser = true;
+
+    /// <summary>
+    /// If true, grinding a revenant's ectoplasm will require
+    /// putting salt in the reagent grinder. Otherwise, the
+    /// grinder will explode.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public bool GrindingRequiresSalt = true;  // End Imp Changes
+
     /// <summary>
     /// The entity's current max amount of essence. Can be increased
     /// through harvesting player souls.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("maxEssence")]
-    public FixedPoint2 EssenceRegenCap = 75;
+    public FixedPoint2 EssenceRegenCap = 100;
 
     /// <summary>
     /// The coefficient of damage taken to actual health lost.
@@ -49,13 +87,10 @@ public sealed partial class RevenantComponent : Component
     /// The amount of essence passively generated per second.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("essencePerSecond")]
-    public FixedPoint2 EssencePerSecond = 0.5f;
+    public FixedPoint2 EssencePerSecond = 1f;
 
     [ViewVariables]
     public float Accumulator = 0;
-
-    [DataField]
-    public ProtoId<AlertPrototype> EssenceAlert = "Essence";
 
     // Here's the gist of the harvest ability:
     // Step 1: The revenant clicks on an entity to "search" for it's soul, which creates a doafter.
@@ -83,6 +118,32 @@ public sealed partial class RevenantComponent : Component
     [ViewVariables(VVAccess.ReadWrite), DataField("maxEssenceUpgradeAmount")]
     public float MaxEssenceUpgradeAmount = 10;
     #endregion
+
+    // Begin Imp Changes
+    // When used, the revenant reveals itself temporarily and gains stolen essence and a boost in
+    // essence regeneration for each crewmate that witnesses it
+    #region Haunt Ability
+
+    [DataField("hauntDebuffs"), ViewVariables(VVAccess.ReadWrite)]
+    public Vector2 HauntDebuffs = new(3, 8);
+
+    [DataField("hauntStolenEssencePerWitness"), ViewVariables(VVAccess.ReadWrite)]
+    public FixedPoint2 HauntStolenEssencePerWitness = 2.5;
+
+    [DataField("hauntEssenceRegenPerWitness"), ViewVariables(VVAccess.ReadWrite)]
+    public FixedPoint2 HauntEssenceRegenPerWitness = 0.5;
+
+    [DataField("hauntEssenceRegenDuration"), ViewVariables(VVAccess.ReadWrite)]
+    public TimeSpan HauntEssenceRegenDuration = TimeSpan.FromSeconds(10);
+
+    [DataField("hauntSound"), ViewVariables(VVAccess.ReadWrite)]
+    public SoundSpecifier? HauntSound = new SoundCollectionSpecifier("RevenantHaunt");
+
+    [DataField("hauntFlashDuration"), ViewVariables(VVAccess.ReadWrite)]
+    public TimeSpan HauntFlashDuration = TimeSpan.FromSeconds(3.5); //Reserve edit
+
+    #endregion
+    // End Imp Changes
 
     //In the nearby radius, causes various objects to be thrown, messed with, and containers opened
     //Generally just causes a mess
@@ -119,12 +180,6 @@ public sealed partial class RevenantComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("defileEffectChance")]
     public float DefileEffectChance = 0.5f;
-
-    /// <summary>
-    /// Defile sound
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("defileSound")]
-    public string DefileSound = "/Audio/ADT/revenant-defile.ogg";   // ADT Revenant sounds
     #endregion
 
     #region Overload Lights Ability
@@ -152,13 +207,7 @@ public sealed partial class RevenantComponent : Component
     /// How close to the light the entity has to be in order to be zapped.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("overloadZapRadius")]
-    public float OverloadZapRadius = 4.5f;
-
-    /// <summary>
-    /// Overload Lights sound
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("overloadSound")]
-    public string OverloadSound = "/Audio/ADT/revenant-blight.ogg";   // ADT Revenant sounds
+    public float OverloadZapRadius = 2f;
     #endregion
 
     #region Blight Ability
@@ -216,129 +265,47 @@ public sealed partial class RevenantComponent : Component
     /// </summary>
     [DataField]
     public EntityWhitelist? MalfunctionBlacklist;
-
-    // ADT Content start
-
-    /// <summary>
-    /// Malfunction sound
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("malfSound")]
-    public string MalfSound = "/Audio/ADT/revenant-malf.ogg";
     #endregion
 
-    #region Hysteria Ability
+    // Begin Imp Changes
+    #region Blood Writing
+    [ViewVariables(VVAccess.ReadWrite), DataField("bloodWritingCost")]
+    public FixedPoint2 BloodWritingCost = 2;
 
-    /// <summary>
-    /// The amount of essence that is needed to use the ability.
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("hysteriaCost")]
-    public FixedPoint2 HysteriaCost = 60;
-
-    /// <summary>
-    /// The status effects applied after the ability
-    /// the first float corresponds to amount of time the entity is stunned.
-    /// the second corresponds to the amount of time the entity is made solid.
-    /// </summary>
-    [DataField("hysteriaDebuffs")]
-    public Vector2 HysteriaDebuffs = new(2, 8);
-
-    /// <summary>
-    /// The radius around the user that this ability affects
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("hysteriaRadius")]
-    public float HysteriaRadius = 3.5f;
-
-    /// <summary>
-    /// How long people seeing hallucinations
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("hysteriaDuration")]
-    public TimeSpan HysteriaDuration = TimeSpan.FromSeconds(35);
-
-    /// <summary>
-    /// Hallucinations prototype
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("hysteriaProto")]
-    public string HysteriaProto = "Revenant";
-
-    /// <summary>
-    /// Hallucinations sound
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("hysteriaSound")]
-    public string HysteriaSound = "/Audio/ADT/ghost-sing.ogg";
+    [ViewVariables(VVAccess.ReadOnly), DataField]
+    public EntityUid? BloodCrayon;
 
     #endregion
 
-    #region Smoke Ablilty
+    #region Animate
+    [ViewVariables(VVAccess.ReadWrite), DataField]
+    public FixedPoint2 AnimateCost = 50;
 
     /// <summary>
-    /// The amount of essence that is needed to use the ability.
+    /// How long an item should be animated for
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("smokeCost")]
-    public FixedPoint2 SmokeCost = 30;
+    [ViewVariables(VVAccess.ReadWrite), DataField]
+    public TimeSpan AnimateTime = TimeSpan.FromSeconds(15);
 
-    /// <summary>
-    /// The status effects applied after the ability
-    /// the first float corresponds to amount of time the entity is stunned.
-    /// the second corresponds to the amount of time the entity is made solid.
-    /// </summary>
-    [DataField("smokeDebuffs")]
-    public Vector2 SmokeDebuffs = new(2, 7);
+    [ViewVariables(VVAccess.ReadWrite), DataField]
+    public Vector2 AnimateDebuffs = new(3, 8);
 
-    /// <summary>
-    /// Smoke duration
-    /// </summary>
-    [DataField("smokeDuration")]
-    public float SmokeDuration = 20.0f;
+    public const float DefaultAnimateWalkSpeed = 1.5f;
+    public const float DefaultAnimateSprintSpeed = 3.5f;
 
-    /// <summary>
-    /// Smoke amount
-    /// </summary>
-    [DataField("smokeAmount")]
-    public int SmokeAmount = 17;
+    [ViewVariables(VVAccess.ReadWrite), DataField]
+    public float AnimateWalkSpeed = DefaultAnimateWalkSpeed;
 
-    /// <summary>
-    /// Smoke solution
-    /// </summary>
-    [DataField("smokeQuantity")]
-    public int SmokeQuantity = 17;
+    [ViewVariables(VVAccess.ReadWrite), DataField]
+    public float AnimateSprintSpeed = DefaultAnimateSprintSpeed;
 
-    /// <summary>
-    /// Smoke sound
-    /// </summary>
-    [DataField("smokeSound")]
-    public SoundSpecifier SmokeSound = new SoundPathSpecifier("/Audio/ADT/scary-game-effect.ogg");
-
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public bool AnimateCanBoltGuns = true;
     #endregion
+    // End Imp Changes
 
-    #region Door Lock Ability
-
-    /// <summary>
-    /// The amount of essence that is needed to use the ability.
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("lockCost")]
-    public FixedPoint2 LockCost = 50;
-
-    /// <summary>
-    /// The status effects applied after the ability
-    /// the first float corresponds to amount of time the entity is stunned.
-    /// the second corresponds to the amount of time the entity is made solid.
-    /// </summary>
-    [DataField("lockDebuffs")]
-    public Vector2 LockDebuffs = new(3, 6);
-
-    /// <summary>
-    /// The radius around the user that this ability affects
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("lockRadius")]
-    public float LockRadius = 6.5f;
-
-    /// <summary>
-    /// Lock sound
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("lockSound")]
-    public string LockSound = "/Audio/ADT/revenant-lock.ogg";
-    #endregion
-    // ADT Content end
+    [DataField]
+    public ProtoId<AlertPrototype> EssenceAlert = "Essence";
 
     #region Visualizer
     [DataField("state")]
@@ -351,5 +318,6 @@ public sealed partial class RevenantComponent : Component
     public string HarvestingState = "harvesting";
     #endregion
 
-    [DataField] public EntityUid? Action;
+    [DataField] public EntityUid? ShopAction; // Imp
+    [DataField] public EntityUid? HauntAction; // Imp
 }

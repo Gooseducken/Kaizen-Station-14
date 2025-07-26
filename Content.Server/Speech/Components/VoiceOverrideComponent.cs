@@ -1,5 +1,8 @@
-using Content.Shared.ADT.SpeechBarks;
-using Content.Shared.Corvax.TTS;
+// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Speech;
 using Robust.Shared.Prototypes;
 
@@ -34,12 +37,4 @@ public sealed partial class VoiceOverrideComponent : Component
     /// </summary>
     [DataField]
     public bool Enabled = true;
-
-    // ADT start
-    [DataField]
-    public BarkData? Bark;
-
-    [DataField]
-    public ProtoId<TTSVoicePrototype>? TTS;
-    // ADT end
 }

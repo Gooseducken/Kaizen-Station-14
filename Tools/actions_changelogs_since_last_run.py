@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+# SPDX-FileCopyrightText: 2023 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2024 Myra <vasilis@pikachu.systems>
+# SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
 
 """
 Sends updates to a Discord webhook for new changelog entries since the last GitHub Actions publish run.
@@ -13,7 +21,6 @@ from typing import Any, Iterable
 
 import requests
 import yaml
-import time
 
 DEBUG = False
 DEBUG_CHANGELOG_FILE_OLD = Path("Resources/Changelog/Old.yml")
@@ -23,14 +30,9 @@ GITHUB_API_URL = os.environ.get("GITHUB_API_URL", "https://api.github.com")
 DISCORD_SPLIT_LIMIT = 2000
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL")
 
-CHANGELOG_FILES = ["Resources/Changelog/Changelog.yml", "Resources/Changelog/ChangelogSyndie.yml"] # Corvax-MultiChangelog
+CHANGELOG_FILE = "Resources/Changelog/GoobChangelog.yml"
 
-TYPES_TO_EMOJI = {
-    "Fix":    "🐛",
-    "Add":    "✨", # Corvax: Use gitmoji 💥
-    "Remove": "❌",
-    "Tweak":  "⚒️"
-}
+TYPES_TO_EMOJI = {"Fix": "🐛", "Add": "🆕", "Remove": "❌", "Tweak": "⚒️"}
 
 ChangelogEntry = dict[str, Any]
 
@@ -49,19 +51,13 @@ def main():
         # it will get the old changelog from the GitHub API
         last_changelog_stream = get_last_changelog()
 
-    most_recent = get_most_recent_workflow(session)
-    last_sha = most_recent['head_commit']['id']
-    print(f"Last successful publish job was {most_recent['id']}: {last_sha}")
+    last_changelog = yaml.safe_load(last_changelog_stream)
+    with open(CHANGELOG_FILE, "r") as f:
+        cur_changelog = yaml.safe_load(f)
 
-    # Corvax-MultiChangelog-Start
-    for changelog_file in CHANGELOG_FILES:
-        last_changelog = yaml.safe_load(get_last_changelog(session, last_sha, changelog_file))
-        with open(changelog_file, "r") as f:
-            cur_changelog = yaml.safe_load(f)
-
-        diff = diff_changelog(last_changelog, cur_changelog)
-        send_to_discord(diff)
-    # Corvax-MultiChangelog-End
+    diff = diff_changelog(last_changelog, cur_changelog)
+    message_lines = changelog_entries_to_message_lines(diff)
+    send_message_lines(message_lines)
 
 
 def get_most_recent_workflow(
@@ -128,7 +124,11 @@ def get_last_changelog_by_sha(
     }
     headers = {"Accept": "application/vnd.github.raw"}
 
-    resp = sess.get(f"{GITHUB_API_URL}/repos/{GITHUB_REPOSITORY}/contents/{changelog_file}", headers=headers, params=params)
+    resp = sess.get(
+        f"{GITHUB_API_URL}/repos/{github_repository}/contents/{CHANGELOG_FILE}",
+        headers=headers,
+        params=params,
+    )
     resp.raise_for_status()
     return resp.text
 
@@ -156,23 +156,9 @@ def get_discord_body(content: str):
 def send_discord_webhook(lines: list[str]):
     content = "".join(lines)
     body = get_discord_body(content)
-    retry_attempt = 0
 
-    try:
-        response = requests.post(DISCORD_WEBHOOK_URL, json=body, timeout=10)
-        while response.status_code == 429:
-            retry_attempt += 1
-            if retry_attempt > 20:
-                print("Too many retries on a single request despite following retry_after header... giving up")
-                exit(1)
-            retry_after = response.json().get("retry_after", 5)
-            print(f"Rate limited, retrying after {retry_after} seconds")
-            time.sleep(retry_after)
-            response = requests.post(DISCORD_WEBHOOK_URL, json=body, timeout=10)
-        response.raise_for_status()
-    except requests.exceptions.RequestException as e:
-        print(f"Failed to send message: {e}")
-        exit(1)
+    response = requests.post(DISCORD_WEBHOOK_URL, json=body)
+    response.raise_for_status()
 
 
 def changelog_entries_to_message_lines(entries: Iterable[ChangelogEntry]) -> list[str]:

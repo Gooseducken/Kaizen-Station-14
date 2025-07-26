@@ -1,4 +1,8 @@
-# Static
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+## Static
 
 - type: latheRecipePack
   id: FloorTilesStatic
@@ -47,49 +51,3 @@
   - FloorTileItemOldConcrete
   - FloorTileItemOldConcreteMono
   - FloorTileItemOldConcreteSmooth
-
-# ADT tweak start
-
-  - FloorTileItemWoodParquet
-  - FloorTileItemWoodLargeRed
-  - FloorTileItemWoodParquetRed
-  - FloorTileItemWoodRed
-  - FloorTileItemWoodChessRed
-  - FloorTileItemWoodLargeLight
-  - FloorTileItemWoodParquetLight
-  - FloorTileItemWoodLight
-  - FloorTileItemWoodChessLight
-  - FloorTileItemWoodLargeDark
-  - FloorTileItemWoodParquetDark
-  - FloorTileItemWoodDark
-  - FloorTileItemWoodChessDark
-  - FloorTileItemWoodLargeBlack
-  - FloorTileItemWoodParquetBlack
-  - FloorTileItemWoodBlack
-  - FloorTileItemWoodChessBlack
-  - FloorTileItemClown
-  - FloorTileItemMime
-  - FloorTileItemKitchen
-  - FloorTileItemLime
-  - FloorTileItemFreezer
-  - FloorTileItemMono
-  - FloorTileItemArcadeRed
-  - FloorTileItemArcadeBlue
-  - FloorTileItemArcadeBlue2
-  - FloorTileItemLaundry
-  - FloorTileItemElevatorShaft
-  - FloorTileItemMetalDiamond
-  - FloorTileItemMining
-  - FloorTileItemMiningDark
-  - FloorTileItemMiningLight
-  - FloorTileItemRockVault
-  - FloorTileItemBlue
-  - FloorTileItemHydro
-  - FloorTileItemBar
-  - FloorTileItemShuttleBlue
-  - FloorTileItemShuttleGrey
-  - FloorTileItemShuttlePurple
-  - FloorTileItemShuttleBlack
-  - FloorTileItemShuttleRed
-
-# ADT tweak end

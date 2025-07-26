@@ -1,3 +1,33 @@
+// SPDX-FileCopyrightText: 2020 Bright <nsmoak10@yahoo.com>
+// SPDX-FileCopyrightText: 2020 Bright0 <55061890+Bright0@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2020 Swept <jamesurquhartwebb@gmail.com>
+// SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
+// SPDX-FileCopyrightText: 2021 Metal Gear Sloth <metalgearsloth@gmail.com>
+// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Kevin Zheng <kevinz5000@gmail.com>
+// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2023 AJCM <AJCM@tutanota.com>
+// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 adamsong <adamsong@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 SkaldetSkaeg <impotekh@gmail.com>
+// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
 using Content.Server.Power.Components;
@@ -14,8 +44,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
-using Content.Server.ADT.Language;  // ADT Languages
-using Content.Shared.ADT.Language;  // ADT Languages
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -30,7 +58,6 @@ public sealed class RadioSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly LanguageSystem _language = default!;  // ADT Languages
 
     // set used to prevent radio feedback loops.
     private readonly HashSet<string> _messages = new();
@@ -58,14 +85,7 @@ public sealed class RadioSystem : EntitySystem
     private void OnIntrinsicReceive(EntityUid uid, IntrinsicRadioReceiverComponent component, ref RadioReceiveEvent args)
     {
         if (TryComp(uid, out ActorComponent? actor))
-        {
-            // ADT Languages start
-            if (_language.CanUnderstand(uid, args.Language))
-                _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
-            else
-                _netMan.ServerSendMessage(args.UnknownLanguageChatMsg, actor.PlayerSession.Channel);
-            // ADT Languages end
-        }
+            _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
     }
 
     /// <summary>
@@ -81,19 +101,16 @@ public sealed class RadioSystem : EntitySystem
     /// </summary>
     /// <param name="messageSource">Entity that spoke the message</param>
     /// <param name="radioSource">Entity that picked up the message and will send it, e.g. headset</param>
-    public void SendRadioMessage(EntityUid messageSource, string message, RadioChannelPrototype channel, EntityUid radioSource, bool escapeMarkup = true, LanguagePrototype? languageOverride = null)
+    public void SendRadioMessage(EntityUid messageSource, string message, RadioChannelPrototype channel, EntityUid radioSource, bool escapeMarkup = true)
     {
+        // Проверяем, не содержит ли сообщение символ "/"
+        if (message.Contains("/"))
+            return;
+
         // TODO if radios ever garble / modify messages, feedback-prevention needs to be handled better than this.
         if (!_messages.Add(message))
             return;
 
-        var language = languageOverride ?? _language.GetCurrentLanguage(messageSource);
-        if (language.LanguageType is not Generic gen)
-            return;
-
-        // var name = TryComp(messageSource, out VoiceMaskComponent? mask) && mask.Enabled
-        //     ? mask.VoiceName
-        //     : MetaData(messageSource).EntityName;                                        // ADT Закоментировал чтобы не было ошибок
         var evt = new TransformSpeakerNameEvent(messageSource, MetaData(messageSource).EntityName);
         RaiseLocalEvent(messageSource, evt);
 
@@ -110,53 +127,14 @@ public sealed class RadioSystem : EntitySystem
             ? FormattedMessage.EscapeText(message)
             : message;
 
-        // ADT Languages start
-        var languageEncodedContent = _language.ObfuscateMessage(messageSource, content, gen.Replacement, gen.ObfuscateSyllables);
-
-        if (gen.Color != null)
-        {
-            content = $"[color={gen.Color.Value.ToHex()}]{FormattedMessage.EscapeText(content)}[/color]";
-            languageEncodedContent = $"[color={gen.Color.Value.ToHex()}]{FormattedMessage.EscapeText(languageEncodedContent)}[/color]";
-        }
-
-        List<string> verbStrings = speech.SpeechVerbStrings;
-        bool verbsReplaced = false;
-        foreach (var str in ILanguageType.SpeechSuffixes)
-        {
-            if (message.EndsWith(Loc.GetString(str)) && gen.SuffixSpeechVerbs.TryGetValue(str, out var strings) && strings.Count > 0)
-            {
-                verbStrings = strings;
-                verbsReplaced = true;
-            }
-        }
-
-        if (!verbsReplaced && gen.SuffixSpeechVerbs.TryGetValue("Default", out var defaultStrings) && defaultStrings.Count > 0)
-            verbStrings = defaultStrings;
-        // ADT Languages end
-
-        var wrappedMessage = Loc.GetString("chat-radio-message-wrap",   // ADT Languages tweak - remove bold
+        var wrappedMessage = Loc.GetString(speech.Bold ? "chat-radio-message-wrap-bold" : "chat-radio-message-wrap",
             ("color", channel.Color),
-            ("fontType", gen.Font ?? speech.FontId),    // ADT Languages tweak speech.FontId -> gen.Font ?? speech.FontId
-            ("fontSize", gen.FontSize ?? speech.FontSize),  // ADT Languages tweak speech.FontSize -> gen.FontSize ?? speech.FontSize
-            ("verb", Loc.GetString(_random.Pick(verbStrings))), // ADT Languages speech.SpeechVerbStrings -> verbStrings
-            ("defaultFont", speech.FontId), // ADT Languages
-            ("defaultSize", speech.FontSize),   // ADT Languages
+            ("fontType", speech.FontId),
+            ("fontSize", speech.FontSize),
+            ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
             ("channel", $"\\[{channel.LocalizedName}\\]"),
             ("name", name),
             ("message", content));
-
-        // ADT Languages start
-        var wrappedEncodedMessage = Loc.GetString("chat-radio-message-wrap",
-            ("color", channel.Color),
-            ("fontType", gen.Font ?? speech.FontId),
-            ("fontSize", gen.FontSize ?? speech.FontSize),
-            ("verb", Loc.GetString(_random.Pick(verbStrings))),
-            ("defaultFont", speech.FontId),
-            ("defaultSize", speech.FontSize),
-            ("channel", $"\\[{channel.LocalizedName}\\]"),
-            ("name", name),
-            ("message", languageEncodedContent));
-        // ADT Languages end
 
         // most radios are relayed to chat, so lets parse the chat message beforehand
         var chat = new ChatMessage(
@@ -165,20 +143,8 @@ public sealed class RadioSystem : EntitySystem
             wrappedMessage,
             NetEntity.Invalid,
             null);
-
-        // ADT Languages start
-        var encodedChat = new ChatMessage(
-            ChatChannel.Radio,
-            message,
-            wrappedEncodedMessage,
-            NetEntity.Invalid,
-            null);
-        // ADT Languages end
-
         var chatMsg = new MsgChatMessage { Message = chat };
-        var encodedChatMsg = new MsgChatMessage { Message = encodedChat };  // ADT Languages
-
-        var ev = new RadioReceiveEvent(message, messageSource, channel, radioSource, chatMsg, encodedChatMsg, language);    // ADT Languages
+        var ev = new RadioReceiveEvent(message, messageSource, channel, radioSource, chatMsg);
 
         var sendAttemptEv = new RadioSendAttemptEvent(channel, radioSource);
         RaiseLocalEvent(ref sendAttemptEv);

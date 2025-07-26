@@ -1,6 +1,29 @@
-using System.Linq;
+// SPDX-FileCopyrightText: 2020 Exp <theexp111@gmail.com>
+// SPDX-FileCopyrightText: 2020 Metal Gear Sloth <metalgearsloth@gmail.com>
+// SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto <zddm@outlook.es>
+// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
+// SPDX-FileCopyrightText: 2021 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Acruid <shatter66@gmail.com>
+// SPDX-FileCopyrightText: 2022 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Paul <ritter.paul1+git@googlemail.com>
+// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
+// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 ScalyChimp <72841710+scaly-chimp@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
+// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using Content.Server.Atmos.Components;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
@@ -16,7 +39,6 @@ using Robust.Shared;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
-using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Threading;
 using Robust.Shared.Timing;
@@ -61,15 +83,11 @@ namespace Content.Server.Atmos.EntitySystems
         private float _updateInterval;
 
         private int _thresholds;
-        private EntityQuery<MapGridComponent> _gridQuery;
         private EntityQuery<GasTileOverlayComponent> _query;
 
         public override void Initialize()
         {
             base.Initialize();
-
-            _query = GetEntityQuery<GasTileOverlayComponent>();
-            _gridQuery = GetEntityQuery<MapGridComponent>();
 
             _updateJob = new UpdatePlayerJob()
             {
@@ -81,7 +99,6 @@ namespace Content.Server.Atmos.EntitySystems
                 MapManager = _mapManager,
                 ChunkViewerPool = _chunkViewerPool,
                 LastSentChunks = _lastSentChunks,
-                GridQuery = _gridQuery,
             };
 
             _playerManager.PlayerStatusChanged += OnPlayerStatusChanged;
@@ -91,6 +108,7 @@ namespace Content.Server.Atmos.EntitySystems
 
             SubscribeLocalEvent<RoundRestartCleanupEvent>(Reset);
             SubscribeLocalEvent<GasTileOverlayComponent, ComponentStartup>(OnStartup);
+            _query = GetEntityQuery<GasTileOverlayComponent>();
         }
 
         private void OnStartup(EntityUid uid, GasTileOverlayComponent component, ComponentStartup args)
@@ -380,8 +398,6 @@ namespace Content.Server.Atmos.EntitySystems
             public Dictionary<ICommonSession, Dictionary<NetEntity, HashSet<Vector2i>>> LastSentChunks;
             public List<ICommonSession> Sessions;
 
-            public EntityQuery<MapGridComponent> GridQuery;
-
             public void Execute(int index)
             {
                 var playerSession = Sessions[index];
@@ -398,7 +414,7 @@ namespace Content.Server.Atmos.EntitySystems
                         previouslySent.Remove(netGrid);
 
                         // If grid was deleted then don't worry about sending it to the client.
-                        if (!EntManager.TryGetEntity(netGrid, out var gridId) || GridQuery.HasComp(gridId.Value))
+                        if (!EntManager.TryGetEntity(netGrid, out var gridId) || !MapManager.IsGrid(gridId.Value))
                             ev.RemovedChunks[netGrid] = oldIndices;
                         else
                         {

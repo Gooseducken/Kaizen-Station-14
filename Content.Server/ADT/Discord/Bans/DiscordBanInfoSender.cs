@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Content.Server.Discord;
 using Content.Server.GameTicking;
 using Content.Shared.CCVar;
-using Content.Shared.ADT.CCVar;
 using Content.Shared.Roles;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
@@ -21,7 +20,7 @@ public sealed class DiscordBanInfoSender : IDiscordBanInfoSender
     public async Task SendBanInfoAsync<TGenerator>(BanInfo info)
         where TGenerator : IDiscordBanPayloadGenerator, new()
     {
-        var webhookUrl = _cfg.GetCVar(ADTCCVars.DiscordBansWebhook);
+        var webhookUrl = _cfg.GetCVar(CCVars.DiscordBansWebhook);
 
         if (string.IsNullOrEmpty(webhookUrl))
             return;

@@ -1,3 +1,16 @@
+# SPDX-FileCopyrightText: 2024 Boaz1111 <149967078+Boaz1111@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+# SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Plykiya <plykiya@protonmail.com>
+# SPDX-FileCopyrightText: 2024 SpaceRox1244 <138547931+SpaceRox1244@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
+# SPDX-FileCopyrightText: 2024 username <113782077+whateverusername0@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 whateverusername0 <whateveremail>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   parent: BaseItem
   id: BaseAmmoProvider
@@ -10,17 +23,6 @@
     size: Normal
   - type: Sprite
     sprite: Objects/Storage/boxes.rsi
-  # ADT Start
-  - type: EmitSoundOnPickup
-    sound:
-      path: /Audio/ADT/Entities/ammobox_pickup.ogg
-  - type: EmitSoundOnDrop
-    sound:
-      path: /Audio/ADT/Entities/ammobox_drop.ogg
-  - type: EmitSoundOnLand
-    sound:
-      path: /Audio/ADT/Entities/ammobox_drop.ogg
-  # ADT End
 
 - type: entity
   parent: BaseAmmoProvider
@@ -53,7 +55,7 @@
       layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
-      - state: mag-1  # ADT TWEAK - Откат кабинетных спрайтов
+      - state: mag-1
         map: ["enum.GunVisualLayers.Mag"]
       - state: beanbag
 
@@ -80,14 +82,14 @@
     - type: BallisticAmmoProvider
       proto: ShellShotgunSlug
     - type: MagazineVisuals
-      magState: mag-alt   # ADT TWEAK - Откат кабинетных спрайтов
+      magState: mag-alt
       steps: 5
       zeroVisible: false
     - type: Sprite
       layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
-      - state: mag-alt-1   # ADT TWEAK - Откат кабинетных спрайтов
+      - state: mag-alt-1
         map: ["enum.GunVisualLayers.Mag"]
       - state: slug
 
@@ -102,7 +104,7 @@
       layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
-      - state: mag-1   # ADT TWEAK - Откат кабинетных спрайтов
+      - state: mag-1
         map: ["enum.GunVisualLayers.Mag"]
       - state: flare
 
@@ -117,7 +119,7 @@
       layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
-      - state: mag-1  # ADT TWEAK - Откат кабинетных спрайтов
+      - state: mag-1
         map: ["enum.GunVisualLayers.Mag"]
       - state: incendiary
 
@@ -129,14 +131,14 @@
     - type: BallisticAmmoProvider
       proto: ShellShotgunUranium
     - type: MagazineVisuals
-      magState: mag-alt  # ADT TWEAK - Откат кабинетных спрайтов
+      magState: mag-alt
       steps: 5
       zeroVisible: false
     - type: Sprite
       layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
-      - state: mag-alt-1  # ADT TWEAK - Откат кабинетных спрайтов
+      - state: mag-alt-1
         map: ["enum.GunVisualLayers.Mag"]
       - state: uranium
 
@@ -151,7 +153,7 @@
       layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
-      - state: mag-1  # ADT TWEAK - Откат кабинетных спрайтов
+      - state: mag-1
         map: ["enum.GunVisualLayers.Mag"]
       - state: practice
 
@@ -166,6 +168,6 @@
       layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
-      - state: mag-1  # ADT TWEAK - Откат кабинетных спрайтов
+      - state: mag-1
         map: ["enum.GunVisualLayers.Mag"]
       - state: tranquilizer

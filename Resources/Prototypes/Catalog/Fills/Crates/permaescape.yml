@@ -1,3 +1,9 @@
+# SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   name: Perma Escape Crate Spawner
   id: CratePermaEscapeSpawner
@@ -68,13 +74,13 @@
         prob: 0.80
       - id: ClothingOuterHardsuitEVAPrisoner
         prob: 0.80
-      - id: ADTClothingModsuitBackMedical #ADT tweak
+      - id: ClothingOuterHardsuitVoidParamed
         prob: 0.10
       - id: ClothingOuterRedRacoon
         prob: 0.10
       - id: ClothingOuterSanta
         prob: 0.10
-      - id: ClothingOuterEVASuitSyndicate
+      - id: ClothingOuterHardsuitSyndicateDurathread
         prob: 0.20
       - id: EmergencyOxygenTankFilled
         prob: 0.25

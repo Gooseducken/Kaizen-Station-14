@@ -8,13 +8,4 @@
     sprite: Corvax/Back/Satchels/military.rsi
   - type: Storage
     grid:
-    - 0,0,8,4
-
-- type: entity
-  parent: ClothingBackpackSatchel
-  id: ClothingBackpackSatchelCE
-  name: chief engineer satchel
-  description: A white satchel for best engineers.
-  components:
-  - type: Sprite
-    sprite: Corvax/Back/Satchels/ce.rsi
+    - 0,0,8,3

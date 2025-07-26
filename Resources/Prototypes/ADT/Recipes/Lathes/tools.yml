@@ -1,7 +1,0 @@
-- type: latheRecipe
-  id: RPD
-  result: ADTRPDEmpty
-  completetime: 4
-  materials:
-    Steel: 1000
-    Plastic: 300

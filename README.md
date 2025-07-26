@@ -1,30 +1,40 @@
-<div class="header" align="center">  
-<img alt="Space Station 14" width="880" height="300" src="https://raw.githubusercontent.com/space-wizards/asset-dump/de329a7898bb716b9d5ba9a0cd07f38e61f1ed05/github-logo.svg">  
-</div>
+<p align="center"> <img alt="Space Station 14" width="1280" height="300" src="https://i.imgur.com/2nqz4IN.jpeg" /></p>
 
+## Важно
 
-Space Station 14 это ремейк SS13, который работает на собственном движке [Robust Toolbox](https://github.com/space-wizards/RobustToolbox), написанном на C#.
+Этот репозиторий является архивным. Актуальную сборку, использующуюся на сервере можно найти по [ссылке](https://github.com/Reserve-Station/Reserve-Station)
 
-Kaizen - это проект русскоязычного сервера по Space Station 14, целью которого является полный перевод игры на русский язык, поддержка актуальных изменений из основного репозитория, а так же добавление собственных изменений по необходимости. На данный момент является форком Adventure Time.
+## 
+
+Это форк из репозитория Goob Station под названием Reserve Station. Чтобы предотвратить форк RobustToolbox, клиент и сервер загружают пакет «content». Этот контент-пак содержит все необходимое для игры на одном конкретном сервере - это контент-пак для Goob Station.
+
+Если вы хотите разместить или создать контент для SS14, перейдите в репозиторий [Space Station 14](https://github.com/space-wizards/space-station-14), так как он содержит как RobustToolbox, так и контент-пак для разработки новых контент-паков и является базой для вашего форка.
 
 ## Ссылки
-[Наш Discord](https://discord.com/invite/kaizenstation) [Основной репозиторий](https://github.com/space-wizards/space-station-14)
 
-## Документация
-На официальном сайте предоставлена [документация](https://docs.spacestation14.io/), содержащая всю необходимую информацию о контенте SS14, движке, геймдизайне и многом другом. Там также предостаточно информации для начинающих разработчиков.
+[Дискорд Резерва](https://discord.gg/WXZvqzZ2Fc) | [Дискорд Губов](https://discord.gg/goobstation) | [Дискорд разработки Губа](https://discord.gg/zXk2cyhzPN)
+
+## Документация/Вики
+
+На сайте [Goob Station](https://docs.goobstation.com/) есть документация по содержанию GS14, движку, дизайну игры и многому другому. На нем также есть много ресурсов для новых участников проекта.
+
+## Вклад
+
+Мы рады принять вклад от любого человека. Заходите на [Сервер разработки](https://discord.gg/zXk2cyhzPN), если хотите помочь. Не стесняйтесь проверять [список проблем](https://github.com/Goob-Station/Goob-Station/issues), которые необходимо решить, и любой может их подхватить. Не бойтесь просить о помощи!
+Хотя следование [Space Station 14 contributions guidelines](https://docs.spacestation14.com/en/general-development/codebase-info/pull-request-guidelines.html) не является обязательным для Goob Station, мы рекомендуем ознакомиться с ними, чтобы узнать о лучших практиках.
 
 ## Сборка
-1. Клонируйте этот репозиторий локально.
-2. Запустите RUN_THIS.py для инициализации подмодулей и загрузки движка.
-3. Скомпилируйте проект с помощью команды dotnet build. 
 
-[Более подробные инструкции по запуску проекта.](https://docs.spacestation14.com/en/general-development/setup.html)
+1. Клонируйте это репо.
+2. Запустите `RUN_THIS.py` для инициализации подмодулей и загрузки движка.
+3. Скомпилируйте решение.
+
+[Более подробные инструкции по сборке проекта.](https://docs.goobstation.com/en/general-development/setup.html)
 
 ## Лицензия
-Содержимое, добавленное в этот репозиторий после коммита ec1ea3b4a902ba253994b19f228af277dbd34f4e (`2 августа 2024 08:50:00 UTC`), распространяется по лицензии GNU Affero General Public License версии 3.0, если не указано иное. См. [LICENSE-AGPLv3](https://github.com/AdventureTimeSS14/space_station_ADT/blob/master/LICENSE-AGPLv3.txt).
 
-Содержимое, добавленное в этот репозиторий до коммита ec1ea3b4a902ba253994b19f228af277dbd34f4e (`2 августа 2024 08:50:00 UTC`), распространяется по лицензии MIT если не указано иное. См. [LICENSE](https://github.com/AdventureTimeSS14/space_station_ADT/blob/master/LICENSE.TXT).
+Содержимое, добавленное в этот репозиторий после фиксации [8270907bdc509a3fb5ecfecde8cc14e5845ede36](https://github.com/Goob-Station/Goob-Station/commit/8270907bdc509a3fb5ecfecde8cc14e5845ede36), распространяется по лицензии GNU Affero General Public License версии 3.0, если не указано иное. См. LICENSE-AGPLv3.txt. Содержимое, внесённое в этот репозиторий до фиксации [8270907bdc509a3fb5ecfecde8cc14e5845ede36](https://github.com/Goob-Station/Goob-Station/commit/8270907bdc509a3fb5ecfecde8cc14e5845ede36), лицензируется по лицензии MIT, если не указано иное. См. LICENSE.txt.
 
-Большинство ресурсов лицензированы по [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), если не указано иное. У ресурсов есть собственная лицензия и информация об авторском праве в метаданных файла. [Пример](https://github.com/AdventureTimeSS14/space_station_ADT/blob/master/Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).
+Большинство активов лицензировано под [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), если не указано иное. Лицензия и авторские права на активы указаны в файле метаданных. [Пример](https://github.com/space-wizards/space-station-14/blob/master/Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).
 
-Обратите внимание, что некоторые ресурсы лицензированы на некоммерческой основе [CC-BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) или подобной некоммерческой лицензии, и они должны быть удалены, если вы планируете использовать этот проект в коммерческих целях.
+Обратите внимание, что некоторые активы лицензированы под некоммерческой [CC-BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) или аналогичной некоммерческой лицензией и должны быть удалены, если вы хотите использовать этот проект в коммерческих целях.

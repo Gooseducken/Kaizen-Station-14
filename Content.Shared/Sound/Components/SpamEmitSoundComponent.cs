@@ -1,3 +1,8 @@
+// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
@@ -40,6 +45,6 @@ public sealed partial class SpamEmitSoundComponent : BaseEmitSoundComponent
     /// Do not set this directly, use <see cref="EmitSoundSystem.SetEnabled"/>
     /// </summary>
     [DataField, AutoNetworkedField]
-    // [Access(typeof(SharedEmitSoundSystem))] ADT: IPC (невозможно указать требуемый доступ)
+    [Access(typeof(SharedEmitSoundSystem))]
     public bool Enabled = true;
 }

@@ -1,3 +1,12 @@
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 PilgrimViis <PilgrimViis@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
+// SPDX-FileCopyrightText: 2024 Lyndomen <49795619+Lyndomen@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Shared.Chemistry.Components;
@@ -29,6 +38,8 @@ public sealed class DevourSystem : SharedDevourSystem
         if (component.FoodPreference == FoodPreference.All ||
             (component.FoodPreference == FoodPreference.Humanoid && HasComp<HumanoidAppearanceComponent>(args.Args.Target)))
         {
+            ichorInjection.ScaleSolution(0.5f);
+
             if (component.ShouldStoreDevoured && args.Args.Target is not null)
             {
                 ContainerSystem.Insert(args.Args.Target.Value, component.Stomach);
@@ -45,7 +56,7 @@ public sealed class DevourSystem : SharedDevourSystem
 
         _audioSystem.PlayPvs(component.SoundDevour, uid);
     }
-
+    
     private void OnGibContents(EntityUid uid, DevourerComponent component, ref BeingGibbedEvent args)
     {
         if (!component.ShouldStoreDevoured)
@@ -56,4 +67,3 @@ public sealed class DevourSystem : SharedDevourSystem
         ContainerSystem.EmptyContainer(component.Stomach);
     }
 }
-

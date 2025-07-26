@@ -1,3 +1,12 @@
+// SPDX-FileCopyrightText: 2023 20kdc <asdd2808@gmail.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 moonheart08 <moonheart08@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System.Linq;
 using System.Numerics;
 using Content.Server.Worldgen.Components;
@@ -25,8 +34,6 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
     [Dependency] private readonly IRobustRandom _random = default!;
 
     private ISawmill _sawmill = default!;
-
-    private List<Entity<MapGridComponent>> _mapGrids = new();
 
     /// <inheritdoc />
     public override void Initialize()
@@ -141,14 +148,7 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
 
         component.DoSpawns = false; // Don't repeat yourself if this crashes.
 
-        if (!TryComp<WorldChunkComponent>(args.Chunk, out var chunk))
-            return;
-
-        var chunkMap = chunk.Map;
-
-        if (!TryComp<MapComponent>(chunkMap, out var map))
-            return;
-
+        var chunk = Comp<WorldChunkComponent>(args.Chunk);
         var densityChannel = component.DensityNoiseChannel;
         var density = _noiseIndex.Evaluate(uid, densityChannel, chunk.Coordinates + new Vector2(0.5f, 0.5f));
         if (density == 0)
@@ -166,9 +166,7 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
                 .ToList();
         }
 
-        points ??= GeneratePointsInChunk(args.Chunk, density, chunk.Coordinates, chunkMap);
-
-        var mapId = map.MapId;
+        points ??= GeneratePointsInChunk(args.Chunk, density, chunk.Coordinates, chunk.Map);
 
         var safetyBounds = Box2.UnitCentered.Enlarged(component.SafetyZoneRadius);
         var failures = 0; // Avoid severe log spam.
@@ -184,10 +182,11 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
             if (pointDensity == 0 && component.DensityClip || _random.Prob(component.RandomCancellationChance))
                 continue;
 
-            if (HasCollisions(mapId, safetyBounds.Translated(point)))
-                continue;
+            var coords = new EntityCoordinates(chunk.Map, point);
 
-            var coords = new EntityCoordinates(chunkMap, point);
+            if (_mapManager
+                .FindGridsIntersecting(Comp<MapComponent>(chunk.Map).MapId, safetyBounds.Translated(point)).Any())
+                continue; // Oops, gonna collide.
 
             var preEv = new PrePlaceDebrisFeatureEvent(coords, args.Chunk);
             RaiseLocalEvent(uid, ref preEv);
@@ -227,19 +226,6 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
     }
 
     /// <summary>
-    /// Checks to see if the potential spawn point is clear
-    /// </summary>
-    /// <param name="mapId"></param>
-    /// <param name="point"></param>
-    /// <returns></returns>
-    private bool HasCollisions(MapId mapId, Box2 point)
-    {
-        _mapGrids.Clear();
-        _mapManager.FindGridsIntersecting(mapId, point, ref _mapGrids);
-        return _mapGrids.Count > 0;
-    }
-
-    /// <summary>
     ///     Generates the points to put into a chunk using a poisson disk sampler.
     /// </summary>
     private List<Vector2> GeneratePointsInChunk(EntityUid chunk, float density, Vector2 coords, EntityUid map)
@@ -275,4 +261,3 @@ public record struct PrePlaceDebrisFeatureEvent(EntityCoordinates Coords, Entity
 [PublicAPI]
 public record struct TryGetPlaceableDebrisFeatureEvent(EntityCoordinates Coords, EntityUid Chunk,
     string? DebrisProto = null);
-

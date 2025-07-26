@@ -1,4 +1,3 @@
-using Content.Shared.Antag;
 using Robust.Shared.GameStates;
 using Content.Shared.StatusIcon;
 using Robust.Shared.Prototypes;
@@ -25,25 +24,21 @@ public sealed partial class HeadRevolutionaryComponent : Component
 
     public override bool SessionSpecific => true;
 
+    //Goobstation
     /// <summary>
-    /// ADT - wizden bugfix
+    /// If head rev's convert ability is not disabled by mindshield
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public uint ConvertedCount = 0;
-}
-// ADT rerev start
-[ByRefEvent]
-public sealed class ConvertAttemtEvent
-{
-    public EntityUid User;
-    public EntityUid Target;
-    public HeadRevolutionaryComponent? Comp;
+    [DataField]
+    public bool ConvertAbilityEnabled = true;
 
-    public ConvertAttemtEvent(EntityUid user, EntityUid target, HeadRevolutionaryComponent? comp)
-    {
-        Target = target;
-        User = user;
-        Comp = comp;
-    }
+
+    // Reserve-ConsentRev-Start
+    /// <summary>
+    /// If head rev's convert can convert only with consist of other convertable person.
+    /// </summary>
+    [DataField] public bool OnlyConsentConvert = false;
+    // Reserve-ConsentRev-End
 }
-// ADT rerev end
+
+
+

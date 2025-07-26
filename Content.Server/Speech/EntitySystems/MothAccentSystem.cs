@@ -1,4 +1,11 @@
-﻿using System.Text.RegularExpressions;
+// SPDX-FileCopyrightText: 2023 lzk <124214523+lzk228@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 router <messagebus@vk.com>
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using System.Text.RegularExpressions;
 using Content.Server.Speech.Components;
 using Robust.Shared.Random;
 
@@ -6,7 +13,7 @@ namespace Content.Server.Speech.EntitySystems;
 
 public sealed class MothAccentSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!; // Corvax-Localization
+    [Dependency] private readonly IRobustRandom _random = default!; // Reserve-Localization
 
     private static readonly Regex RegexLowerBuzz = new Regex("z{1,3}");
     private static readonly Regex RegexUpperBuzz = new Regex("Z{1,3}");
@@ -21,26 +28,38 @@ public sealed class MothAccentSystem : EntitySystem
     {
         var message = args.Message;
 
-        // Changed By 1Stepka1 Moth_speech_ADT start
-        
-        message = Regex.Replace(message, "з{1,3}", "ззз");
+        // buzzz
+        message = RegexLowerBuzz.Replace(message, "zzz");
+        // buZZZ
+        message = RegexUpperBuzz.Replace(message, "ZZZ");
 
-        message = Regex.Replace(message, "с{1,3}", "зз");
+        // Reserve-Localization-Start
+        // ж => жжж
+        message = Regex.Replace(
+            message,
+            "ж+",
+            _random.Pick(new List<string>() { "жж", "жжж" })
+        );
+        // Ж => ЖЖЖ
+        message = Regex.Replace(
+            message,
+            "Ж+",
+            _random.Pick(new List<string>() { "ЖЖ", "ЖЖЖ" })
+        );
+        // з => ссс
+        message = Regex.Replace(
+            message,
+            "з+",
+            _random.Pick(new List<string>() { "зз", "ззз" })
+        );
+        // З => CCC
+        message = Regex.Replace(
+            message,
+            "З+",
+            _random.Pick(new List<string>() { "ЗЗ", "ЗЗЗ" })
+        );
+        // Reserve-Localization-End
 
-        message = Regex.Replace(message, "ц{1,3}", "зз");
-
-        message = Regex.Replace(message, "ж{1,3}", "жзж");
-
-        message = Regex.Replace(message, "З{1,3}", "ЗЗЗ");
-
-        message = Regex.Replace(message, "С{1,3}", "ЗЗ");
-
-        message = Regex.Replace(message, "Ц{1,3}", "ЗЗ");
-
-        message = Regex.Replace(message, "Ж{1,3}", "ЖЗЖ");
-
-        // Changed By 1Stepka1 Moth_speech_ADT end
-        
         args.Message = message;
     }
 }

@@ -1,103 +1,41 @@
-using Content.Shared.Examine; // ADT-Changeling-Tweak
-using System.Linq; // ADT-Changeling-Tweak
-using Content.Shared.Decals; // ADT-Changeling-Tweak
+// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Francesco <frafonia@gmail.com>
+// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Alex Evgrashin <aevgrashin@yandex.ru>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 csqrb <56765288+CaptainSqrBeard@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Zachary Higgs <compgeek223@gmail.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
-using Content.Shared.Humanoid.Prototypes;
-using Content.Shared.IdentityManagement; // ADT-Changeling-Tweak
-using Content.Shared.Preferences;
 using Content.Shared.Verbs;
 using Robust.Shared.GameObjects.Components.Localization;
-using Robust.Shared.Prototypes; // ADT-Changeling-Tweak
-using Content.Shared.Forensics.Components; // ADT DNA-Cloning Tweak
 
 namespace Content.Server.Humanoid;
 
 public sealed partial class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
 {
     [Dependency] private readonly MarkingManager _markingManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!; // ADT-Changeling-Tweak
 
     public override void Initialize()
     {
         base.Initialize();
+
         SubscribeLocalEvent<HumanoidAppearanceComponent, HumanoidMarkingModifierMarkingSetMessage>(OnMarkingsSet);
         SubscribeLocalEvent<HumanoidAppearanceComponent, HumanoidMarkingModifierBaseLayersSetMessage>(OnBaseLayersSet);
         SubscribeLocalEvent<HumanoidAppearanceComponent, GetVerbsEvent<Verb>>(OnVerbsRequest);
-        //SubscribeLocalEvent<HumanoidAppearanceComponent, ExaminedEvent>(OnExamined);
     }
-
-    // ADT-Changeling-Tweak-Start
-    private void OnExamined(EntityUid uid, HumanoidAppearanceComponent component, ExaminedEvent args)
-    {
-        var identity = Identity.Entity(uid, EntityManager);
-        var species = GetSpeciesRepresentation(component.Species).ToLower();
-        var age = GetAgeRepresentation(component.Species, component.Age);
-
-        args.PushText(Loc.GetString("humanoid-appearance-component-examine", ("user", identity), ("age", age), ("species", species)));
-    }
-    // ADT-Changeling-Tweak-End
-
-    // this was done enough times that it only made sense to do it here
-
-    /// <summary>
-    ///     Clones a humanoid's appearance to a target mob, provided they both have humanoid components.
-    /// </summary>
-    /// <param name="source">Source entity to fetch the original appearance from.</param>
-    /// <param name="target">Target entity to apply the source entity's appearance to.</param>
-    /// <param name="sourceHumanoid">Source entity's humanoid component.</param>
-    /// <param name="targetHumanoid">Target entity's humanoid component.</param>
-
-    // ADT-Changeling-Tweak-Start
-    public void SetAppearance(HumanoidAppearanceComponent sourceHumanoid, HumanoidAppearanceComponent targetHumanoid)
-    {
-
-        targetHumanoid.Species = sourceHumanoid.Species;
-        targetHumanoid.SkinColor = sourceHumanoid.SkinColor;
-        targetHumanoid.EyeColor = sourceHumanoid.EyeColor;
-        targetHumanoid.Age = sourceHumanoid.Age;
-        SetSex(targetHumanoid.Owner, sourceHumanoid.Sex, false, targetHumanoid);
-        targetHumanoid.CustomBaseLayers = new(sourceHumanoid.CustomBaseLayers);
-        targetHumanoid.MarkingSet = new(sourceHumanoid.MarkingSet);
-        SetTTSVoice(targetHumanoid.Owner, sourceHumanoid.Voice, targetHumanoid); // Corvax-TTS
-        SetBarkData(targetHumanoid.Owner, sourceHumanoid.Bark, targetHumanoid);  // ADT Barks
-
-        targetHumanoid.Gender = sourceHumanoid.Gender;
-        if (TryComp<GrammarComponent>(targetHumanoid.Owner, out var grammar))
-        {
-            grammar.Gender = sourceHumanoid.Gender;
-        }
-
-        if (TryComp<DnaComponent>(targetHumanoid.Owner, out var targetDNAComp) &&
-            TryComp<DnaComponent>(sourceHumanoid.Owner, out var sourceDNAComp))
-        {
-            targetDNAComp.DNA = sourceDNAComp.DNA; // ADT DNA-Cloning Tweak
-        }
-
-        Dirty(targetHumanoid.Owner, targetHumanoid);
-    }
-    // ADT-Changeling-Tweak-End
-
-    /// <summary>
-    ///     Clones a humanoid's appearance to a target mob, provided they both have humanoid components.
-    /// </summary>
-    /// <param name="source">Source entity to fetch the original appearance from.</param>
-    /// <param name="target">Target entity to apply the source entity's appearance to.</param>
-    /// <param name="sourceHumanoid">Source entity's humanoid component.</param>
-    /// <param name="targetHumanoid">Target entity's humanoid component.</param>
-
-    // ADT-Changeling-Tweak-Start
-    public void CloneAppearance(EntityUid source, EntityUid target, HumanoidAppearanceComponent? sourceHumanoid = null,
-        HumanoidAppearanceComponent? targetHumanoid = null)
-    {
-        if (!Resolve(source, ref sourceHumanoid) || !Resolve(target, ref targetHumanoid))
-        {
-            return;
-        }
-
-        SetAppearance(sourceHumanoid, targetHumanoid);
-    }
-    // ADT-Changeling-Tweak-End
 
     /// <summary>
     ///     Removes a marking from a humanoid by ID.
@@ -196,44 +134,4 @@ public sealed partial class HumanoidAppearanceSystem : SharedHumanoidAppearanceS
 
         Dirty(uid, humanoid);
     }
-
-    // ADT-Changeling-Tweak-Start
-    /// <summary>
-    /// Takes ID of the species prototype, returns UI-friendly name of the species.
-    /// </summary>
-    public string GetSpeciesRepresentation(string speciesId)
-    {
-        if (_prototypeManager.TryIndex<SpeciesPrototype>(speciesId, out var species))
-        {
-            return Loc.GetString(species.Name);
-        }
-        else
-        {
-            return Loc.GetString("humanoid-appearance-component-unknown-species");
-        }
-    }
-
-    public string GetAgeRepresentation(string species, int age)
-    {
-        _prototypeManager.TryIndex<SpeciesPrototype>(species, out var speciesPrototype);
-
-        if (speciesPrototype == null)
-        {
-            Logger.Error("Tried to get age representation of species that couldn't be indexed: " + species);
-            return Loc.GetString("identity-age-young");
-        }
-
-        if (age < speciesPrototype.YoungAge)
-        {
-            return Loc.GetString("identity-age-young");
-        }
-
-        if (age < speciesPrototype.OldAge)
-        {
-            return Loc.GetString("identity-age-middle-aged");
-        }
-
-        return Loc.GetString("identity-age-old");
-    }
-    // ADT-Changeling-Tweak-End
 }

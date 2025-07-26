@@ -1,6 +1,11 @@
-﻿using System.Linq;
+// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using System.Linq;
 using Content.Client.UserInterface.Controls;
-using Content.Shared.ADT.Silicons.Borgs;
 using Content.Shared.Guidebook;
 using Content.Shared.Silicons.Borgs;
 using Content.Shared.Silicons.Borgs.Components;
@@ -24,7 +29,6 @@ public sealed partial class BorgSelectTypeMenu : FancyWindow
     private BorgTypePrototype? _selectedBorgType;
 
     public event Action<ProtoId<BorgTypePrototype>>? ConfirmedBorgType;
-    public event Action<ProtoId<BorgSubtypePrototype>>? ConfirmedBorgSubtype;
 
     [ValidatePrototypeId<GuideEntryPrototype>]
     private static readonly List<ProtoId<GuideEntryPrototype>> GuidebookEntries = new() { "Cyborgs", "Robotics" };
@@ -52,11 +56,6 @@ public sealed partial class BorgSelectTypeMenu : FancyWindow
 
         ConfirmTypeButton.OnPressed += ConfirmButtonPressed;
         HelpGuidebookIds = GuidebookEntries;
-
-        //Start ADT Tweak
-        ChassisSpriteSelection.SubtypeSelected += () =>
-            ConfirmTypeButton.Disabled = false;
-        //End ADT Tweak
     }
 
     private void UpdateInformation(BorgTypePrototype prototype)
@@ -70,10 +69,6 @@ public sealed partial class BorgSelectTypeMenu : FancyWindow
         NameLabel.Text = PrototypeName(prototype);
         DescriptionLabel.Text = Loc.GetString($"borg-type-{prototype.ID}-desc");
         ChassisView.SetPrototype(prototype.DummyPrototype);
-        //Start ADT Tweak
-        ChassisSpriteSelection.FillContainer(prototype);
-        ConfirmTypeButton.Disabled = true;
-        //End ADT Tweak
     }
 
     private void ConfirmButtonPressed(BaseButton.ButtonEventArgs obj)
@@ -82,13 +77,6 @@ public sealed partial class BorgSelectTypeMenu : FancyWindow
             return;
 
         ConfirmedBorgType?.Invoke(_selectedBorgType);
-
-        //Start ADT Tweak
-        if (ChassisSpriteSelection.SelectedBorgSubtype == null)
-            return;
-
-        ConfirmedBorgSubtype?.Invoke(ChassisSpriteSelection.SelectedBorgSubtype);
-        //End ADT Tweak
     }
 
     private static string PrototypeName(BorgTypePrototype prototype)

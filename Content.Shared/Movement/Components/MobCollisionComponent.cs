@@ -57,9 +57,4 @@ public sealed partial class MobCollisionComponent : Component
 
     [DataField, AutoNetworkedField]
     public Vector2 Direction;
-
-    // ADT-Tweak-Start
-    [DataField]
-    public bool Enabled = true;
-    // ADT-Tweak-Start
 }

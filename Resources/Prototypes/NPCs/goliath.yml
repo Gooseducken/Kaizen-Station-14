@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: htnCompound
   id: GoliathCompound
   branches:
@@ -56,11 +61,9 @@
             targetKey: TargetCoordinates
             pathfindKey: TargetPathfind
             rangeKey: MeleeRange
-        #ADT tweak start
-        # - !type:HTNPrimitiveTask
-        #   operator: !type:JukeOperator
-        #     jukeType: AdjacentTile
-        #ADT tweak end
+        - !type:HTNPrimitiveTask
+          operator: !type:JukeOperator
+            jukeType: AdjacentTile
         - !type:HTNPrimitiveTask
           operator: !type:MeleeOperator
             targetKey: Target

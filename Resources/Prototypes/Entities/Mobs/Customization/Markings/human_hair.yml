@@ -1,8 +1,28 @@
+# SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Bloody2372 <146976013+Bloody2372@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 KingFroozy <140668342+KingFroozy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 MACMAN2003 <macman2003c@gmail.com>
+# SPDX-FileCopyrightText: 2023 liltenhead <104418166+liltenhead@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2023 Илья Стокалюк <darkelement237@mail.ru>
+# SPDX-FileCopyrightText: 2024 BeeRobynn <robynthewarcrime@proton.me>
+# SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Futuristic-OK <141568243+Futuristic-OK@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+# SPDX-FileCopyrightText: 2024 RenQ <164364533+ImRenQ@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 UnicornOnLSD <149102472+UnicornOnLSD@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 nao fujiwara <awkwarddryad@gmail.com>
+# SPDX-FileCopyrightText: 2024 ~DreamlyJack~ <148849095+DreamlyJack@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Арт <123451459+JustArt1m@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: marking
   id: HumanHairAfro
   bodyPart: Hair
   markingCategory: Hair
-  speciesRestriction: [Human, Dwarf, Felinid, NovakidSpecies] # ADT Tweak 
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: afro
@@ -10,7 +30,6 @@
   id: HumanHairAfro2
   bodyPart: Hair
   markingCategory: Hair
-  speciesRestriction: [Human, Dwarf, Felinid, NovakidSpecies] # ADT Tweak
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: afro2
@@ -66,7 +85,7 @@
 - type: marking
   id: HumanHairLongBedhead
   bodyPart: Hair
-  markingCategory: Hair 
+  markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: long_bedhead
@@ -473,7 +492,6 @@
   id: HumanHairDrillruru
   bodyPart: Hair
   markingCategory: Hair
-  speciesRestriction: [Human, Dwarf, Felinid, NovakidSpecies] # ADT Tweak 
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: drillruru
@@ -691,7 +709,6 @@
   id: HumanHairLong
   bodyPart: Hair
   markingCategory: Hair
-  speciesRestriction: [Human, Felinid, NovakidSpecies] # ADT Tweak
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: long
@@ -699,7 +716,6 @@
   id: HumanHairLong2
   bodyPart: Hair
   markingCategory: Hair
-  speciesRestriction: [Human, Dwarf, Felinid, NovakidSpecies] # ADT Tweak
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: long2
@@ -707,7 +723,6 @@
   id: HumanHairLong3
   bodyPart: Hair
   markingCategory: Hair
-  speciesRestriction: [Human, Dwarf, Felinid, NovakidSpecies] # ADT Tweak
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: long3
@@ -764,7 +779,6 @@
   id: HumanHairMessy
   bodyPart: Hair
   markingCategory: Hair
-  speciesRestriction: [Human, Dwarf, Felinid, NovakidSpecies] # ADT Tweak 
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: messy
@@ -779,7 +793,6 @@
   id: HumanHairMohawk
   bodyPart: Hair
   markingCategory: Hair
-  speciesRestriction: [Human, Dwarf, Felinid, NovakidSpecies] # ADT Tweak 
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: d
@@ -787,7 +800,6 @@
   id: HumanHairNitori
   bodyPart: Hair
   markingCategory: Hair
-  speciesRestriction: [Human, Dwarf, Felinid, NovakidSpecies] # ADT Tweak 
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: nitori
@@ -802,7 +814,6 @@
   id: HumanHairUnshavenMohawk
   bodyPart: Hair
   markingCategory: Hair
-  speciesRestriction: [Human, Dwarf, Felinid, NovakidSpecies] # ADT Tweak 
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: unshaven_mohawk
@@ -817,7 +828,6 @@
   id: HumanHairOdango
   bodyPart: Hair
   markingCategory: Hair
-  speciesRestriction: [Human, Dwarf, Felinid, NovakidSpecies] # ADT Tweak 
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: odango
@@ -895,7 +905,6 @@
   id: HumanHairPompadour
   bodyPart: Hair
   markingCategory: Hair
-  speciesRestriction: [Human, Dwarf, Felinid, NovakidSpecies] # ADT Tweak 
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: pompadour
@@ -903,7 +912,6 @@
   id: HumanHairBigpompadour
   bodyPart: Hair
   markingCategory: Hair
-  speciesRestriction: [Human, Dwarf, Felinid, NovakidSpecies] # ADT Tweak 
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
       state: bigpompadour
@@ -1202,12 +1210,12 @@
     - sprite: Mobs/Customization/human_hair.rsi
       state: swept2
 - type: marking
-  id: HumanHairBAlt
+  id: HumanHairShoulderLengthOverEye
   bodyPart: Hair
   markingCategory: Hair
   sprites:
     - sprite: Mobs/Customization/human_hair.rsi
-      state: b_alt
+      state: shoulderlengthovereye
 - type: marking
   id: HumanHairThinning
   bodyPart: Hair

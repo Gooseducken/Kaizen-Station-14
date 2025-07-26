@@ -1,7 +1,15 @@
+# SPDX-FileCopyrightText: 2021 SETh lafuente <cetaciocascarudo@gmail.com>
+# SPDX-FileCopyrightText: 2021 SethLafuente <84478872+SethLafuente@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2021 Swept <sweptwastaken@protonmail.com>
+# SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+#
+# SPDX-License-Identifier: MIT
+
  - type: entity
    id: ClosetL3Filled
-   suffix: Filled, Medical
-   parent: ClosetL3Medical
+   suffix: Filled, Generic
+   parent: ClosetL3
    components:
    - type: StorageFill
      contents:
@@ -41,27 +49,7 @@
  - type: entity
    id: ClosetL3ScienceFilled
    suffix: Filled, Science
-   parent: ClosetL3Science
-   components:
-   - type: StorageFill
-     contents:
-       - id: ClothingOuterBioScientist
-       - id: ClothingHeadHatHoodBioScientist
-
- - type: entity
-   id: ClosetL4CoronerFilled
-   suffix: Filled, Coroner
-   parent: ClosetL4Coroner
-   components:
-   - type: StorageFill
-     contents:
-       - id: ClothingOuterBioScientist
-       - id: ClothingHeadHatHoodBioScientist
-
- - type: entity
-   id: ClosetL3ParamedicFilled
-   suffix: Filled, Paramedic
-   parent: ClosetL3Paramedic
+   parent: ClosetL3Virology
    components:
    - type: StorageFill
      contents:

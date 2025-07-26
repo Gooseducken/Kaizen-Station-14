@@ -1,4 +1,14 @@
-﻿using System.Linq;
+// SPDX-FileCopyrightText: 2021 Javier Guardia Fernández <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
+using System.Linq;
 using Content.Client.Eui;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Eui;
@@ -115,18 +125,14 @@ public sealed class AdminLogsEui : BaseEui
             return;
         }
 
-        var oldSelection = new HashSet<Guid>(LogsControl.SelectedPlayers); // ADT-Tweak
         LogsControl.SetCurrentRound(s.RoundId);
         LogsControl.SetPlayers(s.Players);
         LogsControl.UpdateCount(round: s.RoundLogs);
 
-        // ADT-Tweak-Start
         if (!FirstState)
+        {
             return;
-
-        if (oldSelection.Count() > 0)
-            LogsControl.SetPlayersSelection(oldSelection);
-        // ADT-Tweak-End
+        }
 
         FirstState = false;
         LogsControl.SetRoundSpinBox(s.RoundId);
@@ -159,10 +165,6 @@ public sealed class AdminLogsEui : BaseEui
                 if (setLogFilter.Types != null)
                     LogsControl.SetTypesSelection(setLogFilter.Types, setLogFilter.InvertTypes);
 
-                // ADT-Tweak-Start
-                if (setLogFilter.SelectedPlayers != null)
-                    LogsControl.SetPlayersSelection(setLogFilter.SelectedPlayers);
-                // ADT-Tweak-End
                 break;
         }
     }

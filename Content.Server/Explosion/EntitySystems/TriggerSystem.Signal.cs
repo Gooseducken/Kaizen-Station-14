@@ -1,3 +1,17 @@
+// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Snowni <101532866+Snowni@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 ElectroJr <leonsfriedrich@gmail.com>
+// SPDX-FileCopyrightText: 2023 Julian Giebel <juliangiebel@live.de>
+// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2024 Saphire Lattice <lattice@saphi.re>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Server.DeviceLinking.Systems;
 using Content.Server.Explosion.Components;
 using Content.Shared.DeviceLinking.Events;
@@ -12,10 +26,8 @@ namespace Content.Server.Explosion.EntitySystems
             SubscribeLocalEvent<TriggerOnSignalComponent,SignalReceivedEvent>(OnSignalReceived);
             SubscribeLocalEvent<TriggerOnSignalComponent,ComponentInit>(OnInit);
 
-/* (Откат PR - https://github.com/space-wizards/space-station-14/pull/32423)
             SubscribeLocalEvent<TimerStartOnSignalComponent,SignalReceivedEvent>(OnTimerSignalReceived);
             SubscribeLocalEvent<TimerStartOnSignalComponent,ComponentInit>(OnTimerSignalInit);
-*/        
         }
 
         private void OnSignalReceived(EntityUid uid, TriggerOnSignalComponent component, ref SignalReceivedEvent args)
@@ -30,7 +42,6 @@ namespace Content.Server.Explosion.EntitySystems
             _signalSystem.EnsureSinkPorts(uid, component.Port);
         }
 
-/* (Откат PR - https://github.com/space-wizards/space-station-14/pull/32423)
         private void OnTimerSignalReceived(EntityUid uid, TimerStartOnSignalComponent component, ref SignalReceivedEvent args)
         {
             if (args.Port != component.Port)
@@ -42,6 +53,5 @@ namespace Content.Server.Explosion.EntitySystems
         {
             _signalSystem.EnsureSinkPorts(uid, component.Port);
         }
-*/
     }
 }

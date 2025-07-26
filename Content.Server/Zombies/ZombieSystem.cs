@@ -1,3 +1,37 @@
+// SPDX-FileCopyrightText: 2022 EmoGarbage404 <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Errant <35878406+dmnct@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
+// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
+// SPDX-FileCopyrightText: 2023 0x6273 <0x40@keemail.me>
+// SPDX-FileCopyrightText: 2023 Alex Evgrashin <aevgrashin@yandex.ru>
+// SPDX-FileCopyrightText: 2023 Doru991 <75124791+Doru991@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
+// SPDX-FileCopyrightText: 2023 Jezithyr <jezithyr@gmail.com>
+// SPDX-FileCopyrightText: 2023 LankLTE <135308300+LankLTE@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Tom Leys <tom@crump-leys.com>
+// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 corentt <36075110+corentt@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 keronshb <54602815+keronshb@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 themias <89101928+themias@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Debug <49997488+DebugOk@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Jake Huxell <JakeHuxell@pm.me>
+// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Patrik Caes-Sayrs <heartofgoldfish@gmail.com>
+// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aidenkrz <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+// SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
+// SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Linq;
 using Content.Server.Actions;
 using Content.Server.Body.Systems;
@@ -7,7 +41,6 @@ using Content.Server.Emoting.Systems;
 using Content.Server.Speech.EntitySystems;
 using Content.Server.Roles;
 using Content.Shared.Anomaly.Components;
-using Content.Shared.Armor;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Cloning.Events;
 using Content.Shared.Damage;
@@ -66,7 +99,6 @@ namespace Content.Server.Zombies
             SubscribeLocalEvent<ZombieComponent, CloningEvent>(OnZombieCloning);
             SubscribeLocalEvent<ZombieComponent, TryingToSleepEvent>(OnSleepAttempt);
             SubscribeLocalEvent<ZombieComponent, GetCharactedDeadIcEvent>(OnGetCharacterDeadIC);
-            SubscribeLocalEvent<ZombieComponent, GetCharacterUnrevivableIcEvent>(OnGetCharacterUnrevivableIC);
             SubscribeLocalEvent<ZombieComponent, MindAddedMessage>(OnMindAdded);
             SubscribeLocalEvent<ZombieComponent, MindRemovedMessage>(OnMindRemoved);
 
@@ -76,6 +108,7 @@ namespace Content.Server.Zombies
             SubscribeLocalEvent<IncurableZombieComponent, MapInitEvent>(OnPendingMapInit);
 
             SubscribeLocalEvent<ZombifyOnDeathComponent, MobStateChangedEvent>(OnDamageChanged);
+
         }
 
         private void OnBeforeRemoveAnomalyOnDeath(Entity<PendingZombieComponent> ent, ref BeforeRemoveAnomalyOnDeathEvent args)
@@ -88,13 +121,6 @@ namespace Content.Server.Zombies
         private void OnPendingMapInit(EntityUid uid, IncurableZombieComponent component, MapInitEvent args)
         {
             _actions.AddAction(uid, ref component.Action, component.ZombifySelfActionPrototype);
-
-            if (HasComp<ZombieComponent>(uid) || HasComp<ZombieImmuneComponent>(uid))
-                return;
-
-            EnsureComp<PendingZombieComponent>(uid, out PendingZombieComponent pendingComp);
-
-            pendingComp.GracePeriod = _random.Next(pendingComp.MinInitialInfectedGrace, pendingComp.MaxInitialInfectedGrace);
         }
 
         private void OnPendingMapInit(EntityUid uid, PendingZombieComponent component, MapInitEvent args)
@@ -106,6 +132,7 @@ namespace Content.Server.Zombies
             }
 
             component.NextTick = _timing.CurTime + TimeSpan.FromSeconds(1f);
+            component.GracePeriod = _random.Next(component.MinInitialInfectedGrace, component.MaxInitialInfectedGrace);
         }
 
         public override void Update(float frameTime)
@@ -169,11 +196,6 @@ namespace Content.Server.Zombies
             args.Dead = true;
         }
 
-        private void OnGetCharacterUnrevivableIC(EntityUid uid, ZombieComponent component, ref GetCharacterUnrevivableIcEvent args)
-        {
-            args.Unrevivable = true;
-        }
-
         private void OnStartup(EntityUid uid, ZombieComponent component, ComponentStartup args)
         {
             if (component.EmoteSoundsId == null)
@@ -211,29 +233,33 @@ namespace Content.Server.Zombies
             }
         }
 
-        private float GetZombieInfectionChance(EntityUid uid, ZombieComponent zombieComponent)
+        private float GetZombieInfectionChance(EntityUid uid, ZombieComponent component)
         {
-            var chance = zombieComponent.BaseZombieInfectionChance;
+            var max = component.MaxZombieInfectionChance;
 
-            var armorEv = new CoefficientQueryEvent(ProtectiveSlots);
-            RaiseLocalEvent(uid, armorEv);
-            foreach (var resistanceEffectiveness in zombieComponent.ResistanceEffectiveness.DamageDict)
+            if (!_inventory.TryGetContainerSlotEnumerator(uid, out var enumerator, ProtectiveSlots))
+                return max;
+
+            var items = 0f;
+            var total = 0f;
+            while (enumerator.MoveNext(out var con))
             {
-                if (armorEv.DamageModifiers.Coefficients.TryGetValue(resistanceEffectiveness.Key, out var coefficient))
-                {
-                    // Scale the coefficient by the resistance effectiveness, very descriptive I know
-                    // For example. With 30% slash resist (0.7 coeff), but only a 60% resistance effectiveness for slash,
-                    // you'll end up with 1 - (0.3 * 0.6) = 0.82 coefficient, or a 18% resistance
-                    var adjustedCoefficient = 1 - ((1 - coefficient) * resistanceEffectiveness.Value.Float());
-                    chance *= adjustedCoefficient;
-                }
+                total++;
+                if (con.ContainedEntity != null)
+                    items++;
             }
 
-            var zombificationResistanceEv = new ZombificationResistanceQueryEvent(ProtectiveSlots);
-            RaiseLocalEvent(uid, zombificationResistanceEv);
-            chance *= zombificationResistanceEv.TotalCoefficient;
+            if (total == 0)
+                return max;
 
-            return MathF.Max(chance, zombieComponent.MinZombieInfectionChance);
+            // Everyone knows that when it comes to zombies, socks & sandals provide just as much protection as an
+            // armored vest. Maybe these should be weighted per-item. I.e. some kind of coverage/protection component.
+            // Or at the very least different weights per slot.
+
+            var min = component.MinZombieInfectionChance;
+            //gets a value between the max and min based on how many items the entity is wearing
+            var chance = (max - min) * ((total - items) / total) + min;
+            return chance;
         }
 
         private void OnMeleeHit(EntityUid uid, ZombieComponent component, MeleeHitEvent args)
@@ -252,7 +278,7 @@ namespace Content.Server.Zombies
                 if (!TryComp<MobStateComponent>(entity, out var mobState))
                     continue;
 
-                if (HasComp<ZombieComponent>(entity))
+                if (HasComp<ZombieComponent>(entity) || HasComp<InitialInfectedComponent>(entity)) // Goobstation edit - prevent zombies from damaging IIs
                 {
                     args.BonusDamage = -args.BaseDamage;
                 }
@@ -265,7 +291,7 @@ namespace Content.Server.Zombies
                     }
                 }
 
-                if (_mobState.IsIncapacitated(entity, mobState) && !HasComp<ZombieComponent>(entity) && !HasComp<ZombieImmuneComponent>(entity))
+                if (_mobState.IsIncapacitated(entity, mobState) && !HasComp<ZombieComponent>(entity) && !HasComp<ZombieImmuneComponent>(entity) && !HasComp<InitialInfectedComponent>(entity)) // Goobstation edit - prevent zombies from damaging IIs
                 {
                     ZombifyEntity(entity);
                     args.BonusDamage = -args.BaseDamage;

@@ -1,3 +1,32 @@
+// SPDX-FileCopyrightText: 2022 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
+// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
+// SPDX-FileCopyrightText: 2023 Zoldorf <silvertorch5@gmail.com>
+// SPDX-FileCopyrightText: 2023 brainfood1183 <113240905+brainfood1183@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
+// SPDX-FileCopyrightText: 2023 keronshb <54602815+keronshb@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 keronshb <keronshb@live.com>
+// SPDX-FileCopyrightText: 2024 Armok <155400926+ARMOKS@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Gorox221 <139872389+Gorox221@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Jake Huxell <JakeHuxell@pm.me>
+// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
+// SPDX-FileCopyrightText: 2024 Verm <32827189+Vermidia@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Linq;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Mech.Components;
@@ -6,7 +35,7 @@ using Content.Server.Power.EntitySystems;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
-using Content.Shared.FixedPoint;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Interaction;
 using Content.Shared.Mech;
 using Content.Shared.Mech.Components;
@@ -23,13 +52,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Content.Shared.Whitelist;
-using Content.Server.Emp;
-using Robust.Server.Audio;
-using Content.Shared.Access.Systems;
-using Content.Shared.Access.Components;
-using Robust.Shared.Random;
-using Content.Shared.ADT.Mech;
-using Content.Shared.Mech.Equipment.Components;
+using Content.Server.Emp; // Goobstation
 
 namespace Content.Server.Mech.Systems;
 
@@ -46,9 +69,6 @@ public sealed partial class MechSystem : SharedMechSystem
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly SharedToolSystem _toolSystem = default!;
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly AccessReaderSystem _accessReader = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -63,6 +83,8 @@ public sealed partial class MechSystem : SharedMechSystem
         SubscribeLocalEvent<MechComponent, RemoveBatteryEvent>(OnRemoveBattery);
         SubscribeLocalEvent<MechComponent, MechEntryEvent>(OnMechEntry);
         SubscribeLocalEvent<MechComponent, MechExitEvent>(OnMechExit);
+        SubscribeLocalEvent<MechComponent, EmpPulseEvent>(OnEmpPulse); // Goobstation
+
 
         SubscribeLocalEvent<MechComponent, DamageChangedEvent>(OnDamageChanged);
         SubscribeLocalEvent<MechComponent, MechEquipmentRemoveMessage>(OnRemoveEquipmentMessage);
@@ -71,18 +93,16 @@ public sealed partial class MechSystem : SharedMechSystem
 
 
         SubscribeLocalEvent<MechPilotComponent, ToolUserAttemptUseEvent>(OnToolUseAttempt);
-        // SubscribeLocalEvent<MechPilotComponent, InhaleLocationEvent>(OnInhale);  // ADT Commented
+        SubscribeLocalEvent<MechPilotComponent, InhaleLocationEvent>(OnInhale);
         SubscribeLocalEvent<MechPilotComponent, ExhaleLocationEvent>(OnExhale);
         SubscribeLocalEvent<MechPilotComponent, AtmosExposedGetAirEvent>(OnExpose);
 
         SubscribeLocalEvent<MechAirComponent, GetFilterAirEvent>(OnGetFilterAir);
 
         #region Equipment UI message relays
-        // SubscribeLocalEvent<MechComponent, MechGrabberEjectMessage>(ReceiveEquipmentUiMesssages);    // ADT - Moved to Shared
-        // SubscribeLocalEvent<MechComponent, MechSoundboardPlayMessage>(ReceiveEquipmentUiMesssages);  // ADT - Moved to Shared
+        SubscribeLocalEvent<MechComponent, MechGrabberEjectMessage>(ReceiveEquipmentUiMesssages);
+        SubscribeLocalEvent<MechComponent, MechSoundboardPlayMessage>(ReceiveEquipmentUiMesssages);
         #endregion
-
-        InitializeADT();    // ADT tweak
     }
 
     private void OnMechCanMoveEvent(EntityUid uid, MechComponent component, UpdateCanMoveEvent args)
@@ -167,7 +187,6 @@ public sealed partial class MechSystem : SharedMechSystem
             return;
 
         RemoveEquipment(uid, equip, component);
-        UpdateUserInterface(uid);   // ADT Mech
     }
 
     private void OnOpenUi(EntityUid uid, MechComponent component, MechOpenUiEvent args)
@@ -197,6 +216,7 @@ public sealed partial class MechSystem : SharedMechSystem
                     var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, component.EntryDelay, new MechEntryEvent(), uid, target: uid)
                     {
                         BreakOnMove = true,
+                        MultiplyDelay = false, // Goobstation
                     };
 
                     _doAfter.TryStartDoAfter(doAfterEventArgs);
@@ -247,19 +267,9 @@ public sealed partial class MechSystem : SharedMechSystem
             _popup.PopupEntity(Loc.GetString("mech-no-enter", ("item", uid)), args.User);
             return;
         }
-        // ADT Content start
-        if (TryComp<AccessReaderComponent>(uid, out var accesscomponent) && !_accessReader.IsAllowed(args.User, uid, accesscomponent))
-        {
-            _popup.PopupEntity(Loc.GetString("gateway-access-denied"), args.User);
-            _audio.PlayPvs(component.AccessDeniedSound, uid);
-            args.Handled = true;
-            return;
-        }
-        // ADT Content end
 
         TryInsert(uid, args.Args.User, component);
         _actionBlocker.UpdateCanMove(uid);
-
         args.Handled = true;
     }
 
@@ -269,22 +279,25 @@ public sealed partial class MechSystem : SharedMechSystem
             return;
 
         TryEject(uid, component);
-
         args.Handled = true;
+    }
+    //goobstation
+    private void OnEmpPulse(EntityUid uid, MechComponent component, EmpPulseEvent args)
+    {
+        args.Affected = true;
+        args.Disabled = true;
+        component.Energy -= args.EnergyConsumption;
+        if (component.Energy < 0)
+            component.Energy = 0;
+        Dirty(uid, component);
+        UpdateUserInterface(uid, component);
+        _actionBlocker.UpdateCanMove(uid);
     }
 
     private void OnDamageChanged(EntityUid uid, MechComponent component, DamageChangedEvent args)
     {
         var integrity = component.MaxIntegrity - args.Damageable.TotalDamage;
         SetIntegrity(uid, integrity, component);
-
-        // ADT Mech start
-        if (component.Integrity <= component.DamageToDesEqi && !component.Broken && _random.Prob(0.5f) && component.CurrentSelectedEquipment != null)
-        {
-            var ev = new MechEquipmentDestroyedEvent();
-            RaiseLocalEvent(uid, ref ev);
-        }
-        // ADT Mech end
 
         if (args.DamageIncreased &&
             args.DamageDelta != null &&
@@ -310,19 +323,18 @@ public sealed partial class MechSystem : SharedMechSystem
         UpdateUserInterface(uid, component);
     }
 
-    // ADT Moved to shared
-    // private void ReceiveEquipmentUiMesssages<T>(EntityUid uid, MechComponent component, T args) where T : MechEquipmentUiMessage
-    // {
-    //     var ev = new MechEquipmentUiMessageRelayEvent(args);
-    //     var allEquipment = new List<EntityUid>(component.EquipmentContainer.ContainedEntities);
-    //     var argEquip = GetEntity(args.Equipment);
+    private void ReceiveEquipmentUiMesssages<T>(EntityUid uid, MechComponent component, T args) where T : MechEquipmentUiMessage
+    {
+        var ev = new MechEquipmentUiMessageRelayEvent(args);
+        var allEquipment = new List<EntityUid>(component.EquipmentContainer.ContainedEntities);
+        var argEquip = GetEntity(args.Equipment);
 
-    //     foreach (var equipment in allEquipment)
-    //     {
-    //         if (argEquip == equipment)
-    //             RaiseLocalEvent(equipment, ev);
-    //     }
-    // }
+        foreach (var equipment in allEquipment)
+        {
+            if (argEquip == equipment)
+                RaiseLocalEvent(equipment, ev);
+        }
+    }
 
     public override void UpdateUserInterface(EntityUid uid, MechComponent? component = null)
     {
@@ -341,8 +353,6 @@ public sealed partial class MechSystem : SharedMechSystem
         {
             EquipmentStates = ev.States
         };
-        Dirty(uid, component);  // ADT Mech
-
         _ui.SetUiState(uid, MechUiKey.Key, state);
     }
 
@@ -414,18 +424,17 @@ public sealed partial class MechSystem : SharedMechSystem
     }
 
     #region Atmos Handling
-    // private void OnInhale(EntityUid uid, MechPilotComponent component, InhaleLocationEvent args) // ADT - Moved to shared
-    // {
-    //     if (!TryComp<MechComponent>(component.Mech, out var mech) ||
-    //         !TryComp<MechAirComponent>(component.Mech, out var mechAir))
-    //     {
-    //         return;
-    //     }
+    private void OnInhale(EntityUid uid, MechPilotComponent component, InhaleLocationEvent args)
+    {
+        if (!TryComp<MechComponent>(component.Mech, out var mech) ||
+            !TryComp<MechAirComponent>(component.Mech, out var mechAir))
+        {
+            return;
+        }
 
-    //     if (mech.Airtight)
-    //         args.Gas = mechAir.Air;
-    // }
-    // ADT Commented
+        if (mech.Airtight)
+            args.Gas = mechAir.Air;
+    }
 
     private void OnExhale(EntityUid uid, MechPilotComponent component, ExhaleLocationEvent args)
     {
@@ -450,7 +459,7 @@ public sealed partial class MechSystem : SharedMechSystem
         if (mech.Airtight && TryComp(component.Mech, out MechAirComponent? air))
         {
             args.Handled = true;
-            args.Gas = mech.Airtight ? air.Air : _atmosphere.GetContainingMixture(component.Mech);  // ADT Tweak
+            args.Gas = air.Air;
             return;
         }
 

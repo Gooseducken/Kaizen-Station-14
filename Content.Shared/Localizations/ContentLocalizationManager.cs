@@ -1,3 +1,24 @@
+// SPDX-FileCopyrightText: 2021 20kdc <asdd2808@gmail.com>
+// SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 E F R <602406+Efruit@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Galactic Chimp <63882831+GalacticChimp@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2021 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
+// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
+// SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2023 moonheart08 <moonheart08@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 KrasnoshchekovPavel <119816022+KrasnoshchekovPavel@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 Stalen <33173619+stalengd@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 icekot8 <93311212+icekot8@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Myra <vasilis@pikachu.systems>
+// SPDX-FileCopyrightText: 2025 pathetic meowmeow <uhhadd@gmail.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -10,8 +31,8 @@ namespace Content.Shared.Localizations
         [Dependency] private readonly ILocalizationManager _loc = default!;
 
         // If you want to change your codebase's language, do it here.
-        private const string Culture = "ru-RU"; // Corvax-Localization
-        private const string FallbackCulture = "en-US"; // Corvax-Localization
+        private const string Culture = "ru-RU"; // Reserve-Localization
+        private const string FallbackCulture = "en-US"; // Reserve-Localization
 
         /// <summary>
         /// Custom format strings used for parsing and displaying minutes:seconds timespans.
@@ -27,24 +48,21 @@ namespace Content.Shared.Localizations
         public void Initialize()
         {
             var culture = new CultureInfo(Culture);
-            var fallbackCulture = new CultureInfo(FallbackCulture); // Corvax-Localization
+            var fallbackCulture = new CultureInfo(FallbackCulture); // Reserve-Localization
 
             _loc.LoadCulture(culture);
-            _loc.LoadCulture(fallbackCulture); // Corvax-Localization
-            _loc.SetFallbackCluture(fallbackCulture); // Corvax-Localization
-            _loc.AddFunction(culture, "MANY", FormatMany); // Corvax-Localization: To prevent problems in auto-generated locale files
+            _loc.LoadCulture(fallbackCulture); // Reserve-Localization
+            _loc.SetFallbackCluture(fallbackCulture); // Reserve-Localization
+            _loc.AddFunction(culture, "MANY", FormatMany); // Reserve-Localization: To prevent problems in auto-generated locale files
             _loc.AddFunction(culture, "PRESSURE", FormatPressure);
             _loc.AddFunction(culture, "POWERWATTS", FormatPowerWatts);
             _loc.AddFunction(culture, "POWERJOULES", FormatPowerJoules);
-            // NOTE: ENERGYWATTHOURS() still takes a value in joules, but formats as watt-hours.
-            _loc.AddFunction(culture, "ENERGYWATTHOURS", FormatEnergyWattHours);
             _loc.AddFunction(culture, "UNITS", FormatUnits);
             _loc.AddFunction(culture, "TOSTRING", args => FormatToString(culture, args));
             _loc.AddFunction(culture, "LOC", FormatLoc);
             _loc.AddFunction(culture, "NATURALFIXED", FormatNaturalFixed);
             _loc.AddFunction(culture, "NATURALPERCENT", FormatNaturalPercent);
             _loc.AddFunction(culture, "PLAYTIME", FormatPlaytime);
-            _loc.AddFunction(culture, "PLAYTIMEMINUTES", FormatPlaytimeMinutes); // ADT Change
 
 
             /*
@@ -153,19 +171,13 @@ namespace Content.Shared.Localizations
         /// <summary>
         /// Formats playtime as hours and minutes.
         /// </summary>
-        public static string FormatPlaytime(TimeSpan time) // ADT changes start
+        public static string FormatPlaytime(TimeSpan time)
         {
             time = TimeSpan.FromMinutes(Math.Ceiling(time.TotalMinutes));
             var hours = (int)time.TotalHours;
-            return Loc.GetString($"zzzz-fmt-playtime", ("hours", hours));
+            var minutes = time.Minutes;
+            return Loc.GetString($"zzzz-fmt-playtime", ("hours", hours), ("minutes", minutes));
         }
-
-        public static string FormatPlaytimeMinutes(TimeSpan time)
-        {
-            time = TimeSpan.FromMinutes(Math.Ceiling(time.TotalMinutes));
-            var minutes = (int)Math.Ceiling(time.TotalMinutes);
-            return Loc.GetString($"zzzz-fmt-playtime-minutes", ("minutes", minutes));
-        }// ADT changes end
 
         private static ILocValue FormatLoc(LocArgs args)
         {
@@ -186,16 +198,10 @@ namespace Content.Shared.Localizations
             return new LocValueString(obj?.ToString() ?? "");
         }
 
-        private static ILocValue FormatUnitsGeneric(
-            LocArgs args,
-            string mode,
-            Func<double, double>? transformValue = null)
+        private static ILocValue FormatUnitsGeneric(LocArgs args, string mode)
         {
             const int maxPlaces = 5; // Matches amount in _lib.ftl
             var pressure = ((LocValueNumber) args.Args[0]).Value;
-
-            if (transformValue != null)
-                pressure = transformValue(pressure);
 
             var places = 0;
             while (pressure > 1000 && places < maxPlaces)
@@ -220,13 +226,6 @@ namespace Content.Shared.Localizations
         private static ILocValue FormatPowerJoules(LocArgs args)
         {
             return FormatUnitsGeneric(args, "zzzz-fmt-power-joules");
-        }
-
-        private static ILocValue FormatEnergyWattHours(LocArgs args)
-        {
-            const double joulesToWattHours = 1.0 / 3600;
-
-            return FormatUnitsGeneric(args, "zzzz-fmt-energy-watt-hours", joules => joules * joulesToWattHours);
         }
 
         private static ILocValue FormatUnits(LocArgs args)
@@ -278,15 +277,5 @@ namespace Content.Shared.Localizations
             }
             return new LocValueString(FormatPlaytime(time));
         }
-
-        private static ILocValue FormatPlaytimeMinutes(LocArgs args) // ADT Changes start
-        {
-            var time = TimeSpan.Zero;
-            if (args.Args is { Count: > 0 } && args.Args[0].Value is TimeSpan timeArg)
-            {
-                time = timeArg;
-            }
-            return new LocValueString(FormatPlaytimeMinutes(time));
-        } // ADT Changes end
     }
 }

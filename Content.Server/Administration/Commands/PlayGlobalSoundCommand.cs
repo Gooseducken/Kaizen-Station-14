@@ -1,3 +1,9 @@
+// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+//
+// SPDX-License-Identifier: MIT
+
 using System.Linq;
 using Content.Server.Audio;
 using Content.Shared.Administration;
@@ -7,8 +13,6 @@ using Robust.Shared.Console;
 using Robust.Shared.ContentPack;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Content.Server.Administration.Logs;
-using Content.Shared.Database;
 
 namespace Content.Server.Administration.Commands;
 
@@ -19,7 +23,6 @@ public sealed class PlayGlobalSoundCommand : IConsoleCommand
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
     [Dependency] private readonly IResourceManager _res = default!;
-    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
 
     public string Command => "playglobalsound";
     public string Description => Loc.GetString("play-global-sound-command-description");
@@ -92,13 +95,6 @@ public sealed class PlayGlobalSoundCommand : IConsoleCommand
 
         audio = audio.AddVolume(-8);
         _entManager.System<ServerGlobalSoundSystem>().PlayAdminGlobal(filter, args[0], audio, replay);
-        // ADT-Tweak-start: Добавил логирование на playglobalsound
-        _adminLogger.Add(
-            LogType.AdminMessage,
-            LogImpact.Low,
-            $"[АДМИНАБУЗ] {shell.Player?.Name} used the command 'playglobalsound' with path '{args[0]}'."
-        );
-        // ADT-Tweak-end
     }
 
     public CompletionResult GetCompletion(IConsoleShell shell, string[] args)
