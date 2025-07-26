@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Content.Goobstation.Common")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d1098597b674a3855907a332300a180da3ea35f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6a5afd5b0ed4373fbfaaea50765e8079f867efa9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Content.Goobstation.Common")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Content.Goobstation.Common")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
