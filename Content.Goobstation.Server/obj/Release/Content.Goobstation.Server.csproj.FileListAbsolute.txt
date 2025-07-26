@@ -26,8 +26,6 @@ C:\Users\goose\Documents\GitHub\Reserve-Station\Content.Goobstation.Server\obj\R
 C:\Users\goose\Documents\GitHub\Reserve-Station\Content.Goobstation.Server\obj\Release\refint\Content.Goobstation.Server.dll
 C:\Users\goose\Documents\GitHub\Reserve-Station\Content.Goobstation.Server\obj\Release\Content.Goobstation.Server.pdb
 C:\Users\goose\Documents\GitHub\Reserve-Station\Content.Goobstation.Server\obj\Release\ref\Content.Goobstation.Server.dll
-C:\Users\goose\Documents\GitHub\Kaizen-Station-14\bin\Content.Server\Content.Server.deps.json
-C:\Users\goose\Documents\GitHub\Kaizen-Station-14\bin\Content.Server\Content.Server.runtimeconfig.json
 C:\Users\goose\Documents\GitHub\Kaizen-Station-14\bin\Content.Server\Content.Packaging.deps.json
 C:\Users\goose\Documents\GitHub\Kaizen-Station-14\bin\Content.Server\Content.Packaging.runtimeconfig.json
 C:\Users\goose\Documents\GitHub\Kaizen-Station-14\bin\Content.Server\Robust.Packaging.deps.json
@@ -39,7 +37,6 @@ C:\Users\goose\Documents\GitHub\Kaizen-Station-14\bin\Content.Server\Robust.Serv
 C:\Users\goose\Documents\GitHub\Kaizen-Station-14\bin\Content.Server\server_config.toml
 C:\Users\goose\Documents\GitHub\Kaizen-Station-14\bin\Content.Server\run_server.bat
 C:\Users\goose\Documents\GitHub\Kaizen-Station-14\bin\Content.Server\Robust.Server.exe
-C:\Users\goose\Documents\GitHub\Kaizen-Station-14\bin\Content.Server\Content.Server.exe
 C:\Users\goose\Documents\GitHub\Kaizen-Station-14\bin\Content.Server\Content.Goobstation.Server.deps.json
 C:\Users\goose\Documents\GitHub\Kaizen-Station-14\bin\Content.Server\Content.Goobstation.Server.dll
 C:\Users\goose\Documents\GitHub\Kaizen-Station-14\bin\Content.Server\Content.Goobstation.Server.pdb

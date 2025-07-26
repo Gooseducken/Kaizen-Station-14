@@ -76,36 +76,6 @@
           }
         }
       },
-      "JetBrains.FormatRipper/2.2.2": {
-        "runtime": {
-          "lib/netstandard2.0/JetBrains.FormatRipper.dll": {
-            "assemblyVersion": "2.2.2.0",
-            "fileVersion": "2.2.2.0"
-          }
-        }
-      },
-      "JetBrains.HabitatDetector/1.4.3": {
-        "dependencies": {
-          "JetBrains.FormatRipper": "2.2.2"
-        },
-        "runtime": {
-          "lib/netstandard2.0/JetBrains.HabitatDetector.dll": {
-            "assemblyVersion": "1.4.3.0",
-            "fileVersion": "1.4.3.0"
-          }
-        }
-      },
-      "JetBrains.Profiler.Api/1.4.8": {
-        "dependencies": {
-          "JetBrains.HabitatDetector": "1.4.3"
-        },
-        "runtime": {
-          "lib/netstandard2.0/JetBrains.Profiler.Api.dll": {
-            "assemblyVersion": "1.4.8.0",
-            "fileVersion": "1.4.8.0"
-          }
-        }
-      },
       "libsodium/1.0.18.2": {
         "runtimeTargets": {
           "runtimes/linux-arm/native/libsodium.so": {
@@ -1689,8 +1659,7 @@
         "dependencies": {
           "Content.Shared.Database": "1.0.0",
           "Microsoft.EntityFrameworkCore.Sqlite.Core": "9.0.1",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.3",
-          "SQLitePCLRaw.bundle_e_sqlite3": "2.1.10"
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.3"
         },
         "runtime": {
           "Content.Server.Database.dll": {
@@ -1743,7 +1712,6 @@
       },
       "Robust.Server/251.0.0": {
         "dependencies": {
-          "JetBrains.Profiler.Api": "1.4.8",
           "Microsoft.Data.Sqlite.Core": "9.0.1",
           "Microsoft.Extensions.DependencyInjection": "9.0.1",
           "Microsoft.Extensions.Logging": "9.0.1",
@@ -1979,27 +1947,6 @@
       "sha512": "sha512-ox5pkeLQXjvJdyAB4b2sBYAlqZGLh3PjSnP1bQNVx72ONuTJ9+34/+Rq91Fc0dG29XG9RgZur9+NcP4riihTug==",
       "path": "jetbrains.annotations/2024.3.0",
       "hashPath": "jetbrains.annotations.2024.3.0.nupkg.sha512"
-    },
-    "JetBrains.FormatRipper/2.2.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-UvbPJM1ryALWSrnMX428ZxLujOrSAxdCgSwr1/7A0mFFxM8Rxku0OjN+zZENmZQ6Hirm7StkC176qy0m30UgjQ==",
-      "path": "jetbrains.formatripper/2.2.2",
-      "hashPath": "jetbrains.formatripper.2.2.2.nupkg.sha512"
-    },
-    "JetBrains.HabitatDetector/1.4.3": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-4VC4sP/T+16MwsfUjwbKVYwKEOEu9cdQxLvN9uUiIm17m2y1SlV4Aj29HKsFbFyCbTePOGQMw3ccoPuym6d+EQ==",
-      "path": "jetbrains.habitatdetector/1.4.3",
-      "hashPath": "jetbrains.habitatdetector.1.4.3.nupkg.sha512"
-    },
-    "JetBrains.Profiler.Api/1.4.8": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-hH0Hej/hjwTn14yhhzEcGaB3HJ40C/CwW2E8RrhsqCcBg5bs50LQFOx2a5dFXjWDMzspAso5xADtQmBI6lXKTw==",
-      "path": "jetbrains.profiler.api/1.4.8",
-      "hashPath": "jetbrains.profiler.api.1.4.8.nupkg.sha512"
     },
     "libsodium/1.0.18.2": {
       "type": "package",
